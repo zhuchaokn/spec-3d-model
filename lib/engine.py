@@ -200,18 +200,17 @@ def run_model(json_path, lib_dir=None):
         op_path = n.get("op")
         if not op_path:
             continue  # 虚拟节点:无 op,只当参照系(坐标已 resolve)
-        # 求值 params(每个值可为数字/表达式/三元组)
-        params = {}
-        for k, v in (n.get("params") or {}).items():
+        # 求值 params:数字/表达式求值;非表达式字符串(面名/对象名)原样传;列表逐元素同理
+        def _eval_one(v):
             if isinstance(v, list):
-                params[k] = eval_vec(v, vars)
-            elif isinstance(v, (int, float, str)):
+                return [_eval_one(x) for x in v]
+            if isinstance(v, (int, float, str)):
                 try:
-                    params[k] = evaluate(v, vars)
+                    return evaluate(v, vars)
                 except (ValueError, SyntaxError):
-                    params[k] = v  # 非表达式字符串(如面名"front")原样传
-            else:
-                params[k] = v
+                    return v  # 非表达式字符串(如 "front"/"BasketL")原样传
+            return v
+        params = {k: _eval_one(v) for k, v in (n.get("params") or {}).items()}
         # 收集 targets
         targets = {}
         for t in n.get("target", []) or []:

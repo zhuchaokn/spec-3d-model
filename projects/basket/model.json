@@ -155,6 +155,17 @@
       "parent": null,
       "after": ["SpreadL"],
       "params": { "target_name": "BasketR", "delta": ["SPREAD", "0", "0"] }
+    },
+    {
+      "name": "Export",
+      "op": "ops/export.py",
+      "parent": null,
+      "after": ["SpreadR"],
+      "params": {
+        "parts": ["BasketL", "BasketR"],
+        "out_dir": "/Users/zhuchao14/blender/projects/basket/output",
+        "blend_name": "basket.blend"
+      }
     }
   ]
 }
