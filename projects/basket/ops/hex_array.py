@@ -141,5 +141,9 @@ def run(ctx):
               seam_clear_abs=seam_x)
 
     if cutters:
-        s3d.bool_diff_many(tgt, cutters)
+        # 孔密集时把全部 cutter 一次 join 会自相交,EXACT 布尔把墙几乎全吃掉,
+        # 只剩每个六边形的侧壁碎片(墙"消失")。逐个减:单个 cutter 不自相交,
+        # 每次只挖自己那块,绝不误伤墙。慢一点但正确。
+        for c in cutters:
+            s3d.bool_diff(tgt, c)
     print(f"  [hex_array] {ctx.name} holes={len(cutters)} on {tgt.name}")

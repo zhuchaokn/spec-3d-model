@@ -6,7 +6,7 @@
     "SPLIT_GAP": 0.015,
     "HALF": "L/2 - SPLIT_GAP/2",
     "SPREAD": 10.0,
-    "HEX_W": 2.5, "HEX_GAP": 0.7,
+    "HEX_W": 1.5, "HEX_GAP": 0.42,
     "MARGIN_SIDE": 1.0, "MARGIN_BOTTOM": 1.2, "MARGIN_TOP": 1.0,
     "SCALLOP_DIP": 5.0, "SCALLOP_CORNER": 4.0, "SCALLOP_FLAT": 6.0, "SCALLOP_OVER": 1.0,
     "HANDLE_W": 8.0, "HANDLE_H": 4.0, "HANDLE_GAP_TOP": 3.0,

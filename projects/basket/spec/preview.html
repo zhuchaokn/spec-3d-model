@@ -28,7 +28,7 @@
 </head>
 <body>
   <h1>纸样收纳筐 — 三视图设计(等比例 1cm = 10px)</h1>
-  <p>外形 <b>29(X) × 20(Y) × 20(Z) cm</b>,壁厚 3mm,敞口。四壁+底 pointy-top 六边形镂空(孔宽2.5,间距0.7),
+  <p>外形 <b>29(X) × 20(Y) × 20(Z) cm</b>,壁厚 3mm,敞口。四壁+底 pointy-top 六边形镂空(孔宽1.5,间距0.42),
      前后长墙 <b>╲___╱ 凹沿</b>,左右短墙 <b>8×4 胶囊把手</b>。沿 <b style="color:#c0392b">X=0 切两半</b>,
      左半配 <b style="color:#8a6d2b">圆台 Pin</b>、右半配 <b>C夹</b>。
      <span class="k" style="background:#c0392b"></span>切缝
@@ -77,10 +77,11 @@
      每个 build.py 可独立跑;两半各自完整(自含镂空),可分别打印验证。</p>
 
 <script>
-// ===== 尺寸(镜像 params.py,cm) =====
+// ===== 尺寸(镜像 model.json,cm) =====
 const P = {
   LENGTH:29, WIDTH:20, HEIGHT:20, WALL:0.3,
-  HEX_W:2.5, R:2.5/Math.sqrt(3), HH:1.25,
+  HEX_W:1.5, HEX_GAP:0.42, R:1.5/Math.sqrt(3), HH:0.75,
+  MARGIN_SIDE:1.0, MARGIN_BOTTOM:1.2, MARGIN_TOP:1.0,
   SCALLOP_DIP:5, SCALLOP_CORNER:4, SCALLOP_FLAT:6,
   HANDLE_W:8, HANDLE_H:4, HANDLE_GAP_TOP:3,
   SEAM_HALF:0.75, JOINT_OD:0.9, JOINT_ID:0.512, JOINT_R:0.45,
@@ -89,21 +90,49 @@ const P = {
 const S = 10, PAD = 30;   // px/cm, 内边距
 const NS = "http://www.w3.org/2000/svg";
 
-// ===== 六边形中心坐标(由 params 算得,见 spec 说明) u=沿墙, v=竖直 =====
-// 每行 [v, [u,...]]
-const FRONT_HEX = [
-  [4.52,[-9.6,-6.4,-3.2,3.2,6.4,9.6]],
-  [7.38,[-11.2,-8.0,-4.8,4.8,8.0,11.2]],
-  [10.25,[-9.6,-6.4,-3.2,3.2,6.4,9.6]],
-  [13.12,[-11.2,-8.0,-4.8,4.8,8.0,11.2]],
-  [15.98,[-9.6,9.6]],
-];
-const SIDE_HEX = [
-  [4.52,[-6.4,-3.2,0.0,3.2,6.4]],
-  [7.38,[-4.8,-1.6,1.6,4.8]],
-  [10.25,[-6.4,-3.2,0.0,3.2,6.4]],
-  [15.98,[-6.4,6.4]],
-];
+// ===== 六边形中心坐标:与 op hex_array.py 同算法自动生成(u=沿墙, v=竖直) =====
+// 改 model.json 的 HEX_W/HEX_GAP/margins 后,只需同步上面的 P,三视图自动重排。
+const HEX_H = 2*P.R, DX = P.HEX_W+P.HEX_GAP, DY = 0.75*HEX_H+P.HEX_GAP;
+const UP_LO = P.WALL+P.MARGIN_BOTTOM, UP_HI = P.HEIGHT-P.MARGIN_TOP;   // z0=0
+
+function hitsHandle(u,v){
+  const zhi=P.HEIGHT-P.HANDLE_GAP_TOP, zlo=zhi-P.HANDLE_H;
+  return (u-P.HH < P.HANDLE_W/2 && u+P.HH > -P.HANDLE_W/2 && v-P.R < zhi && v+P.R > zlo);
+}
+// 在 [a0,a1]×[u0,u1] 铺六边形,返回中心 [{u,v}]。opts:{seam(缝绝对x),profile,handle}
+function tileRect(a0,a1,u0,u1,opts={}){
+  const out=[], uspan=u1-u0;
+  let nv = uspan < 0.75*HEX_H ? 0 : Math.floor((uspan+P.HEX_GAP)/DY);
+  if(nv>0 && nv%2===0) nv--;
+  nv=Math.max(nv,1);
+  const vFirst=u0+(uspan-(nv-1)*DY)/2, acenter=(a0+a1)/2;
+  for(let r=0;r<nv;r++){
+    const vc=vFirst+r*DY, off=(r%2===0)?0:DX/2;
+    let m=0;
+    while(m<=200){
+      const cands=(off===0&&m===0)?[0]:[off+m*DX,-(off+m*DX)];
+      let anyIn=false;
+      for(const c of cands){
+        const uc=acenter+c;
+        if(uc-P.HH<a0 || uc+P.HH>a1) continue;
+        anyIn=true;
+        if(opts.seam!==undefined && Math.abs(uc-opts.seam)-P.HH < P.SEAM_HALF) continue;
+        if(opts.profile && vc+P.R > profileZ(uc)) continue;
+        if(opts.handle && hitsHandle(uc,vc)) continue;
+        out.push({u:uc,v:vc});
+      }
+      if(!anyIn && m>0) break;
+      m++;
+    }
+  }
+  return out;
+}
+// 前墙:两半各自铺(缝在 x=0,含凹沿 profile)。ms=margin_side
+const MS=P.MARGIN_SIDE, half=P.LENGTH/2;
+const FRONT_HEX_L = tileRect(-half+MS, 0-MS, UP_LO, UP_HI, {seam:0, profile:true});
+const FRONT_HEX_R = tileRect(0+MS, half-MS, UP_LO, UP_HI, {seam:0, profile:true});
+// 短墙:沿 Y 铺,避开把手
+const SIDE_HEX = tileRect(-P.WIDTH/2+MS, P.WIDTH/2-MS, UP_LO, UP_HI, {handle:true});
 
 function el(tag, attrs){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
 function add(svg,tag,attrs){const e=el(tag,attrs);svg.appendChild(e);return e;}
@@ -159,8 +188,8 @@ function dimV(svg,x,z0,z1,label,map){
     const xin = sign<0? -half : 0, xout = sign<0? 0 : half;
     const out=halfOutline(xin,xout).map(([x,z])=>m(x,z));
     add(svg,"polygon",{class:"edge",points:out.map(p=>p[0].toFixed(1)+","+p[1].toFixed(1)).join(" ")});
-    // 六边形:仅该半 (u 落在 [xin,xout])
-    FRONT_HEX.forEach(([v,us])=>us.forEach(u=>{ if(u>=xin&&u<=xout) hexAt(svg,u,v,m); }));
+    // 六边形:该半自己的一组(自动生成,已含凹沿/缝禁孔带)
+    (sign<0?FRONT_HEX_L:FRONT_HEX_R).forEach(({u,v})=>hexAt(svg,u,v,m));
     // 切缝面(x=0 这条竖边)标红
     const t=m(0,profileZ(0)),b=m(0,0);
     add(svg,"line",{class:"cut",x1:t[0],y1:t[1],x2:b[0],y2:b[1]});
@@ -184,7 +213,7 @@ function dimV(svg,x,z0,z1,label,map){
   const map=(y,z)=>[PAD+(y+W/2)*S, PAD+(H-z)*S];
   const o=map(-W/2,H);
   add(svg,"rect",{class:"edge",x:o[0],y:o[1],width:W*S,height:H*S});
-  SIDE_HEX.forEach(([v,us])=>us.forEach(u=>hexAt(svg,u,v,map)));
+  SIDE_HEX.forEach(({u,v})=>hexAt(svg,u,v,map));
   // 胶囊把手 8×4,顶距墙顶3 → z 13..17
   const z1=P.HEIGHT-P.HANDLE_GAP_TOP, z0=z1-P.HANDLE_H;
   const hp=map(-P.HANDLE_W/2,z1), rpx=P.HANDLE_H/2*S;
