@@ -4,44 +4,112 @@
 <meta charset="UTF-8">
 <title>&lt;项目名&gt; · 三视图</title>
 <style>
-  body { font-family: -apple-system, "PingFang SC", sans-serif; margin: 24px; color: #1a1a1a; background:#fafafa; }
-  h1 { font-size: 20px; } h2 { font-size: 15px; margin: 20px 0 8px; }
-  .views { display: flex; gap: 32px; flex-wrap: wrap; }
-  .view { background:#fff; border:1px solid #e0e0e0; border-radius:8px; padding:12px; }
-  .view figcaption { font-size:13px; color:#555; margin-bottom:6px; }
-  svg { background:#fff; }
-  .edge { fill:#eef2f7; stroke:#334; stroke-width:1.5; }
-  .cut  { fill:none; stroke:#c0392b; stroke-width:1.5; stroke-dasharray:5 3; }
-  .dim  { stroke:#888; stroke-width:0.8; }
-  .dimtxt { fill:#444; font-size:11px; }
-  table { border-collapse: collapse; font-size:13px; margin-top:8px; }
-  td,th { border:1px solid #ddd; padding:4px 10px; text-align:left; }
+  body{font-family:-apple-system,"PingFang SC",sans-serif;margin:24px;color:#1a1a1a;background:#fafafa;}
+  h1{font-size:20px;} h2{font-size:15px;margin:22px 0 8px;} p{font-size:13px;color:#444;max-width:900px;line-height:1.5;}
+  .views{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start;}
+  .view{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:10px 12px;}
+  .view figcaption{font-size:13px;color:#555;margin-bottom:4px;font-weight:600;}
+  .edge{fill:#eef2f7;stroke:#33415a;stroke-width:1.4;}
+  .inner{fill:#fff;stroke:#8894a5;stroke-width:0.8;}
+  .hole{fill:#fbfdff;stroke:#7a8aa0;stroke-width:1.1;}
+  .cut{fill:none;stroke:#c0392b;stroke-width:1.6;stroke-dasharray:6 4;}
+  .dim{stroke:#e08a2b;stroke-width:0.8;} .dimtxt{fill:#b5661a;font-size:10.5px;}
+  .lbl{fill:#33415a;font-size:10.5px;}
+  table{border-collapse:collapse;font-size:13px;margin-top:8px;} td,th{border:1px solid #ddd;padding:5px 11px;text-align:left;} th{background:#f0f2f5;}
+  code{background:#eef;padding:1px 4px;border-radius:3px;}
 </style>
 </head>
 <body>
-  <h1>&lt;项目名&gt; — 三视图与分解方案</h1>
-  <p>单位 cm。尺寸源自 <code>params.py</code>。红色虚线=切割/分割线。</p>
+  <h1>&lt;项目名&gt; — 三视图(等比例 1cm = <span id="scale-lbl"></span>px)</h1>
+  <p>本页是**方案闸门**:与人对齐尺寸与分件后再写/改 <code>model.json</code>。三视图数据应
+     <b>镜像 model.json 的常量</b>(改尺寸两处同步)。红=切缝/分割线。</p>
 
   <h2>三视图</h2>
   <div class="views">
-    <figure class="view">
-      <figcaption>正视图(front, 看 −Y)</figcaption>
-      <svg width="300" height="230" viewBox="0 0 300 230"><!-- TODO --></svg>
-    </figure>
-    <figure class="view">
-      <figcaption>左视图(left, 看 +X)</figcaption>
-      <svg width="240" height="230" viewBox="0 0 240 230"><!-- TODO --></svg>
-    </figure>
-    <figure class="view">
-      <figcaption>俯视图(top, 看 −Z)</figcaption>
-      <svg width="300" height="240" viewBox="0 0 300 240"><!-- TODO --></svg>
-    </figure>
+    <figure class="view"><figcaption>正视图 front(看 −Y)</figcaption><svg id="svg-front"></svg></figure>
+    <figure class="view"><figcaption>左视图 left(看 +X)</figcaption><svg id="svg-left"></svg></figure>
+    <figure class="view"><figcaption>俯视图 top(看 −Z)</figcaption><svg id="svg-top"></svg></figure>
   </div>
 
-  <h2>组件分解 + 构建顺序</h2>
-  <table>
-    <tr><th>顺序</th><th>组件</th><th>契约</th></tr>
-    <tr><td>1</td><td>&lt;part&gt;</td><td>空场景 → 建 &lt;Obj&gt;</td></tr>
+  <h2>与 model.json 的对应</h2>
+  <table id="node-table">
+    <tr><th>物体(node.name)</th><th>op</th><th>说明</th></tr>
+    <!-- JS 按 NODES 填充 -->
   </table>
+
+<script>
+// ============================================================
+// 【填这里】① 尺寸常量:镜像 model.json 的 constants(cm)
+// ============================================================
+const P = {
+  L: 10, W: 10, H: 10, WALL: 0.3,
+  // ... 补齐本项目会用到的尺寸/公差
+};
+
+// 【填这里】② 与 model.json 节点的对应表(纯展示,帮人对照)
+const NODES = [
+  ["Part", "box", "整体外形 LxWxH"],
+  // ["Cavity", "subtract", "挖内腔"], ...
+];
+
+// 【填这里】③ 每个视图画什么。用下方 helper(全部吃 cm,自动转 px)。
+//   坐标系:front=(x,z) 看-Y;left=(y,z) 看+X;top=(x,y) 看-Z。原点在物体中心。
+function drawFront(v){
+  // 例:外轮廓矩形(宽L 高H,底在z=0)
+  v.rect(-P.L/2, 0, P.L, P.H);           // rect(x左, z下, 宽, 高)
+  // v.hole(cx, cz, 直径);  v.capsule(cx,cz,w,h);  v.cut(x, z0, z1);
+  v.dimH(-P.L/2, P.L/2, -1.4, P.L+" cm");
+  v.dimV(-P.L/2-0.4, 0, P.H, ""+P.H);
+}
+function drawLeft(v){
+  v.rect(-P.W/2, 0, P.W, P.H);
+  v.dimH(-P.W/2, P.W/2, -1.4, P.W+" cm");
+}
+function drawTop(v){
+  v.rect(-P.L/2, -P.W/2, P.L, P.W);
+  v.rectInner(-P.L/2+P.WALL, -P.W/2+P.WALL, P.L-2*P.WALL, P.W-2*P.WALL);
+  v.dimH(-P.L/2, P.L/2, -P.W/2-1.4, P.L+" cm");
+}
+
+// ============================================================
+// helper(一般不用改):把 cm 画进 SVG。每个 view 传入的 v 提供:
+//   rect/rectInner/hole/capsule/cut/dimH/dimV
+// ============================================================
+const S = 10, PAD = 30, NS = "http://www.w3.org/2000/svg";
+document.getElementById("scale-lbl").textContent = S;
+
+function makeView(svgId, mapXY, wSpanCm, hSpanCm){
+  const svg = document.getElementById(svgId);
+  svg.setAttribute("width",  wSpanCm*S + 2*PAD);
+  svg.setAttribute("height", hSpanCm*S + 2*PAD + 22);
+  const el=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);svg.appendChild(e);return e;};
+  const txt=(x,y,s,cls,anc)=>{const e=el("text",{x,y,class:cls||"dimtxt","text-anchor":anc||"middle"});e.textContent=s;};
+  const M=mapXY; // (a,b)cm -> [px,py]
+  return {
+    rect:(a,b,w,h,cls)=>{const p=M(a,b+h);el("rect",{class:cls||"edge",x:p[0],y:p[1],width:w*S,height:h*S});},
+    rectInner:(a,b,w,h)=>{const p=M(a,b+h);el("rect",{class:"inner",x:p[0],y:p[1],width:w*S,height:h*S});},
+    hole:(ca,cb,dia)=>{const p=M(ca,cb);el("circle",{class:"hole",cx:p[0],cy:p[1],r:dia/2*S});},
+    capsule:(ca,cb,w,h)=>{const p=M(ca-w/2,cb+h/2);el("rect",{class:"hole",x:p[0],y:p[1],width:w*S,height:h*S,rx:h/2*S,ry:h/2*S});},
+    cut:(a,b0,b1)=>{const p0=M(a,b0),p1=M(a,b1);el("line",{class:"cut",x1:p0[0],y1:p0[1],x2:p1[0],y2:p1[1]});},
+    dimH:(a0,a1,b,label)=>{const p0=M(a0,b),p1=M(a1,b);el("line",{class:"dim",x1:p0[0],y1:p0[1],x2:p1[0],y2:p1[1]});
+      el("line",{class:"dim",x1:p0[0],y1:p0[1]-5,x2:p0[0],y2:p0[1]+5});el("line",{class:"dim",x1:p1[0],y1:p1[1]-5,x2:p1[0],y2:p1[1]+5});
+      txt((p0[0]+p1[0])/2,p0[1]-7,label);},
+    dimV:(a,b0,b1,label)=>{const p0=M(a,b0),p1=M(a,b1);el("line",{class:"dim",x1:p0[0],y1:p0[1],x2:p1[0],y2:p1[1]});
+      el("line",{class:"dim",x1:p0[0]-5,y1:p0[1],x2:p0[0]+5,y2:p0[1]});el("line",{class:"dim",x1:p1[0]-5,y1:p1[1],x2:p1[0]+5,y2:p1[1]});
+      txt(p0[0]-4,(p0[1]+p1[1])/2,label,"dimtxt","end");},
+  };
+}
+// front: x右+, z上+(翻转y)。范围按 L×H
+drawFront(makeView("svg-front", (x,z)=>[PAD+(x+P.L/2)*S, PAD+(P.H-z)*S], P.L, P.H));
+// left: y右+, z上+
+drawLeft (makeView("svg-left",  (y,z)=>[PAD+(y+P.W/2)*S, PAD+(P.H-z)*S], P.W, P.H));
+// top: x右+, y下+
+drawTop  (makeView("svg-top",   (x,y)=>[PAD+(x+P.L/2)*S, PAD+(y+P.W/2)*S], P.L, P.W));
+
+// 填充节点对应表
+const tb=document.getElementById("node-table");
+for(const [n,op,desc] of NODES){const tr=document.createElement("tr");
+  tr.innerHTML=`<td><code>${n}</code></td><td>${op}</td><td>${desc}</td>`;tb.appendChild(tr);}
+</script>
 </body>
 </html>

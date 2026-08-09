@@ -1,0 +1,15 @@
+{
+  "_note": "本项目唯一真相源:常量 + 对象拓扑。字段语义见 lib/ENGINE.md。通用 op 见 lib/ops/README.md。",
+  "constants": {
+    "L": 10.0, "W": 10.0, "H": 10.0, "WALL": 0.3
+  },
+  "nodes": [
+    {
+      "name": "Part",
+      "op": "ops/box.py",
+      "parent": null,
+      "offset": ["0", "0", "H/2"],
+      "params": { "size": ["L", "W", "H"] }
+    }
+  ]
+}
