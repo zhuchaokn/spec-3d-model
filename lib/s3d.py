@@ -144,12 +144,12 @@ def capsule(name, length_cm, height_cm, depth_cm, loc_cm=(0, 0, 0), axis='x', se
     cx, cy, cz = (v * CM for v in loc_cm)
 
     def w(p, q, t):
-        # (p,q) 是轮廓平面内两轴,t 沿法向 axis
+        # (p,q) 轮廓两轴, t 沿法向 axis;p/q/t 均 cm,此处统一 *CM
         if axis == 'x':
-            return (cx + t, cy + p * CM, cz + q * CM)
+            return (cx + t * CM, cy + p * CM, cz + q * CM)
         if axis == 'y':
-            return (cx + p * CM, cy + t, cz + q * CM)
-        return (cx + p * CM, cy + q * CM, cz + t)
+            return (cx + p * CM, cy + t * CM, cz + q * CM)
+        return (cx + p * CM, cy + q * CM, cz + t * CM)
 
     return _extrude_profile(name, perim, w, depth_cm)
 
@@ -157,12 +157,12 @@ def capsule(name, length_cm, height_cm, depth_cm, loc_cm=(0, 0, 0), axis='x', se
 def _extrude_profile(name, pts, w, depth_cm):
     """内部:把 2D 轮廓 pts 用坐标函数 w(u,v,t) 拉伸成闭合棱柱。
 
-    w(u,v,t) 接收轮廓两轴值+法向偏移 t(米),返回米坐标;t=±depth/2 为前后面。"""
-    d = depth_cm * CM
+    w(u,v,t) 接收轮廓两轴值+法向偏移 t,全部 cm(w 内部再统一 *CM 换算);
+    t=±depth_cm/2 为前后面。"""
     n = len(pts)
     bm = bmesh.new()
-    back = [bm.verts.new(w(u, v, -d / 2)) for (u, v) in pts]
-    front = [bm.verts.new(w(u, v, d / 2)) for (u, v) in pts]
+    back = [bm.verts.new(w(u, v, -depth_cm / 2)) for (u, v) in pts]
+    front = [bm.verts.new(w(u, v, depth_cm / 2)) for (u, v) in pts]
     bm.faces.new(back)
     bm.faces.new(list(reversed(front)))
     for i in range(n):
