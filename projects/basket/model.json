@@ -14,6 +14,7 @@
     "PIN_D_TOP": 0.5, "PIN_D_BOT": 0.512,
     "SLOT_W": 0.3, "JOINT_TOP": 15.0,
     "SEAM_HALF": 0.75,
+    "CCLIP_OFFSET": "JOINT_R - 0.2",
     "JOINT_ZC": "JOINT_TOP/2 - H/2",
     "WALL_MID_Y": "W/2 - WALL/2"
   },
@@ -111,7 +112,7 @@
       "name": "CClipRF",
       "op": "ops/cclip.py",
       "parent": "BasketR_frontwall",
-      "offset": ["-(HALF/2)", "0", "JOINT_ZC"],
+      "offset": ["-(HALF/2) - CCLIP_OFFSET", "0", "JOINT_ZC"],
       "target": ["BasketR"],
       "after": ["PinLB"],
       "params": { "od": "JOINT_OD", "id": "JOINT_ID", "slot_w": "SLOT_W", "h": "JOINT_TOP", "open": "-x" }
@@ -120,7 +121,7 @@
       "name": "CClipRB",
       "op": "ops/cclip.py",
       "parent": "BasketR_backwall",
-      "offset": ["-(HALF/2)", "0", "JOINT_ZC"],
+      "offset": ["-(HALF/2) - CCLIP_OFFSET", "0", "JOINT_ZC"],
       "target": ["BasketR"],
       "after": ["CClipRF"],
       "params": { "od": "JOINT_OD", "id": "JOINT_ID", "slot_w": "SLOT_W", "h": "JOINT_TOP", "open": "-x" }
