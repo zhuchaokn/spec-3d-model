@@ -254,7 +254,7 @@ def bool_diff_many(target, cutters):
 def clean_by_names(names=(), prefixes=()):
     """幂等清理:删名字在 names 或以 prefixes 任一前缀开头的对象。
 
-    build.py 开头调用以保证重跑不产生重复对象。返回删除数。"""
+    op 内建对象前调用以保证重跑不产生重复对象(引擎入口也会先清场)。返回删除数。"""
     removed = 0
     for obj in list(bpy.data.objects):
         if obj.name in names or any(obj.name.startswith(p) for p in prefixes):

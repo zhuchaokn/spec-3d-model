@@ -1,54 +1,54 @@
 # basket — 纸样收纳筐
 
-> 项目入口。方法论见仓根 `CLAUDE.md`。这是 spec-3d-model 的第一个试点项目。
+> spec-3d-model 的第一个试点(引擎驱动)。方法论见仓根 `CLAUDE.md`,引擎用法见 `lib/ENGINE.md`。
 
 ## 目标
 
 3D 打印一个存放衣服纸样的敞口收纳筐,外形 29×20×20cm,四壁+底六边形镂空,
-前后长墙下凹、两侧短墙带把手。因超 Bambu P2S 打印体积,沿 X 切成左右两半,
-用 C夹+Pin 卡合连接。
+前后长墙下凹、两侧短墙带把手。因超 Bambu P2S 打印体积(256³mm),沿 X 切成左右两半,
+用 C夹 + 圆台 Pin 卡合连接。
 
 ## 关键尺寸
 
-外形 29(X)×20(Y)×20(Z)cm,壁厚 3mm。打印体积 256³mm。详值见 `params.py`。
+外形 29(X)×20(Y)×20(Z)cm,壁厚 3mm。详值见 `model.json` 的 `constants`(唯一真相源)。
 
 ## 结构
 
 ```
 spec/requirement.md   需求
-spec/preview.html     三视图(⛔ 方案闸门,人确认后才建 3D)
-params.py             单一尺寸源
-components/<part>/     各部件
-assemble.py           按序组合
-verify.py             数据验证
-export.py             导出 BasketL/BasketR 的 STL + .blend
-output/               产物(gitignore)
+spec/preview.html     三视图(⛔ 方案闸门,人确认后才写 model.json)
+model.json            唯一真相源:常量 + 对象拓扑
+run_model.py          在 Blender 里跑构建
+ops/                  本项目专属 op:hex_array / scallop / cclip
+output/               产物 BasketL/BasketR.stl + basket.blend(gitignore)
+screenshots/          迭代截图存档
 ```
 
-## 组件清单 + 构建顺序
+## 构建策略(model.json 里的节点顺序)
 
-**核心:独立构建每一半(含镂空),再加卡合,最后组合分隔。禁止先建整体再切。**
-左半配 **Pin**、右半配 **C夹**。Pin 为**圆台**(底 φ5.12 / 顶 φ5.0)平滑楔入。
+**独立构建每一半、再配卡合、不 union、最后拉开。** 左半配 Pin、右半配 C夹。
+Pin 为圆台(底 φ5.12 / 顶 φ5.0,从下往上滑入楔紧)。卡合件是**独立对象**,只是摆在
+与筐半重叠的位置(不合并——易拆、天然水密);打印时同一半的筐+卡合件一起导出到一个 STL。
 
-| 顺序 | 组件 | 契约(输入场景 → 输出具名对象) | 状态 |
-|---|---|---|---|
-| 1 | `left_half` | 空场景 → 建 `BasketL`:左半空心壳(X −14.5..0,墙3mm,x=0 切缝面敞开)+ 六边形镂空 + 前后墙凹沿(左段)+ 左短墙(−X)胶囊把手 | 待建 |
-| 2 | `right_half` | → 建 `BasketR`:右半(X 0..14.5)+ 镂空 + 凹沿(右段)+ 右短墙(+X)把手 | 待建 |
-| 3 | `pin` | 对 `BasketL` 前后切缝墙加**圆台 Pin**(底5.12/顶5.0,防脱楔紧),join 进 `BasketL` | 待建 |
-| 4 | `cclip` | 对 `BasketR` 前后切缝墙加 C夹(墩φ9+孔φ5.12+朝外开缝),join 进 `BasketR` | 待建 |
-| 5 | `layout` | 把 `BasketL`/`BasketR` 沿 X 分隔摆放(展示/导出;`SPLIT_SHOW_GAP`,导出前可置0对合) | 待建 |
+| 阶段 | 节点 | 做什么 |
+|---|---|---|
+| 精建左半 | `BasketL` → `_cavity` → `_hex` → `_scallop` → `_handle` | 建壳 → 挖腔 → 六边形镂空 → 前后墙凹沿 → 左短墙把手 |
+| 镜像右半 | `BasketR` | `mirror` BasketL(此时只有壳,尚无卡合件)得对称右半 |
+| 底板让位 | `FootCut*` | 复制 C夹当切割器、放到 pin 位置(缝中心)、挖 BasketL 底板缝端,让 C夹能套入 |
+| 卡合件 | `PinLF/PinLB`(左)`CClipRF/CClipRB`(右) | 缝处前后墙各一套,独立摆放 |
+| 分件 | `SpreadL/SpreadR` | 各半连同其卡合件整组沿 X 拉开 |
+| 导出 | `Export` | 每个可打印件(筐半+其卡合件)导出一个 STL + 存 .blend |
 
-构建顺序:`left_half → right_half → pin → cclip → layout`(assemble.py 按此序)。
-每个 build.py 可独立跑;`left_half`/`right_half` 各自完整(自含镂空),可分别打印验证。
+> 关键坐标:缝在 x=0;C夹圆心相对 pin 外移 `CCLIP_OFFSET`(=JOINT_R−0.2)避开墙;
+> 卡合柱顶 = 凹沿最低点 `JOINT_TOP`。工程细节(切割器探出、hex 先于 scallop 等)见 `lib/ENGINE.md` 常见坑。
 
 ## 约定
 
-- 尺寸只改 `params.py`;组件与 preview.html 镜像它。
-- build.py 幂等(清 `Basket`/`BasketL`/`BasketR`/`Cutter*`/`Seam*`)、产出具名对象、末尾 print。
-- 数据验证优先(dims/部件数/水密),不随意截图。
-- 正式拆分打印前,先打 clip+pin 试配件定死公差(参考旧 `blender_scripts/objects/make_clip_tester.py`)。
+- 尺寸/公差只改 `model.json` 常量;`spec/preview.html` 镜像它。
+- 数据验证优先(`scene_dump`/`manifold_report`,判据:边界边=0),不随意截图。
+- 正式拆分打印前,建议先打 C夹+Pin 试配小件定死公差。
 
 ## 来源
 
-旧 `blender_scripts/objects/make_basket.py` 是本筐子的**单体解法**(已在真机验证)。
-本项目把它按分层拆成上面 5 个组件,参数原样迁到 `params.py`。
+参数取自早期真机验证过的单体解法(墙3mm、六边形 pointy-top、C夹 φ9/孔 φ5.12、
+Pin 圆台 φ5.12→5.0)。本项目用引擎按对象拓扑重构,已跑通并可导出打印。
