@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "blender-mcp": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "run",
+        "--project",
+        "mcp/blender-mcp",
+        "--python",
+        "3.12",
+        "blender-mcp"
+      ],
+      "env": {}
+    }
+  }
+}
