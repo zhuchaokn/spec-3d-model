@@ -1,0 +1,24 @@
+{
+  "_note": "最小闭环验证:建 BasketL 空心盒(建盒+挖腔)。仅证明 JSON→引擎→场景 链路成立。",
+  "constants": {
+    "L": 29.0, "W": 20.0, "H": 20.0, "WALL": 0.3, "SPLIT_GAP": 0.015,
+    "HALF": "L/2 - SPLIT_GAP/2"
+  },
+  "nodes": [
+    {
+      "name": "BasketL",
+      "op": "ops/box.py",
+      "parent": null,
+      "offset": ["-(HALF/2)", "0", "H/2"],
+      "params": { "size": ["HALF", "W", "H"] }
+    },
+    {
+      "name": "BasketL_cavity",
+      "op": "ops/subtract.py",
+      "parent": "BasketL",
+      "offset": ["WALL/2", "0", "WALL/2"],
+      "target": ["BasketL"],
+      "params": { "size": ["HALF - WALL", "W - 2*WALL", "H - WALL"] }
+    }
+  ]
+}

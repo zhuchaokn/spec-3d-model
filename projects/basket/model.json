@@ -1,0 +1,192 @@
+{
+  "_note": "basket 完整注册表(唯一真相源)。缝在 X=0;BasketL 占 x∈[-HALF,0],BasketR 占 x∈[0,HALF]。offset 全相对 parent 质心。绝对坐标由引擎 resolve。",
+
+  "constants": {
+    "L": 29.0, "W": 20.0, "H": 20.0, "WALL": 0.3,
+    "SPLIT_GAP": 0.015,
+    "HALF": "L/2 - SPLIT_GAP/2",
+    "HEX_W": 2.5, "HEX_GAP": 0.7,
+    "MARGIN_SIDE": 1.0, "MARGIN_BOTTOM": 1.2, "MARGIN_TOP": 1.0,
+    "SCALLOP_DIP": 5.0, "SCALLOP_CORNER": 4.0, "SCALLOP_FLAT": 6.0, "SCALLOP_OVER": 1.0,
+    "HANDLE_W": 8.0, "HANDLE_H": 4.0, "HANDLE_GAP_TOP": 3.0,
+    "JOINT_OD": 0.9, "JOINT_ID": 0.512, "JOINT_R": "JOINT_OD/2",
+    "PIN_D_TOP": 0.5, "PIN_D_BOT": 0.512,
+    "SLOT_W": 0.3, "JOINT_TOP": 15.0,
+    "SEAM_HALF": 0.75, "CCLIP_OFFSET": "JOINT_R - 0.2",
+    "JOINT_H": "JOINT_TOP - WALL",
+    "JOINT_ZC": "WALL + (JOINT_TOP - WALL)/2 - H/2",
+    "WALL_MID_Y": "W/2 - WALL/2"
+  },
+
+  "nodes": [
+    {
+      "name": "BasketL",
+      "op": "ops/box.py",
+      "parent": null,
+      "offset": ["-(HALF/2)", "0", "H/2"],
+      "params": { "size": ["HALF", "W", "H"] }
+    },
+    {
+      "name": "BasketL_cavity",
+      "op": "ops/subtract.py",
+      "parent": "BasketL",
+      "offset": ["WALL/2", "0", "WALL/2"],
+      "target": ["BasketL"],
+      "params": { "size": ["HALF - WALL", "W - 2*WALL", "H - WALL"] }
+    },
+    {
+      "name": "BasketL_hex",
+      "op": "ops/hex_array.py",
+      "parent": "BasketL",
+      "target": ["BasketL"],
+      "after": ["BasketL_cavity"],
+      "params": {
+        "hex_w": "HEX_W", "gap": "HEX_GAP", "wall": "WALL", "full_L": "L",
+        "margin_side": "MARGIN_SIDE", "margin_bottom": "MARGIN_BOTTOM",
+        "margin_top": "MARGIN_TOP", "margin_bottom_face": "MARGIN_BOTTOM",
+        "seam_side": "+x", "seam_half": "SEAM_HALF",
+        "handle": ["HANDLE_W", "HANDLE_H", "HANDLE_GAP_TOP"],
+        "scallop": ["SCALLOP_DIP", "SCALLOP_CORNER", "SCALLOP_FLAT"]
+      }
+    },
+    {
+      "name": "BasketL_scallop",
+      "op": "ops/scallop.py",
+      "parent": "BasketL",
+      "offset": ["HALF/2", "0", "-(H/2)"],
+      "target": ["BasketL"],
+      "after": ["BasketL_hex"],
+      "params": {
+        "L": "L", "W": "W", "H": "H",
+        "dip": "SCALLOP_DIP", "corner": "SCALLOP_CORNER",
+        "flat": "SCALLOP_FLAT", "over": "SCALLOP_OVER"
+      }
+    },
+    {
+      "name": "BasketL_handle",
+      "op": "ops/capsule_cut.py",
+      "parent": "BasketL",
+      "offset": ["-(HALF/2)", "0", "H/2 - HANDLE_GAP_TOP - HANDLE_H/2"],
+      "target": ["BasketL"],
+      "after": ["BasketL_scallop"],
+      "params": { "w": "HANDLE_W", "h": "HANDLE_H", "depth": "2.5*WALL", "axis": "x" }
+    },
+
+    {
+      "name": "BasketR",
+      "op": "ops/box.py",
+      "parent": null,
+      "offset": ["HALF/2", "0", "H/2"],
+      "params": { "size": ["HALF", "W", "H"] }
+    },
+    {
+      "name": "BasketR_cavity",
+      "op": "ops/subtract.py",
+      "parent": "BasketR",
+      "offset": ["-(WALL/2)", "0", "WALL/2"],
+      "target": ["BasketR"],
+      "params": { "size": ["HALF - WALL", "W - 2*WALL", "H - WALL"] }
+    },
+    {
+      "name": "BasketR_hex",
+      "op": "ops/hex_array.py",
+      "parent": "BasketR",
+      "target": ["BasketR"],
+      "after": ["BasketR_cavity"],
+      "params": {
+        "hex_w": "HEX_W", "gap": "HEX_GAP", "wall": "WALL", "full_L": "L",
+        "margin_side": "MARGIN_SIDE", "margin_bottom": "MARGIN_BOTTOM",
+        "margin_top": "MARGIN_TOP", "margin_bottom_face": "MARGIN_BOTTOM",
+        "seam_side": "-x", "seam_half": "SEAM_HALF",
+        "handle": ["HANDLE_W", "HANDLE_H", "HANDLE_GAP_TOP"],
+        "scallop": ["SCALLOP_DIP", "SCALLOP_CORNER", "SCALLOP_FLAT"]
+      }
+    },
+    {
+      "name": "BasketR_scallop",
+      "op": "ops/scallop.py",
+      "parent": "BasketR",
+      "offset": ["-(HALF/2)", "0", "-(H/2)"],
+      "target": ["BasketR"],
+      "after": ["BasketR_hex"],
+      "params": {
+        "L": "L", "W": "W", "H": "H",
+        "dip": "SCALLOP_DIP", "corner": "SCALLOP_CORNER",
+        "flat": "SCALLOP_FLAT", "over": "SCALLOP_OVER"
+      }
+    },
+    {
+      "name": "BasketR_handle",
+      "op": "ops/capsule_cut.py",
+      "parent": "BasketR",
+      "offset": ["HALF/2", "0", "H/2 - HANDLE_GAP_TOP - HANDLE_H/2"],
+      "target": ["BasketR"],
+      "after": ["BasketR_scallop"],
+      "params": { "w": "HANDLE_W", "h": "HANDLE_H", "depth": "2.5*WALL", "axis": "x" }
+    },
+
+    {
+      "name": "BasketL_frontwall",
+      "op": null,
+      "parent": "BasketL",
+      "offset": ["0", "WALL_MID_Y", "0"]
+    },
+    {
+      "name": "BasketL_backwall",
+      "op": null,
+      "parent": "BasketL",
+      "offset": ["0", "-(WALL_MID_Y)", "0"]
+    },
+    {
+      "name": "BasketR_frontwall",
+      "op": null,
+      "parent": "BasketR",
+      "offset": ["0", "WALL_MID_Y", "0"]
+    },
+    {
+      "name": "BasketR_backwall",
+      "op": null,
+      "parent": "BasketR",
+      "offset": ["0", "-(WALL_MID_Y)", "0"]
+    },
+
+    {
+      "name": "PinLF",
+      "op": "ops/frustum.py",
+      "parent": "BasketL_frontwall",
+      "offset": ["HALF/2", "0", "JOINT_ZC"],
+      "target": ["BasketL"],
+      "after": ["BasketL_handle"],
+      "_comment": "偏移抵消父墙质心 x=-HALF/2 → Pin 落在缝 x=0(与C夹同轴,竖直落入)",
+      "params": { "d_bot": "PIN_D_BOT", "d_top": "PIN_D_TOP", "h": "JOINT_H" }
+    },
+    {
+      "name": "PinLB",
+      "op": "ops/frustum.py",
+      "parent": "BasketL_backwall",
+      "offset": ["HALF/2", "0", "JOINT_ZC"],
+      "target": ["BasketL"],
+      "after": ["PinLF"],
+      "params": { "d_bot": "PIN_D_BOT", "d_top": "PIN_D_TOP", "h": "JOINT_H" }
+    },
+    {
+      "name": "CClipRF",
+      "op": "ops/cclip.py",
+      "parent": "BasketR_frontwall",
+      "offset": ["-(HALF/2)", "0", "JOINT_ZC"],
+      "target": ["BasketR"],
+      "after": ["BasketR_handle"],
+      "_comment": "偏移抵消父墙质心 x=+HALF/2 → C夹落在缝 x=0(与Pin同轴)",
+      "params": { "od": "JOINT_OD", "id": "JOINT_ID", "slot_w": "SLOT_W", "h": "JOINT_H", "open": "-x" }
+    },
+    {
+      "name": "CClipRB",
+      "op": "ops/cclip.py",
+      "parent": "BasketR_backwall",
+      "offset": ["-(HALF/2)", "0", "JOINT_ZC"],
+      "target": ["BasketR"],
+      "after": ["CClipRF"],
+      "params": { "od": "JOINT_OD", "id": "JOINT_ID", "slot_w": "SLOT_W", "h": "JOINT_H", "open": "-x" }
+    }
+  ]
+}

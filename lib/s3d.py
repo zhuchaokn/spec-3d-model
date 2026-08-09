@@ -92,6 +92,18 @@ def add_cylinder(name, dia_cm, h_cm, loc_cm=(0, 0, 0), seg=64):
     return o
 
 
+def add_frustum(name, dia_bot_cm, dia_top_cm, h_cm, loc_cm=(0, 0, 0), seg=64):
+    """建竖直圆台/锥台(轴=Z):底径 dia_bot、顶径 dia_top、高 h,质心在 loc。
+
+    dia_top=0 即圆锥;dia_top=dia_bot 即圆柱。Pin(底大顶小)用它。"""
+    bpy.ops.mesh.primitive_cone_add(
+        vertices=seg, radius1=dia_bot_cm / 2 * CM, radius2=dia_top_cm / 2 * CM,
+        depth=h_cm * CM, location=tuple(v * CM for v in loc_cm))
+    o = bpy.context.active_object
+    o.name = name
+    return o
+
+
 def prism(name, pts_uv, orient, face_pos_cm, cu_cm, cv_cm, depth_cm, v_center_cm=0.0):
     """通用流形棱柱:2D 轮廓 pts_uv(cm) 沿法向拉伸 depth_cm。
 
@@ -281,6 +293,43 @@ def inspect(name):
         "verts": len(me.vertices) if me else 0,
         "polys": len(me.polygons) if me else 0,
     }
+
+
+def bbox(name):
+    """返回对象的世界包围盒(cm):dict(min=(x,y,z), max=(x,y,z), center, size)。找不到 None。"""
+    obj = bpy.data.objects.get(name)
+    if obj is None:
+        return None
+    import mathutils  # noqa
+    corners = [obj.matrix_world @ mathutils.Vector(c) for c in obj.bound_box]
+    xs = [c.x / CM for c in corners]
+    ys = [c.y / CM for c in corners]
+    zs = [c.z / CM for c in corners]
+    mn = (min(xs), min(ys), min(zs))
+    mx = (max(xs), max(ys), max(zs))
+    return {"min": mn, "max": mx,
+            "center": ((mn[0]+mx[0])/2, (mn[1]+mx[1])/2, (mn[2]+mx[2])/2),
+            "size": (mx[0]-mn[0], mx[1]-mn[1], mx[2]-mn[2])}
+
+
+def scene_dump():
+    """读取当前场景全部 mesh 对象 → list[dict](名/尺寸cm/质心cm/面数/水密)。
+
+    读真实场景态,供与注册表 resolve 结果比对(即使人手改了 Blender 也能读回核对)。"""
+    out = []
+    for o in bpy.data.objects:
+        if o.type != "MESH":
+            continue
+        me = o.data
+        out.append({
+            "name": o.name,
+            "dims_cm": tuple(round(d / CM, 3) for d in o.dimensions),
+            "loc_cm": tuple(round(c / CM, 3) for c in o.location),
+            "verts": len(me.vertices),
+            "polys": len(me.polygons),
+            "watertight": is_watertight(o.name),
+        })
+    return out
 
 
 def is_watertight(name):
