@@ -41,6 +41,8 @@ spec-3d-model 的通用层,跨项目共享:
 | `is_watertight(name)` | 简易水密检查(每边恰好 2 面) | — | bool/None |
 | `bbox(name)` | 世界包围盒 dict(min/max/center/size,cm) | — | dict/None |
 | `scene_dump()` | 读全场景 mesh → list[dict](名/尺寸/质心/面/水密),核对用 | — | list |
+| `heal(name, dist_cm)` | 合并重复顶点+重算法线,修布尔残边 | dist_cm=0.001 | 非流形数 |
+| `manifold_report(name)` | 边分类 dict(boundary漏洞/nonmanifold自交/total) | — | dict/None |
 
 ## ops/ 操作索引(签名 `run(ctx)`,详见 ENGINE.md §4)
 
@@ -55,6 +57,7 @@ spec-3d-model 的通用层,跨项目共享:
 | `cclip` | 建 C 夹(墩−孔−缝)union 进 target | od,id,slot_w,h,open |
 | `mirror` | 跨 X=0 镜像 source 成新对象 | source |
 | `move` | 平移已存在对象(拉开两半) | target_name,delta |
+| `heal` | 修网格(合并重复顶点)+ 报告 边界边/非流形 | target_name,dist |
 
 ## 新增原子/op 的判据
 
