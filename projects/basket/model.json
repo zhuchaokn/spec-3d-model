@@ -16,7 +16,9 @@
     "SEAM_HALF": 0.75,
     "CCLIP_OFFSET": "JOINT_R - 0.2",
     "JOINT_ZC": "JOINT_TOP/2 - H/2",
-    "WALL_MID_Y": "W/2 - WALL/2"
+    "WALL_MID_Y": "W/2 - WALL/2",
+    "FOOT_RELIEF": 0.25,
+    "EPS": 0.1
   },
 
   "nodes": [
@@ -82,6 +84,23 @@
       "after": ["BasketL_handle"],
       "_comment": "镜像 BasketL(此时只有壳,尚无Pin/C夹)得对称右半;seam=-x。",
       "params": { "source": "BasketL" }
+    },
+    {
+      "name": "BasketL_bottom",
+      "op": null,
+      "parent": "BasketL",
+      "offset": ["0", "0", "WALL/2 - H/2"],
+      "_comment": "底板虚拟参照系:质心=底板中心。尺寸 HALF(X)×W(Y)×WALL(Z),缝端在 x=+HALF/2。"
+    },
+    {
+      "name": "BasketL_footrelief",
+      "op": "ops/subtract.py",
+      "parent": "BasketL_bottom",
+      "offset": ["HALF/2 + FOOT_RELIEF", "0", "0"],
+      "target": ["BasketL"],
+      "after": ["BasketR"],
+      "_comment": "只 BasketL:底板缝端截 0.25 让位(套合不被挡)。切割器 1×19.4×1:高1cm≫底板3mm 从上下大幅探出(不共面);宽19.4=W-2WALL 让开两侧墙;X向缝端+FOOT_RELIEF 使与底板相交恰 0.25。须在 mirror 后,不影响 BasketR。",
+      "params": { "size": ["1.0", "W - 2*WALL", "1.0"] }
     },
 
     { "name": "BasketL_frontwall", "op": null, "parent": "BasketL", "offset": ["0", "WALL_MID_Y", "0"] },
