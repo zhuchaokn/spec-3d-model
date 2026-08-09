@@ -14,3 +14,9 @@ build/
 
 # OS
 .DS_Store
+
+# 3D 产物(项目 output/ 与导出文件;screenshots/ 保留入库)
+projects/*/output/
+*.blend
+*.blend1
+*.stl

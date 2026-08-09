@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>&lt;项目名&gt; · 三视图</title>
+<style>
+  body { font-family: -apple-system, "PingFang SC", sans-serif; margin: 24px; color: #1a1a1a; background:#fafafa; }
+  h1 { font-size: 20px; } h2 { font-size: 15px; margin: 20px 0 8px; }
+  .views { display: flex; gap: 32px; flex-wrap: wrap; }
+  .view { background:#fff; border:1px solid #e0e0e0; border-radius:8px; padding:12px; }
+  .view figcaption { font-size:13px; color:#555; margin-bottom:6px; }
+  svg { background:#fff; }
+  .edge { fill:#eef2f7; stroke:#334; stroke-width:1.5; }
+  .cut  { fill:none; stroke:#c0392b; stroke-width:1.5; stroke-dasharray:5 3; }
+  .dim  { stroke:#888; stroke-width:0.8; }
+  .dimtxt { fill:#444; font-size:11px; }
+  table { border-collapse: collapse; font-size:13px; margin-top:8px; }
+  td,th { border:1px solid #ddd; padding:4px 10px; text-align:left; }
+</style>
+</head>
+<body>
+  <h1>&lt;项目名&gt; — 三视图与分解方案</h1>
+  <p>单位 cm。尺寸源自 <code>params.py</code>。红色虚线=切割/分割线。</p>
+
+  <h2>三视图</h2>
+  <div class="views">
+    <figure class="view">
+      <figcaption>正视图(front, 看 −Y)</figcaption>
+      <svg width="300" height="230" viewBox="0 0 300 230"><!-- TODO --></svg>
+    </figure>
+    <figure class="view">
+      <figcaption>左视图(left, 看 +X)</figcaption>
+      <svg width="240" height="230" viewBox="0 0 240 230"><!-- TODO --></svg>
+    </figure>
+    <figure class="view">
+      <figcaption>俯视图(top, 看 −Z)</figcaption>
+      <svg width="300" height="240" viewBox="0 0 300 240"><!-- TODO --></svg>
+    </figure>
+  </div>
+
+  <h2>组件分解 + 构建顺序</h2>
+  <table>
+    <tr><th>顺序</th><th>组件</th><th>契约</th></tr>
+    <tr><td>1</td><td>&lt;part&gt;</td><td>空场景 → 建 &lt;Obj&gt;</td></tr>
+  </table>
+</body>
+</html>
