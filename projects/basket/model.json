@@ -12,7 +12,7 @@
     "HANDLE_W": 8.0, "HANDLE_H": 4.0, "HANDLE_GAP_TOP": 3.0,
     "JOINT_OD": 0.9, "JOINT_ID": 0.512, "JOINT_R": "JOINT_OD/2",
     "PIN_D_TOP": 0.5, "PIN_D_BOT": 0.512,
-    "SLOT_W": 0.3, "JOINT_TOP": 15.0,
+    "SLOT_W": 0.3, "JOINT_TOP": 14.7,
     "SEAM_HALF": 0.75,
     "CCLIP_OFFSET": "JOINT_R - 0.2",
     "JOINT_ZC": "JOINT_TOP/2 - H/2",
@@ -128,10 +128,25 @@
     },
 
     {
+      "name": "HealL",
+      "op": "ops/heal.py",
+      "parent": null,
+      "after": ["PinLB"],
+      "params": { "target_name": "BasketL" }
+    },
+    {
+      "name": "HealR",
+      "op": "ops/heal.py",
+      "parent": null,
+      "after": ["CClipRB"],
+      "params": { "target_name": "BasketR" }
+    },
+
+    {
       "name": "SpreadL",
       "op": "ops/move.py",
       "parent": null,
-      "after": ["CClipRB"],
+      "after": ["HealL", "HealR"],
       "params": { "target_name": "BasketL", "delta": ["-(SPREAD)", "0", "0"] }
     },
     {

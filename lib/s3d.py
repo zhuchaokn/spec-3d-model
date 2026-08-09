@@ -206,6 +206,24 @@ def bool_union(target, other, apply=True, remove_other=True):
     return target
 
 
+def heal(name, dist_cm=0.001):
+    """修网格:合并极近重复顶点 + 重算法线朝外。修布尔/union 留下的非流形残边。
+
+    dist_cm 默认 0.001cm(=0.01mm),只并真正重合的点,不动正常几何。返回修后非流形边数。"""
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "MESH":
+        return None
+    bm = bmesh.new()
+    bm.from_mesh(obj.data)
+    bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=dist_cm * CM)
+    bm.normal_update()
+    nm = sum(1 for e in bm.edges if len(e.link_faces) > 2)
+    bm.to_mesh(obj.data)
+    bm.free()
+    obj.data.update()
+    return nm
+
+
 def join_objs(target, others):
     """把 others 合并进 target(join,保留 target 名)。"""
     bpy.ops.object.select_all(action='DESELECT')
@@ -330,6 +348,21 @@ def scene_dump():
             "watertight": is_watertight(o.name),
         })
     return out
+
+
+def manifold_report(name):
+    """边拓扑分类:boundary=边界边(真漏洞,应=0)、nonmanifold=>2面的T形交线
+    (柱穿墙等自交,切片器可容忍)、total。用于区分"漏洞"与"可打印的自交"。"""
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "MESH":
+        return None
+    bm = bmesh.new()
+    bm.from_mesh(obj.data)
+    boundary = sum(1 for e in bm.edges if len(e.link_faces) < 2)
+    nonmani = sum(1 for e in bm.edges if len(e.link_faces) > 2)
+    total = len(bm.edges)
+    bm.free()
+    return {"boundary": boundary, "nonmanifold": nonmani, "total": total}
 
 
 def is_watertight(name):
