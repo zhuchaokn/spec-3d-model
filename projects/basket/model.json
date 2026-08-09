@@ -12,7 +12,7 @@
     "HANDLE_W": 8.0, "HANDLE_H": 4.0, "HANDLE_GAP_TOP": 3.0,
     "JOINT_OD": 0.9, "JOINT_ID": 0.512, "JOINT_R": "JOINT_OD/2",
     "PIN_D_TOP": 0.5, "PIN_D_BOT": 0.512,
-    "SLOT_W": 0.3, "JOINT_TOP": 14.7,
+    "SLOT_W": 0.3, "JOINT_TOP": 15.0,
     "SEAM_HALF": 0.75,
     "CCLIP_OFFSET": "JOINT_R - 0.2",
     "JOINT_ZC": "JOINT_TOP/2 - H/2",
@@ -94,9 +94,8 @@
       "op": "ops/frustum.py",
       "parent": "BasketL_frontwall",
       "offset": ["HALF/2", "0", "JOINT_ZC"],
-      "target": ["BasketL"],
       "after": ["BasketR"],
-      "_comment": "抵消父墙 x=-HALF/2 → Pin 落缝 x=0;圆台到底(z=0→JOINT_TOP)。镜像已完成,不会被复制。",
+      "_comment": "抵消父墙 x=-HALF/2 → Pin 落缝 x=0;圆台到底。独立对象(不 union),只是摆在与 BasketL 前墙重叠处。",
       "params": { "d_bot": "PIN_D_BOT", "d_top": "PIN_D_TOP", "h": "JOINT_TOP" }
     },
     {
@@ -104,7 +103,6 @@
       "op": "ops/frustum.py",
       "parent": "BasketL_backwall",
       "offset": ["HALF/2", "0", "JOINT_ZC"],
-      "target": ["BasketL"],
       "after": ["PinLF"],
       "params": { "d_bot": "PIN_D_BOT", "d_top": "PIN_D_TOP", "h": "JOINT_TOP" }
     },
@@ -113,7 +111,6 @@
       "op": "ops/cclip.py",
       "parent": "BasketR_frontwall",
       "offset": ["-(HALF/2) - CCLIP_OFFSET", "0", "JOINT_ZC"],
-      "target": ["BasketR"],
       "after": ["PinLB"],
       "params": { "od": "JOINT_OD", "id": "JOINT_ID", "slot_w": "SLOT_W", "h": "JOINT_TOP", "open": "-x" }
     },
@@ -122,47 +119,36 @@
       "op": "ops/cclip.py",
       "parent": "BasketR_backwall",
       "offset": ["-(HALF/2) - CCLIP_OFFSET", "0", "JOINT_ZC"],
-      "target": ["BasketR"],
       "after": ["CClipRF"],
       "params": { "od": "JOINT_OD", "id": "JOINT_ID", "slot_w": "SLOT_W", "h": "JOINT_TOP", "open": "-x" }
-    },
-
-    {
-      "name": "HealL",
-      "op": "ops/heal.py",
-      "parent": null,
-      "after": ["PinLB"],
-      "params": { "target_name": "BasketL" }
-    },
-    {
-      "name": "HealR",
-      "op": "ops/heal.py",
-      "parent": null,
-      "after": ["CClipRB"],
-      "params": { "target_name": "BasketR" }
     },
 
     {
       "name": "SpreadL",
       "op": "ops/move.py",
       "parent": null,
-      "after": ["HealL", "HealR"],
-      "params": { "target_name": "BasketL", "delta": ["-(SPREAD)", "0", "0"] }
+      "after": ["CClipRB"],
+      "_comment": "整组挪:BasketL 半 + 它的两个 Pin(独立对象,须一起移)。",
+      "params": { "names": ["BasketL", "PinLF", "PinLB"], "delta": ["-(SPREAD)", "0", "0"] }
     },
     {
       "name": "SpreadR",
       "op": "ops/move.py",
       "parent": null,
       "after": ["SpreadL"],
-      "params": { "target_name": "BasketR", "delta": ["SPREAD", "0", "0"] }
+      "params": { "names": ["BasketR", "CClipRF", "CClipRB"], "delta": ["SPREAD", "0", "0"] }
     },
     {
       "name": "Export",
       "op": "ops/export.py",
       "parent": null,
       "after": ["SpreadR"],
+      "_comment": "每个可打印件=筐半+其卡合件,一起导出到一个 STL(切片器自动合并重叠体)。",
       "params": {
-        "parts": ["BasketL", "BasketR"],
+        "pieces": {
+          "BasketL": ["BasketL", "PinLF", "PinLB"],
+          "BasketR": ["BasketR", "CClipRF", "CClipRB"]
+        },
         "out_dir": "/Users/zhuchao14/blender/projects/basket/output",
         "blend_name": "basket.blend"
       }

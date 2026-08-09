@@ -1,10 +1,13 @@
-"""op: export — 把指定对象各导出为 STL,并存一份 .blend 到项目 output/。
+"""op: export — 导出各可打印件为 STL,并存一份 .blend 到 output/。
+
+一个"可打印件"可能由**多个重叠的独立对象**组成(如筐半 + 它的卡合件),它们一起
+导出到同一个 STL,切片器会自动合并。
 
 ctx.params:
-  parts       : 要各自导出 STL 的对象名列表(每个=一个可打印件)
+  pieces      : { 文件名: [对象名, ...] }  每个键=一个 STL,值=组成它的对象们
   out_dir     : 输出目录(绝对路径)
-  blend_name  : .blend 文件名(可选,不给则不存 blend)
-在 spread 之后跑(导出的是最终摆放)。output/ 已 gitignore。
+  blend_name  : .blend 文件名(可选)
+在最后(spread 之后)跑。output/ 已 gitignore。
 """
 import os
 import bpy
@@ -12,20 +15,21 @@ import s3d
 
 
 def run(ctx):
-    parts = ctx.params["parts"]
+    pieces = ctx.params["pieces"]
     out_dir = ctx.params["out_dir"]
     os.makedirs(out_dir, exist_ok=True)
     done = []
-    for name in parts:
-        obj = bpy.data.objects.get(name)
-        if obj is None:
-            print(f"  [export] skip 缺失: {name}")
+    for fname, names in pieces.items():
+        objs = [bpy.data.objects.get(n) for n in names]
+        objs = [o for o in objs if o is not None]
+        if not objs:
+            print(f"  [export] skip 空: {fname}")
             continue
-        fp = os.path.join(out_dir, f"{name}.stl")
-        s3d.export_stl(obj, fp)
-        done.append(os.path.basename(fp))
+        fp = os.path.join(out_dir, f"{fname}.stl")
+        s3d.export_stl(objs, fp)
+        done.append(f"{fname}.stl({len(objs)}件)")
     blend = ctx.params.get("blend_name")
     if blend:
-        bp = s3d.save_blend(os.path.join(out_dir, blend))
-        done.append(os.path.basename(bp))
+        s3d.save_blend(os.path.join(out_dir, blend))
+        done.append(blend)
     print(f"  [export] → {out_dir}: {done}")

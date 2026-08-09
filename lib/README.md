@@ -2,9 +2,11 @@
 
 spec-3d-model 的通用层,跨项目共享:
 - **`engine.py`** — 构建引擎(纯调度器)。
-- **`s3d.py`** — 无业务 bpy 原子 + 坐标助手 + 读场景。业务几何(六边形/凹沿…)不进这里,进 `ops/`。
-- **`ops/*.py`** — 操作原子,签名 `run(ctx)`:box/subtract/frustum/hex_array/scallop/cclip/capsule_cut/mirror/move。
-- **`ENGINE.md`** — ★ 引擎权威方案,**做新项目先读它**(字段语义、op 契约、表达式、坐标、工程原则、建项目步骤)。
+- **`s3d.py`** — 无业务 bpy 原子 + 坐标助手 + 读场景 + 网格诊断。
+- **`ops/`** — 通用 op(签名 `run(ctx)`):box/subtract/frustum/capsule_cut/mirror/move/heal/export。清单见 `ops/README.md`。
+- **`ENGINE.md`** — ★ 引擎使用手册,**写 model.json/op 前先读它**(字段语义、op 契约、表达式、坐标、常见坑)。
+
+> 编码具体产品意图的业务 op(如某产品的孔阵列)不在这里,放 `projects/<name>/ops/`。
 
 ## 用法
 
@@ -44,24 +46,13 @@ spec-3d-model 的通用层,跨项目共享:
 | `heal(name, dist_cm)` | 合并重复顶点+重算法线,修布尔残边 | dist_cm=0.001 | 非流形数 |
 | `manifold_report(name)` | 边分类 dict(boundary漏洞/nonmanifold自交/total) | — | dict/None |
 
-## ops/ 操作索引(签名 `run(ctx)`,详见 ENGINE.md §4)
+## 通用 op
 
-| op | 作用 | 关键 params |
-|---|---|---|
-| `box` | 建具名长方体(实体) | size |
-| `subtract` | 临时盒切割器从 target 布尔减 | size |
-| `frustum` | 圆台,有 target 则 union 进去 | d_bot,d_top,h |
-| `capsule_cut` | 胶囊镂空从 target 减(把手) | w,h,depth,axis |
-| `scallop` | 长墙 `\___/` 凹沿梯形切割 | L,W,H,dip,corner,flat,over |
-| `hex_array` | 四壁+底铺六边形合并一次布尔减 | hex_w,gap,wall,margin_*,seam_*,handle,scallop,full_L |
-| `cclip` | 建 C 夹(墩−孔−缝)union 进 target | od,id,slot_w,h,open |
-| `mirror` | 跨 X=0 镜像 source 成新对象 | source |
-| `move` | 平移已存在对象(拉开两半) | target_name,delta |
-| `heal` | 修网格(合并重复顶点)+ 报告 边界边/非流形 | target_name,dist |
+签名 `run(ctx)`,清单与契约见 **`lib/ops/README.md`**。
 
 ## 新增原子/op 的判据
 
-- 跨项目、无业务的几何能力(布尔、建圆柱、坐标换算)→ `s3d.py`。
-- 一种"怎么建"的操作(可复用)→ `ops/<name>.py`,签名 `run(ctx)`。
-- 编码某产品设计意图的具体尺寸/坐标 → 项目的 `model.json`,不进 lib。
-- 新增后同步本表与 `ENGINE.md`。
+- 跨项目、无业务的几何能力(布尔、建圆柱、坐标换算)→ `s3d.py`(同步本表)。
+- 跨项目、无业务的"怎么建"操作(可复用)→ `lib/ops/<name>.py`(同步 `lib/ops/README.md`)。
+- 编码某产品设计意图的几何 → 项目的 `projects/<name>/ops/`,不进 lib。
+- 具体尺寸/坐标/关系 → 项目的 `model.json`。

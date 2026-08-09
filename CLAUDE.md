@@ -68,16 +68,15 @@ importlib.reload(s3d); importlib.reload(engine)   # 让本地编辑生效
 
 ### 虚拟物体(没有独立 object 的参照系)
 
-有时参照系不是一个真实 object(如 BasketL 是一个整体 object,它的"前墙"并不是单独物体)。
+有时参照系不是一个真实 object(如一个整体盒子 object,它的某一面"墙"并不是单独物体)。
 这时**先算出虚拟参照物相对宿主的坐标**,再逐级换算:
 
-- 例:BasketL 质心已知。其"前墙"相对框质心 = `(0, +W/2, 0)`(Y 边长 20 → 一半 10;后墙 `(0, -10, 0)`)。
-  → 前墙绝对质心 = `BasketL质心 + (0,10,0)`。
-- 再把 C夹/Pin 表达为"相对前墙质心"的坐标(见 `params.py` 的定位常量),
-  → C夹绝对 = `前墙绝对 + C夹相对`。
+- 例:盒子质心已知,尺寸 `(L,W,H)`。其 +Y 面"墙"相对盒子质心 = `(0, +W/2, 0)`
+  → 该墙绝对质心 = `盒子质心 + (0, W/2, 0)`。
+- 再把墙上要装的零件表达为"相对该墙质心"的坐标 → 零件绝对 = `墙绝对 + 零件相对`。
 
-一步步 `相对 + 参照绝对` 叠加,虚拟参照系照样能精确定位。`model.json` 把这条链写清楚
-(节点 parent + offset),引擎 resolve 出绝对坐标,即后续下刀和布尔的直接依据。
+一步步 `相对 + 参照绝对` 叠加,虚拟参照系照样能精确定位。在 `model.json` 里这条链就是
+`op:null` 的虚拟节点 + 子节点的 `parent`/`offset`,引擎 resolve 出绝对坐标,即建模/布尔的依据。
 
 `lib/s3d.py` 提供坐标助手(`box_corner`/`face_center`/`rel_to_abs` 等)把这套换算固化下来。
 
@@ -106,10 +105,11 @@ importlib.reload(s3d); importlib.reload(engine)   # 让本地编辑生效
 5. **run + verify** — `run_model` 在 Blender 跑;`scene_dump` 数据验证;必要时截图存档。
 6. **export** — 导出各打印部件 STL + 保存 .blend 到 `output/`。
 
-## 仓库现状
+## 仓库地图
 
-- `lib/` — 引擎 `engine.py` + 原子 `s3d.py` + 操作 `ops/` + **权威方案 `ENGINE.md`**(见 `lib/README.md`)。
-- `projects/basket/` — 第一个试点(引擎驱动,已跑通;`model.json` 为真相源)。
-- `templates/project/` — 早期骨架(基于旧 build.py 模型,待按引擎更新)。
+- `lib/` — 通用层:
+  - `engine.py` 引擎;`s3d.py` 原子(见 `lib/README.md`);`ops/` 通用 op(见 `lib/ops/README.md`);
+  - **`ENGINE.md` 引擎使用手册**——写 `model.json`/op 前先读它。
+- `projects/<name>/` — 各项目(专属)。`basket` 是完整试点范例,新项目可参照它。
+- `templates/project/` — 空项目骨架(引擎流程:`model.json` + `run_model.py` + 三视图模板),init 时拷贝。
 - `mcp/blender-mcp/` — BlenderMCP server(连通 Blender 用;一般不改)。
-- `blender_scripts/` — 旧脚本库(保留不动,后续迁移)。

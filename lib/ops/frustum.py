@@ -1,7 +1,8 @@
-"""op: frustum — 在 ctx.center 建竖直圆台(实体),可选 union 进 target。
+"""op: frustum — 在 ctx.center 建一个竖直圆台(独立实体)。
 
-ctx.params: d_bot, d_top, h (cm)。轴=Z。底大顶小的 Pin 用它。
-若有 target:建好后 union 进 target(卡合件长在筐半上);否则留作独立对象。
+ctx.params: d_bot, d_top, h (cm),可选 seg。轴=Z。dia_top=0 即圆锥。
+产出独立的具名对象。若要和别的件配合,一般直接摆在重叠位置即可,不 union
+(合体难拆、且易生非流形/水密问题;详见 lib/ENGINE.md 常见坑)。
 """
 import s3d
 
@@ -9,11 +10,7 @@ import s3d
 def run(ctx):
     p = ctx.params
     s3d.clean_by_names(names=(ctx.name,))
-    obj = s3d.add_frustum(ctx.name, p["d_bot"], p["d_top"], p["h"], ctx.center,
-                          seg=int(p.get("seg", 64)))
-    tgt = [d["object"] for d in ctx.targets.values() if d["object"]]
-    if tgt:
-        s3d.bool_union(tgt[0], obj)    # 真布尔并:去掉重叠内壁,保持水密
-        print(f"  [frustum] {ctx.name} d_bot={p['d_bot']} d_top={p['d_top']} → union {tgt[0].name}")
-    else:
-        print(f"  [frustum] {ctx.name} d_bot={p['d_bot']} d_top={p['d_top']} center={tuple(round(c,3) for c in ctx.center)}")
+    s3d.add_frustum(ctx.name, p["d_bot"], p["d_top"], p["h"], ctx.center,
+                    seg=int(p.get("seg", 64)))
+    print(f"  [frustum] {ctx.name} d_bot={p['d_bot']} d_top={p['d_top']} h={p['h']} "
+          f"center={tuple(round(c,3) for c in ctx.center)}")

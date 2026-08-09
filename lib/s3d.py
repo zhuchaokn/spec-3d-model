@@ -1,12 +1,11 @@
-"""s3d.py — spec-3d-model 第0层:通用原子能力(与业务无关,跨项目共享)。
+"""s3d.py — 通用几何原子(与业务无关,跨项目共享)。
 
-只放"任何 3D 建模都会用到"的原子:建盒/柱、任意流形棱柱、胶囊、布尔、
-join、按名清理、单位设置、导出 STL、网格统计。**不含任何具体项目逻辑**
-(筐子的六边形、凹沿、把手属于 project 的 components,不进这里)。
+只放"任何 3D 建模都会用到"的原子:建盒/柱/圆台、任意流形棱柱、胶囊、布尔、
+join、按名清理、单位设置、坐标换算、导出 STL、读场景、网格诊断。
+**不含任何具体产品逻辑**——编码某产品设计意图的几何属于 op(见 lib/ops 或项目 ops)。
 
 单位约定:所有对外参数用 **cm**;Blender 内部单位是米,故 CM=0.01 换算。
-用法:project 的 build.py 头部 sys.path 加 lib/ 后 `from s3d import *`。
-详见仓根 CLAUDE.md 与 lib/README.md。
+op 脚本内 `import s3d` 调用即可(引擎已把 lib 加入 sys.path)。索引见 lib/README.md。
 """
 import bpy
 import bmesh
@@ -54,7 +53,7 @@ def face_center(center, size, axis, sign):
 def wall_center(box_center, size, axis, sign):
     """把长方体的某面当作一堵'虚拟墙'的质心(= 该面中心)返回其绝对坐标。
     用于框体没有独立墙 object 时,先定位墙、再在墙的相对系里放卡合件。
-    如 BasketL 前墙(+Y):wall_center(cL, (L,W,H), 'y', +1)。"""
+    如取盒子的 +Y 面作参照:wall_center(box_center, (L,W,H), 'y', +1)。"""
     return face_center(box_center, size, axis, sign)
 
 
@@ -95,7 +94,7 @@ def add_cylinder(name, dia_cm, h_cm, loc_cm=(0, 0, 0), seg=64):
 def add_frustum(name, dia_bot_cm, dia_top_cm, h_cm, loc_cm=(0, 0, 0), seg=64):
     """建竖直圆台/锥台(轴=Z):底径 dia_bot、顶径 dia_top、高 h,质心在 loc。
 
-    dia_top=0 即圆锥;dia_top=dia_bot 即圆柱。Pin(底大顶小)用它。"""
+    dia_top=0 即圆锥;dia_top=dia_bot 即圆柱。"""
     bpy.ops.mesh.primitive_cone_add(
         vertices=seg, radius1=dia_bot_cm / 2 * CM, radius2=dia_top_cm / 2 * CM,
         depth=h_cm * CM, location=tuple(v * CM for v in loc_cm))
@@ -107,7 +106,7 @@ def add_frustum(name, dia_bot_cm, dia_top_cm, h_cm, loc_cm=(0, 0, 0), seg=64):
 def prism(name, pts_uv, orient, face_pos_cm, cu_cm, cv_cm, depth_cm, v_center_cm=0.0):
     """通用流形棱柱:2D 轮廓 pts_uv(cm) 沿法向拉伸 depth_cm。
 
-    常用作布尔切割器(切孔/凹沿等)。orient 决定轮廓平面朝向:
+    常用作布尔切割器(在墙面/底面上切出任意轮廓的洞)。orient 决定轮廓平面朝向:
       'wall_y' 法向=Y、轮廓 u=X v=Z(用于前/后墙)
       'wall_x' 法向=X、轮廓 u=Y v=Z(用于左/右墙)
       'bottom' 法向=Z、轮廓 u=X v=Y(用于底板)
@@ -126,7 +125,7 @@ def prism(name, pts_uv, orient, face_pos_cm, cu_cm, cv_cm, depth_cm, v_center_cm
 
 
 def capsule(name, length_cm, height_cm, depth_cm, loc_cm=(0, 0, 0), axis='x', seg=24):
-    """建胶囊柱(中间矩形+两端半圆),沿 depth 方向拉伸。常用作把手切割器。
+    """建胶囊柱(中间矩形+两端半圆),沿 depth 方向拉伸。常用作圆角长孔的切割器。
 
     length_cm=胶囊总长(含两端半圆),height_cm=胶囊高(=2*半径),
     depth_cm=拉伸厚度,axis=拉伸法向('x'/'y'/'z')。轮廓在垂直于 axis 的平面。
@@ -282,9 +281,15 @@ def copy_object(src, new_name):
 
 # ---- 导出 / 验证 ----
 
-def export_stl(obj, filepath):
-    """导出单个对象为 STL。兼容 Blender 4.x(新算子)与 3.x(旧 export_mesh)。"""
-    sel(obj)
+def export_stl(objs, filepath):
+    """导出一个或一组对象为一个 STL(重叠的独立零件一起导出=同一可打印件)。
+    objs 可为单个对象或对象列表。兼容 Blender 4.x(新算子)与 3.x(旧 export_mesh)。"""
+    if not isinstance(objs, (list, tuple)):
+        objs = [objs]
+    bpy.ops.object.select_all(action='DESELECT')
+    for o in objs:
+        o.select_set(True)
+    bpy.context.view_layer.objects.active = objs[0]
     if bpy.app.version >= (4, 2):
         bpy.ops.wm.stl_export(filepath=filepath, export_selected_objects=True)
     else:

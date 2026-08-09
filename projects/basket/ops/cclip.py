@@ -1,8 +1,8 @@
-"""op: cclip — 建 C 夹并 union 进 target(某半筐)。
+"""op: cclip — 建一个独立的 C 夹(卡合件)。
 
 C夹 = 竖直圆墩(外径 od)− 中心竖孔(id)− 一道 slot_w 宽矩形(朝 open 方向开口)= C 形。
 ctx.center: 墩质心(绝对)。ctx.params: od, id, slot_w, h, open('+x'/'-x'/'+y'/'-y')。
-建好后 join 进 target(卡合件长在筐半上)。
+产出独立具名对象,直接摆在与筐半重叠的位置即可,**不 union**(合体难拆、易生非流形)。
 """
 import s3d
 
@@ -33,10 +33,5 @@ def run(ctx):
         size = (slot_w, od, h + 1.0)
     sl = s3d.add_box(slot, size, loc)
     s3d.bool_diff(o, sl)
-
-    tgt = [d["object"] for d in ctx.targets.values() if d["object"]]
-    if tgt:
-        s3d.bool_union(tgt[0], o)
-        print(f"  [cclip] {ctx.name} od={od} id={idia} open={open_dir} → union {tgt[0].name}")
-    else:
-        print(f"  [cclip] {ctx.name} od={od} id={idia} (独立)")
+    print(f"  [cclip] {ctx.name} od={od} id={idia} open={open_dir} "
+          f"center={tuple(round(c,3) for c in ctx.center)}")
