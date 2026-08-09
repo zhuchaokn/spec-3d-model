@@ -8,56 +8,47 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 先写规格、对齐方案,再分部件实现、组合成品。当前范围**仅 3D 建模(用于 3D 打印)**,
 暂不涉及动画/材质/渲染。
 
-## 核心思想:分层 + 分治
+## 核心思想:构建引擎 + 分层分治
 
-一个模型分三层,自底向上:
+一个模型由**一份 JSON 注册表(唯一真相源)**声明,经**纯调度引擎**建出。分层:
 
 ```
-lib/                      第0层 · 原子能力  —— 通用 bpy 操作,与业务无关,跨项目共享
-  s3d.py                    add_box / add_cylinder / prism / capsule / bool_* / join / export_stl ...
-projects/<name>/          第2层 · 项目     —— 用组件组合出完整成品
-  AGENTS.md                 项目入口:目标、结构、组件清单+构建顺序、约定
-  params.py                 单一尺寸源:所有尺寸/公差常量
-  spec/
-    requirement.md          需求文字描述
-    preview.html            正/左/俯三视图+尺寸标注(与人对齐方案、预演效果)
-  components/<part>/       第1层 · 部件   —— 说明 + 脚本
-    README.md               该部件的功能/尺寸/设计说明(给人看)
-    build.py                Blender 脚本:幂等、产出具名对象、末尾 print 结果
-  assemble.py               按组件顺序逐个 exec build.py → 一键全量构建
-  verify.py                 数据验证(dims/bbox/部件数/面数/水密),不截图
-  export.py                 导出各打印部件 STL + 保存 .blend 到 output/
+lib/                      通用层(跨项目共享)
+  engine.py                 构建引擎(纯调度器):求值·resolve坐标·拓扑排序·调 op
+  s3d.py                    无业务 bpy 原子:add_box/cylinder/frustum/prism/capsule/bool_*/坐标助手/scene_dump...
+  ops/*.py                  操作原子:一个 op=一种"怎么建"逻辑,签名 run(ctx)。box/subtract/frustum/hex_array/scallop/cclip/capsule_cut/mirror/move
+  ENGINE.md                 ★ 引擎权威方案(做新项目先读这个)
+projects/<name>/          项目层(专属)
+  model.json                ★ 唯一真相源:常量 + 对象拓扑(尺寸/parent/相对坐标/调哪个op)
+  run_model.py              入口:bootstrap + engine.run_model(model.json)
+  spec/requirement.md       需求
+  spec/preview.html         手写等比例三视图(方案闸门)
   output/                   .blend / .stl(gitignore)
-  screenshots/              仅人明确要求时保存的截图(入库,不随意丢)
+  screenshots/              视觉验证截图(入库,不随意丢)
 ```
 
-原子(lib)→ 部件(component)→ 项目(project)。**原子不含业务,业务不写进 lib。**
+**引擎不含业务,业务全在 op + JSON 数据。原子不含业务,业务不写进 lib。**
+`params.py` 已废除——尺寸是对象的属性,归 `model.json` 的常量与节点。
+引擎的字段语义、op 契约、表达式、坐标、工程原则 → 见 **`lib/ENGINE.md`**(权威)。
 
-## 执行模型(必读,决定了上面的架构)
+## 执行模型(必读,决定了架构)
 
-`execute_blender_code(file_path=...)` 把文件内容发给 Blender addon,addon 执行
-`exec(code, {"bpy": bpy})` 并把 stdout 返回。两个事实:
+`execute_blender_code(file_path=...)` 把文件内容发给 Blender addon,addon `exec` 后返回 stdout。两个事实:
 
 1. **Python 命名空间每次全新** —— 没有 `__file__`,上次的变量/import 都不在。
-2. **Blender 场景 `bpy.data` 持续存在** —— 你上一次建的对象还在场景里;`sys.modules` 也持续缓存。
+2. **Blender 场景 `bpy.data` 持续存在** —— 上次建的对象还在;`sys.modules` 也持续缓存。
 
 推论(硬约束):
-- **组件之间只能通过"场景里的具名对象"通信**,不能靠 Python 变量传递。所以每个
-  `build.py` 必须:①幂等(开头按名/前缀清理旧对象);②产出**具名**对象;③末尾 `print` 一行结果供判断成败。
-- **共享库要 reload**:因 `sys.modules` 缓存,编辑了 `s3d.py`/`params.py` 后若不 reload,
-  跑的还是旧代码。故 build.py 头部用固定 bootstrap:
+- **对象间只经"场景里的具名对象"交接**,不能靠 Python 变量传递。故引擎按拓扑序逐节点建**具名**对象,后续节点靠名字(target)取到前序对象。
+- **共享库要 reload**:`sys.modules` 缓存,编辑 `engine.py`/`s3d.py`/op 后不 reload 跑的是旧代码。故 `run_model.py` 头部固定 bootstrap:
 
 ```python
-import sys, importlib
+import sys, importlib, os
 LIB = "/Users/zhuchao14/blender/lib"
-PROJ = "/Users/zhuchao14/blender/projects/<name>"   # 换成本项目
-for p in (LIB, PROJ):
-    if p not in sys.path:
-        sys.path.insert(0, p)
-import s3d, params
-importlib.reload(s3d); importlib.reload(params)      # 让本地编辑生效
-from s3d import *
-from params import *
+if LIB not in sys.path: sys.path.insert(0, LIB)
+import s3d, engine
+importlib.reload(s3d); importlib.reload(engine)   # 让本地编辑生效
+# 每次全量构建先清场,再 engine.run_model(".../model.json", lib_dir=LIB)
 ```
 
 ## 坐标系统(全局方法,所有项目通用)
@@ -85,41 +76,40 @@ from params import *
 - 再把 C夹/Pin 表达为"相对前墙质心"的坐标(见 `params.py` 的定位常量),
   → C夹绝对 = `前墙绝对 + C夹相对`。
 
-一步步 `相对 + 参照绝对` 叠加,虚拟参照系照样能精确定位。设计文档要把这条链写清楚
-(物体 → 参照系 → 相对坐标),它就是后续 Python 下刀和布尔的直接依据。
+一步步 `相对 + 参照绝对` 叠加,虚拟参照系照样能精确定位。`model.json` 把这条链写清楚
+(节点 parent + offset),引擎 resolve 出绝对坐标,即后续下刀和布尔的直接依据。
 
 `lib/s3d.py` 提供坐标助手(`box_corner`/`face_center`/`rel_to_abs` 等)把这套换算固化下来。
 
 ## 原则
 
-1. **分层分治**:原子/部件/项目各司其职;原子通用无业务,部件编码单个部件的设计意图,项目只做组合与顺序。
-2. **场景即接口**:组件间只经具名对象交接。build.py 必须幂等、产出具名对象、末尾 print。命名有前缀(如 `Cutter*`/`Seam*`)便于清理。
-3. **单一尺寸源**:所有尺寸/公差集中在 `params.py`。组件脚本与 preview.html 都**镜像**它,改数值只改一处。禁止在组件里硬编码尺寸。
-4. **数据验证优先,不随意截图**:默认用几何**数据**验证(尺寸/bbox/部件数/面数/水密性)——视觉判断交给人。**除非人明确要求截图**,否则不调 `get_viewport_screenshot`;一旦获取,存进项目 `screenshots/` 并说明,不丢弃。
-5. **先设计后实施,HTML 是权威规格**:动手建 3D 前,**手写**正交三视图 HTML(正/左/俯 + 等比例 + 尺寸标注)与需求文档,作为方案设计。改 HTML 远比改 3D 便宜——这是方案闸门。人确认后才写 Python 组件,且 Python **跟着 HTML/文档走**。HTML **直接手写**,不要写脚本去生成它(多余的间接层)。等比例:统一 px/cm 比例;镂空按真实铺阵画满每个有孔的面;卡合接口在相关视图里画出来。
+1. **引擎/原子无业务,业务在 op+JSON**:`engine.py` 只调度;`s3d.py` 是无业务原子;每个 op 编码一种建法;`model.json` 承载该项目的对象/尺寸/坐标/关系。禁止把业务尺寸写进 lib。
+2. **场景即接口**:对象间只经**具名对象**交接(命名空间每次全新)。引擎按拓扑序建具名对象,后续节点靠名字(target)取前序对象。
+3. **单一尺寸源**:所有尺寸/公差/关系集中在 `model.json`(常量 + 节点)。preview.html 镜像它,改数值只改一处。禁止在 op/脚本里硬编码项目尺寸。
+4. **数据验证优先,截图仅在必要时且存档**:默认用 `scene_dump`/`inspect`/`is_watertight`/`bbox` 核对(尺寸/部件/水密)。**只有视觉缺陷(镂空缺失/对称/形态)才截图**,一旦获取存进 `screenshots/` 并说明,不丢弃。
+5. **先设计后实施,HTML 是权威规格**:动手建 3D 前,**手写**正交三视图 HTML(正/左/俯 + 等比例 + 尺寸)与需求文档。改 HTML 远比改 3D 便宜——方案闸门。人确认后才写 model.json/op。HTML **直接手写**,不写脚本生成它。等比例:统一 px/cm;镂空按真实铺阵画满;卡合接口画出来。
 6. **面向打印**:
-   - 按**打印体积**拆件(如 Bambu P2S 256³mm),优先沿最长轴切分;
-   - **FDM 友好**:避免大面积水平悬桥(如六边形用 pointy-top 尖顶朝上)、让孔轴顺层线;
-   - **切缝避开孔**:分割面附近留"禁孔带"保实体,再加**卡合结构**(如 C夹+pin)连接;
-   - **公差**:配合面留间隙(经验值 孔 φ5.12 / 柱身 φ5.0 滑配 / 柱底 φ5.12 过盈防脱,切面让位 ~0.15mm);
-   - **先打试配件**:正式拆分大件前,先打小的配合测试件定公差。
-7. **部件独立可构建**:每个 build.py 能单独跑迭代;assemble.py 负责按序一键全量。
-8. **单位**:建模用 cm(`s3d.CM=0.01` 换算),场景显示设为 cm(`set_cm_units()`);Blender 内部仍是米。
+   - 按**打印体积**拆件(如 Bambu P2S 256³mm),优先沿最长轴切分;对称件用 `mirror`,拆件用 `move` 拉开。
+   - **FDM 友好**:避免大面积水平悬桥(六边形 pointy-top 尖顶朝上)、孔轴顺层线;
+   - **切缝避开孔**:分割面附近留"禁孔带"保实体,再加**卡合结构**(C夹+pin)连接;
+   - **公差**:配合面留间隙(孔 φ5.12 / 柱身 φ5.0 滑配 / 柱底 φ5.12 过盈防脱,切面让位 ~0.15mm);
+   - **先打试配件**:正式拆分前先打小的配合测试件定公差。
+7. **切割器探出、顺序正确、隔离调试**:切割器必须探出被切面(不共面);同一对象多次切割用 `after` 显式排序(如 hex 先于 scallop);现象怪时把可疑 op 单独跑在干净盒子上 dump 每步核对。详见 `lib/ENGINE.md` §7。
+8. **单位**:建模用 cm(`s3d.CM=0.01`),场景显示设为 cm(`set_cm_units()`);Blender 内部仍是米。
 
-## 工作流七步
+## 工作流(详见 `lib/ENGINE.md` §8)
 
-1. **init** — 从 `templates/project/` 拷一份到 `projects/<name>/`,改 bootstrap 里的 PROJ 路径。
-2. **requirement** — 把需求写进 `spec/requirement.md`,尺寸落到 `params.py`。
-3. **设计:plan + HTML** — 定组件拆分与构建顺序,**手写**等比例 `spec/preview.html` 三视图作为方案规格。**⛔ 停下与人确认,再进入实施。**
-4. **build** — 逐个写/跑组件 `build.py`,每个独立验证(数据)。
-5. **assemble** — `assemble.py` 按顺序组合,得到完整成品。
-6. **verify** — `verify.py` 数据核验(尺寸/部件/水密)。
-7. **export** — `export.py` 导出各打印部件 STL + 保存 .blend 到 `output/`。
+1. **init** — `projects/<name>/`,拷 `run_model.py`(改 PROJ/MODEL)。
+2. **requirement** — 写 `spec/requirement.md`。
+3. **设计:HTML** — **手写**等比例 `spec/preview.html` 三视图作为方案规格。**⛔ 停下与人确认,再进入实施。**
+4. **model.json** — 列对象/尺寸/parent/相对坐标/op(设计的核心工作)。复用现有 op,缺能力写新 op。
+5. **run + verify** — `run_model` 在 Blender 跑;`scene_dump` 数据验证;必要时截图存档。
+6. **export** — 导出各打印部件 STL + 保存 .blend 到 `output/`。
 
 ## 仓库现状
 
-- `lib/` — 第0层原子(见 `lib/README.md`)。
-- `templates/project/` — 空项目骨架,init 时拷贝。
-- `projects/` — 各项目(第一个试点:`basket`)。
-- `mcp/blender-mcp/` — BlenderMCP server(普通源码纳入,连通 Blender 用;一般不改)。
-- `blender_scripts/` — 旧脚本库(保留不动,后续按新分层迁移)。
+- `lib/` — 引擎 `engine.py` + 原子 `s3d.py` + 操作 `ops/` + **权威方案 `ENGINE.md`**(见 `lib/README.md`)。
+- `projects/basket/` — 第一个试点(引擎驱动,已跑通;`model.json` 为真相源)。
+- `templates/project/` — 早期骨架(基于旧 build.py 模型,待按引擎更新)。
+- `mcp/blender-mcp/` — BlenderMCP server(连通 Blender 用;一般不改)。
+- `blender_scripts/` — 旧脚本库(保留不动,后续迁移)。
