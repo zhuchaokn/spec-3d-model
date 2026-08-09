@@ -22,10 +22,12 @@ def run(ctx):
 |---|---|---|---|
 | `ops/box.py` | 建具名长方体(实体) | `size=[x,y,z]` | — |
 | `ops/subtract.py` | 建临时盒切割器,从 target 布尔减 | `size=[x,y,z]` | 被减对象(可多) |
-| `ops/frustum.py` | 建竖直圆台(底/顶异径);有 target 则 union 进去 | `d_bot,d_top,h`(可选 `seg`) | 并入的宿主 |
+| `ops/frustum.py` | 建竖直圆台(底/顶异径,独立实体) | `d_bot,d_top,h`(可选 `seg`) | — |
 | `ops/capsule_cut.py` | 胶囊镂空(中间矩形+两端半圆),从 target 减 | `w,h,depth,axis`('x'/'y'/'z') | 被减对象(可多) |
+| `ops/copy.py` | 复制已存在对象为新对象、放到 ctx.center(常用来复制现成件当一次性切割器) | `source` | — |
+| `ops/cut.py` | 用一个**已存在对象**当切割器从 target 布尔减,减完删切割器 | `tool` | 被减对象(可多) |
 | `ops/mirror.py` | 跨 X=0 镜像 source 成新具名对象(翻法线) | `source` | — |
-| `ops/move.py` | 平移已存在对象(拉开分件/摆放) | `target_name,delta=[dx,dy,dz]` | — |
+| `ops/move.py` | 平移一批已存在对象(拉开分件/摆放) | `names=[...]` 或 `target_name`,`delta=[dx,dy,dz]` | — |
 | `ops/heal.py` | 合并重复顶点+重算法线,修布尔残边;报告 边界边/非流形 | `target_name`(可选 `dist`) | — |
 | `ops/export.py` | 各对象导出 STL + 存 .blend 到目录 | `parts=[名...],out_dir,blend_name?` | — |
 

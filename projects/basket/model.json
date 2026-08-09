@@ -17,8 +17,7 @@
     "CCLIP_OFFSET": "JOINT_R - 0.2",
     "JOINT_ZC": "JOINT_TOP/2 - H/2",
     "WALL_MID_Y": "W/2 - WALL/2",
-    "FOOT_RELIEF": 0.25,
-    "EPS": 0.1
+    "FOOT_CUT_ZC": "WALL/2"
   },
 
   "nodes": [
@@ -85,23 +84,6 @@
       "_comment": "镜像 BasketL(此时只有壳,尚无Pin/C夹)得对称右半;seam=-x。",
       "params": { "source": "BasketL" }
     },
-    {
-      "name": "BasketL_bottom",
-      "op": null,
-      "parent": "BasketL",
-      "offset": ["0", "0", "WALL/2 - H/2"],
-      "_comment": "底板虚拟参照系:质心=底板中心。尺寸 HALF(X)×W(Y)×WALL(Z),缝端在 x=+HALF/2。"
-    },
-    {
-      "name": "BasketL_footrelief",
-      "op": "ops/subtract.py",
-      "parent": "BasketL_bottom",
-      "offset": ["HALF/2 + FOOT_RELIEF", "0", "0"],
-      "target": ["BasketL"],
-      "after": ["BasketR"],
-      "_comment": "只 BasketL:底板缝端截 0.25 让位(套合不被挡)。切割器 1×19.4×1:高1cm≫底板3mm 从上下大幅探出(不共面);宽19.4=W-2WALL 让开两侧墙;X向缝端+FOOT_RELIEF 使与底板相交恰 0.25。须在 mirror 后,不影响 BasketR。",
-      "params": { "size": ["1.0", "W - 2*WALL", "1.0"] }
-    },
 
     { "name": "BasketL_frontwall", "op": null, "parent": "BasketL", "offset": ["0", "WALL_MID_Y", "0"] },
     { "name": "BasketL_backwall",  "op": null, "parent": "BasketL", "offset": ["0", "-(WALL_MID_Y)", "0"] },
@@ -143,10 +125,43 @@
     },
 
     {
+      "name": "FootCutF",
+      "op": "ops/copy.py",
+      "parent": "BasketL_frontwall",
+      "offset": ["HALF/2", "0", "FOOT_CUT_ZC - (H/2)"],
+      "after": ["CClipRB"],
+      "_comment": "复制一个C夹当一次性切割器,放到 pin 的位置(缝中心 x=0,抵消父墙=HALF/2)——装配后C夹正是套在pin上,故让位槽应在pin处。质心压低,从底板下方大幅探出。C夹自带3mm开槽让墙穿过、不被开到。",
+      "params": { "source": "CClipRF" }
+    },
+    {
+      "name": "FootCutBackObj",
+      "op": "ops/copy.py",
+      "parent": "BasketL_backwall",
+      "offset": ["HALF/2", "0", "FOOT_CUT_ZC - (H/2)"],
+      "after": ["FootCutF"],
+      "params": { "source": "CClipRB" }
+    },
+    {
+      "name": "FootCutDoF",
+      "op": "ops/cut.py",
+      "parent": null,
+      "target": ["BasketL"],
+      "after": ["FootCutBackObj"],
+      "params": { "tool": "FootCutF" }
+    },
+    {
+      "name": "FootCutDoB",
+      "op": "ops/cut.py",
+      "parent": null,
+      "target": ["BasketL"],
+      "after": ["FootCutDoF"],
+      "params": { "tool": "FootCutBackObj" }
+    },
+    {
       "name": "SpreadL",
       "op": "ops/move.py",
       "parent": null,
-      "after": ["CClipRB"],
+      "after": ["FootCutDoB"],
       "_comment": "整组挪:BasketL 半 + 它的两个 Pin(独立对象,须一起移)。",
       "params": { "names": ["BasketL", "PinLF", "PinLB"], "delta": ["-(SPREAD)", "0", "0"] }
     },
