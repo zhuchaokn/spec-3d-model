@@ -17,6 +17,10 @@ MODEL = os.path.join(PROJ, "model.json")   # ← 切换注册表
 
 
 def main():
+    # 清场:每次全量构建从空场景开始(避免上次残留/调试污染)
+    import bpy
+    for o in list(bpy.data.objects):
+        bpy.data.objects.remove(o, do_unlink=True)
     s3d.set_cm_units()
     built = engine.run_model(MODEL, lib_dir=LIB)
     # 数据验证:dump 场景核对

@@ -36,24 +36,11 @@
       "params": { "size": ["HALF", "W - 2*WALL", "H"] }
     },
     {
-      "name": "BasketL_scallop",
-      "op": "ops/scallop.py",
-      "parent": "BasketL",
-      "offset": ["HALF/2", "0", "-(H/2)"],
-      "target": ["BasketL"],
-      "after": ["BasketL_cavity"],
-      "params": {
-        "L": "L", "W": "W", "H": "H",
-        "dip": "SCALLOP_DIP", "corner": "SCALLOP_CORNER",
-        "flat": "SCALLOP_FLAT", "over": "SCALLOP_OVER"
-      }
-    },
-    {
       "name": "BasketL_hex",
       "op": "ops/hex_array.py",
       "parent": "BasketL",
       "target": ["BasketL"],
-      "after": ["BasketL_scallop"],
+      "after": ["BasketL_cavity"],
       "params": {
         "hex_w": "HEX_W", "gap": "HEX_GAP", "wall": "WALL", "full_L": "L",
         "margin_side": "MARGIN_SIDE", "margin_bottom": "MARGIN_BOTTOM",
@@ -64,12 +51,25 @@
       }
     },
     {
+      "name": "BasketL_scallop",
+      "op": "ops/scallop.py",
+      "parent": "BasketL",
+      "offset": ["HALF/2", "0", "-(H/2)"],
+      "target": ["BasketL"],
+      "after": ["BasketL_hex"],
+      "params": {
+        "L": "L", "W": "W", "H": "H",
+        "dip": "SCALLOP_DIP", "corner": "SCALLOP_CORNER",
+        "flat": "SCALLOP_FLAT", "over": "SCALLOP_OVER"
+      }
+    },
+    {
       "name": "BasketL_handle",
       "op": "ops/capsule_cut.py",
       "parent": "BasketL",
       "offset": ["-(HALF/2)", "0", "H/2 - HANDLE_GAP_TOP - HANDLE_H/2"],
       "target": ["BasketL"],
-      "after": ["BasketL_hex"],
+      "after": ["BasketL_scallop"],
       "params": { "w": "HANDLE_W", "h": "HANDLE_H", "depth": "2.5*WALL", "axis": "x" }
     },
 
