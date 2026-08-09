@@ -160,9 +160,18 @@ def topo_order(nodes):
 
 # ============ 4. 逐节点调度 op ============
 
-def _load_op(op_path, base_dir):
-    """加载 op 脚本模块(相对 base_dir 或绝对路径),返回其 run 函数。"""
-    path = op_path if os.path.isabs(op_path) else os.path.join(base_dir, op_path)
+def _load_op(op_path, search_dirs):
+    """加载 op 脚本。绝对路径直用;相对路径按 search_dirs 顺序查找(先项目后lib)。
+
+    这样 model.json 里 `ops/hex_array.py`(项目业务op)与 `ops/box.py`(lib通用op)
+    可用同样写法引用,项目 op 优先、缺则回落 lib。返回其 run 函数。"""
+    if os.path.isabs(op_path):
+        path = op_path
+    else:
+        path = next((os.path.join(d, op_path) for d in search_dirs
+                     if os.path.isfile(os.path.join(d, op_path))), None)
+        if path is None:
+            raise ValueError(f"op 脚本未找到: {op_path}(查找目录 {search_dirs})")
     spec = importlib.util.spec_from_file_location(f"op_{os.path.basename(path)}", path)
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
@@ -182,8 +191,13 @@ class Ctx:
 
 
 def run_model(json_path, lib_dir=None):
-    """主入口:读 JSON → 求值 → 拓扑排序 → 逐节点调 op。返回执行的节点名列表。"""
+    """主入口:读 JSON → 求值 → 拓扑排序 → 逐节点调 op。返回执行的节点名列表。
+
+    op 查找顺序:项目目录(json所在)优先 → lib_dir 回落。故业务 op 放 projects/<name>/ops,
+    通用 op 放 lib/ops,model.json 均以 `ops/xxx.py` 引用。"""
     lib_dir = lib_dir or os.path.dirname(os.path.abspath(__file__))
+    proj_dir = os.path.dirname(os.path.abspath(json_path))
+    search_dirs = [proj_dir, lib_dir]
     with open(json_path, encoding="utf-8") as f:
         model = json.load(f)
 
@@ -216,7 +230,7 @@ def run_model(json_path, lib_dir=None):
         for t in n.get("target", []) or []:
             targets[t] = {"object": bpy.data.objects.get(t),
                           "center": centers.get(t)}
-        run = _load_op(op_path, lib_dir)
+        run = _load_op(op_path, search_dirs)
         run(Ctx(n, center, params, targets))
         built.append(name)
     return built
