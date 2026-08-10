@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>clip_tester · 三视图</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC",sans-serif;margin:24px;color:#1a1a1a;background:#fafafa;}
+  h1{font-size:20px;} h2{font-size:15px;margin:22px 0 8px;} p{font-size:13px;color:#444;}
+  .views{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start;}
+  .view{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:10px 12px;}
+  .view figcaption{font-size:13px;color:#555;margin-bottom:4px;font-weight:600;}
+  .edge{fill:#eef2f7;stroke:#33415a;stroke-width:1.4;}
+  .base{fill:#dfe6ee;stroke:#33415a;stroke-width:1.2;}
+  .pin{fill:#f3e2be;stroke:#8a6d2b;stroke-width:1.3;}
+  .hole{fill:#fff;stroke:#7a8aa0;stroke-width:1;}
+  .cut{fill:none;stroke:#c0392b;stroke-width:1.4;stroke-dasharray:5 3;}
+  .dim{stroke:#e08a2b;stroke-width:0.8;} .dimtxt{fill:#b5661a;font-size:11px;}
+</style>
+</head>
+<body>
+  <h1>clip_tester — 三视图(1cm = <span id="sc"></span>px)</h1>
+  <p>两堵墙各 1(X)×0.3(Y)×3(Z),中间间隔 2cm(左墙 x∈[-2,-1],右墙 x∈[1,2])。红虚线=中线。</p>
+
+  <h2>三视图</h2>
+  <div class="views">
+    <figure class="view"><figcaption>正视图 front(看 −Y · X-Z)</figcaption><svg id="svg-front"></svg></figure>
+    <figure class="view"><figcaption>左视图 left(看 +X · Y-Z)</figcaption><svg id="svg-left"></svg></figure>
+    <figure class="view"><figcaption>俯视图 top(看 −Z · X-Y)</figcaption><svg id="svg-top"></svg></figure>
+  </div>
+
+<script>
+const P = { WALL_W:1.0, WALL_T:0.3, H:3.0, BASE:1.0, BASE_T:0.1, PIN_DB:0.512, PIN_DT:0.5,
+            JOINT_OD:0.9, JOINT_ID:0.512, SLOT_W:0.3 };
+const S=40, PAD=30, NS="http://www.w3.org/2000/svg";
+document.getElementById("sc").textContent=S;
+
+function makeView(svgId,map,wCm,hCm){
+  const svg=document.getElementById(svgId);
+  svg.setAttribute("width",wCm*S+2*PAD); svg.setAttribute("height",hCm*S+2*PAD+18);
+  const el=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);svg.appendChild(e);return e};
+  const txt=(x,y,s,an)=>{const e=el("text",{x,y,class:"dimtxt","text-anchor":an||"middle"});e.textContent=s};
+  const M=map;
+  return {
+    // rect(a,b,w,h):(a,b)为cm坐标某角,w/h为cm尺寸;映射对角两角取min,与朝向无关
+    rect:(a,b,w,h,cls)=>{const p0=M(a,b),p1=M(a+w,b+h);
+      el("rect",{class:cls||"edge",x:Math.min(p0[0],p1[0]),y:Math.min(p0[1],p1[1]),
+        width:Math.abs(p1[0]-p0[0]),height:Math.abs(p1[1]-p0[1])})},
+    // frustum 侧影(梯形):cx=轴心, zb/zt=底/顶高, db/dt=底/顶径。底大顶小的Pin
+    frustum:(cx,zb,zt,db,dt)=>{const bl=M(cx-db/2,zb),br=M(cx+db/2,zb),tr=M(cx+dt/2,zt),tl=M(cx-dt/2,zt);
+      el("polygon",{class:"pin",points:`${bl[0]},${bl[1]} ${br[0]},${br[1]} ${tr[0]},${tr[1]} ${tl[0]},${tl[1]}`})},
+    circle:(ca,cb,dia,cls)=>{const p=M(ca,cb);el("circle",{class:cls||"pin",cx:p[0],cy:p[1],r:dia/2*S})},
+    // C夹俯视:外圆φod(灰)+白内孔φid+白开槽(slotW宽,朝open方向:-x/+x/-y/+y)
+    ring:(ca,cb,od,idia,slotW,open)=>{const p=M(ca,cb),ro=od/2*S,ri=idia/2*S,hw=slotW/2*S;
+      el("circle",{cx:p[0],cy:p[1],r:ro,fill:"#d7e0ea",stroke:"#33415a","stroke-width":1.2});
+      el("circle",{cx:p[0],cy:p[1],r:ri,fill:"#fff",stroke:"#7a8aa0"});
+      let sx=p[0],sy=p[1]-hw,sw=ro+1,sh=slotW*S;   // 默认朝+x
+      if(open==="-x"){sx=p[0]-ro-1;} else if(open==="+y"){sx=p[0]-hw;sy=p[1];sw=slotW*S;sh=ro+1;}
+      else if(open==="-y"){sx=p[0]-hw;sy=p[1]-ro-1;sw=slotW*S;sh=ro+1;}
+      el("rect",{x:sx,y:sy,width:sw,height:sh,fill:"#fff"})},
+    cut:(a,b0,b1)=>{const p0=M(a,b0),p1=M(a,b1);el("line",{class:"cut",x1:p0[0],y1:p0[1],x2:p1[0],y2:p1[1]})},
+    dimH:(a0,a1,b,l)=>{const p0=M(a0,b),p1=M(a1,b);el("line",{class:"dim",x1:p0[0],y1:p0[1],x2:p1[0],y2:p0[1]});
+      el("line",{class:"dim",x1:p0[0],y1:p0[1]-4,x2:p0[0],y2:p0[1]+4});el("line",{class:"dim",x1:p1[0],y1:p0[1]-4,x2:p1[0],y2:p0[1]+4});
+      txt((p0[0]+p1[0])/2,p0[1]-6,l)},
+    dimV:(a,b0,b1,l)=>{const p0=M(a,b0),p1=M(a,b1);el("line",{class:"dim",x1:p0[0],y1:p0[1],x2:p0[0],y2:p1[1]});
+      el("line",{class:"dim",x1:p0[0]-4,y1:p0[1],x2:p0[0]+4,y2:p0[1]});el("line",{class:"dim",x1:p0[0]-4,y1:p1[1],x2:p0[0]+4,y2:p1[1]});
+      txt(p0[0]-7,(p0[1]+p1[1])/2,l,"end")},
+  };
+}
+
+// 正视 front(X-Z):两墙拉开2cm(左x∈[-2,-1] 右x∈[1,2] z∈[0,3])+ 底座(z中心0,下移1.5)
+(function(){
+  const v=makeView("svg-front",(x,z)=>[PAD+(x+2)*S, PAD+(P.H-z+0.3)*S], 4, P.H+0.3);
+  const bz=-P.BASE_T/2;                 // 底座 z∈[-0.05,0.05](墙中心1.5下移1.5→中心0)
+  v.rect(-1.5-P.BASE/2,bz,P.BASE,P.BASE_T,"base");  // 左墙底座(X中心-1.5)
+  v.rect(1.5-P.BASE/2,bz,P.BASE,P.BASE_T,"base");   // 右墙底座(X中心+1.5)
+  v.rect(-2,0,1,P.H);   // 左墙
+  v.rect(1,0,1,P.H);    // 右墙
+  v.frustum(-1,0,P.H,P.PIN_DB,P.PIN_DT);   // 左件Pin:轴x=-1(左墙右缘),底大顶小
+  v.rect(0.75-P.JOINT_OD/2,0,P.JOINT_OD,P.H,"base");   // 右件C夹墩:轴x=0.75,φ9竖柱
+  v.rect(0.75-P.JOINT_ID/2,0,P.JOINT_ID,P.H,"hole");   // 中心竖孔φ5.12(贯通,正视为窄竖条)
+  v.cut(0,0,P.H);
+  v.dimH(-2,-1,-0.4,"墙1"); v.dimH(-1,1,-0.4,"间隔2"); v.dimH(1,2,-0.4,"墙1"); v.dimV(-2.2,0,P.H,"3");
+})();
+
+// 左视 left(Y-Z):墙侧面(厚0.3×高3)+ 底座(Y向1×厚0.1,在墙底)= 倒T
+(function(){
+  const v=makeView("svg-left",(y,z)=>[PAD+(y+0.6)*S, PAD+(P.H-z+0.3)*S], 1.2, P.H+0.3);
+  const bz=-P.BASE_T/2;
+  v.rect(-P.BASE/2,bz,P.BASE,P.BASE_T,"base");   // 底座 Y向1 × 厚0.1(横条)
+  v.rect(-P.WALL_T/2,0,P.WALL_T,P.H);            // 墙 厚0.3×高3(竖条)
+  v.frustum(0,0,P.H,P.PIN_DB,P.PIN_DT);          // 左件Pin侧影(轴y=0,底大顶小)
+  v.dimH(-P.WALL_T/2,P.WALL_T/2,-0.4,"0.3"); v.dimV(-0.7,0,P.H,"3");
+  v.dimH(-P.BASE/2,P.BASE/2,P.H+0.15,"底座1");
+})();
+
+// 俯视 top(X-Y):底座1×1方块(X中心±1.5)+ 墙细条(X向1×Y向0.3,压在底座上)
+(function(){
+  const v=makeView("svg-top",(x,y)=>[PAD+(x+2)*S, PAD+(y+0.6)*S], 4, 1.2);
+  v.rect(-1.5-P.BASE/2,-P.BASE/2,P.BASE,P.BASE,"base");  // 左底座 1×1
+  v.rect(1.5-P.BASE/2,-P.BASE/2,P.BASE,P.BASE,"base");   // 右底座 1×1
+  v.rect(-2,-P.WALL_T/2,1,P.WALL_T);   // 左墙细条
+  v.rect(1,-P.WALL_T/2,1,P.WALL_T);    // 右墙细条
+  v.circle(-1,0,P.PIN_DB);             // 左件Pin俯视:圆φ5.12,圆心x=-1(左墙右缘) y=0
+  v.ring(0.75,0,P.JOINT_OD,P.JOINT_ID,P.SLOT_W,"-x");  // 右件C夹:轴x=0.75,开槽朝缝(-x)
+  v.cut(0,-0.6,0.6);
+  v.dimH(-2,-1,0.6,"墙1"); v.dimV(-2.2,-P.BASE/2,P.BASE/2,"底座1");
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+{
+  "_note": "basket 简化配方(用户方案):只精建 BasketL,镜像出 R,再配 Pin/C夹,最后拉开。切割器一律探出被切面(不共面)→ 敞口/镂空干净。缝在 X=0:BasketL 占 x∈[-HALF,0],seam=+x。",
+
+  "constants": {
+    "L": 29.0, "W": 20.0, "H": 20.0, "WALL": 0.3,
+    "R_CORNER": 2.2,
+    "R_CORNER_IN": "R_CORNER - WALL",
+    "ROUND_SEG": 20,
+    "HOLE_DEPTH": 1.0,
+    "R_TOP": 0.14,
+    "R_BOT": 1.2,
+    "R_SCALLOP": 1.5,
+    "BEVEL_SEG": 20,
+    "SPLIT_GAP": 0.015,
+    "HALF": "L/2 - SPLIT_GAP/2",
+    "SPREAD": 10.0,
+    "HEX_W": 1.5, "HEX_GAP": 0.42,
+    "MARGIN_SIDE": 1.0, "MARGIN_BOTTOM": 1.2, "MARGIN_TOP": 1.0,
+    "SCALLOP_DIP": 5.0, "SCALLOP_CORNER": 4.0, "SCALLOP_FLAT": 6.0, "SCALLOP_OVER": 1.0,
+    "HANDLE_W": 8.0, "HANDLE_H": 4.0, "HANDLE_GAP_TOP": 3.0,
+    "JOINT_OD": 0.9, "JOINT_ID": 0.512, "JOINT_R": "JOINT_OD/2",
+    "PIN_D_TOP": 0.5, "PIN_D_BOT": 0.512,
+    "SLOT_W": 0.3, "JOINT_TOP": 15.0,
+    "SEAM_HALF": 0.75,
+    "CCLIP_OFFSET": "JOINT_R - 0.2",
+    "JOINT_ZC": "JOINT_TOP/2 - H/2",
+    "WALL_MID_Y": "W/2 - WALL/2",
+    "FOOT_CUT_ZC": "WALL/2"
+  },
+
+  "nodes": [
+    {
+      "name": "BasketL",
+      "op": "ops/rounded_box.py",
+      "parent": null,
+      "offset": ["-(HALF/2)", "0", "H/2"],
+      "_comment": "外壳:远端(-x侧)两竖角圆R_CORNER,缝端(+x)两角直角保持平直好对合。radii顺序=[(-x,-y),(+x,-y),(+x,+y),(-x,+y)]。",
+      "params": { "size": ["HALF", "W", "H"], "radii": ["R_CORNER", "0", "0", "R_CORNER"], "seg": "ROUND_SEG" }
+    },
+    {
+      "name": "BasketL_cavity",
+      "op": "ops/rounded_subtract.py",
+      "parent": "BasketL",
+      "offset": ["WALL", "0", "WALL"],
+      "target": ["BasketL"],
+      "_comment": "圆角腔:内腔远端两角同心圆R_CORNER_IN(=R-WALL)→壁厚恒3mm;缝端直角。X满HALF+右移WALL→seam(+x)开;Z满H+上移WALL→顶开;Y收2*WALL。切割器探出被切面。",
+      "params": { "size": ["HALF", "W - 2*WALL", "H"], "radii": ["R_CORNER_IN", "0", "0", "R_CORNER_IN"], "seg": "ROUND_SEG" }
+    },
+    {
+      "name": "BasketL_hex",
+      "op": "ops/hex_array.py",
+      "parent": "BasketL",
+      "target": ["BasketL"],
+      "after": ["BasketL_cavity"],
+      "params": {
+        "hex_w": "HEX_W", "gap": "HEX_GAP", "wall": "WALL", "full_L": "L",
+        "margin_side": "MARGIN_SIDE", "margin_bottom": "MARGIN_BOTTOM",
+        "margin_top": "MARGIN_TOP", "margin_bottom_face": "MARGIN_BOTTOM",
+        "seam_side": "+x", "seam_half": "SEAM_HALF",
+        "hole_depth": "HOLE_DEPTH",
+        "handle_side_clear": 0.8,
+        "handle": ["HANDLE_W", "HANDLE_H", "HANDLE_GAP_TOP"],
+        "scallop": ["SCALLOP_DIP", "SCALLOP_CORNER", "SCALLOP_FLAT"]
+      }
+    },
+    {
+      "name": "BasketL_scallop",
+      "op": "ops/scallop.py",
+      "parent": "BasketL",
+      "offset": ["HALF/2", "0", "-(H/2)"],
+      "target": ["BasketL"],
+      "after": ["BasketL_hex"],
+      "params": {
+        "L": "L", "W": "W", "H": "H",
+        "dip": "SCALLOP_DIP", "corner": "SCALLOP_CORNER",
+        "flat": "SCALLOP_FLAT", "over": "SCALLOP_OVER",
+        "r_scallop": 0, "seg": "BEVEL_SEG"
+      }
+    },
+    {
+      "name": "BasketL_handle",
+      "op": "ops/capsule_cut.py",
+      "parent": "BasketL",
+      "offset": ["-(HALF/2)", "0", "H/2 - HANDLE_GAP_TOP - HANDLE_H/2"],
+      "target": ["BasketL"],
+      "after": ["BasketL_scallop"],
+      "params": { "w": "HANDLE_W", "h": "HANDLE_H", "depth": "2.5*WALL", "axis": "x" }
+    },
+    {
+      "name": "BasketL_bevel_bot",
+      "op": "ops/bevel.py",
+      "parent": "BasketL",
+      "target": ["BasketL"],
+      "after": ["BasketL_handle"],
+      "_comment": "底边圆角 R_BOT:只倒 z≈0 的水平底边(外周轮廓);孔侧壁斜边不碰。接缝边|x|<1排除保平直。",
+      "params": { "radius": "R_BOT", "segments": "BEVEL_SEG", "z_plane": "0.0", "z_tol": 0.05, "exclude_x0": 1.0 }
+    },
+    {
+      "name": "BasketL_bevel_top",
+      "op": "ops/bevel.py",
+      "parent": "BasketL",
+      "target": ["BasketL"],
+      "after": ["BasketL_bevel_bot"],
+      "_comment": "顶沿圆化 R_TOP(牛鼻):只倒 z≈H 的水平开口上沿;孔侧壁不碰。接缝边排除。R_TOP<壁厚/2=0.15。scallop已把长墙上沿挖低,主要圆化短墙开口沿。",
+      "params": { "radius": "R_TOP", "segments": "BEVEL_SEG", "z_plane": "H", "z_tol": 0.05, "exclude_x0": 1.0 }
+    },
+
+    {
+      "name": "BasketR",
+      "op": "ops/mirror.py",
+      "parent": null,
+      "offset": ["HALF/2", "0", "H/2"],
+      "after": ["BasketL_bevel_top"],
+      "_comment": "镜像 BasketL(此时只有壳,尚无Pin/C夹)得对称右半;seam=-x。",
+      "params": { "source": "BasketL" }
+    },
+
+    { "name": "BasketL_frontwall", "op": null, "parent": "BasketL", "offset": ["0", "WALL_MID_Y", "0"] },
+    { "name": "BasketL_backwall",  "op": null, "parent": "BasketL", "offset": ["0", "-(WALL_MID_Y)", "0"] },
+    { "name": "BasketR_frontwall", "op": null, "parent": "BasketR", "offset": ["0", "WALL_MID_Y", "0"] },
+    { "name": "BasketR_backwall",  "op": null, "parent": "BasketR", "offset": ["0", "-(WALL_MID_Y)", "0"] },
+
+    {
+      "name": "PinLF",
+      "op": "ops/frustum.py",
+      "parent": "BasketL_frontwall",
+      "offset": ["HALF/2", "0", "JOINT_ZC"],
+      "after": ["BasketR"],
+      "_comment": "抵消父墙 x=-HALF/2 → Pin 落缝 x=0;圆台到底。独立对象(不 union),只是摆在与 BasketL 前墙重叠处。",
+      "params": { "d_bot": "PIN_D_BOT", "d_top": "PIN_D_TOP", "h": "JOINT_TOP" }
+    },
+    {
+      "name": "PinLB",
+      "op": "ops/frustum.py",
+      "parent": "BasketL_backwall",
+      "offset": ["HALF/2", "0", "JOINT_ZC"],
+      "after": ["PinLF"],
+      "params": { "d_bot": "PIN_D_BOT", "d_top": "PIN_D_TOP", "h": "JOINT_TOP" }
+    },
+    {
+      "name": "CClipRF",
+      "op": "ops/cclip.py",
+      "parent": "BasketR_frontwall",
+      "offset": ["-(HALF/2) - CCLIP_OFFSET", "0", "JOINT_ZC"],
+      "after": ["PinLB"],
+      "params": { "od": "JOINT_OD", "id": "JOINT_ID", "slot_w": "SLOT_W", "h": "JOINT_TOP", "open": "-x" }
+    },
+    {
+      "name": "CClipRB",
+      "op": "ops/cclip.py",
+      "parent": "BasketR_backwall",
+      "offset": ["-(HALF/2) - CCLIP_OFFSET", "0", "JOINT_ZC"],
+      "after": ["CClipRF"],
+      "params": { "od": "JOINT_OD", "id": "JOINT_ID", "slot_w": "SLOT_W", "h": "JOINT_TOP", "open": "-x" }
+    },
+
+    {
+      "name": "FootCutF",
+      "op": "ops/copy.py",
+      "parent": "BasketL_frontwall",
+      "offset": ["HALF/2", "0", "FOOT_CUT_ZC - (H/2)"],
+      "after": ["CClipRB"],
+      "_comment": "复制一个C夹当一次性切割器,放到 pin 的位置(缝中心 x=0,抵消父墙=HALF/2)——装配后C夹正是套在pin上,故让位槽应在pin处。质心压低,从底板下方大幅探出。C夹自带3mm开槽让墙穿过、不被开到。",
+      "params": { "source": "CClipRF" }
+    },
+    {
+      "name": "FootCutBackObj",
+      "op": "ops/copy.py",
+      "parent": "BasketL_backwall",
+      "offset": ["HALF/2", "0", "FOOT_CUT_ZC - (H/2)"],
+      "after": ["FootCutF"],
+      "params": { "source": "CClipRB" }
+    },
+    {
+      "name": "FootCutDoF",
+      "op": "ops/cut.py",
+      "parent": null,
+      "target": ["BasketL"],
+      "after": ["FootCutBackObj"],
+      "params": { "tool": "FootCutF" }
+    },
+    {
+      "name": "FootCutDoB",
+      "op": "ops/cut.py",
+      "parent": null,
+      "target": ["BasketL"],
+      "after": ["FootCutDoF"],
+      "params": { "tool": "FootCutBackObj" }
+    },
+    {
+      "name": "SpreadL",
+      "op": "ops/move.py",
+      "parent": null,
+      "after": ["FootCutDoB"],
+      "_comment": "整组挪:BasketL 半 + 它的两个 Pin(独立对象,须一起移)。",
+      "params": { "names": ["BasketL", "PinLF", "PinLB"], "delta": ["-(SPREAD)", "0", "0"] }
+    },
+    {
+      "name": "SpreadR",
+      "op": "ops/move.py",
+      "parent": null,
+      "after": ["SpreadL"],
+      "params": { "names": ["BasketR", "CClipRF", "CClipRB"], "delta": ["SPREAD", "0", "0"] }
+    },
+    {
+      "name": "Export",
+      "op": "ops/export.py",
+      "parent": null,
+      "after": ["SpreadR"],
+      "_comment": "每个可打印件=筐半+其卡合件,一起导出到一个 STL(切片器自动合并重叠体)。",
+      "params": {
+        "pieces": {
+          "BasketL": ["BasketL", "PinLF", "PinLB"],
+          "BasketR": ["BasketR", "CClipRF", "CClipRB"]
+        },
+        "out_dir": "output",
+        "blend_name": "basket.blend"
+      }
+    }
+  ]
+}

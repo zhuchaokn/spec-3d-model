@@ -29,7 +29,7 @@ def run(ctx):
 | `ops/mirror.py` | 跨 X=0 镜像 source 成新具名对象(翻法线) | `source` | — |
 | `ops/move.py` | 平移一批已存在对象(拉开分件/摆放) | `names=[...]` 或 `target_name`,`delta=[dx,dy,dz]` | — |
 | `ops/heal.py` | 合并重复顶点+重算法线,修布尔残边;报告 边界边/非流形 | `target_name`(可选 `dist`) | — |
-| `ops/export.py` | 各对象导出 STL + 存 .blend 到目录 | `parts=[名...],out_dir,blend_name?` | — |
+| `ops/export.py` | 各可打印件导出 STL + 存 .blend | `pieces={文件名:[对象名...]},out_dir?(默认"output",相对项目),blend_name?` | — |
 
 ## 单位与约定
 

@@ -1,0 +1,50 @@
+{
+  "_note": "Pin/C夹试配件。两件独立(不union)、拉开2cm展示。左件=底座+墙+Pin圆台;右件=底座+墙+C夹。坐标见 spec/preview.html。",
+
+  "constants": {
+    "WALL_W": 1.0, "WALL_T": 0.3, "H": 3.0,
+    "BASE": 1.0, "BASE_T": 0.1,
+    "PIN_DB": 0.512, "PIN_DT": 0.5,
+    "JOINT_OD": 0.9, "JOINT_ID": 0.512, "SLOT_W": 0.3,
+    "LX": -1.5, "RX": 1.5
+  },
+
+  "nodes": [
+    { "name": "LBase", "op": "ops/box.py", "parent": null,
+      "offset": ["LX", "0", "-(BASE_T/2)"],
+      "_comment": "左件底座 1×1×0.1,质心z=-0.05→底座z∈[-0.1,0],顶面齐墙底z=0(完整托墙下,不留缝);根节点。",
+      "params": { "size": ["BASE", "BASE", "BASE_T"] } },
+    { "name": "LWall", "op": "ops/box.py", "parent": "LBase",
+      "offset": ["0", "0", "H/2"],
+      "_comment": "左墙 高H+BASE_T=3.1,底扎到z=-0.1(穿透底座)、顶z=3;相对底座质心(z=-0.05)上移H/2→墙质心z=1.45。墙与底座实体重叠、粘牢。",
+      "params": { "size": ["WALL_W", "WALL_T", "H + BASE_T"] } },
+    { "name": "Pin", "op": "ops/frustum.py", "parent": "LWall",
+      "offset": ["WALL_W/2", "0", "BASE_T/2"],
+      "_comment": "Pin圆台,轴在左墙右缘(x=-1);相对墙质心(1.45)上移BASE_T/2→Pin质心1.5,z∈[0,3]。底大顶小。",
+      "params": { "d_bot": "PIN_DB", "d_top": "PIN_DT", "h": "H" } },
+
+    { "name": "RBase", "op": "ops/box.py", "parent": null,
+      "offset": ["RX", "0", "-(BASE_T/2)"],
+      "params": { "size": ["BASE", "BASE", "BASE_T"] } },
+    { "name": "RWall", "op": "ops/box.py", "parent": "RBase",
+      "offset": ["0", "0", "H/2"],
+      "_comment": "右墙 高3.1,底扎到z=-0.1穿透底座、顶z=3。",
+      "params": { "size": ["WALL_W", "WALL_T", "H + BASE_T"] } },
+    { "name": "Clip", "op": "ops/cclip.py", "parent": "RWall",
+      "offset": ["-(WALL_W/2 + 0.25)", "0", "BASE_T/2"],
+      "_comment": "C夹,轴相对右墙心左移0.75→x=0.75;上移BASE_T/2→z∈[0,3];开槽朝-x(朝缝/Pin侧)。",
+      "params": { "od": "JOINT_OD", "id": "JOINT_ID", "slot_w": "SLOT_W", "h": "H", "open": "-x" } },
+
+    { "name": "Export", "op": "ops/export.py", "parent": null,
+      "after": ["Pin", "Clip"],
+      "_comment": "每件=墙+底座+卡合件,一起导出到一个STL(切片器合并重叠体)。",
+      "params": {
+        "pieces": {
+          "PinPiece": ["LBase", "LWall", "Pin"],
+          "ClipPiece": ["RBase", "RWall", "Clip"]
+        },
+        "out_dir": "output",
+        "blend_name": "clip_tester.blend"
+      } }
+  ]
+}

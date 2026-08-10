@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>纸样收纳筐 · 三视图设计</title>
+<style>
+  body{font-family:-apple-system,"PingFang SC",sans-serif;margin:24px;color:#1a1a1a;background:#fafafa;}
+  h1{font-size:20px;} h2{font-size:15px;margin:22px 0 8px;}
+  p{font-size:13px;color:#444;max-width:940px;line-height:1.5;}
+  .views{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start;}
+  .view{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:10px 12px;}
+  .view figcaption{font-size:13px;color:#555;margin-bottom:4px;font-weight:600;}
+  .edge{fill:#eef2f7;stroke:#33415a;stroke-width:1.4;}
+  .inner{fill:#fff;stroke:#8894a5;stroke-width:0.8;}
+  .hex{fill:#fff;stroke:#7a8aa0;stroke-width:0.8;}
+  .hole{fill:#fbfdff;stroke:#7a8aa0;stroke-width:1.1;}
+  .post{fill:#d7e0ea;stroke:#33415a;stroke-width:1.2;}
+  .pin{fill:#f3e2be;stroke:#8a6d2b;stroke-width:1.3;}
+  .cut{fill:none;stroke:#c0392b;stroke-width:1.6;stroke-dasharray:6 4;}
+  .round{fill:none;stroke:#2a8f5a;stroke-width:2.4;}
+  .rlbl{fill:#1f7a4d;font-size:10.5px;font-weight:600;}
+  .dim{stroke:#e08a2b;stroke-width:0.8;}
+  .dimtxt{fill:#b5661a;font-size:10.5px;}
+  .lbl{fill:#33415a;font-size:10.5px;}
+  table{border-collapse:collapse;font-size:13px;margin-top:8px;}
+  td,th{border:1px solid #ddd;padding:5px 11px;text-align:left;} th{background:#f0f2f5;}
+  code{background:#eef;padding:1px 4px;border-radius:3px;}
+  .k{display:inline-block;width:12px;height:12px;border-radius:2px;vertical-align:-1px;margin:0 2px 0 8px;}
+</style>
+</head>
+<body>
+  <h1>纸样收纳筐 · 圆润版 — 三视图设计(等比例 1cm = 10px)</h1>
+  <p>在原 basket 上做<b>整体圆润化去锐</b>。外形 <b>29(X) × 20(Y) × 20(Z) cm</b>,壁厚 3mm,敞口。四壁+底 pointy-top 六边形镂空(孔宽1.5,间距0.42),
+     前后长墙 <b>╲___╱ 凹沿</b>,左右短墙 <b>8×4 胶囊把手</b>。沿 <b style="color:#c0392b">X=0 切两半</b>,
+     左半配 <b style="color:#8a6d2b">圆台 Pin</b>、右半配 <b>C夹</b>。
+     <span class="k" style="background:#c0392b"></span>切缝
+     <span class="k" style="background:#f3e2be;border:1px solid #8a6d2b"></span>Pin圆台
+     <span class="k" style="background:#d7e0ea;border:1px solid #33415a"></span>C夹墩
+     <span class="k" style="background:#2a8f5a"></span><b style="color:#1f7a4d">绿=本版新增圆角</b>
+  </p>
+  <p style="color:#1f7a4d"><b>圆角(可调,cm):</b>
+     <code>R_CORNER=3.5</code> 四竖角(仅远端两角,缝端保持直角)·
+     <code>R_TOP=0.6</code> 开口上沿 · <code>R_BOT=1.2</code> 底边 · <code>R_SCALLOP=1.5</code> 凹沿转折。
+     <b style="color:#c0392b">切缝端(x=0)平直不倒角——两半要在此对合。</b></p>
+
+  <h2>三视图</h2>
+  <div class="views">
+    <figure class="view">
+      <figcaption>正视图 front(看 −Y · 两分筐 + 间隙)</figcaption>
+      <svg id="svg-front" width="392" height="300"></svg>
+    </figure>
+    <figure class="view">
+      <figcaption>左视图 left(看 +X · 侧短墙 20×20 + 把手)</figcaption>
+      <svg id="svg-left" width="276" height="300"></svg>
+    </figure>
+    <figure class="view">
+      <figcaption>俯视图 top(看 −Z · 开口 29×20;缝端连接件另见放大框)</figcaption>
+      <svg id="svg-top" width="376" height="304"></svg>
+    </figure>
+    <figure class="view">
+      <figcaption>俯视·缝端放大(前墙一套:L的Pin 与 R的C夹)</figcaption>
+      <svg id="svg-seam" width="300" height="220"></svg>
+    </figure>
+  </div>
+
+  <h2>卡合详图:左半 Pin 圆台 沿 Z 落入 右半 C夹竖孔(放大 40px/cm)</h2>
+  <div class="views">
+    <figure class="view">
+      <figcaption>侧剖:Pin(底φ5.12/顶φ5.0)落入 C夹孔;右下:C夹俯视(真 C 形开口)</figcaption>
+      <svg id="svg-joint" width="420" height="230"></svg>
+    </figure>
+  </div>
+
+  <h2>组件分解 + 构建顺序(先独立建每一半含镂空,再加卡合,最后分隔)</h2>
+  <table>
+    <tr><th>顺序</th><th>组件</th><th>契约(输入场景 → 输出具名对象)</th></tr>
+    <tr><td>1</td><td><code>left_half</code></td><td>空场景 → 建 <code>BasketL</code>:左半空心壳(X −14.5..0,墙3mm,x=0切缝面敞开)+ 六边形镂空 + 凹沿(左段)+ 左短墙(−X)把手</td></tr>
+    <tr><td>2</td><td><code>right_half</code></td><td>→ 建 <code>BasketR</code>:右半(X 0..14.5)+ 镂空 + 凹沿(右段)+ 右短墙(+X)把手</td></tr>
+    <tr><td>3</td><td><code>pin</code></td><td>对 <code>BasketL</code> 前后切缝墙加圆台 Pin(底φ5.12/顶φ5.0),join 进 BasketL</td></tr>
+    <tr><td>4</td><td><code>cclip</code></td><td>对 <code>BasketR</code> 前后切缝墙加 C夹(墩φ9+孔φ5.12+朝外开缝),join 进 BasketR</td></tr>
+    <tr><td>5</td><td><code>layout</code></td><td>把 BasketL/BasketR 沿 X 分隔摆放(展示/导出,导出前可对合)</td></tr>
+  </table>
+  <p>构建顺序:<code>left_half → right_half → pin → cclip → layout</code>。<b>禁止先建整体再切分。</b>
+     每个 build.py 可独立跑;两半各自完整(自含镂空),可分别打印验证。</p>
+
+<script>
+// ===== 尺寸(镜像 model.json,cm) =====
+const P = {
+  LENGTH:29, WIDTH:20, HEIGHT:20, WALL:0.3,
+  R_CORNER:3.5, R_TOP:0.6, R_BOT:1.2, R_SCALLOP:1.5,   // ← 圆润版新增(可调)
+  HEX_W:1.5, HEX_GAP:0.42, R:1.5/Math.sqrt(3), HH:0.75,
+  MARGIN_SIDE:1.0, MARGIN_BOTTOM:1.2, MARGIN_TOP:1.0,
+  SCALLOP_DIP:5, SCALLOP_CORNER:4, SCALLOP_FLAT:6,
+  HANDLE_W:8, HANDLE_H:4, HANDLE_GAP_TOP:3,
+  SEAM_HALF:0.75, JOINT_OD:0.9, JOINT_ID:0.512, JOINT_R:0.45,
+  PIN_D_TOP:0.5, PIN_D_BOT:0.512, SLOT_W:0.30, JOINT_TOP:15, CCLIP_OFFSET:0.25,
+};
+const S = 10, PAD = 30;   // px/cm, 内边距
+const NS = "http://www.w3.org/2000/svg";
+
+// ===== 六边形中心坐标:与 op hex_array.py 同算法自动生成(u=沿墙, v=竖直) =====
+// 改 model.json 的 HEX_W/HEX_GAP/margins 后,只需同步上面的 P,三视图自动重排。
+const HEX_H = 2*P.R, DX = P.HEX_W+P.HEX_GAP, DY = 0.75*HEX_H+P.HEX_GAP;
+const UP_LO = P.WALL+P.MARGIN_BOTTOM, UP_HI = P.HEIGHT-P.MARGIN_TOP;   // z0=0
+
+function hitsHandle(u,v){
+  const zhi=P.HEIGHT-P.HANDLE_GAP_TOP, zlo=zhi-P.HANDLE_H;
+  return (u-P.HH < P.HANDLE_W/2 && u+P.HH > -P.HANDLE_W/2 && v-P.R < zhi && v+P.R > zlo);
+}
+// 在 [a0,a1]×[u0,u1] 铺六边形,返回中心 [{u,v}]。opts:{seam(缝绝对x),profile,handle}
+function tileRect(a0,a1,u0,u1,opts={}){
+  const out=[], uspan=u1-u0;
+  let nv = uspan < 0.75*HEX_H ? 0 : Math.floor((uspan+P.HEX_GAP)/DY);
+  if(nv>0 && nv%2===0) nv--;
+  nv=Math.max(nv,1);
+  const vFirst=u0+(uspan-(nv-1)*DY)/2, acenter=(a0+a1)/2;
+  for(let r=0;r<nv;r++){
+    const vc=vFirst+r*DY, off=(r%2===0)?0:DX/2;
+    let m=0;
+    while(m<=200){
+      const cands=(off===0&&m===0)?[0]:[off+m*DX,-(off+m*DX)];
+      let anyIn=false;
+      for(const c of cands){
+        const uc=acenter+c;
+        if(uc-P.HH<a0 || uc+P.HH>a1) continue;
+        anyIn=true;
+        if(opts.seam!==undefined && Math.abs(uc-opts.seam)-P.HH < P.SEAM_HALF) continue;
+        if(opts.profile && vc+P.R > profileZ(uc)) continue;
+        if(opts.handle && hitsHandle(uc,vc)) continue;
+        out.push({u:uc,v:vc});
+      }
+      if(!anyIn && m>0) break;
+      m++;
+    }
+  }
+  return out;
+}
+// 前墙:两半各自铺(缝在 x=0,含凹沿 profile)。ms=margin_side
+const MS=P.MARGIN_SIDE, half=P.LENGTH/2;
+const FRONT_HEX_L = tileRect(-half+MS, 0-MS, UP_LO, UP_HI, {seam:0, profile:true});
+const FRONT_HEX_R = tileRect(0+MS, half-MS, UP_LO, UP_HI, {seam:0, profile:true});
+// 短墙:沿 Y 铺,避开把手
+const SIDE_HEX = tileRect(-P.WIDTH/2+MS, P.WIDTH/2-MS, UP_LO, UP_HI, {handle:true});
+
+function el(tag, attrs){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
+function add(svg,tag,attrs){const e=el(tag,attrs);svg.appendChild(e);return e;}
+function txt(svg,x,y,s,cls="dimtxt",anchor="middle"){const e=el("text",{x,y,class:cls,"text-anchor":anchor});e.textContent=s;svg.appendChild(e);}
+
+function profileZ(x){
+  const mid=P.LENGTH/2-P.SCALLOP_CORNER, dip=P.HEIGHT-P.SCALLOP_DIP, ax=Math.abs(x);
+  if(ax<=P.SCALLOP_FLAT)return dip;
+  if(ax>=mid)return P.HEIGHT;
+  return dip+(ax-P.SCALLOP_FLAT)/(mid-P.SCALLOP_FLAT)*P.SCALLOP_DIP;
+}
+// 画一个 pointy-top 六边形,中心(cx,cy)cm,map(a,b)->[px,py]
+function hexAt(svg,cx,cy,map){
+  const R=P.R,HH=P.HH,pts=[[0,R],[HH,R/2],[HH,-R/2],[0,-R],[-HH,-R/2],[-HH,R/2]];
+  const s=pts.map(([dx,dy])=>{const[px,py]=map(cx+dx,cy+dy);return px.toFixed(1)+","+py.toFixed(1)}).join(" ");
+  add(svg,"polygon",{class:"hex",points:s});
+}
+function dimH(svg,x0,x1,y,label,map){
+  const[a,yb]=map(x0,y),[b]=map(x1,y);
+  add(svg,"line",{class:"dim",x1:a,y1:yb,x2:b,y2:yb});
+  add(svg,"line",{class:"dim",x1:a,y1:yb-5,x2:a,y2:yb+5});
+  add(svg,"line",{class:"dim",x1:b,y1:yb-5,x2:b,y2:yb+5});
+  txt(svg,(a+b)/2,yb-7,label);
+}
+function dimV(svg,x,z0,z1,label,map){
+  const[px,a]=map(x,z0),[,b]=map(x,z1);
+  add(svg,"line",{class:"dim",x1:px,y1:a,x2:px,y2:b});
+  add(svg,"line",{class:"dim",x1:px-5,y1:a,x2:px+5,y2:a});
+  add(svg,"line",{class:"dim",x1:px-5,y1:b,x2:px+5,y2:b});
+  txt(svg,px-4,(a+b)/2,label,"dimtxt","end");
+}
+// 轴对齐矩形 [xin,xout]×[y0,y1],每角半径 r=[A,B,C,D](A=xin,y0 B=xout,y0 C=xout,y1 D=xin,y1),
+// 返回 cm 点列(圆角用弧采样,过 map 变换后仍正确,不受坐标翻转影响)。r 某项=0 即直角。
+function rrPts(xin,xout,y0,y1,r){
+  const [rA,rB,rC,rD]=r, pts=[], N=8;
+  const arc=(cx,cy,a0,a1,rad)=>{for(let i=0;i<=N;i++){const a=a0+(a1-a0)*i/N;pts.push([cx+rad*Math.cos(a),cy+rad*Math.sin(a)]);}};
+  rA?arc(xin+rA,y0+rA,Math.PI,1.5*Math.PI,rA):pts.push([xin,y0]);
+  rB?arc(xout-rB,y0+rB,1.5*Math.PI,2*Math.PI,rB):pts.push([xout,y0]);
+  rC?arc(xout-rC,y1-rC,0,0.5*Math.PI,rC):pts.push([xout,y1]);
+  rD?arc(xin+rD,y1-rD,0.5*Math.PI,Math.PI,rD):pts.push([xin,y1]);
+  return pts;
+}
+function polyPath(pts,m){return pts.map(([x,y])=>{const[px,py]=m(x,y);return px.toFixed(1)+","+py.toFixed(1);}).join(" ");}
+
+// ---------- 正视图:两个独立分筐 BasketL / BasketR,中间留间隙 ----------
+(function(){
+  const svg=document.getElementById("svg-front"),L=P.LENGTH,H=P.HEIGHT,GAP=1.6;
+  // 每半宽 L/2=14.5;半的本地坐标 x∈[-L/2,0](左半) / [0,L/2](右半)
+  // 摆放:左半整体左移 GAP/2,右半右移 GAP/2,中间空开
+  const half=L/2;
+  const map=(x,z)=>[PAD+(x+half+GAP/2)*S, PAD+(H-z)*S];  // 画布左边基准
+
+  const rb=P.R_BOT;
+  // 半个外轮廓(含凹沿的一侧):x 从 xin..xout。far=离缝的那端(该端底角圆 R_BOT)。
+  function halfOutline(xin,xout,far){
+    let p=[];
+    // 底边:far 端底角圆 rb,缝端(另一端)直角
+    if(far==='xin'){ // 左半:xin 是远端
+      p.push([xin,rb]);
+      for(let i=0;i<=6;i++){const a=Math.PI+(0.5*Math.PI)*i/6; p.push([xin+rb+rb*Math.cos(a), rb+rb*Math.sin(a)]);} // 左下圆角
+      p.push([xout,0]); // 缝端直角
+    } else {
+      p.push([xin,0]); // 缝端直角
+      for(let i=0;i<=6;i++){const a=1.5*Math.PI+(0.5*Math.PI)*i/6; p.push([xout-rb+rb*Math.cos(a), rb+rb*Math.sin(a)]);} // 右下圆角
+      p.push([xout,rb]);
+    }
+    const n=40;
+    for(let i=0;i<=n;i++){const x=xout-(xout-xin)*i/n;p.push([x,profileZ(x)]);} // 顶 profile 回到起点侧
+    return p;
+  }
+  // 凹沿转折圆弧(绿):在 profileZ 的两个拐点 |x|=flat(凹底) 和 |x|=mid(满高) 画 R_SCALLOP 过渡示意
+  function scallopArcs(m){
+    const dip=H-P.SCALLOP_DIP, mid=L/2-P.SCALLOP_CORNER, flat=P.SCALLOP_FLAT, r=P.R_SCALLOP;
+    [-1,1].forEach(sgn=>{
+      // 凹底拐点
+      let d1=`M${m(sgn*(flat-r),dip)[0]},${m(0,dip)[1]} Q${m(sgn*flat,dip)[0]},${m(0,dip)[1]} ${m(sgn*(flat+r*0.7),dip+P.SCALLOP_DIP*0.28)[0]},${m(sgn*(flat+r*0.7),dip+P.SCALLOP_DIP*0.28)[1]}`;
+      add(svg,"path",{class:"round",d:d1});
+      // 满高拐点
+      let d2=`M${m(sgn*(mid-r*0.7),H-P.SCALLOP_DIP*0.28)[0]},${m(sgn*(mid-r*0.7),H-P.SCALLOP_DIP*0.28)[1]} Q${m(sgn*mid,H)[0]},${m(0,H)[1]} ${m(sgn*(mid+r),H)[0]},${m(0,H)[1]}`;
+      add(svg,"path",{class:"round",d:d2});
+    });
+  }
+  // 左半:x -14.5..0(切缝在 x=0);左移 -GAP/2
+  function drawHalf(sign){
+    const dx=sign*GAP/2;
+    const m=(x,z)=>map(x+dx,z);
+    const xin = sign<0? -half : 0, xout = sign<0? 0 : half;
+    const far = sign<0? 'xin':'xout';
+    const out=halfOutline(xin,xout,far).map(([x,z])=>m(x,z));
+    add(svg,"polygon",{class:"edge",points:out.map(p=>p[0].toFixed(1)+","+p[1].toFixed(1)).join(" ")});
+    // 六边形:该半自己的一组(自动生成,已含凹沿/缝禁孔带)
+    (sign<0?FRONT_HEX_L:FRONT_HEX_R).forEach(({u,v})=>hexAt(svg,u,v,m));
+    // 切缝面(x=0 这条竖边)标红
+    const t=m(0,profileZ(0)),b=m(0,0);
+    add(svg,"line",{class:"cut",x1:t[0],y1:t[1],x2:b[0],y2:b[1]});
+    return {m,xin,xout};
+  }
+  const Lh=drawHalf(-1), Rh=drawHalf(+1);
+  scallopArcs(Lh.m); scallopArcs(Rh.m);   // 凹沿转折圆弧(绿)
+  txt(svg, Lh.m(-half+P.SCALLOP_CORNER,H)[0], Lh.m(0,H)[1]+10, "凹沿转折 R"+P.R_SCALLOP, "rlbl","middle");
+  txt(svg, Lh.m(-half+rb,0)[0], Lh.m(0,0)[1]+14, "底边 R"+rb, "rlbl","start");
+  // 标注:哪半是 Pin / 哪半是 C夹(连接件在前后墙内壁,此视图不可见,仅文字标注)
+  txt(svg, Lh.m(-half/2,H)[0], Lh.m(0,H)[1]-4, "BasketL(带Pin)","lbl");
+  txt(svg, Rh.m(half/2,H)[0], Rh.m(0,H)[1]-4, "BasketR(带C夹)","lbl");
+  txt(svg, map(0,profileZ(0))[0], map(0,H/2)[1], "切缝面","dimtxt");
+  // 尺寸:各半 14.5 + 凹沿深
+  dimH(svg,-half,0,-1.4,"14.5",Lh.m);
+  dimH(svg,0,half,-1.4,"14.5",Rh.m);
+  dimV(svg,-half-0.4,0,H,"20",Lh.m);
+  txt(svg,Lh.m(-half+P.SCALLOP_CORNER,H)[0]+6,Lh.m(0,H-P.SCALLOP_DIP/2)[1],"凹5","dimtxt","start");
+})();
+
+// ---------- 左视图 ----------
+(function(){
+  const svg=document.getElementById("svg-left"),W=P.WIDTH,H=P.HEIGHT;
+  const map=(y,z)=>[PAD+(y+W/2)*S, PAD+(H-z)*S];
+  // 短墙外轮廓:顶部=开口(不做 R_CORNER 大圆),底两角圆 R_BOT。
+  // 注:四竖角 R_CORNER 是水平面内的圆角,在本视图里表现为左右两条竖边——在俯视图看。
+  const rb=P.R_BOT;
+  add(svg,"path",{class:"edge",d:"M"+polyPath(rrPts(-W/2,W/2,0,H,[rb,rb,0,0]),map).replace(/ /g," L")+" Z"});
+  SIDE_HEX.forEach(({u,v})=>hexAt(svg,u,v,map));
+  // 底两角圆 R_BOT 标注
+  txt(svg,map(-W/2+rb,0)[0],map(0,0)[1]+14,"底边 R"+rb,"rlbl","start");
+  txt(svg,map(W/2,H/2)[0]+2,map(0,H/2)[1],"竖边=R"+P.R_CORNER+"(俯视)","rlbl","start");
+  // 胶囊把手 8×4,顶距墙顶3 → z 13..17
+  const z1=P.HEIGHT-P.HANDLE_GAP_TOP, z0=z1-P.HANDLE_H;
+  const hp=map(-P.HANDLE_W/2,z1), rpx=P.HANDLE_H/2*S;
+  add(svg,"rect",{class:"hole",x:hp[0],y:hp[1],width:P.HANDLE_W*S,height:P.HANDLE_H*S,rx:rpx,ry:rpx});
+  dimH(svg,-P.HANDLE_W/2,P.HANDLE_W/2,z1+1.0,"宽8",map);
+  txt(svg,map(P.HANDLE_W/2,(z0+z1)/2)[0]+14,map(0,(z0+z1)/2)[1],"高4","dimtxt","start");
+  dimH(svg,-W/2,W/2,-1.4,"20 cm",map);
+  dimV(svg,-W/2-0.4,0,H,"20",map);
+})();
+
+// ---------- 俯视图:两分筐分开,墙框完整,连接件圆心按 requirement 规则 ----------
+// 圆心(俯视):Pin 在该半缝端墙中心线上;C夹圆心沿墙长往缝外移 CCLIP_OFFSET(=0.25),
+//   使 2mm 环壁与筐墙搭接。前后墙壁厚中心线 wy=±(W/2−WALL/2)。缝在各半 x=0。
+// 画黑环+白孔+白3mm矩形 = 模拟 bool(白底即减掉),也是后续 bool 依据。
+(function(){
+  const svg=document.getElementById("svg-top"),L=P.LENGTH,W=P.WIDTH,t=P.WALL,GAP=2.0;
+  const half=L/2;
+  const map=(x,y)=>[PAD+(x+half+GAP/2)*S, PAD+(y+W/2)*S];
+  const wyF=-(W/2-t/2), wyB=(W/2-t/2);   // 前墙/后墙 壁厚中心线 y
+
+  function cclip(m,cx,wy,openSign){
+    // 黑环:填黑大圆
+    const c=m(cx,wy);
+    add(svg,"circle",{cx:c[0],cy:c[1],r:P.JOINT_R*S,fill:"#33415a"});
+    // 白孔 φ5.12
+    add(svg,"circle",{cx:c[0],cy:c[1],r:P.JOINT_ID/2*S,fill:"#fff"});
+    // 白 3mm 矩形:从孔通到环外,朝 openSign 方向(沿墙长 x),模拟 bool 减出开口
+    const sl=P.SLOT_W/2*S, rr=P.JOINT_R*S;
+    const x0 = openSign<0 ? c[0]-rr-1 : c[0];
+    add(svg,"rect",{x:x0,y:c[1]-sl,width:rr+1,height:P.SLOT_W*S,fill:"#fff"});
+  }
+
+  const rc=P.R_CORNER, ri=rc-t;   // 外壳圆角 rc,内腔同心圆角 rc-t → 壁厚恒 t
+  function drawHalf(sign){
+    const dx=sign*GAP/2;
+    const m=(x,y)=>map(x+dx,y);
+    const xin=sign<0?-half:0, xout=sign<0?0:half;
+    // 圆角只在远端(离缝那端)两角;缝端(x=0)两角=0(直角)。
+    // 角顺序 [ (xin,-W/2), (xout,-W/2), (xout,+W/2), (xin,+W/2) ]
+    const outR = sign<0 ? [rc,0,0,rc] : [0,rc,rc,0];   // 左半远端=xin;右半远端=xout
+    add(svg,"path",{class:"edge",points:"",d:"M"+polyPath(rrPts(xin,xout,-W/2,W/2,outR),m).replace(/ /g," L")+" Z"});
+    // 内腔:缝面(x=0)敞开,另三面留壁;远端两内角同心圆 ri
+    const inx0=sign<0? xin+t : 0, inx1=sign<0? 0 : xout-t;
+    const inR = sign<0 ? [ri,0,0,ri] : [0,ri,ri,0];
+    add(svg,"path",{class:"inner",d:"M"+polyPath(rrPts(inx0,inx1,-W/2+t,W/2-t,inR),m).replace(/ /g," L")+" Z"});
+    // 远端两圆角标绿点
+    const farx = sign<0? xin : xout;
+    [-W/2,W/2].forEach(yy=>{const c=m(farx + (sign<0?rc:-rc), yy + (yy<0?rc:-rc)); add(svg,"circle",{cx:c[0],cy:c[1],r:1.8,fill:"#2a8f5a"});});
+    // 缝面红线(x=0)
+    const a=m(0,-W/2),b=m(0,W/2);
+    add(svg,"line",{class:"cut",x1:a[0],y1:a[1],x2:b[0],y2:b[1]});
+    // 连接件
+    [wyF,wyB].forEach(wy=>{
+      if(sign<0){ // L:Pin 圆心在缝端(x=0)墙中心线
+        const c=m(0,wy);
+        add(svg,"circle",{class:"pin",cx:c[0],cy:c[1],r:P.PIN_D_BOT/2*S});
+      }else{      // R:C夹 圆心从缝端(x=0)往缝外(−x)移 CCLIP_OFFSET
+        cclip(m, -P.CCLIP_OFFSET, wy, -1);
+      }
+    });
+    return {m};
+  }
+  const Lh=drawHalf(-1), Rh=drawHalf(+1);
+  txt(svg,Lh.m(-half/2,0)[0],Lh.m(0,-W/2)[1]-6,"BasketL:Pin×2(缝端)","lbl");
+  txt(svg,Rh.m(half/2,0)[0],Rh.m(0,-W/2)[1]-6,"BasketR:C夹×2","lbl");
+  txt(svg,Lh.m(-half,0)[0]-2,Lh.m(0,0)[1],"R"+P.R_CORNER,"rlbl","end");
+  txt(svg,Rh.m(half,0)[0]+2,Rh.m(0,0)[1],"R"+P.R_CORNER,"rlbl","start");
+  txt(svg,Lh.m(-half+1,0)[0],Lh.m(0,-W/2+t+1)[1],"前墙−Y","lbl","start");
+  txt(svg,Lh.m(-half+1,0)[0],Lh.m(0,W/2-t-0.5)[1],"后墙+Y","lbl","start");
+  dimH(svg,-half,0,W/2+1.4,"14.5",Lh.m);
+  dimH(svg,0,half,W/2+1.4,"14.5",Rh.m);
+  dimV(svg,-half-0.4,-W/2,W/2,"20",Lh.m);
+})();
+
+// ---------- 俯视·缝端放大(40px/cm):前墙一套连接件,坐标按 requirement 规则 ----------
+// 局部坐标:壁厚中心线=0(横轴=沿墙长 X;纵轴=墙厚 Y,墙占 −WALL/2..+WALL/2)。
+// 缝在 X=0。GAP 表两半展示间隙。Pin 圆心(L)=(0,0);C夹圆心(R)=(+CCLIP_OFFSET? )见下。
+(function(){
+  const svg=document.getElementById("svg-seam"), s=40, GAP=1.2;
+  const cx0=150, cy0=110;   // 画布中心=缝(墙中心线)
+  const m=(x,y)=>[cx0 + x*s, cy0 - y*s];  // x沿墙长(右+), y墙厚(上+)
+  // 墙厚上下缘
+  const wt=P.WALL;
+  // L 半墙:x from -6..-GAP/2(示意一段),厚 -wt/2..+wt/2
+  add(svg,"rect",{class:"edge",x:m(-6,wt/2)[0],y:m(-6,wt/2)[1],width:(6-GAP/2)*s,height:wt*s});
+  // R 半墙:x from +GAP/2..+6
+  add(svg,"rect",{class:"edge",x:m(GAP/2,wt/2)[0],y:m(GAP/2,wt/2)[1],width:(6-GAP/2)*s,height:wt*s});
+  // 缝面红线(两半各自的 x=0,展示时被 GAP 分开)
+  add(svg,"line",{class:"cut",x1:m(-GAP/2,wt/2+0.3)[0],y1:m(0,wt/2+0.3)[1],x2:m(-GAP/2,-wt/2-0.3)[0],y2:m(0,-wt/2-0.3)[1]});
+  add(svg,"line",{class:"cut",x1:m(GAP/2,wt/2+0.3)[0],y1:m(0,wt/2+0.3)[1],x2:m(GAP/2,-wt/2-0.3)[0],y2:m(0,-wt/2-0.3)[1]});
+  // L 的 Pin:圆心在该半缝端(x=-GAP/2)墙中心线 y=0
+  const pc=m(-GAP/2,0);
+  add(svg,"circle",{class:"pin",cx:pc[0],cy:pc[1],r:P.PIN_D_BOT/2*s});
+  txt(svg,pc[0],pc[1]-P.JOINT_R*s-16,"L:Pin");
+  txt(svg,pc[0],pc[1]-P.JOINT_R*s-4,"φ5.12","dimtxt");
+  // R 的 C夹:圆心从该半缝端(x=+GAP/2)沿墙长外移 CCLIP_OFFSET(往 +x,即离缝进墙体)
+  const ccx=GAP/2 + P.CCLIP_OFFSET, cc=m(ccx,0), R=P.JOINT_R*s, rr=P.JOINT_ID/2*s, hw=P.SLOT_W/2*s;
+  add(svg,"circle",{cx:cc[0],cy:cc[1],r:R,fill:"#33415a"});   // 黑环
+  add(svg,"circle",{cx:cc[0],cy:cc[1],r:rr,fill:"#fff"});     // 白孔
+  add(svg,"rect",{x:cc[0]-R-1,y:cc[1]-hw,width:R+1,height:P.SLOT_W*s,fill:"#fff"}); // 白3mm→朝缝(左)开口
+  txt(svg,cc[0]+R+2,cc[1]-R-2,"R:C夹","lbl","start");
+  txt(svg,cc[0]+R+2,cc[1],"环−3mm","dimtxt","start");
+  // 说明
+  txt(svg,cx0,205,"Pin圆心=缝端中心线;C夹圆心 外移0.25 使2mm环壁搭墙","dimtxt");
+})();
+
+// ---------- 卡合详图(放大 70px/cm):C夹俯视(环−矩形) · Pin俯视 · 侧剖上滑 ----------
+(function(){
+  const svg=document.getElementById("svg-joint"),s=70;
+  const arrow=el("marker",{id:"ar",markerWidth:8,markerHeight:8,refX:6,refY:3,orient:"auto"});
+  arrow.appendChild(el("path",{d:"M0,0 L6,3 L0,6 Z",fill:"#2a7"}));
+  const defs=el("defs",{});defs.appendChild(arrow);svg.appendChild(defs);
+  const R=P.JOINT_R*s, r=P.JOINT_ID/2*s, hw=P.SLOT_W/2*s;
+
+  // === (a) C夹俯视 = 黑环 + 白孔 + 白3mm矩形(= bool 减出开口),朝左开口 ===
+  const ax=80, ay=90;
+  add(svg,"circle",{cx:ax,cy:ay,r:R,fill:"#33415a"});
+  add(svg,"circle",{cx:ax,cy:ay,r:r,fill:"#fff"});
+  add(svg,"rect",{x:ax-R-1,y:ay-hw,width:R+1,height:P.SLOT_W*s,fill:"#fff"});
+  txt(svg,ax,ay-R-8,"C夹俯视");
+  txt(svg,ax,ay+R+16,"外φ9·孔φ5.12·缝3mm");
+  txt(svg,ax-R-3,ay,"开口","dimtxt","end");
+
+  // === (b) Pin俯视 = 实心圆(此处画底径 φ5.12) ===
+  const bx2=210, by2=90;
+  add(svg,"circle",{cx:bx2,cy:by2,r:P.PIN_D_BOT/2*s,class:"pin"});
+  txt(svg,bx2,by2-R-8,"Pin俯视");
+  txt(svg,bx2,by2+R+16,"底φ5.12");
+
+  // === (c) 侧剖:C夹孔在上,Pin圆台在下,底大顶小,从下往上滑入 ===
+  const cx=340;
+  const ro=P.JOINT_OD/2*40, ri=P.JOINT_ID/2*40;  // 侧剖用 40px/cm 省宽
+  const postT=30, postB=110;
+  add(svg,"rect",{class:"post",x:cx-ro,y:postT,width:ro-ri,height:postB-postT});
+  add(svg,"rect",{class:"post",x:cx+ri,y:postT,width:ro-ri,height:postB-postT});
+  add(svg,"rect",{class:"hole",x:cx-ri,y:postT,width:2*ri,height:postB-postT});
+  txt(svg,cx,postT-6,"C夹孔");
+  const pT=132, pB=180, bw=P.PIN_D_BOT/2*40, tw=P.PIN_D_TOP/2*40;
+  add(svg,"polygon",{class:"pin",points:`${cx-bw},${pB} ${cx+bw},${pB} ${cx+tw},${pT} ${cx-tw},${pT}`});
+  add(svg,"line",{x1:cx,y1:pT-2,x2:cx,y2:postB+2,stroke:"#2a7","stroke-width":1.5,"marker-end":"url(#ar)"});
+  txt(svg,cx,pB+16,"Pin↑滑入");
+})();
+</script>
+</body>
+</html>

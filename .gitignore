@@ -20,3 +20,6 @@ projects/*/output/
 *.blend
 *.blend1
 *.stl
+
+# 临时调试脚本(下划线前缀,一次性排查用,不入库)
+projects/*/_*.py

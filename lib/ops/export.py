@@ -5,7 +5,7 @@
 
 ctx.params:
   pieces      : { 文件名: [对象名, ...] }  每个键=一个 STL,值=组成它的对象们
-  out_dir     : 输出目录(绝对路径)
+  out_dir     : 输出目录。相对路径按项目目录(model.json 所在)解析;缺省 "output"
   blend_name  : .blend 文件名(可选)
 在最后(spread 之后)跑。output/ 已 gitignore。
 """
@@ -16,7 +16,10 @@ import s3d
 
 def run(ctx):
     pieces = ctx.params["pieces"]
-    out_dir = ctx.params["out_dir"]
+    out_dir = ctx.params.get("out_dir", "output")
+    if not os.path.isabs(out_dir):
+        base = ctx.proj_dir or os.getcwd()
+        out_dir = os.path.join(base, out_dir)
     os.makedirs(out_dir, exist_ok=True)
     done = []
     for fname, names in pieces.items():

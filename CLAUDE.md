@@ -44,11 +44,13 @@ projects/<name>/          项目层(专属)
 
 ```python
 import sys, importlib, os
-LIB = "/Users/zhuchao14/blender/lib"
+# server 注入 __file__(脚本绝对路径),故 PROJ/LIB 从它反推,不写死;回落 SPEC3D_ROOT。
+PROJ = os.path.dirname(os.path.abspath(__file__))
+LIB = os.path.join(os.path.dirname(os.path.dirname(PROJ)), "lib")
 if LIB not in sys.path: sys.path.insert(0, LIB)
 import s3d, engine
 importlib.reload(s3d); importlib.reload(engine)   # 让本地编辑生效
-# 每次全量构建先清场,再 engine.run_model(".../model.json", lib_dir=LIB)
+# 每次全量构建先清场,再 engine.run_model(os.path.join(PROJ, "model.json"), lib_dir=LIB)
 ```
 
 ## 坐标系统(全局方法,所有项目通用)
@@ -85,7 +87,7 @@ importlib.reload(s3d); importlib.reload(engine)   # 让本地编辑生效
 1. **引擎/原子无业务,业务在 op+JSON**:`engine.py` 只调度;`s3d.py` 是无业务原子;每个 op 编码一种建法;`model.json` 承载该项目的对象/尺寸/坐标/关系。禁止把业务尺寸写进 lib。
 2. **场景即接口**:对象间只经**具名对象**交接(命名空间每次全新)。引擎按拓扑序建具名对象,后续节点靠名字(target)取前序对象。
 3. **单一尺寸源**:所有尺寸/公差/关系集中在 `model.json`(常量 + 节点)。preview.html 镜像它,改数值只改一处。禁止在 op/脚本里硬编码项目尺寸。
-4. **数据验证优先,截图仅在必要时且存档**:默认用 `scene_dump`/`inspect`/`is_watertight`/`bbox` 核对(尺寸/部件/水密)。**只有视觉缺陷(镂空缺失/对称/形态)才截图**,一旦获取存进 `screenshots/` 并说明,不丢弃。
+4. **绝不主动截图 —— 只用数据验证。** 一律用 `scene_dump`/`inspect`/`is_watertight`/`manifold_report`/`bbox` 核对(尺寸/部件/漏洞/非流形)。**永远不要调用 `get_viewport_screenshot` 或渲染截图**,哪怕想确认形态——形态由数据+HTML三视图判断,视觉验证是**人**的事。**唯一例外:人明确开口要你截图**;届时才截、且存进 `screenshots/` 不丢弃。反复截图既违规又低效,已多次踩坑。
 5. **先设计后实施,HTML 是权威规格**:动手建 3D 前,**手写**正交三视图 HTML(正/左/俯 + 等比例 + 尺寸)与需求文档。改 HTML 远比改 3D 便宜——方案闸门。人确认后才写 model.json/op。HTML **直接手写**,不写脚本生成它。等比例:统一 px/cm;镂空按真实铺阵画满;卡合接口画出来。
 6. **面向打印**:
    - 按**打印体积**拆件(如 Bambu P2S 256³mm),优先沿最长轴切分;对称件用 `mirror`,拆件用 `move` 拉开。

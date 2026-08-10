@@ -1,12 +1,24 @@
 """run_model.py — 在 Blender 里跑注册表构建 basket。
 
 用法:execute_blender_code(file_path=".../projects/basket/run_model.py")
-改 MODEL 指向要跑的注册表 JSON。命名空间每次全新 + sys.modules 缓存,故 reload。
+命名空间每次全新 + sys.modules 缓存,故 reload。
+自定位:server 注入 __file__,PROJ/LIB 从它反推;回落 SPEC3D_ROOT 环境变量。
 """
 import sys, importlib, os
 
-LIB = "/Users/zhuchao14/blender/lib"
-PROJ = "/Users/zhuchao14/blender/projects/basket"
+
+def _locate():
+    if "__file__" in globals():
+        proj = os.path.dirname(os.path.abspath(__file__))
+        root = os.path.dirname(os.path.dirname(proj))
+        return proj, os.path.join(root, "lib")
+    root = os.environ.get("SPEC3D_ROOT")
+    if not root:
+        raise RuntimeError("无 __file__ 且未设 SPEC3D_ROOT,无法定位项目路径")
+    return os.path.join(root, "projects", "basket"), os.path.join(root, "lib")
+
+
+PROJ, LIB = _locate()
 if LIB not in sys.path:
     sys.path.insert(0, LIB)
 

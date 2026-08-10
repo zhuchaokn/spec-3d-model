@@ -182,12 +182,13 @@ def _load_op(op_path, search_dirs):
 
 class Ctx:
     """传给 op 脚本的上下文。op 只需读这些字段 + 用 s3d 原子。"""
-    def __init__(self, node, center, params, targets):
+    def __init__(self, node, center, params, targets, proj_dir=None):
         self.name = node["name"]
         self.node = node
         self.center = center        # 本节点绝对质心 (cm)
         self.params = params        # 已求值的参数 dict
         self.targets = targets      # { dep_name: {"object":obj, "center":c} }
+        self.proj_dir = proj_dir    # 项目目录(model.json 所在),供 op 定位相对路径
 
 
 def run_model(json_path, lib_dir=None):
@@ -231,6 +232,6 @@ def run_model(json_path, lib_dir=None):
             targets[t] = {"object": bpy.data.objects.get(t),
                           "center": centers.get(t)}
         run = _load_op(op_path, search_dirs)
-        run(Ctx(n, center, params, targets))
+        run(Ctx(n, center, params, targets, proj_dir=proj_dir))
         built.append(name)
     return built

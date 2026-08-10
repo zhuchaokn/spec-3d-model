@@ -183,7 +183,7 @@
           "BasketL": ["BasketL", "PinLF", "PinLB"],
           "BasketR": ["BasketR", "CClipRF", "CClipRB"]
         },
-        "out_dir": "/Users/zhuchao14/blender/projects/basket/output",
+        "out_dir": "output",
         "blend_name": "basket.blend"
       }
     }

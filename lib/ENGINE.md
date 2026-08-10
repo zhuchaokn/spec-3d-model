@@ -25,7 +25,9 @@ projects/<名>/model.json ──▶ engine.run_model() ──▶ Blender 场景 
 ```python
 # projects/<名>/run_model.py
 import sys, importlib, os
-LIB = "/Users/zhuchao14/blender/lib"
+# server 注入 __file__,LIB 从脚本位置反推(projects/<名> → 仓根 → lib),不写死
+PROJ = os.path.dirname(os.path.abspath(__file__))
+LIB = os.path.join(os.path.dirname(os.path.dirname(PROJ)), "lib")
 if LIB not in sys.path: sys.path.insert(0, LIB)
 import s3d, engine
 importlib.reload(s3d); importlib.reload(engine)          # 命名空间每次全新,必须 reload
@@ -33,7 +35,7 @@ importlib.reload(s3d); importlib.reload(engine)          # 命名空间每次全
 import bpy
 for o in list(bpy.data.objects): bpy.data.objects.remove(o, do_unlink=True)  # 清场
 s3d.set_cm_units()
-engine.run_model(os.path.join(os.path.dirname(__file__), "model.json"), lib_dir=LIB)
+engine.run_model(os.path.join(PROJ, "model.json"), lib_dir=LIB)
 ```
 
 **2. 最小 model.json**(建一个空心盒):

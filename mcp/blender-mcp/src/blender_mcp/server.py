@@ -296,6 +296,12 @@ def get_viewport_screenshot(ctx: Context, max_size: int = 1000, user_prompt: str
     """
     Capture a screenshot of the current Blender 3D viewport.
 
+    DO NOT call this on your own initiative. Visual inspection is the HUMAN's job.
+    Only call it when the user EXPLICITLY asks for a screenshot in their message.
+    For verifying your own work (shape, size, geometry整体形态), use data instead:
+    scene_dump / get_object_info / (project) manifold_report / bbox — never a screenshot.
+    Screenshots are slow, low-signal for thin/dense geometry, and repeatedly misled past runs.
+
     Parameters:
     - max_size: Maximum size in pixels for the largest dimension (default: 800)
     - user_prompt: The original user prompt that led to this tool call (for telemetry)
@@ -391,6 +397,11 @@ def execute_blender_code(ctx: Context, file_path: str, user_prompt: str = "") ->
         if not path.is_file():
             return f"Error executing code: file not found at {file_path}"
         code = path.read_text(encoding="utf-8")
+        # Blender's exec() namespace has no __file__, so scripts can't locate
+        # themselves. Inject the resolved absolute path so scripts can derive
+        # their project/lib dirs via os.path.dirname(__file__) — no hardcoding.
+        header = f"__file__ = {str(path.resolve())!r}\n"
+        code = header + code
         # Get the global connection
         blender = get_blender_connection()
         result = blender.send_command("execute_code", {"code": code})
@@ -1143,11 +1154,10 @@ def asset_creation_strategy() -> str:
     return """When creating 3D content in Blender, always start by checking if integrations are available:
 
     0. Before anything, always check the scene from get_scene_info()
-    
-    **IMPORTANT: Visual Verification**
-    - Use get_viewport_screenshot() BEFORE making changes to see the current state
-    - Use get_viewport_screenshot() AFTER executing code or importing assets to verify the result
-    - This helps confirm your changes worked as expected and catch any visual issues
+
+    **Verification: prefer DATA over screenshots.**
+    - Verify your work with data (get_scene_info / get_object_info), NOT screenshots.
+    - Do NOT call get_viewport_screenshot on your own — only when the user explicitly asks for one.
     1. First use the following tools to verify if the following integrations are enabled:
         1. PolyHaven
             Use get_polyhaven_status() to verify its status

@@ -9,7 +9,7 @@ op 脚本内 `import s3d` 调用即可(引擎已把 lib 加入 sys.path)。索�
 """
 import bpy
 import bmesh
-from math import pi, cos, sin
+from math import pi, cos, sin, acos, atan2, hypot
 
 CM = 1.0 / 100.0  # cm → Blender 米
 
@@ -103,6 +103,41 @@ def add_frustum(name, dia_bot_cm, dia_top_cm, h_cm, loc_cm=(0, 0, 0), seg=64):
     return o
 
 
+def add_rounded_prism(name, size_cm, loc_cm=(0, 0, 0), radii_cm=(0, 0, 0, 0), seg=10):
+    """建 Z 向拉伸的圆角矩形棱柱(竖直边可分别倒圆),质心在 loc。
+
+    size_cm=(L,W,H);radii_cm 为 4 条竖边的圆角半径,顺序 = XY 平面四角
+    [(-x,-y), (+x,-y), (+x,+y), (-x,+y)]。某项=0 即该角保持直角。
+    用于筐体外壳/内腔:远端两角给 R、缝端两角给 0(保持平直好对合)。
+    seg=每个圆角的分段数。产出闭合流形棱柱,适合 EXACT 布尔。"""
+    L, W, H = size_cm
+    hx, hy = L / 2.0, W / 2.0
+    r0, r1, r2, r3 = radii_cm
+    # 四角圆心(相对质心)与起止角;按 CCW 顺序绕行
+    corners = [
+        (-hx + r0, -hy + r0, pi, 1.5 * pi, r0),   # (-x,-y)
+        (hx - r1, -hy + r1, 1.5 * pi, 2.0 * pi, r1),  # (+x,-y)
+        (hx - r2, hy - r2, 0.0, 0.5 * pi, r2),     # (+x,+y)
+        (-hx + r3, hy - r3, 0.5 * pi, pi, r3),     # (-x,+y)
+    ]
+    pts = []
+    fallback = [(-hx, -hy), (hx, -hy), (hx, hy), (-hx, hy)]
+    for i, (ccx, ccy, a0, a1, r) in enumerate(corners):
+        if r <= 0:
+            pts.append(fallback[i])
+        else:
+            for k in range(seg + 1):
+                a = a0 + (a1 - a0) * k / seg
+                pts.append((ccx + r * cos(a), ccy + r * sin(a)))
+
+    cx, cy, cz = loc_cm
+
+    def w(u, v, t):
+        return ((cx + u) * CM, (cy + v) * CM, (cz + t) * CM)
+
+    return _extrude_profile(name, pts, w, H)
+
+
 def prism(name, pts_uv, orient, face_pos_cm, cu_cm, cv_cm, depth_cm, v_center_cm=0.0):
     """通用流形棱柱:2D 轮廓 pts_uv(cm) 沿法向拉伸 depth_cm。
 
@@ -166,6 +201,9 @@ def _extrude_profile(name, pts, w, depth_cm):
     bm.faces.new(list(reversed(front)))
     for i in range(n):
         bm.faces.new((back[i], back[(i + 1) % n], front[(i + 1) % n], front[i]))
+    # 手工绕序对某些朝向(尤其 bottom,拉伸沿 -Z)法线会朝内 → EXACT 布尔留开口。
+    # 强制统一朝外:对已正确的网格无害,只把朝内的翻正。
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
     bm.normal_update()
     me = bpy.data.meshes.new(name)
     bm.to_mesh(me)
@@ -215,6 +253,92 @@ def heal(name, dist_cm=0.001):
     bm = bmesh.new()
     bm.from_mesh(obj.data)
     bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=dist_cm * CM)
+    bm.normal_update()
+    nm = sum(1 for e in bm.edges if len(e.link_faces) > 2)
+    bm.to_mesh(obj.data)
+    bm.free()
+    obj.data.update()
+    return nm
+
+
+def round_polygon_2d(pts, radius_cm, seg=8, only_idx=None):
+    """给 2D 多边形轮廓的顶点倒圆角,返回新点列(cm)。
+
+    pts=[(u,v),...] 闭合多边形(不重复首点);radius_cm 圆角半径;seg 每角分段。
+    only_idx=None 全部角倒圆;或给一个 index 集合,只倒这些顶点(其余保持尖角)。
+    用于凹沿等 2D 轮廓的转折点圆化。半径会自动夹到相邻边长的一半以内。"""
+    n = len(pts)
+    out = []
+    for i in range(n):
+        if only_idx is not None and i not in only_idx:
+            out.append(pts[i])
+            continue
+        p0 = pts[(i - 1) % n]
+        p1 = pts[i]
+        p2 = pts[(i + 1) % n]
+        v1 = (p0[0] - p1[0], p0[1] - p1[1])
+        v2 = (p2[0] - p1[0], p2[1] - p1[1])
+        l1 = hypot(*v1) or 1e-9
+        l2 = hypot(*v2) or 1e-9
+        r = min(radius_cm, l1 / 2, l2 / 2)
+        u1 = (v1[0] / l1, v1[1] / l1)
+        u2 = (v2[0] / l2, v2[1] / l2)
+        # 切点
+        t1 = (p1[0] + u1[0] * r, p1[1] + u1[1] * r)
+        t2 = (p1[0] + u2[0] * r, p1[1] + u2[1] * r)
+        # 圆心 = 角平分线上,距离 r/sin(theta/2)。theta=两边夹角。
+        bis = (u1[0] + u2[0], u1[1] + u2[1])
+        bl = hypot(*bis) or 1e-9
+        bis = (bis[0] / bl, bis[1] / bl)
+        # 两边夹角(0..pi):cos = u1·u2
+        cos_t = max(-1.0, min(1.0, u1[0]*u2[0] + u1[1]*u2[1]))
+        half = (pi - acos(cos_t)) / 2   # (pi-theta)/2,圆心到切点连线与平分线夹角的余
+        sin_h = sin(half) or 1e-9
+        d = r / sin_h
+        cen = (p1[0] + bis[0] * d, p1[1] + bis[1] * d)
+        a1 = atan2(t1[1] - cen[1], t1[0] - cen[0])
+        a2 = atan2(t2[1] - cen[1], t2[0] - cen[0])
+        # 取从 a1 到 a2 的最短弧(带符号,归一到 [-pi,pi])
+        da = a2 - a1
+        while da > pi:
+            da -= 2 * pi
+        while da < -pi:
+            da += 2 * pi
+        # 首末点精确落在切点上,消除数值 overshoot
+        for k in range(seg + 1):
+            if k == 0:
+                out.append(t1)
+            elif k == seg:
+                out.append(t2)
+            else:
+                a = a1 + da * k / seg
+                out.append((cen[0] + r * cos(a), cen[1] + r * sin(a)))
+    return out
+
+
+def bevel_edges(name, radius_cm, segments=20, edge_filter=None):
+    """对具名对象按谓词选边做圆角(bevel, 圆形轮廓)。用于顶沿/底边等水平边倒圆。
+
+    edge_filter(v0_cm, v1_cm)->bool:接收边两端点世界坐标(cm 三元组),返回是否倒该边。
+    None=倒所有边。radius_cm 圆角半径,segments 段数(越大越平滑)。原地修改并返回非流形边数。"""
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "MESH":
+        return None
+    bm = bmesh.new()
+    bm.from_mesh(obj.data)
+    mw = obj.matrix_world
+    if edge_filter is None:
+        sel = list(bm.edges)
+    else:
+        sel = []
+        for e in bm.edges:
+            a = mw @ e.verts[0].co
+            b = mw @ e.verts[1].co
+            if edge_filter((a.x / CM, a.y / CM, a.z / CM), (b.x / CM, b.y / CM, b.z / CM)):
+                sel.append(e)
+    if sel:
+        bmesh.ops.bevel(bm, geom=sel, offset=radius_cm * CM, segments=segments,
+                        affect='EDGES', profile=0.5, clamp_overlap=True)
     bm.normal_update()
     nm = sum(1 for e in bm.edges if len(e.link_faces) > 2)
     bm.to_mesh(obj.data)
