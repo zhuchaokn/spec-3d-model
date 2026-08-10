@@ -2,98 +2,65 @@
 
 # spec-3d-model
 
-**The discipline layer AI 3D modeling is missing.**
+**Design real, 3D-printable parts by chatting with your AI coding agent.**
 
-Spec-driven, parametric, data-verified geometry that's actually *watertight* and *printable* —
-not another mesh blob that looks fine and prints broken.
+Point Claude Code, Codex, or Cursor at this repo. Describe the part you want — it works out the
+geometry with you, builds it in Blender, and hands you an STL that actually prints.
+
+<img src="assets/demo.gif" alt="spec-3d-model demo" width="720">
+
+<sub>English · <a href="./README.zh-CN.md">中文</a></sub>
 
 </div>
 
 ---
 
-## The problem
+## What is this?
 
-Everyone is racing to make AI *generate* 3D. The output is usually **unusable**:
+You want a 3D-printed part — a bin, a bracket, a snap-fit clip. Today your options are bad:
 
-- **Mesh generators** (Shap-E, DreamFusion, Rodin, Hunyuan3D, image-to-STL) give you a blob that *looks* right but is **non-manifold, not watertight, and impossible to edit**. A professional has to rebuild it from scratch.
-- **Text-to-CAD / "vibe-CAD"** tools produce editable code, but openly admit their limits — "simple shapes only, the AI can't see the render, no self-correction yet" — and that **printability optimization is still on the backlog**.
+- **AI mesh generators** (Shap-E, Rodin, Hunyuan3D…) give you a blob that *looks* right but is leaky, non-manifold, and impossible to edit. It won't print.
+- **CAD** actually works, but you have to learn CAD.
 
-The AI doesn't need to be smarter. **The geometry needs discipline.**
-
-## What this is (and isn't)
-
-spec-3d-model is **not** a "type a prompt, get a model" generator. It's an **engine + methodology**: you (or an AI agent) declare a model as **one JSON source of truth**, and a pure scheduling engine builds it in Blender — with the engineering discipline that makes parts *actually printable*:
-
-- **One JSON = single source of truth.** Constants + object topology (size / parent / relative coords / which op builds it). Change a dimension in one place.
-- **Data-verified, not eyeballed.** Every part is checked with `manifold_report` — the pass criterion is **boundary edges = 0** (truly watertight), not "looks closed."
-- **Print-aware by construction.** Cutter-overhang discipline (no degenerate coplanar faces), FDM-friendly orientation (pointy-top hexes avoid horizontal bridging), keep-out bands around seams.
-- **Auto-split for your print bed.** Parts larger than the bed (e.g. Bambu 256³mm) are split along the longest axis and rejoined with C-clip + pin snap-fits.
-
-> It shines when you want a **functional part that actually prints**, not a pretty sculpture.
-
-## How it compares
-
-| | Mesh generators | vibe-CAD | **spec-3d-model** |
-|---|---|---|---|
-| Parametric / editable | ❌ black-box mesh | ✅ code | ✅ one JSON source of truth |
-| Watertight / manifold check | ❌ | ❌ (eyeballed) | ✅ boundary edges = 0 |
-| Printability-aware | ❌ | ❌ (on backlog) | ✅ overhang / keep-out / FDM |
-| Auto-split for print bed | ❌ | ❌ | ✅ split + snap-fit joints |
+spec-3d-model is a third way: **you talk to an AI agent, and the agent does the modeling** — with the engineering discipline that makes the result truly watertight and printable. Not a one-click generator; a method the agent follows so the geometry comes out *right*, and you can change any dimension later by editing one number.
 
 ## Quick start
 
-**Prerequisites:** Blender ≥ 3.0, Python ≥ 3.10, [uv](https://github.com/astral-sh/uv).
+**Prerequisites:** Blender ≥ 3.0, an MCP-capable agent (Claude Code / Codex / Cursor / …), [uv](https://github.com/astral-sh/uv).
 
-1. **Install the Blender addon.** In Blender: *Edit > Preferences > Add-ons > Install...* and select `mcp/blender-mcp/addon.py`. Enable **"Interface: Blender MCP"**.
-2. **Start the bridge.** In the 3D View sidebar (press `N`) → **BlenderMCP** tab → **Connect**.
-3. **Point your MCP client at the bundled server** (see [`.mcp.json`](./.mcp.json)) and clone this repo.
-4. **Build a model:**
-   ```
-   execute_blender_code(file_path="<repo>/projects/clip_tester/run_model.py")
-   ```
-   You'll see each part reported with `漏洞=0` (boundary edges = 0 → watertight), and STLs written to `projects/clip_tester/output/`.
+1. **Clone this repo** and open it in your agent.
+2. **Install the Blender addon** — in Blender: *Edit > Preferences > Add-ons > Install...*, pick `mcp/blender-mcp/addon.py`, enable **"Interface: Blender MCP"**. Then in the 3D View sidebar (`N`) → **BlenderMCP** tab → **Connect**. (The repo ships the MCP server config in [`.mcp.json`](./.mcp.json).)
+3. **Just tell the agent what you want.** For example:
+   > "I want an open-top storage bin, roughly 29×20×20 cm, 3 mm walls, with hex cutouts."
 
-No paths to configure — scripts locate themselves (see [Why we forked BlenderMCP](#why-we-forked-blendermcp)).
+From there the agent runs the workflow for you:
 
-## Examples
+| Step | What happens | Your part |
+|---|---|---|
+| **1. Talk it through** | The agent asks about dimensions, fit, how it'll be used. | Answer in plain language. |
+| **2. Three-view sketch** | It hand-draws an orthographic `preview.html` (front / side / top, to scale). **This is the hard part** — AI has poor spatial sense, so this is where you correct the geometry. | Eyeball the drawing; fix what's wrong. **Approve before it builds.** |
+| **3. Build + verify** | Once you approve, it writes the `model.json` spec and renders it in Blender, checking every part is watertight (boundary edges = 0). | Nothing — it's automatic. |
+| **4. Export** | It exports print-ready STL(s), auto-split if the part is bigger than your print bed. | Send to your slicer. |
 
-| Project | What it demonstrates |
-|---|---|
-| [`projects/clip_tester`](./projects/clip_tester) | The smallest win: a snap-fit test coupon to dial in tolerances before committing to a full split. |
-| [`projects/basket`](./projects/basket) | End-to-end: a 29×20×20cm bin, hex-cutout walls, split across the print bed and joined with C-clip + pin. |
-| [`projects/basket_round`](./projects/basket_round) | A rounded variant — same JSON topology, different constants. |
+The three-view gate in step 2 is the whole trick: fixing a drawing is cheap, fixing a bad 3D model is expensive.
 
-New project? Copy [`templates/project`](./templates/project) and read [`lib/ENGINE.md`](./lib/ENGINE.md).
+## Why it works
 
-## How it works
+Under the hood, a part is **one JSON file = a single source of truth** (constants + object topology), built by a pure engine. That design buys the things AI 3D usually gets wrong:
 
-```
-projects/<name>/model.json  ──▶  engine.run_model()  ──▶  Blender scene + exported STL
-```
+- **Proof, not eyeballing.** Every part is measured with `manifold_report`; the bar is **boundary edges = 0** (truly watertight), reported honestly — an open bin shows its open rim, it doesn't fake a seal.
+- **Printability baked in.** Cutters overhang so booleans leave no degenerate faces; hexes point up so FDM never bridges a flat span; seams carry keep-out bands.
+- **Bigger than your print bed? Auto-split.** Parts over the build volume (e.g. Bambu 256³mm) split along the longest axis and reconnect with C-clip + pin snap-fits.
+- **Parametric forever.** Change one constant (say a wall from 3 mm to 5 mm) and the whole part updates. No re-modeling.
 
-- **`lib/engine.py`** — pure scheduler: evaluate expressions → resolve absolute coords → topological sort → call each op. Knows nothing about specific shapes.
-- **`lib/s3d.py`** — business-free Blender atoms (boxes, booleans, coordinate helpers, diagnostics).
-- **`lib/ops/*.py`** — one op = one "how to build" (box / subtract / frustum / mirror / export …).
-- **`model.json`** — the only place project dimensions live.
-
-Full manual: [`lib/ENGINE.md`](./lib/ENGINE.md).
+Examples to look at: [`projects/clip_tester`](./projects/clip_tester) (a snap-fit test coupon — the smallest win), [`projects/basket`](./projects/basket) (a full bin, split for the bed). The engine internals live in [`lib/`](./lib) and are documented in [`lib/ENGINE.md`](./lib/ENGINE.md).
 
 ## Credits — built on BlenderMCP
 
-This project stands on the shoulders of **[BlenderMCP](https://github.com/MCPBlender/blender-mcp)** — the excellent bridge that connects Blender to any LLM over the Model Context Protocol. Without it, none of this exists; **it is the foundation this work is built on**, and we're grateful for it. If you find spec-3d-model useful, please go star BlenderMCP too.
+spec-3d-model stands on the shoulders of **[BlenderMCP](https://github.com/MCPBlender/blender-mcp)**, the bridge that connects Blender to any LLM over the Model Context Protocol. **It's the foundation this project is built on** — without it, none of this exists, and we're grateful for it. If spec-3d-model is useful to you, please go star BlenderMCP too.
 
-### Why we forked BlenderMCP
+**Why the repo bundles a fork of it:** our workflow is inherently **multi-file** — a run script imports a shared engine and ops plus a `model.json`, all real files on disk that reference each other. Upstream runs Python by taking the **code inlined as a string** into the tool call, which can't express a project spread across files. So our fork under [`mcp/blender-mcp`](./mcp/blender-mcp) makes the execution tool **take a file path** instead (the server reads the script from disk), and injects `__file__` so scripts locate their own directories — zero hardcoded paths. Nothing is wrong with upstream; we'd gladly contribute this back.
 
-We vendored a fork under [`mcp/blender-mcp`](./mcp/blender-mcp) for **one specific reason** — nothing is wrong with the upstream project:
+## Contributing & license
 
-Our whole approach is **multi-file engineering**. A model isn't one snippet — it's a run script that imports a shared engine and ops, plus a `model.json` source of truth: real files on disk that reference each other. Upstream BlenderMCP executes Python by taking the **code as a string inlined into the tool call**. That's a great fit for one-off scripts, but it can't express a project that lives across multiple files.
-
-So we changed the code-execution tool to **take a file path instead of an inlined code string** — the server reads the script from disk and runs it. This is also far cheaper in tokens than pasting the whole engine into every call. One small follow-on: because Blender's `exec()` namespace has no `__file__`, we inject the script's resolved absolute path before execution, so every script can locate its own project/lib directories — **zero hardcoded paths**. We'd be happy to contribute this upstream.
-
-## Contributing
-
-New ops and new example projects are the most welcome contributions. See [CONTRIBUTING.md](./CONTRIBUTING.md) — it's short, and [`lib/ENGINE.md`](./lib/ENGINE.md) covers the mechanics.
-
-## License
-
-[MIT](./LICENSE). The vendored BlenderMCP fork under [`mcp/blender-mcp`](./mcp/blender-mcp) keeps its own upstream license.
+New ops and new example parts are the most welcome contributions — see [CONTRIBUTING.md](./CONTRIBUTING.md). Licensed [MIT](./LICENSE); the vendored BlenderMCP fork keeps its own upstream license.
