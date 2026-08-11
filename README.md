@@ -24,6 +24,20 @@ You want a 3D-printed part — a bin, a bracket, a snap-fit clip. Today your opt
 
 spec-3d-model is a third way: **you talk to an AI agent, and the agent does the modeling** — with the engineering discipline that makes the result truly watertight and printable. Not a one-click generator; a method the agent follows so the geometry comes out *right*, and you can change any dimension later by editing one number.
 
+## How this came to be
+
+I bought a Bambu P2S — and couldn't model a thing. A whole Black-Friday pile of filament just sat there gathering dust.
+
+I tried learning Blender. For a total beginner it was too much: getting as far as *bevel*, enough to make a little ramp so my robot vacuum could climb a step, was already my limit.
+
+So I turned to blender-mcp and let an AI agent generate models. I quickly found the "describe-it-and-get-a-model" AIs basically unusable — you can't adjust what they make, it's never quite what you meant. They'll happily generate an elaborate figurine, a cartoon animal, a Super Mario — **yet somehow can't make a decent wedge ramp for a robot vacuum**; and when an agent writes Python to build geometry directly, it tops out at simple primitives and their combinations.
+
+To make my wife a hex-cutout bin for sewing patterns, 29×20×20 cm (too big for the P2S — I had to split it), I started building by **geometric decomposition**: break a complex model into ordered, grouped steps, then let blender-mcp actually execute them. Doing that, I realized the process abstracts into a small engine — **divide-and-conquer** is the whole idea: a finite set of geometric moves, but an enormous space to imagine within.
+
+And the key part: through that abstraction, we turn the 3D spatial reasoning AI is **bad at** into the Code it's **best at**.
+
+It's still rough, which is exactly why I'm looking for people to help — two areas especially: it asks something of the user (in the three-view stage you need a bit of solid-geometry sense, going back and forth with the agent until it truly gets your intent — after that it's smooth), and it's thin on modeling technique (my Blender skills are weak). Fill those in and the tool gets far more powerful.
+
 ## Quick start
 
 **Prerequisites:** Blender ≥ 3.0, an MCP-capable agent (Claude Code / Codex / Cursor / …), [uv](https://github.com/astral-sh/uv).
