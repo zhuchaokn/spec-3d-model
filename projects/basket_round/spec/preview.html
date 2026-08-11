@@ -30,7 +30,7 @@
 </head>
 <body>
   <h1>纸样收纳筐 · 圆润版 — 三视图设计(等比例 1cm = 10px)</h1>
-  <p>在原 basket 上做<b>整体圆润化去锐</b>。外形 <b>29(X) × 20(Y) × 20(Z) cm</b>,壁厚 3mm,敞口。四壁+底 pointy-top 六边形镂空(孔宽1.5,间距0.42),
+  <p>在原 basket 上做<b>整体圆润化去锐</b>。外形 <b>27(X) × 25(Y) × 20(Z) cm</b>,壁厚 3mm,敞口。四壁+底 pointy-top 六边形镂空(孔宽1.5,间距0.42),
      前后长墙 <b>╲___╱ 凹沿</b>,左右短墙 <b>8×4 胶囊把手</b>。沿 <b style="color:#c0392b">X=0 切两半</b>,
      左半配 <b style="color:#8a6d2b">圆台 Pin</b>、右半配 <b>C夹</b>。
      <span class="k" style="background:#c0392b"></span>切缝
@@ -50,12 +50,12 @@
       <svg id="svg-front" width="392" height="300"></svg>
     </figure>
     <figure class="view">
-      <figcaption>左视图 left(看 +X · 侧短墙 20×20 + 把手)</figcaption>
-      <svg id="svg-left" width="276" height="300"></svg>
+      <figcaption>左视图 left(看 +X · 侧短墙 25×20 + 把手)</figcaption>
+      <svg id="svg-left" width="326" height="300"></svg>
     </figure>
     <figure class="view">
-      <figcaption>俯视图 top(看 −Z · 开口 29×20;缝端连接件另见放大框)</figcaption>
-      <svg id="svg-top" width="376" height="304"></svg>
+      <figcaption>俯视图 top(看 −Z · 开口 27×25;缝端连接件另见放大框)</figcaption>
+      <svg id="svg-top" width="376" height="354"></svg>
     </figure>
     <figure class="view">
       <figcaption>俯视·缝端放大(前墙一套:L的Pin 与 R的C夹)</figcaption>
@@ -74,8 +74,8 @@
   <h2>组件分解 + 构建顺序(先独立建每一半含镂空,再加卡合,最后分隔)</h2>
   <table>
     <tr><th>顺序</th><th>组件</th><th>契约(输入场景 → 输出具名对象)</th></tr>
-    <tr><td>1</td><td><code>left_half</code></td><td>空场景 → 建 <code>BasketL</code>:左半空心壳(X −14.5..0,墙3mm,x=0切缝面敞开)+ 六边形镂空 + 凹沿(左段)+ 左短墙(−X)把手</td></tr>
-    <tr><td>2</td><td><code>right_half</code></td><td>→ 建 <code>BasketR</code>:右半(X 0..14.5)+ 镂空 + 凹沿(右段)+ 右短墙(+X)把手</td></tr>
+    <tr><td>1</td><td><code>left_half</code></td><td>空场景 → 建 <code>BasketL</code>:左半空心壳(X −13.5..0,墙3mm,x=0切缝面敞开)+ 六边形镂空 + 凹沿(左段)+ 左短墙(−X)把手</td></tr>
+    <tr><td>2</td><td><code>right_half</code></td><td>→ 建 <code>BasketR</code>:右半(X 0..13.5)+ 镂空 + 凹沿(右段)+ 右短墙(+X)把手</td></tr>
     <tr><td>3</td><td><code>pin</code></td><td>对 <code>BasketL</code> 前后切缝墙加圆台 Pin(底φ5.12/顶φ5.0),join 进 BasketL</td></tr>
     <tr><td>4</td><td><code>cclip</code></td><td>对 <code>BasketR</code> 前后切缝墙加 C夹(墩φ9+孔φ5.12+朝外开缝),join 进 BasketR</td></tr>
     <tr><td>5</td><td><code>layout</code></td><td>把 BasketL/BasketR 沿 X 分隔摆放(展示/导出,导出前可对合)</td></tr>
@@ -86,7 +86,7 @@
 <script>
 // ===== 尺寸(镜像 model.json,cm) =====
 const P = {
-  LENGTH:29, WIDTH:20, HEIGHT:20, WALL:0.3,
+  LENGTH:27, WIDTH:25, HEIGHT:20, WALL:0.3,
   R_CORNER:3.5, R_TOP:0.6, R_BOT:1.2, R_SCALLOP:1.5,   // ← 圆润版新增(可调)
   HEX_W:1.5, HEX_GAP:0.42, R:1.5/Math.sqrt(3), HH:0.75,
   MARGIN_SIDE:1.0, MARGIN_BOTTOM:1.2, MARGIN_TOP:1.0,
@@ -188,7 +188,7 @@ function polyPath(pts,m){return pts.map(([x,y])=>{const[px,py]=m(x,y);return px.
 // ---------- 正视图:两个独立分筐 BasketL / BasketR,中间留间隙 ----------
 (function(){
   const svg=document.getElementById("svg-front"),L=P.LENGTH,H=P.HEIGHT,GAP=1.6;
-  // 每半宽 L/2=14.5;半的本地坐标 x∈[-L/2,0](左半) / [0,L/2](右半)
+  // 每半宽 L/2=13.5;半的本地坐标 x∈[-L/2,0](左半) / [0,L/2](右半)
   // 摆放:左半整体左移 GAP/2,右半右移 GAP/2,中间空开
   const half=L/2;
   const map=(x,z)=>[PAD+(x+half+GAP/2)*S, PAD+(H-z)*S];  // 画布左边基准
@@ -223,7 +223,7 @@ function polyPath(pts,m){return pts.map(([x,y])=>{const[px,py]=m(x,y);return px.
       add(svg,"path",{class:"round",d:d2});
     });
   }
-  // 左半:x -14.5..0(切缝在 x=0);左移 -GAP/2
+  // 左半:x -13.5..0(切缝在 x=0);左移 -GAP/2
   function drawHalf(sign){
     const dx=sign*GAP/2;
     const m=(x,z)=>map(x+dx,z);
@@ -246,9 +246,9 @@ function polyPath(pts,m){return pts.map(([x,y])=>{const[px,py]=m(x,y);return px.
   txt(svg, Lh.m(-half/2,H)[0], Lh.m(0,H)[1]-4, "BasketL(带Pin)","lbl");
   txt(svg, Rh.m(half/2,H)[0], Rh.m(0,H)[1]-4, "BasketR(带C夹)","lbl");
   txt(svg, map(0,profileZ(0))[0], map(0,H/2)[1], "切缝面","dimtxt");
-  // 尺寸:各半 14.5 + 凹沿深
-  dimH(svg,-half,0,-1.4,"14.5",Lh.m);
-  dimH(svg,0,half,-1.4,"14.5",Rh.m);
+  // 尺寸:各半 13.5 + 凹沿深
+  dimH(svg,-half,0,-1.4,"13.5",Lh.m);
+  dimH(svg,0,half,-1.4,"13.5",Rh.m);
   dimV(svg,-half-0.4,0,H,"20",Lh.m);
   txt(svg,Lh.m(-half+P.SCALLOP_CORNER,H)[0]+6,Lh.m(0,H-P.SCALLOP_DIP/2)[1],"凹5","dimtxt","start");
 })();
@@ -271,7 +271,7 @@ function polyPath(pts,m){return pts.map(([x,y])=>{const[px,py]=m(x,y);return px.
   add(svg,"rect",{class:"hole",x:hp[0],y:hp[1],width:P.HANDLE_W*S,height:P.HANDLE_H*S,rx:rpx,ry:rpx});
   dimH(svg,-P.HANDLE_W/2,P.HANDLE_W/2,z1+1.0,"宽8",map);
   txt(svg,map(P.HANDLE_W/2,(z0+z1)/2)[0]+14,map(0,(z0+z1)/2)[1],"高4","dimtxt","start");
-  dimH(svg,-W/2,W/2,-1.4,"20 cm",map);
+  dimH(svg,-W/2,W/2,-1.4,"25 cm",map);
   dimV(svg,-W/2-0.4,0,H,"20",map);
 })();
 
@@ -334,9 +334,9 @@ function polyPath(pts,m){return pts.map(([x,y])=>{const[px,py]=m(x,y);return px.
   txt(svg,Rh.m(half,0)[0]+2,Rh.m(0,0)[1],"R"+P.R_CORNER,"rlbl","start");
   txt(svg,Lh.m(-half+1,0)[0],Lh.m(0,-W/2+t+1)[1],"前墙−Y","lbl","start");
   txt(svg,Lh.m(-half+1,0)[0],Lh.m(0,W/2-t-0.5)[1],"后墙+Y","lbl","start");
-  dimH(svg,-half,0,W/2+1.4,"14.5",Lh.m);
-  dimH(svg,0,half,W/2+1.4,"14.5",Rh.m);
-  dimV(svg,-half-0.4,-W/2,W/2,"20",Lh.m);
+  dimH(svg,-half,0,W/2+1.4,"13.5",Lh.m);
+  dimH(svg,0,half,W/2+1.4,"13.5",Rh.m);
+  dimV(svg,-half-0.4,-W/2,W/2,"25",Lh.m);
 })();
 
 // ---------- 俯视·缝端放大(40px/cm):前墙一套连接件,坐标按 requirement 规则 ----------

@@ -2,7 +2,7 @@
   "_note": "basket 简化配方(用户方案):只精建 BasketL,镜像出 R,再配 Pin/C夹,最后拉开。切割器一律探出被切面(不共面)→ 敞口/镂空干净。缝在 X=0:BasketL 占 x∈[-HALF,0],seam=+x。",
 
   "constants": {
-    "L": 29.0, "W": 20.0, "H": 20.0, "WALL": 0.3,
+    "L": 27.0, "W": 25.0, "H": 20.0, "WALL": 0.3,
     "R_CORNER": 2.2,
     "R_CORNER_IN": "R_CORNER - WALL",
     "ROUND_SEG": 20,
