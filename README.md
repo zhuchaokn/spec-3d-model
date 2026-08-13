@@ -78,3 +78,5 @@ spec-3d-model stands on the shoulders of **[BlenderMCP](https://github.com/MCPBl
 ## Contributing & license
 
 New ops and new example parts are the most welcome contributions — see [CONTRIBUTING.md](./CONTRIBUTING.md). Licensed [MIT](./LICENSE); the vendored BlenderMCP fork keeps its own upstream license.
+
+<!-- maintained by zhuchaokn -->
