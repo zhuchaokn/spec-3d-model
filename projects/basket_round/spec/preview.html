@@ -66,7 +66,7 @@
   <h2>卡合详图:左半 Pin 圆台 沿 Z 落入 右半 C夹竖孔(放大 40px/cm)</h2>
   <div class="views">
     <figure class="view">
-      <figcaption>侧剖:Pin(底φ5.12/顶φ5.0)落入 C夹孔;右下:C夹俯视(真 C 形开口)</figcaption>
+      <figcaption>侧剖:Pin(底φ5.12/顶φ4.8)落入 C夹孔;右下:C夹俯视(真 C 形开口)</figcaption>
       <svg id="svg-joint" width="420" height="230"></svg>
     </figure>
   </div>
@@ -76,7 +76,7 @@
     <tr><th>顺序</th><th>组件</th><th>契约(输入场景 → 输出具名对象)</th></tr>
     <tr><td>1</td><td><code>left_half</code></td><td>空场景 → 建 <code>BasketL</code>:左半空心壳(X −13.5..0,墙3mm,x=0切缝面敞开)+ 六边形镂空 + 凹沿(左段)+ 左短墙(−X)把手</td></tr>
     <tr><td>2</td><td><code>right_half</code></td><td>→ 建 <code>BasketR</code>:右半(X 0..13.5)+ 镂空 + 凹沿(右段)+ 右短墙(+X)把手</td></tr>
-    <tr><td>3</td><td><code>pin</code></td><td>对 <code>BasketL</code> 前后切缝墙加圆台 Pin(底φ5.12/顶φ5.0),join 进 BasketL</td></tr>
+    <tr><td>3</td><td><code>pin</code></td><td>对 <code>BasketL</code> 前后切缝墙加圆台 Pin(底φ5.12/顶φ4.8),join 进 BasketL</td></tr>
     <tr><td>4</td><td><code>cclip</code></td><td>对 <code>BasketR</code> 前后切缝墙加 C夹(墩φ9+孔φ5.12+朝外开缝),join 进 BasketR</td></tr>
     <tr><td>5</td><td><code>layout</code></td><td>把 BasketL/BasketR 沿 X 分隔摆放(展示/导出,导出前可对合)</td></tr>
   </table>
@@ -93,7 +93,7 @@ const P = {
   SCALLOP_DIP:5, SCALLOP_CORNER:4, SCALLOP_FLAT:6,
   HANDLE_W:8, HANDLE_H:4, HANDLE_GAP_TOP:3,
   SEAM_HALF:0.75, JOINT_OD:0.9, JOINT_ID:0.512, JOINT_R:0.45,
-  PIN_D_TOP:0.5, PIN_D_BOT:0.512, SLOT_W:0.30, JOINT_TOP:15, CCLIP_OFFSET:0.25,
+  PIN_D_TOP:0.48, PIN_D_BOT:0.512, SLOT_W:0.30, JOINT_TOP:15, CCLIP_OFFSET:0.25,
 };
 const S = 10, PAD = 30;   // px/cm, 内边距
 const NS = "http://www.w3.org/2000/svg";
