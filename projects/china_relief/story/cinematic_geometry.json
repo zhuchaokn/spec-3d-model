@@ -1,5 +1,5 @@
 {
-  "display_mesh_count": 50,
+  "display_mesh_count": 53,
   "province_count": 32,
   "tile_ids": [
     "Tray_X1_Y1",
@@ -13,6 +13,28 @@
     0.4
   ],
   "inset_source_components": 191,
-  "bytes": 3134002,
-  "original_print_files_modified": false
+  "bytes": 3798354,
+  "original_print_files_modified": false,
+  "sea_land_overlap_checks": [
+    {
+      "tile": "Tray_X1_Y1",
+      "sea_land_top_overlap_cm2": 0.0,
+      "sea_area_cm2": 222.72517348000002
+    },
+    {
+      "tile": "Tray_X2_Y1",
+      "sea_land_top_overlap_cm2": 0.0,
+      "sea_area_cm2": 361.3340507649997
+    },
+    {
+      "tile": "Tray_X1_Y2",
+      "sea_land_top_overlap_cm2": 0.0,
+      "sea_area_cm2": 0.0
+    },
+    {
+      "tile": "Tray_X2_Y2",
+      "sea_land_top_overlap_cm2": 0.0,
+      "sea_area_cm2": 112.14092857999992
+    }
+  ]
 }

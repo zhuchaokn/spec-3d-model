@@ -8,6 +8,7 @@ P=Path(__file__).resolve().parents[1];A=P/'story/assets'
 manifest=json.loads((P/'output/printing/print_manifest.json').read_text());model=json.loads((P/'model.json').read_text());report=json.loads((P/'spec/data_report.json').read_text())
 palette={p['id']:p['hex'] for p in manifest['palette']}
 raw=(A/'motion-mesh.js').read_text();source=json.loads(raw[raw.index('=')+1:].rstrip(';'))
+overlap_checks=[]
 out={'bounds':report['tray_bounds_cm'],'dimensions':{'slot_depth_cm':model['constants']['SLOT_DEPTH'],'floor_cm':model['constants']['TRAY_FLOOR'],'platform_cm':model['constants']['TRAY_FLOOR']+model['constants']['SLOT_DEPTH'],'vertical_exaggeration':model['constants']['VERTICAL_EXAGGERATION']},'meshes':[]}
 for m in source['meshes']:out['meshes'].append({**m,'kind':'province','tile':None})
 # Build lightweight layered display solids from the source footprints, avoiding
@@ -19,7 +20,7 @@ fixed=shapely.union_all([shape(f['geometry']) for f in json.loads((P/'data/proce
 x0,y0,x1,y1=out['bounds'];frame_width=model['constants']['TRAY_FRAME_WIDTH']
 frame=shapely.geometry.box(x0,y0,x1,y1).difference(shapely.geometry.box(x0+frame_width,y0+frame_width,x1-frame_width,y1-frame_width))
 def solid(g,z0,z1):
- g=shapely.orient_polygons(g.simplify(.012,preserve_topology=True));v=[];f=[];idx={}
+ g=shapely.orient_polygons(g);v=[];f=[];idx={}
  def vertex(xy,z):
   key=tuple(round(n,4) for n in (*xy,z))
   if key not in idx:idx[key]=len(v);v.append(key)
@@ -37,11 +38,24 @@ def solid(g,z0,z1):
     lo1,lo2=vertex(a,z0),vertex(b,z0);hi1,hi2=vertex(a,z1),vertex(b,z1)
     f.extend([[lo1,lo2,hi2],[lo1,hi2,hi1]])
  return v,np.asarray(f).flatten().tolist()
+# Simplify shared masks BEFORE taking complementary differences, so coastline
+# vertices stay identical on both materials. Never stack equal-height sea/land caps.
+ocean=shapely.set_precision(ocean.simplify(.012,preserve_topology=True),.0001)
+recess=shapely.set_precision(recess.simplify(.012,preserve_topology=True),.0001)
+fixed=shapely.set_precision(fixed.simplify(.012,preserve_topology=True),.0001)
 for tray,info in manifest['multicolor_bases'].items():
  part=next(p for p in info['parts'] if '灰色结构' in p['name']);d=np.load(P/'output/printing'/f"{part['name']}.npz")
  vertices=(d['vertices']+d['assembly_offset_mm'])/10;faces=d['faces'];bottom=faces[np.all(np.isclose(vertices[faces,2],0,atol=1e-6),axis=1)]
  footprint=shapely.union_all([shapely.geometry.Polygon(vertices[t,:2]) for t in bottom]).buffer(0)
- for name,kind,g,z0,z1,color in [('floor','base',footprint,0,floor,palette[1]),('platform','base',footprint.difference(recess),floor,top,palette[1]),('frame','base',footprint.intersection(frame),top,top+model['constants']['TRAY_FRAME_RISE'],palette[1]),('sea','sea',footprint.intersection(ocean).difference(frame),top-.04,top,palette[2]),('fixed','base',footprint.intersection(fixed),floor,top+.08,palette[1])]:
+ footprint=shapely.set_precision(footprint.simplify(.012,preserve_topology=True),.0001)
+ sea=footprint.intersection(ocean).difference(frame).difference(fixed)
+ # Display-only 3 micron shore clearance survives vertex quantization.
+ # This prevents tiny cap overlaps introduced by rounded intersections.
+ platform=footprint.difference(recess).difference(sea.buffer(.0003))
+ overlap=platform.intersection(sea).area
+ assert overlap<1e-8, (tray,overlap)
+ overlap_checks.append({'tile':tray,'sea_land_top_overlap_cm2':overlap,'sea_area_cm2':sea.area})
+ for name,kind,g,z0,z1,color in [('floor','base',footprint,0,floor,palette[1]),('platform','base',platform,floor,top,palette[1]),('sea_substrate','base',sea,floor,top-.04,palette[1]),('frame','base',footprint.intersection(frame),top,top+model['constants']['TRAY_FRAME_RISE'],palette[1]),('sea','sea',sea,top-.04,top,palette[2]),('fixed','base',footprint.intersection(fixed),floor,top+.08,palette[1])]:
   v,f=solid(g,z0,z1)
   if v:out['meshes'].append(dict(name=tray+'_'+name,kind=kind,tile=tray,vertices=v,indices=f,color=color,center=np.mean(v,axis=0).tolist()))
 # Keep fixed Hong Kong / Macao terrain in the display base as well.
@@ -83,6 +97,6 @@ out['insetBounds']=report['inset']['panel_bounds_cm'];out['insetSourceComponents
 # SVG texture preserves every source island and dash contour.
 s=(A/'inset.svg').read_text().replace('<svg ','<svg width="384" height="576" ',1)
 (A/'cinema-inset.svg').write_text(s)
-proof={'display_mesh_count':len(out['meshes']),'province_count':sum(m['kind']=='province' for m in out['meshes']),'tile_ids':list(manifest['multicolor_bases']),'recess_depth_cm':out['dimensions']['slot_depth_cm'],'display_lid_z_range_cm':[floor,top],'inset_source_components':out['insetSourceComponents'],'bytes':(A/'cinema-mesh.js').stat().st_size,'original_print_files_modified':False}
+proof={'display_mesh_count':len(out['meshes']),'province_count':sum(m['kind']=='province' for m in out['meshes']),'tile_ids':list(manifest['multicolor_bases']),'recess_depth_cm':out['dimensions']['slot_depth_cm'],'display_lid_z_range_cm':[floor,top],'inset_source_components':out['insetSourceComponents'],'bytes':(A/'cinema-mesh.js').stat().st_size,'original_print_files_modified':False,'sea_land_overlap_checks':overlap_checks}
 (P/'story/cinematic_geometry.json').write_text(json.dumps(proof,indent=2)+'\n')
 print(proof)
