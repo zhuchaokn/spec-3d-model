@@ -1,5 +1,5 @@
 {
-  "static_package_sha256": "6f20ef163b3f898562e0fc73c0da7d1ad47d9fafde842564b599a91d0751a0c3",
+  "static_package_sha256": "8f9ca6705a2a725125d5ce4b81d7d876ccaa545efacb0ced175702e2e7cf6dd5",
   "total_seconds": 97.152,
   "no_initial_audio": true,
   "no_initial_model": true,
@@ -40,7 +40,7 @@
       "page": 1,
       "t": 3,
       "shot": "intro-macro-pullback",
-      "elevation": 50.99999999999999,
+      "elevation": 51,
       "growth": 1,
       "sink": 0,
       "split": 0
@@ -92,7 +92,7 @@
     },
     {
       "page": 4,
-      "t": 0.4,
+      "t": 0.5,
       "shot": "xy-projection",
       "elevation": 84,
       "growth": 0,
@@ -110,18 +110,18 @@
     },
     {
       "page": 4,
-      "t": 4.3,
+      "t": 4.4,
       "shot": "terrain-camera-orbit",
-      "elevation": 83.97756699593802,
+      "elevation": 84,
       "growth": 1,
       "sink": 0,
       "split": 0
     },
     {
       "page": 4,
-      "t": 5.3,
+      "t": 5.4,
       "shot": "terrain-camera-orbit",
-      "elevation": 19.46470316887273,
+      "elevation": 19.464703168872738,
       "growth": 1,
       "sink": 0,
       "split": 0
@@ -130,7 +130,7 @@
       "page": 4,
       "t": 6.4,
       "shot": "terrain-camera-orbit",
-      "elevation": 19.464703168872735,
+      "elevation": 19.464703168872738,
       "growth": 1,
       "sink": 0,
       "split": 0
@@ -148,7 +148,7 @@
       "page": 4,
       "t": 9.5,
       "shot": "mountain-tracking-closeup",
-      "elevation": 27.58490605987747,
+      "elevation": 27.243005373089336,
       "growth": 1,
       "sink": 0,
       "split": 0
@@ -157,7 +157,7 @@
       "page": 4,
       "t": 12,
       "shot": "mountain-tracking-closeup",
-      "elevation": 31.847203130991435,
+      "elevation": 31.76441269196709,
       "growth": 1,
       "sink": 0,
       "split": 0
@@ -175,7 +175,7 @@
       "page": 4,
       "t": 17.7,
       "shot": "south-sea-inset-closeup",
-      "elevation": 40.33955291627042,
+      "elevation": 40.33823125891025,
       "growth": 1,
       "sink": 0,
       "split": 0
@@ -184,7 +184,7 @@
       "page": 4,
       "t": 22.9,
       "shot": "cards-snap-lift",
-      "elevation": 42,
+      "elevation": 42.66666666666669,
       "growth": 1,
       "sink": 0,
       "split": 0
@@ -193,7 +193,7 @@
       "page": 4,
       "t": 25.3,
       "shot": "recess-sinks-2mm",
-      "elevation": 13.4171695171917,
+      "elevation": 13.422881243050004,
       "growth": 1,
       "sink": 0,
       "split": 0
@@ -202,7 +202,7 @@
       "page": 4,
       "t": 26,
       "shot": "recess-sinks-2mm",
-      "elevation": 12.288711073923057,
+      "elevation": 12.285159570391004,
       "growth": 1,
       "sink": 1,
       "split": 0
@@ -211,7 +211,7 @@
       "page": 4,
       "t": 28,
       "shot": "recess-sinks-2mm",
-      "elevation": 12.742257568103101,
+      "elevation": 12.733027189228974,
       "growth": 1,
       "sink": 1,
       "split": 0
@@ -220,7 +220,7 @@
       "page": 4,
       "t": 29.7,
       "shot": "cards-seat-in-recess",
-      "elevation": 47.05335481847501,
+      "elevation": 47.01781566256323,
       "growth": 1,
       "sink": 1,
       "split": 0
@@ -229,7 +229,7 @@
       "page": 4,
       "t": 32,
       "shot": "cards-seat-in-recess",
-      "elevation": 50.155010082863136,
+      "elevation": 50.108135405426516,
       "growth": 1,
       "sink": 1,
       "split": 0
@@ -238,7 +238,7 @@
       "page": 5,
       "t": 0.5,
       "shot": "province-explode",
-      "elevation": 53.47805946341304,
+      "elevation": 52.892616017952555,
       "growth": 1,
       "sink": 0,
       "split": 0
@@ -247,7 +247,7 @@
       "page": 5,
       "t": 1,
       "shot": "province-explode",
-      "elevation": 55.263040695971654,
+      "elevation": 55.165520516953556,
       "growth": 1,
       "sink": 0,
       "split": 0
@@ -256,16 +256,16 @@
       "page": 5,
       "t": 2.2,
       "shot": "four-base-tiles",
-      "elevation": 57.43287037037036,
+      "elevation": 57.30355152606311,
       "growth": 1,
       "sink": 0,
-      "split": 0.4286250939143519
+      "split": 0.3666931452959361
     },
     {
       "page": 5,
       "t": 2.8,
       "shot": "four-base-tiles",
-      "elevation": 79,
+      "elevation": 78.41659164951989,
       "growth": 1,
       "sink": 0,
       "split": 1
@@ -335,5 +335,6 @@
     }
   ],
   "errors": [],
-  "verification": "local LitePage package; geometry + DOM + GPU pixel reads; no screenshots or online test records"
+  "verification": "local LitePage package; geometry + DOM + GPU pixel reads; no screenshots or online test records",
+  "motion_duration_scale": 1.2
 }
