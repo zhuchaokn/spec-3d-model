@@ -1,0 +1,18 @@
+{
+  "display_mesh_count": 50,
+  "province_count": 32,
+  "tile_ids": [
+    "Tray_X1_Y1",
+    "Tray_X2_Y1",
+    "Tray_X1_Y2",
+    "Tray_X2_Y2"
+  ],
+  "recess_depth_cm": 0.2,
+  "display_lid_z_range_cm": [
+    0.2,
+    0.4
+  ],
+  "inset_source_components": 191,
+  "bytes": 3134002,
+  "original_print_files_modified": false
+}

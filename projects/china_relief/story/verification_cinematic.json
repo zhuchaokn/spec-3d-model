@@ -1,0 +1,1307 @@
+{
+  "full_playback_and_layout": {
+    "url": "http://127.0.0.1:54641/p/preview0/",
+    "total": 119.882,
+    "initial": [
+      "http://127.0.0.1:54641/p/preview0/",
+      "http://127.0.0.1:54641/p/preview0/style.css",
+      "http://127.0.0.1:54641/p/preview0/assets/blender-map-close.webp",
+      "http://127.0.0.1:54641/p/preview0/story-data.js",
+      "http://127.0.0.1:54641/p/preview0/app.js"
+    ],
+    "noInitialAudio": true,
+    "noInitialModel": true,
+    "oneButton": true,
+    "buttonHiddenDuringPlayback": true,
+    "transitions": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "replay": true,
+    "checks": [
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 1,
+        "t": 0,
+        "shot": "intro-macro-pullback",
+        "growth": 1,
+        "sink": 0,
+        "split": 0,
+        "drawn": 3472,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 1,
+        "t": 3,
+        "shot": "intro-macro-pullback",
+        "growth": 1,
+        "sink": 0,
+        "split": 0,
+        "drawn": 3398,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 1,
+        "t": 7.5,
+        "shot": "intro-macro-pullback",
+        "growth": 1,
+        "sink": 0,
+        "split": 0,
+        "drawn": 2522,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 2,
+        "t": 4,
+        "shot": "intro-macro-pullback",
+        "growth": 1,
+        "sink": 0,
+        "split": 0,
+        "drawn": 0,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 3,
+        "t": 3,
+        "shot": "data-to-flat-map",
+        "growth": 1,
+        "sink": 0,
+        "split": 0,
+        "drawn": 1393,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 3,
+        "t": 9,
+        "shot": "data-to-flat-map",
+        "growth": 1,
+        "sink": 0,
+        "split": 0,
+        "drawn": 1393,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 4,
+        "t": 0,
+        "shot": "terrain-rise-and-tilt",
+        "growth": 0,
+        "sink": 0,
+        "split": 0,
+        "drawn": 1158,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 4,
+        "t": 5,
+        "shot": "terrain-rise-and-tilt",
+        "growth": 0.31139358600583095,
+        "sink": 0,
+        "split": 0,
+        "drawn": 900,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 4,
+        "t": 11.7,
+        "shot": "terrain-rise-and-tilt",
+        "growth": 1,
+        "sink": 0,
+        "split": 0,
+        "drawn": 339,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 4,
+        "t": 14.5,
+        "shot": "mountain-tracking-closeup",
+        "growth": 1,
+        "sink": 0,
+        "split": 0,
+        "drawn": 2537,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 4,
+        "t": 16.5,
+        "shot": "blender-proof",
+        "growth": 1,
+        "sink": 0,
+        "split": 0,
+        "drawn": 2542,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 4,
+        "t": 19,
+        "shot": "ocean-rise",
+        "growth": 1,
+        "sink": 0,
+        "split": 0,
+        "drawn": 2461,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 4,
+        "t": 24.5,
+        "shot": "south-sea-inset-closeup",
+        "growth": 1,
+        "sink": 0,
+        "split": 0,
+        "drawn": 3191,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 4,
+        "t": 29,
+        "shot": "cards-lift",
+        "growth": 1,
+        "sink": 0,
+        "split": 0,
+        "drawn": 2368,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 4,
+        "t": 33,
+        "shot": "recess-sinks-2mm",
+        "growth": 1,
+        "sink": 0.3044675688988393,
+        "split": 0,
+        "drawn": 3871,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 4,
+        "t": 36,
+        "shot": "recess-sinks-2mm",
+        "growth": 1,
+        "sink": 1,
+        "split": 0,
+        "drawn": 3654,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 4,
+        "t": 39.5,
+        "shot": "cards-seat-in-recess",
+        "growth": 1,
+        "sink": 1,
+        "split": 0,
+        "drawn": 2427,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 4,
+        "t": 42,
+        "shot": "cards-seat-in-recess",
+        "growth": 1,
+        "sink": 1,
+        "split": 0,
+        "drawn": 2427,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 5,
+        "t": 1,
+        "shot": "province-explode",
+        "growth": 1,
+        "sink": 1,
+        "split": 0,
+        "drawn": 2351,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 5,
+        "t": 4,
+        "shot": "province-explode",
+        "growth": 1,
+        "sink": 1,
+        "split": 0,
+        "drawn": 2182,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 5,
+        "t": 6.5,
+        "shot": "four-base-tiles",
+        "growth": 1,
+        "sink": 1,
+        "split": 0.8369464320000001,
+        "drawn": 2702,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 5,
+        "t": 9,
+        "shot": "four-base-tiles",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 2737,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 5,
+        "t": 12,
+        "shot": "bambu-and-fit-coupon",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 2737,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 5,
+        "t": 20,
+        "shot": "deliverable-files",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 2737,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 6,
+        "t": 3,
+        "shot": "ending-return-to-model",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 2451,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "page": 6,
+        "t": 16,
+        "shot": "ending-return-to-model",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 2590,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 1,
+        "t": 0,
+        "shot": "intro-macro-pullback",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 26624,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 1,
+        "t": 3,
+        "shot": "intro-macro-pullback",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 26076,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 1,
+        "t": 7.5,
+        "shot": "intro-macro-pullback",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 19384,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 2,
+        "t": 4,
+        "shot": "intro-macro-pullback",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 0,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 3,
+        "t": 3,
+        "shot": "data-to-flat-map",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 10686,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 3,
+        "t": 9,
+        "shot": "data-to-flat-map",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 10686,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 4,
+        "t": 0,
+        "shot": "terrain-rise-and-tilt",
+        "growth": 0,
+        "sink": 1,
+        "split": 1,
+        "drawn": 8894,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 4,
+        "t": 5,
+        "shot": "terrain-rise-and-tilt",
+        "growth": 0.31139358600583095,
+        "sink": 1,
+        "split": 1,
+        "drawn": 6896,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 4,
+        "t": 11.7,
+        "shot": "terrain-rise-and-tilt",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 2609,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 4,
+        "t": 14.5,
+        "shot": "mountain-tracking-closeup",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 19438,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 4,
+        "t": 16.5,
+        "shot": "blender-proof",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 19572,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 4,
+        "t": 19,
+        "shot": "ocean-rise",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 18908,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 4,
+        "t": 24.5,
+        "shot": "south-sea-inset-closeup",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 24563,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 4,
+        "t": 29,
+        "shot": "cards-lift",
+        "growth": 1,
+        "sink": 0,
+        "split": 1,
+        "drawn": 18171,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 4,
+        "t": 33,
+        "shot": "recess-sinks-2mm",
+        "growth": 1,
+        "sink": 0.3044675688988393,
+        "split": 1,
+        "drawn": 29724,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 4,
+        "t": 36,
+        "shot": "recess-sinks-2mm",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 28041,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 4,
+        "t": 39.5,
+        "shot": "cards-seat-in-recess",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 18601,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 4,
+        "t": 42,
+        "shot": "cards-seat-in-recess",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 18601,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 5,
+        "t": 1,
+        "shot": "province-explode",
+        "growth": 1,
+        "sink": 1,
+        "split": 0,
+        "drawn": 18144,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 5,
+        "t": 4,
+        "shot": "province-explode",
+        "growth": 1,
+        "sink": 1,
+        "split": 0,
+        "drawn": 16620,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 5,
+        "t": 6.5,
+        "shot": "four-base-tiles",
+        "growth": 1,
+        "sink": 1,
+        "split": 0.8369464320000001,
+        "drawn": 20712,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 5,
+        "t": 9,
+        "shot": "four-base-tiles",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 20999,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 5,
+        "t": 12,
+        "shot": "bambu-and-fit-coupon",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 20999,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 5,
+        "t": 20,
+        "shot": "deliverable-files",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 20999,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 6,
+        "t": 3,
+        "shot": "ending-return-to-model",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 18698,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "page": 6,
+        "t": 16,
+        "shot": "ending-return-to-model",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 19854,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 1,
+        "t": 0,
+        "shot": "intro-macro-pullback",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 7228,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 1,
+        "t": 3,
+        "shot": "intro-macro-pullback",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 7084,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 1,
+        "t": 7.5,
+        "shot": "intro-macro-pullback",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 5260,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 2,
+        "t": 4,
+        "shot": "intro-macro-pullback",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 0,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 3,
+        "t": 3,
+        "shot": "data-to-flat-map",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 2897,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 3,
+        "t": 9,
+        "shot": "data-to-flat-map",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 2897,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 4,
+        "t": 0,
+        "shot": "terrain-rise-and-tilt",
+        "growth": 0,
+        "sink": 1,
+        "split": 1,
+        "drawn": 2417,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 4,
+        "t": 5,
+        "shot": "terrain-rise-and-tilt",
+        "growth": 0.31139358600583095,
+        "sink": 1,
+        "split": 1,
+        "drawn": 1865,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 4,
+        "t": 11.7,
+        "shot": "terrain-rise-and-tilt",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 710,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 4,
+        "t": 14.5,
+        "shot": "mountain-tracking-closeup",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 5273,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 4,
+        "t": 16.5,
+        "shot": "blender-proof",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 5318,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 4,
+        "t": 19,
+        "shot": "ocean-rise",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 5129,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 4,
+        "t": 24.5,
+        "shot": "south-sea-inset-closeup",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 6627,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 4,
+        "t": 29,
+        "shot": "cards-lift",
+        "growth": 1,
+        "sink": 0,
+        "split": 1,
+        "drawn": 4941,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 4,
+        "t": 33,
+        "shot": "recess-sinks-2mm",
+        "growth": 1,
+        "sink": 0.3044675688988393,
+        "split": 1,
+        "drawn": 8061,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 4,
+        "t": 36,
+        "shot": "recess-sinks-2mm",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 7609,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 4,
+        "t": 39.5,
+        "shot": "cards-seat-in-recess",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 5047,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 4,
+        "t": 42,
+        "shot": "cards-seat-in-recess",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 5047,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 5,
+        "t": 1,
+        "shot": "province-explode",
+        "growth": 1,
+        "sink": 1,
+        "split": 0,
+        "drawn": 4926,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 5,
+        "t": 4,
+        "shot": "province-explode",
+        "growth": 1,
+        "sink": 1,
+        "split": 0,
+        "drawn": 4512,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 5,
+        "t": 6.5,
+        "shot": "four-base-tiles",
+        "growth": 1,
+        "sink": 1,
+        "split": 0.8369464320000001,
+        "drawn": 5626,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 5,
+        "t": 9,
+        "shot": "four-base-tiles",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 5688,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 5,
+        "t": 12,
+        "shot": "bambu-and-fit-coupon",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 5688,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 5,
+        "t": 20,
+        "shot": "deliverable-files",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 5688,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 6,
+        "t": 3,
+        "shot": "ending-return-to-model",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 5077,
+        "overflow": [],
+        "captionCreditOverlap": false
+      },
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "page": 6,
+        "t": 16,
+        "shot": "ending-return-to-model",
+        "growth": 1,
+        "sink": 1,
+        "split": 1,
+        "drawn": 5391,
+        "overflow": [],
+        "captionCreditOverlap": false
+      }
+    ],
+    "errors": []
+  },
+  "final_geometry_and_startup": {
+    "checks": [
+      {
+        "t": 0,
+        "shot": "terrain-rise-and-tilt",
+        "model": true,
+        "growth": 0,
+        "sinkMm": 0,
+        "dimension": false
+      },
+      {
+        "t": 5,
+        "shot": "terrain-rise-and-tilt",
+        "model": true,
+        "growth": 0.31139358600583095,
+        "sinkMm": 0,
+        "dimension": false
+      },
+      {
+        "t": 11.7,
+        "shot": "terrain-rise-and-tilt",
+        "model": true,
+        "growth": 1,
+        "sinkMm": 0,
+        "dimension": false
+      },
+      {
+        "t": 14.5,
+        "shot": "mountain-tracking-closeup",
+        "model": true,
+        "growth": 1,
+        "sinkMm": 0,
+        "dimension": false
+      },
+      {
+        "t": 24.5,
+        "shot": "south-sea-inset-closeup",
+        "model": true,
+        "growth": 1,
+        "sinkMm": 0,
+        "dimension": false
+      },
+      {
+        "t": 33,
+        "shot": "recess-sinks-2mm",
+        "model": true,
+        "growth": 1,
+        "sinkMm": 0.6089351377976786,
+        "dimension": true
+      },
+      {
+        "t": 36,
+        "shot": "recess-sinks-2mm",
+        "model": true,
+        "growth": 1,
+        "sinkMm": 2,
+        "dimension": true
+      },
+      {
+        "t": 39.5,
+        "shot": "cards-seat-in-recess",
+        "model": true,
+        "growth": 1,
+        "sinkMm": 2,
+        "dimension": false
+      },
+      {
+        "t": 9,
+        "shot": "four-base-tiles",
+        "split": 1,
+        "tileOffsets": [
+          [
+            "Tray_X1_Y1",
+            [
+              -2.6,
+              -2.6
+            ]
+          ],
+          [
+            "Tray_X2_Y1",
+            [
+              2.6,
+              -2.6
+            ]
+          ],
+          [
+            "Tray_X1_Y2",
+            [
+              -2.6,
+              2.6
+            ]
+          ],
+          [
+            "Tray_X2_Y2",
+            [
+              2.6,
+              2.6
+            ]
+          ]
+        ]
+      }
+    ],
+    "fallback": {
+      "playing": true,
+      "model": false,
+      "notice": true
+    },
+    "errors": []
+  }
+}
