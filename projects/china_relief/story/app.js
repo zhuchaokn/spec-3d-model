@@ -3,6 +3,9 @@ const data=window.STORY_DATA,slides=[...document.querySelectorAll('.slide')],sta
 let current=0,playing=false,started=false,ended=false,elapsed=0,last=performance.now(),idle=0;
 const total=data.reduce((s,d)=>s+d.duration,0),audio=new Audio();audio.preload='none';const offsets=data.map((_,i)=>data.slice(0,i).reduce((sum,d)=>sum+d.duration,0));let audioKey=-1,playGeneration=0,starting=false;
 let modelPromise,renderer,scene,camera,root,models=[],provinces=[],bases=[],seas=[],lid,renderHost,inset,dimension,axes,shot='intro',grow=1,split=0,sink=0;
+// Extend action durations by 20%, without stretching the narration clock.
+const MOTION_SCALE=1.2;
+function motion(seconds){return seconds*MOTION_SCALE;}
 function clamp(x){return Math.max(0,Math.min(1,x));}function ease(x){x=clamp(x);return x*x*(3-2*x);}function fast(x){return 1-Math.pow(1-clamp(x),4);}function snap(x){x=clamp(x);return x===1?1:1+2.4*Math.pow(x-1,3)+1.4*Math.pow(x-1,2);}function mix(a,b,q){return a+(b-a)*q;}function set(el,key,v){el.style.setProperty(key,v);}function html(sel,text){const el=document.querySelector(sel);if(el.innerHTML!==text)el.innerHTML=text;}
 function notify(text){const el=document.querySelector('#audio-notice');el.textContent=text;el.hidden=false;setTimeout(()=>el.hidden=true,6500);}
 function images(i){for(const img of slides[i].querySelectorAll('img[data-src]')){img.src=img.dataset.src;delete img.dataset.src;}}
@@ -45,54 +48,54 @@ function tileOffset(tile,q){return [tile?.includes('X1')?-2.6*q:2.6*q,tile?.incl
 function resetWorld(){grow=1;split=0;sink=0;root.rotation.x=-Math.PI/2;root.rotation.z=0;axes.visible=false;for(const m of models){m.position.set(0,0,0);m.scale.set(1,1,1);m.material.opacity=1;m.material.clippingPlanes=null;m.material.color.set(m.userData.color);m.visible=m.userData.kind!=='lid';}inset.visible=true;inset.position.copy(inset.userData.home);dimension.visible=false;}
 function assemble(){resetWorld();}
 function renderScene(t){if(!renderer)return;resetWorld();const duration=data[current].audio_duration,p=clamp(t/duration),zero=[0,0,.3],macro=target(...CINEMA_MESH.macroFocus),focus=target(...CINEMA_MESH.recessFocus,.28);let cp;
-if(current===0){shot='intro-macro-pullback';cp=pose(t,[{t:0,el:26,az:-24,dist:19,target:macro},{t:.65,el:31,az:-12,dist:24,target:macro},{t:1.35,el:51,az:9,dist:90,target:zero},{t:6.6,el:51,az:13,dist:90,target:zero}]);}
+if(current===0){shot='intro-macro-pullback';cp=pose(t,[{t:0,el:26,az:-24,dist:19,target:macro},{t:motion(.65),el:31,az:-12,dist:24,target:macro},{t:motion(1.35),el:51,az:9,dist:90,target:zero},{t:6.6,el:51,az:13,dist:90,target:zero}]);}
 if(current===2){shot='data-to-flat-map';for(const m of bases)m.visible=false;for(const m of seas)m.visible=false;inset.visible=false;for(const m of provinces){m.scale.z=.025;m.material.color.set('#c8daa8');}cp={el:84,az:0,dist:82,target:zero};}
 if(current===3){
  const riseAt=cueTime(3,'把采样海拔',.11),proofAt=cueTime(3,'自动导进',.205),detailAt=cueTime(3,'整张地图',.263);
- grow=fast((t-riseAt)/.60);
+ grow=fast((t-riseAt)/motion(.60));
  const isProof=t>=proofAt&&t<detailAt,isSea=t>=coastAt&&t<baseAt,isBase=t>=baseAt;
  show('.scene-visual',isProof?'blender-visual':'terrain-visual');
  if(t<coastAt){
-  shot=t<.38?'map-lays-flat':t<riseAt?'xy-projection':t<riseAt+.65?'z-snap-rise':t<proofAt?'terrain-camera-orbit':isProof?'blender-proof':'mountain-tracking-closeup';
+  shot=t<motion(.38)?'map-lays-flat':t<riseAt?'xy-projection':t<riseAt+motion(.65)?'z-snap-rise':t<proofAt?'terrain-camera-orbit':isProof?'blender-proof':'mountain-tracking-closeup';
   for(const m of [...bases,...seas])m.visible=false;inset.visible=false;
-  root.rotation.x=mix(-.35,-Math.PI/2,fast(t/.38));
+  root.rotation.x=mix(-.35,-Math.PI/2,fast(t/motion(.38)));
   for(const m of provinces){m.scale.z=.001+.999*grow;m.material.color.set('#cbdbaa');}
-  axes.visible=t<proofAt;axes.scale.z=.001+.999*grow;axes.material.opacity=.24*(1-fast((t-proofAt+.3)/.3));
+  axes.visible=t<proofAt;axes.scale.z=.001+.999*grow;axes.material.opacity=.24*(1-fast((t-proofAt+.3)/motion(.3)));
   cp=pose(t,[
-   {t:0,el:48,az:0,dist:84,target:zero},{t:.38,el:84,az:0,dist:83,target:zero},
-   {t:riseAt+.70,el:84,az:0,dist:83,target:zero},
-   {t:riseAt+1.35,el:19,az:-18,dist:93,target:[0,0,1.1]},
+   {t:0,el:48,az:0,dist:84,target:zero},{t:motion(.38),el:84,az:0,dist:83,target:zero},
+   {t:riseAt+motion(.70),el:84,az:0,dist:83,target:zero},
+   {t:riseAt+motion(1.35),el:19,az:-18,dist:93,target:[0,0,1.1]},
    {t:proofAt,el:19,az:-8,dist:93,target:[0,0,1.1]},
    {t:detailAt,el:19,az:-8,dist:93,target:[0,0,1.1]},
    {t:detailAt+.12,cut:true,el:22,az:-25,dist:25,target:macro},
-   {t:detailAt+.8,el:24,az:-15,dist:24,target:macro},
+   {t:detailAt+.12+motion(.68),el:24,az:-15,dist:24,target:macro},
    {t:coastAt-.1,el:24,az:5,dist:25,target:macro}]);
  }
  if(isSea){
   shot=t<islandAt?'ocean-wipe':'south-sea-inset-closeup';
   // Reveal opaque ocean with a world-space wipe; never fade coincident caps.
-  const q=fast((t-coastAt)/.48),half=(CINEMA_MESH.bounds[2]-CINEMA_MESH.bounds[0])/2;
+  const q=fast((t-coastAt)/motion(.48)),half=(CINEMA_MESH.bounds[2]-CINEMA_MESH.bounds[0])/2;
   for(const m of seas){m.visible=q>0;m.material.clippingPlanes=q<1?[new THREE.Plane(new THREE.Vector3(-1,0,0),mix(-half-1,half+1,q))]:null;}
   for(const m of provinces)m.material.color.lerp(new THREE.Color('#cbdbaa'),1-q);
   const it=target((CINEMA_MESH.insetBounds[0]+CINEMA_MESH.insetBounds[2])/2,(CINEMA_MESH.insetBounds[1]+CINEMA_MESH.insetBounds[3])/2,.5);
   cp=pose(t,[{t:coastAt,el:51,az:9,dist:90,target:zero},
    {t:islandAt-.01,el:49,az:0,dist:87,target:zero},
-   {t:islandAt+.45,el:68,az:-4,dist:29,target:it},
+   {t:islandAt-.01+motion(.46),el:68,az:-4,dist:29,target:it},
    {t:baseAt-.01,el:72,az:5,dist:28,target:it}]);
  }
  if(isBase){
   shot=t<slotAt?'cards-snap-lift':t<insertAt?'recess-sinks-2mm':'cards-seat-in-recess';
-  sink=fast((t-slotAt-.18)/.42);
-  provinces.forEach((m,i)=>{const lift=fast((t-baseAt-i*.005)/.28)*(1-fast((t-insertAt-i*.007)/.32));m.position.z=4*lift;});
+  sink=fast((t-slotAt-.18)/motion(.42));
+  provinces.forEach((m,i)=>{const lift=fast((t-baseAt-i*.005)/motion(.28))*(1-fast((t-insertAt-i*.007)/motion(.32)));m.position.z=4*lift;});
   lid.visible=t<insertAt&&sink<.999;lid.position.z=-CINEMA_MESH.dimensions.slot_depth_cm*sink;
   dimension.visible=t>=slotAt+.12&&t<insertAt;
   cp=pose(t,[{t:baseAt,el:51,az:9,dist:90,target:zero},
-   {t:baseAt+.4,el:42,az:13,dist:89,target:zero},
+   {t:baseAt+motion(.4),el:42,az:13,dist:89,target:zero},
    {t:slotAt,cut:true,el:22,az:35,dist:11,target:focus},
-   {t:slotAt+.6,el:19,az:25,dist:10.5,target:focus},
+   {t:slotAt+motion(.6),el:19,az:25,dist:10.5,target:focus},
    {t:insertAt-.01,el:19,az:20,dist:10.5,target:focus},
    {t:insertAt,cut:true,el:51,az:9,dist:90,target:zero},
-   {t:insertAt+.55,el:47,az:5,dist:87,target:zero},
+   {t:insertAt+motion(.55),el:47,az:5,dist:87,target:zero},
    {t:duration,el:51,az:9,dist:90,target:zero}]);
  }
  const beat=t<coastAt?0:t<baseAt?1:t<insertAt?2:3;
@@ -110,28 +113,28 @@ if(current===3){
 }
 if(current===4){
  const splitAt=2.15,fadeAt=1.8;
- split=snap((t-splitAt)/.44);
+ split=snap((t-splitAt)/motion(.44));
  shot=t<splitAt?'province-explode':t<sampleAt?'four-base-tiles':t<filesAt?'bambu-and-fit-coupon':'deliverable-files';
- provinces.forEach((m,i)=>{const stagger=i*.004,lift=fast((t-.10-stagger)/.24),spread=snap((t-.42-stagger)/.38),r=Math.hypot(m.userData.cx,m.userData.cy)||1;m.position.set(m.userData.cx/r*spread*4.5,m.userData.cy/r*spread*4.5,4*lift);m.visible=t<fadeAt+i*.007;});
+ provinces.forEach((m,i)=>{const stagger=i*.004,lift=fast((t-.10-stagger)/motion(.24)),spread=snap((t-.42-stagger)/motion(.38)),r=Math.hypot(m.userData.cx,m.userData.cy)||1;m.position.set(m.userData.cx/r*spread*4.5,m.userData.cy/r*spread*4.5,4*lift);m.visible=t<fadeAt+i*.007;});
  for(const m of [...bases,...seas]){const off=tileOffset(m.userData.tile,split);m.position.set(off[0],off[1],0);}
  const off=tileOffset(inset.userData.tile,split);inset.position.x+=off[0];inset.position.y+=off[1];
- cp=pose(t,[{t:0,el:51,az:9,dist:90,target:zero},{t:.9,el:55,az:13,dist:99,target:[0,0,1]},
-  {t:splitAt,el:57,az:10,dist:98,target:zero},{t:splitAt+.6,el:79,az:0,dist:93,target:zero},
+ cp=pose(t,[{t:0,el:51,az:9,dist:90,target:zero},{t:motion(.9),el:55,az:13,dist:99,target:[0,0,1]},
+  {t:splitAt,el:57,az:10,dist:98,target:zero},{t:splitAt+motion(.6),el:79,az:0,dist:93,target:zero},
   {t:sampleAt,el:79,az:0,dist:93,target:zero}]);
  show('.parts-visual,.print-visual,.file-stage',t<sampleAt?'parts-visual':t<filesAt?'print-visual':'file-visual');
  html('#parts-title',t<splitAt?'按省拆开。<br><em>插板，快速分离。</em>':t<sampleAt?'底座，分成四片。<br><em>每片，都能上打印床。</em>':t<filesAt?'拓竹工程就绪。<br><em>先试配，再打整套。</em>':'拿到一整套文件。<br><em>3MF · BLEND · STL</em>');
  document.querySelector('#parts-shot-note').textContent=t<splitAt?'省份抬起 → 径向拆开':'四片底座展开 / 每片最大约 238 × 238 mm';
  const count=document.querySelector('.parts-count');count.querySelector('b').textContent=t<splitAt?'32':'4';count.querySelector('span').textContent=t<splitAt?'省份插板':'底座分片';
- set(document.querySelector('.sample'),'--sample',fast((t-sampleAt-.12)/.28));
- document.querySelectorAll('.files>div').forEach((el,i)=>set(el,'--file',fast((t-filesAt-i*.10)/.24)));
+ set(document.querySelector('.sample'),'--sample',fast((t-sampleAt-.12)/motion(.28)));
+ document.querySelectorAll('.files>div').forEach((el,i)=>set(el,'--file',fast((t-filesAt-i*.10)/motion(.24))));
 }
 if(current===5){shot='ending-return-to-model';cp=pose(t,[{t:0,el:51,az:9,dist:90,target:zero},{t:duration,el:49,az:-4,dist:86,target:zero}]);}
 if(cp)cameraPose(cp);root.updateMatrixWorld(true);camera.updateMatrixWorld(true);
 if(current===3&&dimension.visible){const f=CINEMA_MESH.recessFocus,b=CINEMA_MESH.bounds,v=new THREE.Vector3(f[0]-(b[0]+b[2])/2,f[1]-(b[1]+b[3])/2,CINEMA_MESH.dimensions.platform_cm).applyMatrix4(root.matrixWorld).project(camera);const note=document.querySelector('#dimension-note');note.style.left=`${Math.min(76,Math.max(10,(v.x+1)*50+6))}%`;note.style.top=`${Math.min(70,Math.max(16,(1-v.y)*50-7))}%`;}
 }
-function update(t){caption(t);set(slides[current],'--scan',(t%.85)/.85);if(current===1){set(slides[1],'--reveal',fast(t/.45));slides[1].querySelectorAll('.task-list>div').forEach((el,i)=>set(el,'--task-opacity',.25+.75*fast((t-1-i*.35)/.25)));}
-if(current===2){set(slides[2],'--data-model',renderer?fast((t-7.7)/.5):0);slides[2].querySelectorAll('.sources a').forEach((el,i)=>set(el,'--source-opacity',.15+.85*fast((t-2.5-i*1.3)/.28)));const svg=slides[2].querySelector('svg');if(playing||!started)svg.unpauseAnimations();else svg.pauseAnimations();}
-if(current===5){set(slides[5],'--code',fast(t/.5));set(slides[5],'--film',fast((t-3)/.35));set(slides[5],'--ending',fast((t-7.7)/.5));set(slides[5],'--ending-model',renderer?fast((t-12)/.5):0);}
+function update(t){caption(t);set(slides[current],'--scan',(t%motion(.85))/motion(.85));if(current===1){set(slides[1],'--reveal',fast(t/motion(.45)));slides[1].querySelectorAll('.task-list>div').forEach((el,i)=>set(el,'--task-opacity',.25+.75*fast((t-1-i*.35)/motion(.25))));}
+if(current===2){set(slides[2],'--data-model',renderer?fast((t-7.7)/motion(.5)):0);slides[2].querySelectorAll('.sources a').forEach((el,i)=>set(el,'--source-opacity',.15+.85*fast((t-2.5-i*1.3)/motion(.28))));const svg=slides[2].querySelector('svg');if(playing||!started)svg.unpauseAnimations();else svg.pauseAnimations();}
+if(current===5){set(slides[5],'--code',fast(t/motion(.5)));set(slides[5],'--film',fast((t-3)/motion(.35)));set(slides[5],'--ending',fast((t-7.7)/motion(.5)));set(slides[5],'--ending-model',renderer?fast((t-12)/motion(.5)):0);}
 if(renderer)renderScene(t);else{if(current===3)show('.scene-visual',t<coastAt?'blender-visual':t<baseAt?'coast-visual':'base-visual');if(current===4)show('.parts-visual,.print-visual,.file-stage',t<sampleAt?'parts-visual':t<filesAt?'print-visual':'file-visual');}
 }
 function finish(){playing=false;ended=true;audio.pause();stage.classList.remove('playing');stage.classList.add('ended');button.hidden=false;button.innerHTML='<span>↻</span> 再看一遍';}
