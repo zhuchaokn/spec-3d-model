@@ -1,5 +1,7 @@
 /* Six spoken chapters, multiple directed shots. Geometry is a display copy in cm. */
 const data=window.STORY_DATA,slides=[...document.querySelectorAll('.slide')],stage=document.querySelector('#stage'),button=document.querySelector('#play');
+const exportMode=new URLSearchParams(location.search).has('export');
+let insetTextureReady=Promise.resolve(true);
 let current=0,playing=false,started=false,ended=false,elapsed=0,last=performance.now(),idle=0;
 const total=data.reduce((s,d)=>s+d.duration,0),audio=new Audio();audio.preload='none';const offsets=data.map((_,i)=>data.slice(0,i).reduce((sum,d)=>sum+d.duration,0));let audioKey=-1,playGeneration=0,starting=false;
 let modelPromise,renderer,scene,camera,root,models=[],provinces=[],bases=[],seas=[],lid,renderHost,inset,dimension,axes,shot='intro',grow=1,split=0,sink=0;
@@ -12,14 +14,15 @@ function images(i){for(const img of slides[i].querySelectorAll('img[data-src]'))
 function loadScript(src){return new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=src;s.onload=resolve;s.onerror=()=>reject(new Error('无法加载 '+src));document.head.appendChild(s);});}
 async function prepareModel(){if(modelPromise)return modelPromise;modelPromise=(async()=>{
 await loadScript('assets/three.min.js');await loadScript('assets/cinema-mesh.js');
-renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.setClearColor(0,0);renderer.localClippingEnabled=true;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,preserveDrawingBuffer:exportMode});renderer.setPixelRatio(exportMode?1:Math.min(devicePixelRatio,1.6));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.setClearColor(0,0);renderer.localClippingEnabled=true;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(32,1,.1,300);scene.add(new THREE.HemisphereLight(0xf2ffdd,0x103c2a,1.8));
 const key=new THREE.DirectionalLight(0xfff1cf,3.2);key.position.set(-25,55,30);key.castShadow=true;key.shadow.mapSize.set(1024,1024);Object.assign(key.shadow.camera,{left:-40,right:40,top:40,bottom:-40,near:1,far:130});key.shadow.bias=-.00015;key.shadow.normalBias=.015;scene.add(key);
 const rim=new THREE.DirectionalLight(0x72b4b6,1.4);rim.position.set(30,18,-30);scene.add(rim);root=new THREE.Group();root.rotation.x=-Math.PI/2;scene.add(root);
 const bounds=CINEMA_MESH.bounds,cx=(bounds[0]+bounds[2])/2,cy=(bounds[1]+bounds[3])/2;
 for(const d of CINEMA_MESH.meshes){const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(d.vertices.flatMap(v=>[v[0]-cx,v[1]-cy,v[2]]),3));g.setIndex(d.indices);g.computeVertexNormals();g.computeBoundingBox();const m=new THREE.MeshStandardMaterial({color:d.color,roughness:d.kind==='sea'?.43:.78,metalness:d.kind==='sea'?.08:0,side:THREE.FrontSide,transparent:false,opacity:1});const mesh=new THREE.Mesh(g,m);mesh.userData={...d,cx:d.center[0]-cx,cy:d.center[1]-cy};mesh.castShadow=d.kind==='province'||d.kind==='base';mesh.receiveShadow=true;root.add(mesh);models.push(mesh);if(d.kind==='province')provinces.push(mesh);else if(d.kind==='sea')seas.push(mesh);else if(d.kind==='lid')lid=mesh;else bases.push(mesh);}
 const ground=new THREE.Mesh(new THREE.PlaneGeometry(100,100),new THREE.ShadowMaterial({opacity:.22}));ground.rotation.x=-Math.PI/2;ground.position.y=-.08;ground.receiveShadow=true;scene.add(ground);
-const ib=CINEMA_MESH.insetBounds,texture=new THREE.TextureLoader().load('assets/cinema-inset.svg');texture.colorSpace=THREE.SRGBColorSpace;
+let textureLoaded;insetTextureReady=new Promise(resolve=>textureLoaded=resolve);
+const ib=CINEMA_MESH.insetBounds,texture=new THREE.TextureLoader().load('assets/cinema-inset.svg',()=>textureLoaded(true),undefined,()=>textureLoaded(false));texture.colorSpace=THREE.SRGBColorSpace;
 inset=new THREE.Mesh(new THREE.PlaneGeometry(ib[2]-ib[0],ib[3]-ib[1]),new THREE.MeshBasicMaterial({map:texture,transparent:true,side:THREE.DoubleSide,depthWrite:false}));inset.position.set((ib[0]+ib[2])/2-cx,(ib[1]+ib[3])/2-cy,CINEMA_MESH.dimensions.platform_cm+.105);inset.userData={tile:'Tray_X2_Y1',home:inset.position.clone()};root.add(inset);
 // Sparse coordinate guides: short projection / extrusion beat, then clear away.
 const guides=[];for(let n=-20;n<=20;n+=5){guides.push(-23,n,-.03,23,n,-.03,n,-23,-.03,n,23,-.03);}guides.push(-9,0,0,-9,0,4,0,0,0,0,0,4,9,0,0,9,0,4);
@@ -138,6 +141,33 @@ if(current===5){set(slides[5],'--code',fast(t/motion(.5)));set(slides[5],'--film
 if(renderer)renderScene(t);else{if(current===3)show('.scene-visual',t<coastAt?'blender-visual':t<baseAt?'coast-visual':'base-visual');if(current===4)show('.parts-visual,.print-visual,.file-stage',t<sampleAt?'parts-visual':t<filesAt?'print-visual':'file-visual');}
 }
 function finish(){playing=false;ended=true;audio.pause();stage.classList.remove('playing');stage.classList.add('ended');button.hidden=false;button.innerHTML='<span>↻</span> 再看一遍';}
-function frame(now){const dt=Math.min((now-last)/1000,.1);last=now;idle+=dt;if(playing){elapsed=Math.max(0,audio.currentTime-offsets[current]);if(current+1<data.length&&elapsed>=data[current].duration){go(current+1,false);elapsed=Math.max(0,audio.currentTime-offsets[current]);}}update(started?elapsed:0);if(renderer&&renderHost){const render=current===0||current===2&&elapsed>6.7||current===3&&document.querySelector('#terrain-visual').classList.contains('shown')||current===4&&elapsed<sampleAt||current===5&&elapsed>11;renderer.domElement.style.visibility=render?'visible':'hidden';if(render)renderer.render(scene,camera);}requestAnimationFrame(frame);}
-images(0);update(0);requestAnimationFrame(frame);
+function drawFrame(){if(renderer&&renderHost){const render=current===0||current===2&&elapsed>6.7||current===3&&document.querySelector('#terrain-visual').classList.contains('shown')||current===4&&elapsed<sampleAt||current===5&&elapsed>11;renderer.domElement.style.visibility=render?'visible':'hidden';if(render)renderer.render(scene,camera);}}
+function frame(now){const dt=Math.min((now-last)/1000,.1);last=now;idle+=dt;if(playing){elapsed=Math.max(0,audio.currentTime-offsets[current]);if(current+1<data.length&&elapsed>=data[current].duration){go(current+1,false);elapsed=Math.max(0,audio.currentTime-offsets[current]);}}update(started?elapsed:0);drawFrame();requestAnimationFrame(frame);}
+images(0);update(0);if(!exportMode)requestAnimationFrame(frame);
 window.STORY={get current(){return current},get playing(){return playing},get audioTime(){return Math.max(0,audio.currentTime-offsets[current])},get elapsed(){return elapsed},get modelReady(){return !!renderer},get ended(){return ended},get shot(){return shot},get growth(){return grow},get baseSplit(){return split},get recessSink(){return sink},go,total,slideCount:data.length};
+if(exportMode){
+ const style=document.createElement('style');style.textContent='*,*::before,*::after{transition:none!important}#play,#audio-notice{display:none!important}';document.head.appendChild(style);
+ let ready=false;
+ window.STORY_EXPORT={
+  async prepare(){
+   playing=false;started=true;audio.pause();button.hidden=true;stage.classList.add('playing');
+   for(let i=0;i<slides.length;i++)images(i);
+   await document.fonts.ready;
+   await Promise.all([...document.images].map(img=>img.decode()));
+   if(!await prepareModel()||!await insetTextureReady)throw new Error('视频导出需要完整三维模型与南海纹理');
+   for(const svg of document.querySelectorAll('svg'))svg.pauseAnimations();
+   ready=true;this.renderAt(0);
+   return {duration:total,chapters:data.map((d,i)=>({index:i,start:offsets[i],duration:d.duration})),motionScale:MOTION_SCALE};
+  },
+  renderAt(seconds){
+   if(!ready)throw new Error('先调用 STORY_EXPORT.prepare()');
+   if(!Number.isFinite(seconds)||seconds<0)throw new Error('无效帧时间');
+   const time=Math.min(seconds,total-1e-6);let i=data.length-1;while(i>0&&time<offsets[i])i--;
+   if(current!==i)go(i,false);elapsed=time-offsets[i];update(elapsed);
+   for(const svg of document.querySelectorAll('svg')){svg.pauseAnimations();svg.setCurrentTime(elapsed);}
+   for(const animation of document.getAnimations()){animation.pause();animation.currentTime=elapsed*1000;}
+   drawFrame();
+   return {time,chapter:current+1,localTime:elapsed,shot,caption:slides[current].querySelector('.subtitle').textContent,growth:grow,split,sink};
+  }
+ };
+}
