@@ -1,0 +1,60 @@
+{
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "frames": 2915,
+  "timelineDuration": 97.152,
+  "encodedDuration": 97.16666666666667,
+  "wallSeconds": 288.378,
+  "bytes": 17670395,
+  "deterministicSeek": true,
+  "seekPixelDifference": {
+    "differentPixels": 2,
+    "maxChannelDelta": 2
+  },
+  "browserErrors": [],
+  "initialAudioRequests": 0,
+  "streams": [
+    {
+      "codec": "h264",
+      "type": "video",
+      "width": 1080,
+      "height": 1920,
+      "frames": "2915",
+      "duration": "97.166667"
+    },
+    {
+      "codec": "aac",
+      "type": "audio",
+      "frames": "2277",
+      "duration": "97.152000"
+    }
+  ],
+  "video_sha256": "27aa585f63918b6df24366a5ebefdc8ac1821f1f74ae7d521bb0cca82f0d3dfb",
+  "motion_duration_scale": 1.2,
+  "whole_file_decode_passed": true,
+  "encoded_frame_visual_review_seconds": [
+    2,
+    19,
+    31,
+    32.64,
+    34.7,
+    36,
+    41,
+    46,
+    53,
+    56,
+    61.5,
+    63.5,
+    68.5,
+    77.5,
+    95
+  ],
+  "normal_browser_regression": {
+    "samples": 102,
+    "one_button": true,
+    "replay": true,
+    "audio_sources": 1,
+    "errors": []
+  }
+}
