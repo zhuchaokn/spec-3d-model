@@ -1,0 +1,4 @@
+interface:
+  display_name: "MakerWorld 上传"
+  short_description: "上传模型与多盘打印配置，填写介绍、实拍图并核对草稿和发布状态"
+  default_prompt: "使用 $makerworld-upload 将这个模型上传到 MakerWorld，复用已有草稿并核对分盘、实拍图和发布状态。"
