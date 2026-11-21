@@ -1,0 +1,156 @@
+{
+  "constants": {
+    "BORE_D": 1.2,
+    "WALL": 0.2,
+    "BAND_W": 1.0,
+    "RING_R": "BORE_D/2+WALL",
+    "PAD_D": 1.4,
+    "RIM_Z": "BORE_D/2+CORE_THICKNESS+BOWL_DEPTH+PIT_DEPTH",
+    "BOWL_D": 0.9,
+    "BOWL_DEPTH": 0.16,
+    "BOWL_R": "((BOWL_D/2)**2+BOWL_DEPTH**2)/(2*BOWL_DEPTH)",
+    "BOWL_CENTER_Z": "RIM_Z-BOWL_DEPTH+BOWL_R",
+    "PIT_D": 0.16,
+    "PIT_DEPTH": 0.08,
+    "PIT_RING_R": 0.26,
+    "PIT_COUNT_OUTER": 6,
+    "LIP_H": 0.12,
+    "LIP_R": 0.08,
+    "LIP_LOWER_R": 0.04,
+    "SHOULDER_R": 0.3,
+    "BORE_EDGE_R": 0.06,
+    "OUTER_EDGE_R": 0.06,
+    "BOWL_EDGE_R": 0.03,
+    "CORE_THICKNESS": 0.2,
+    "PAD_CORE_BASE_Z": "RIM_Z-BOWL_DEPTH-PIT_DEPTH-BOOLEAN_OVERLAP",
+    "BOOLEAN_OVERLAP": 0.02,
+    "CUT_EXTENSION": 0.5,
+    "MESH_STEP": 0.008,
+    "SEGMENTS": 160,
+    "ARC_SEGMENTS": 24,
+    "SPHERE_SEGMENTS": 64,
+    "SPHERE_RINGS": 40,
+    "LOFT_CORNER_MIN": 0.006,
+    "LOFT_BLEND_START": "BORE_D/2",
+    "MERGE_DISTANCE": 1e-06,
+    "CHECK_TOLERANCE": 0.002,
+    "MIN_TOP_LAND": 0.14
+  },
+  "nodes": [
+    {
+      "name": "FingerFrame",
+      "op": null,
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "LotusThimble",
+      "op": "ops/body.py",
+      "parent": "FingerFrame",
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "params": {
+        "bore_d": "BORE_D",
+        "wall": "WALL",
+        "band_w": "BAND_W",
+        "ring_r": "RING_R",
+        "pad_d": "PAD_D",
+        "rim_z": "RIM_Z",
+        "bowl_d": "BOWL_D",
+        "bowl_depth": "BOWL_DEPTH",
+        "bowl_r": "BOWL_R",
+        "bowl_center_z": "BOWL_CENTER_Z",
+        "lip_h": "LIP_H",
+        "lip_r": "LIP_R",
+        "lower_r": "LIP_LOWER_R",
+        "shoulder_r": "SHOULDER_R",
+        "bore_edge_r": "BORE_EDGE_R",
+        "outer_edge_r": "OUTER_EDGE_R",
+        "bowl_edge_r": "BOWL_EDGE_R",
+        "base_z": "PAD_CORE_BASE_Z",
+        "extension": "CUT_EXTENSION",
+        "step": "MESH_STEP",
+        "segments": "SEGMENTS",
+        "arc_segments": "ARC_SEGMENTS",
+        "corner_min": "LOFT_CORNER_MIN",
+        "blend_start": "LOFT_BLEND_START",
+        "merge_distance": "MERGE_DISTANCE"
+      }
+    },
+    {
+      "name": "NeedlePits",
+      "op": "ops/pits.py",
+      "parent": "FingerFrame",
+      "target": [
+        "LotusThimble"
+      ],
+      "after": [
+        "LotusThimble"
+      ],
+      "params": {
+        "diameter": "PIT_D",
+        "depth": "PIT_DEPTH",
+        "array_radius": "PIT_RING_R",
+        "count": "PIT_COUNT_OUTER",
+        "bowl_r": "BOWL_R",
+        "bowl_center_z": "BOWL_CENTER_Z",
+        "segments": "SPHERE_SEGMENTS",
+        "rings": "SPHERE_RINGS"
+      }
+    },
+    {
+      "name": "Verify",
+      "op": "ops/verify.py",
+      "target": [
+        "LotusThimble"
+      ],
+      "after": [
+        "NeedlePits"
+      ],
+      "params": {
+        "bore_d": "BORE_D",
+        "band_w": "BAND_W",
+        "ring_r": "RING_R",
+        "pad_d": "PAD_D",
+        "rim_z": "RIM_Z",
+        "bowl_d": "BOWL_D",
+        "bowl_r": "BOWL_R",
+        "bowl_center_z": "BOWL_CENTER_Z",
+        "pit_depth": "PIT_DEPTH",
+        "pit_d": "PIT_D",
+        "array_radius": "PIT_RING_R",
+        "count": "PIT_COUNT_OUTER",
+        "core": "CORE_THICKNESS",
+        "lip_r": "LIP_R",
+        "bowl_edge_r": "BOWL_EDGE_R",
+        "min_land": "MIN_TOP_LAND",
+        "tolerance": "CHECK_TOLERANCE",
+        "probe": "CUT_EXTENSION",
+        "lip_h": "LIP_H",
+        "lower_r": "LIP_LOWER_R",
+        "shoulder_r": "SHOULDER_R"
+      }
+    },
+    {
+      "name": "Export",
+      "op": "ops/export_mm.py",
+      "target": [
+        "LotusThimble"
+      ],
+      "after": [
+        "Verify"
+      ],
+      "params": {
+        "stl_name": "lotus_thimble_12mm.stl",
+        "blend_name": "lotus_thimble_12mm.blend",
+        "out_dir": "output"
+      }
+    }
+  ]
+}
