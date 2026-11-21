@@ -1,0 +1,126 @@
+{
+  "slice_success": true,
+  "plate_count": 9,
+  "production_grams": 865.8505308032036,
+  "test_plate_grams": 3.4023873805999756,
+  "inset_color_layer_indices_zero_based": [
+    "18 19"
+  ],
+  "new_bases_without_floating_warnings": true,
+  "sha256": "f3a206495e4244f8cf811aaea4728fe394dceb47a3f37fe5aacd60a46fd10047",
+  "plates": [
+    {
+      "plate": 1,
+      "grams": 3.4023873805999756,
+      "colors": [
+        4
+      ],
+      "filament_changes": 0,
+      "layer_height_mm": 0.16,
+      "slice_warning": "It seems object 北京省形试配插板 has floating regions. Please re-orient the object or enable support generation.",
+      "gcode_md5_matches": true,
+      "no_tower": true
+    },
+    {
+      "plate": 2,
+      "grams": 130.30860328674316,
+      "colors": [
+        1,
+        2
+      ],
+      "filament_changes": 2,
+      "layer_height_mm": 0.2,
+      "slice_warning": "",
+      "gcode_md5_matches": true,
+      "no_tower": true
+    },
+    {
+      "plate": 3,
+      "grams": 131.0443703532219,
+      "colors": [
+        1,
+        2,
+        3
+      ],
+      "filament_changes": 4,
+      "layer_height_mm": 0.2,
+      "slice_warning": "",
+      "gcode_md5_matches": true,
+      "no_tower": true
+    },
+    {
+      "plate": 4,
+      "grams": 128.07986450195312,
+      "colors": [
+        1
+      ],
+      "filament_changes": 0,
+      "layer_height_mm": 0.2,
+      "slice_warning": "",
+      "gcode_md5_matches": true,
+      "no_tower": true
+    },
+    {
+      "plate": 5,
+      "grams": 129.66296243667603,
+      "colors": [
+        1,
+        2
+      ],
+      "filament_changes": 2,
+      "layer_height_mm": 0.2,
+      "slice_warning": "",
+      "gcode_md5_matches": true,
+      "no_tower": true
+    },
+    {
+      "plate": 6,
+      "grams": 86.89032745361328,
+      "colors": [
+        3
+      ],
+      "filament_changes": 0,
+      "layer_height_mm": 0.16,
+      "slice_warning": "",
+      "gcode_md5_matches": true,
+      "no_tower": true
+    },
+    {
+      "plate": 7,
+      "grams": 78.1021499633789,
+      "colors": [
+        4
+      ],
+      "filament_changes": 0,
+      "layer_height_mm": 0.16,
+      "slice_warning": "It seems object 420000_湖北省 has floating regions. Please re-orient the object or enable support generation.",
+      "gcode_md5_matches": true,
+      "no_tower": true
+    },
+    {
+      "plate": 8,
+      "grams": 100.13191223144531,
+      "colors": [
+        5
+      ],
+      "filament_changes": 0,
+      "layer_height_mm": 0.16,
+      "slice_warning": "",
+      "gcode_md5_matches": true,
+      "no_tower": true
+    },
+    {
+      "plate": 9,
+      "grams": 81.63034057617188,
+      "colors": [
+        6
+      ],
+      "filament_changes": 0,
+      "layer_height_mm": 0.16,
+      "slice_warning": "",
+      "gcode_md5_matches": true,
+      "no_tower": true
+    }
+  ],
+  "verified_actual_3mf_closed_meshes": 46
+}

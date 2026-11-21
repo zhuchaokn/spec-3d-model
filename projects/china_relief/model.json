@@ -1,0 +1,1076 @@
+{
+  "description": "中国分省真实高程地图；尺寸单位 cm，真实高程单位 m。节点由 tools/prepare.py 从经核验数据生成。",
+  "constants": {
+    "MAP_WIDTH": 43,
+    "VERTICAL_EXAGGERATION": 40,
+    "ELEVATION_DATUM": -200,
+    "TERRAIN_BASE": 0.32,
+    "PROVINCE_GAP": 0,
+    "MESH_SPACING": 0.07,
+    "TRAY_FLOOR": 0.2,
+    "TRAY_MARGIN": 0.5,
+    "TRAY_TAB_LENGTH": 0.3,
+    "TRAY_TAB_WIDTH": 0.8,
+    "TRAY_TAB_CLEARANCE": 0.02,
+    "PRINT_BED": 25.6,
+    "PRINT_MARGIN": 0.8,
+    "MIN_FEATURE": 0.08,
+    "NUMERICAL_GAP": 0.0001,
+    "TERRAIN_ZOOM": 6,
+    "HORIZONTAL_CM_PER_M": 8.897331538538137e-06,
+    "SLOT_DEPTH": 0.2,
+    "NANSHA_MAX_LAT": 12,
+    "TRAY_FRAME_WIDTH": 0.5,
+    "MIN_HOLE_AREA": 0.0001,
+    "TRAY_FRAME_RISE": 0.3,
+    "INSET_PANEL_WIDTH": 8,
+    "INSET_PANEL_HEIGHT": 12,
+    "INSET_MARGIN": 1,
+    "INSET_LINE_WIDTH": 0.05,
+    "INSET_MIN_ISLAND_WIDTH": 0.06,
+    "INSET_RAISE": 0,
+    "INSET_PADDING": 0.4,
+    "INSET_TITLE_SIZE": 0.45,
+    "INSET_LABEL_SIZE": 0.35,
+    "INSET_MAP_TOP_PAD": 1,
+    "INSET_MAP_BOTTOM_PAD": 1,
+    "INSET_RIGHT_OFFSET_FROM_MAP": 2,
+    "TRAY_WIDTH": 47,
+    "TRAY_HEIGHT": 47,
+    "SLOT_CLEARANCE": 0.015,
+    "TRAY_OUTER_CORNER_RADIUS": 0.5,
+    "TRAY_CORNER_QUAD_SEGMENTS": 16,
+    "FIXED_DETAILS_FLUSH": true
+  },
+  "data": {
+    "boundary": "data/raw/provinces_datav_reference.geojson",
+    "boundary_metadata": "data/raw/geoboundaries_metadata.json",
+    "boundary_coordinate_assumption": "GCJ-02; inverted numerically to WGS84. Provider GeoJSON does not declare CRS; retain this assumption as a data limitation.",
+    "projection": "+proj=aea +lat_1=25 +lat_2=47 +lat_0=0 +lon_0=105 +datum=WGS84 +units=m +no_defs",
+    "terrain_url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/{z}/{x}/{y}.tif",
+    "terrain_attribution_url": "https://raw.githubusercontent.com/tilezen/joerd/master/docs/attribution.md",
+    "small_region_mode": "fixed_to_base",
+    "fixed_province_codes": [
+      810000,
+      820000
+    ],
+    "recess_shape": "union_of_province_footprints",
+    "south_sea_inset": {
+      "bounds_lonlat": [
+        105,
+        3,
+        125,
+        25
+      ],
+      "title": "南海诸岛",
+      "scale_note": "附图比例不同",
+      "labels": [
+        {
+          "text": "东沙群岛",
+          "lonlat": [
+            117.5,
+            20.3
+          ]
+        },
+        {
+          "text": "西沙群岛",
+          "lonlat": [
+            106,
+            16.5
+          ]
+        },
+        {
+          "text": "中沙群岛",
+          "lonlat": [
+            117.5,
+            15.5
+          ]
+        },
+        {
+          "text": "南沙群岛",
+          "lonlat": [
+            113,
+            5.3
+          ]
+        }
+      ],
+      "font": "/System/Library/AssetsV2/com_apple_MobileAsset_Font7/eb257c12d1a51c8c661b89f30eec56cacf9b8987.asset/AssetData/STHEITI.ttf",
+      "placement": "bottom_right"
+    },
+    "required_tray_grid": [
+      2,
+      2
+    ]
+  },
+  "nodes": [
+    {
+      "name": "P110000",
+      "op": "ops/mesh.py",
+      "offset": [
+        10.367655000000001,
+        25.887970000000003,
+        0.7399785876274109
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "北京市",
+        "code": 110000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P110000.npz"
+      }
+    },
+    {
+      "name": "P120000",
+      "op": "ops/mesh.py",
+      "offset": [
+        11.19407,
+        25.116685000000004,
+        0.5320747256278991
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "天津市",
+        "code": 120000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P120000.npz"
+      }
+    },
+    {
+      "name": "P130000",
+      "op": "ops/mesh.py",
+      "offset": [
+        10.636600000000001,
+        24.956895000000003,
+        0.8114263772964477
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "河北省",
+        "code": 130000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P130000.npz"
+      }
+    },
+    {
+      "name": "P140000",
+      "op": "ops/mesh.py",
+      "offset": [
+        7.535915,
+        23.003045,
+        0.8988489866256714
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "山西省",
+        "code": 140000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P140000.npz"
+      }
+    },
+    {
+      "name": "P150000",
+      "op": "ops/mesh.py",
+      "offset": [
+        5.714605000000001,
+        30.836560000000006,
+        0.9646029233932495
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "内蒙古自治区",
+        "code": 150000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P150000.npz"
+      }
+    },
+    {
+      "name": "P210000",
+      "op": "ops/mesh.py",
+      "offset": [
+        14.547465,
+        27.37308,
+        0.5978716671466827
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "辽宁省",
+        "code": 210000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P210000.npz"
+      }
+    },
+    {
+      "name": "P220000",
+      "op": "ops/mesh.py",
+      "offset": [
+        16.837320000000002,
+        30.129310000000004,
+        0.8290712594985962
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "吉林省",
+        "code": 220000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P220000.npz"
+      }
+    },
+    {
+      "name": "P230000",
+      "op": "ops/mesh.py",
+      "offset": [
+        16.68645,
+        35.142545,
+        0.686203932762146
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "黑龙江省",
+        "code": 230000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P230000.npz"
+      }
+    },
+    {
+      "name": "P310000",
+      "op": "ops/mesh.py",
+      "offset": [
+        15.567005000000002,
+        17.315425,
+        0.39789325594902036
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "上海市",
+        "code": 310000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P310000.npz"
+      }
+    },
+    {
+      "name": "P320000",
+      "op": "ops/mesh.py",
+      "offset": [
+        13.42361,
+        18.96282,
+        0.46167037487030027
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "江苏省",
+        "code": 320000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P320000.npz"
+      }
+    },
+    {
+      "name": "P330000",
+      "op": "ops/mesh.py",
+      "offset": [
+        14.666715000000002,
+        15.259910000000001,
+        0.6738824605941772
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "浙江省",
+        "code": 330000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P330000.npz"
+      }
+    },
+    {
+      "name": "P340000",
+      "op": "ops/mesh.py",
+      "offset": [
+        12.002555000000001,
+        17.767870000000002,
+        0.656732714176178
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "安徽省",
+        "code": 340000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P340000.npz"
+      }
+    },
+    {
+      "name": "P350000",
+      "op": "ops/mesh.py",
+      "offset": [
+        13.463350000000002,
+        11.825055,
+        0.7503022313117981
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "福建省",
+        "code": 350000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P350000.npz"
+      }
+    },
+    {
+      "name": "P360000",
+      "op": "ops/mesh.py",
+      "offset": [
+        11.408820000000002,
+        12.899935000000001,
+        0.7503022313117981
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "江西省",
+        "code": 360000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P360000.npz"
+      }
+    },
+    {
+      "name": "P370000",
+      "op": "ops/mesh.py",
+      "offset": [
+        12.580315,
+        22.098805000000002,
+        0.5435628354549408
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "山东省",
+        "code": 370000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P370000.npz"
+      }
+    },
+    {
+      "name": "P410000",
+      "op": "ops/mesh.py",
+      "offset": [
+        8.706425000000001,
+        19.360505000000003,
+        0.7302878856658935
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "河南省",
+        "code": 410000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P410000.npz"
+      }
+    },
+    {
+      "name": "P420000",
+      "op": "ops/mesh.py",
+      "offset": [
+        8.012690000000001,
+        16.40565,
+        0.8493627667427063
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "湖北省",
+        "code": 420000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P420000.npz"
+      }
+    },
+    {
+      "name": "P430000",
+      "op": "ops/mesh.py",
+      "offset": [
+        7.610130000000002,
+        12.677075000000002,
+        0.7180001497268677
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "湖南省",
+        "code": 430000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P430000.npz"
+      }
+    },
+    {
+      "name": "P440000",
+      "op": "ops/mesh.py",
+      "offset": [
+        9.589695,
+        8.269415,
+        0.6831208229064941
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "广东省",
+        "code": 440000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P440000.npz"
+      }
+    },
+    {
+      "name": "P450000",
+      "op": "ops/mesh.py",
+      "offset": [
+        4.81928,
+        9.17721,
+        0.7128451824188232
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "广西壮族自治区",
+        "code": 450000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P450000.npz"
+      }
+    },
+    {
+      "name": "P460000",
+      "op": "ops/mesh.py",
+      "offset": [
+        6.459065000000001,
+        4.567785000000001,
+        0.634856915473938
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "海南省",
+        "code": 460000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P460000.npz"
+      }
+    },
+    {
+      "name": "P500000",
+      "op": "ops/mesh.py",
+      "offset": [
+        4.158950000000001,
+        15.35013,
+        0.8493627667427063
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "重庆市",
+        "code": 500000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P500000.npz"
+      }
+    },
+    {
+      "name": "P510000",
+      "op": "ops/mesh.py",
+      "offset": [
+        0.2037300000000002,
+        15.373565000000001,
+        1.4610365390777589
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "四川省",
+        "code": 510000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P510000.npz"
+      }
+    },
+    {
+      "name": "P520000",
+      "op": "ops/mesh.py",
+      "offset": [
+        3.2466800000000005,
+        12.059475,
+        0.8806122303009033
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "贵州省",
+        "code": 520000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P520000.npz"
+      }
+    },
+    {
+      "name": "P530000",
+      "op": "ops/mesh.py",
+      "offset": [
+        -0.98926,
+        10.447785,
+        1.4432310819625855
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "云南省",
+        "code": 530000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P530000.npz"
+      }
+    },
+    {
+      "name": "P540000",
+      "op": "ops/mesh.py",
+      "offset": [
+        -11.499300000000002,
+        17.794870000000003,
+        1.8936345338821412
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "西藏自治区",
+        "code": 540000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P540000.npz"
+      }
+    },
+    {
+      "name": "P610000",
+      "op": "ops/mesh.py",
+      "offset": [
+        4.514125,
+        20.87666,
+        0.9310670852661133
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "陕西省",
+        "code": 610000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P610000.npz"
+      }
+    },
+    {
+      "name": "P620000",
+      "op": "ops/mesh.py",
+      "offset": [
+        -1.450685,
+        22.930685000000004,
+        1.3286754846572877
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "甘肃省",
+        "code": 620000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P620000.npz"
+      }
+    },
+    {
+      "name": "P630000",
+      "op": "ops/mesh.py",
+      "offset": [
+        -5.076365,
+        20.941480000000002,
+        1.4940837383270265
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "青海省",
+        "code": 630000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P630000.npz"
+      }
+    },
+    {
+      "name": "P640000",
+      "op": "ops/mesh.py",
+      "offset": [
+        2.6057900000000003,
+        22.443965000000002,
+        0.9593313097953796
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "宁夏回族自治区",
+        "code": 640000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P640000.npz"
+      }
+    },
+    {
+      "name": "P650000",
+      "op": "ops/mesh.py",
+      "offset": [
+        -12.914395,
+        28.61792,
+        1.8169069051742555
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "新疆维吾尔自治区",
+        "code": 650000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P650000.npz"
+      }
+    },
+    {
+      "name": "P710000",
+      "op": "ops/mesh.py",
+      "offset": [
+        16.31388,
+        9.971350000000001,
+        1.022309160232544
+      ],
+      "params": {
+        "group": "terrain",
+        "province": "台湾省",
+        "code": 710000,
+        "tile": [],
+        "mount": "loose_card",
+        "mesh_file": "data/processed/P710000.npz"
+      }
+    },
+    {
+      "name": "Tray_X1_Y1",
+      "op": "ops/mesh.py",
+      "offset": [
+        -10.1,
+        4.968030000000001,
+        0.35
+      ],
+      "params": {
+        "group": "tray",
+        "tile": [
+          1,
+          1
+        ],
+        "slot_depth_cm": 0.2,
+        "floor_cm": 0.2,
+        "mesh_file": "data/processed/Tray_X1_Y1.npz"
+      }
+    },
+    {
+      "name": "Tray_X2_Y1",
+      "op": "ops/mesh.py",
+      "offset": [
+        13.25,
+        4.968030000000001,
+        0.35
+      ],
+      "params": {
+        "group": "tray",
+        "tile": [
+          2,
+          1
+        ],
+        "slot_depth_cm": 0.2,
+        "floor_cm": 0.2,
+        "mesh_file": "data/processed/Tray_X2_Y1.npz"
+      }
+    },
+    {
+      "name": "Tray_X1_Y2",
+      "op": "ops/mesh.py",
+      "offset": [
+        -10.1,
+        28.31803,
+        0.35
+      ],
+      "params": {
+        "group": "tray",
+        "tile": [
+          1,
+          2
+        ],
+        "slot_depth_cm": 0.2,
+        "floor_cm": 0.2,
+        "mesh_file": "data/processed/Tray_X1_Y2.npz"
+      }
+    },
+    {
+      "name": "Tray_X2_Y2",
+      "op": "ops/mesh.py",
+      "offset": [
+        13.25,
+        28.31803,
+        0.35
+      ],
+      "params": {
+        "group": "tray",
+        "tile": [
+          2,
+          2
+        ],
+        "slot_depth_cm": 0.2,
+        "floor_cm": 0.2,
+        "mesh_file": "data/processed/Tray_X2_Y2.npz"
+      }
+    },
+    {
+      "name": "Export",
+      "op": "ops/export_model.py",
+      "after": [
+        "P110000",
+        "P120000",
+        "P130000",
+        "P140000",
+        "P150000",
+        "P210000",
+        "P220000",
+        "P230000",
+        "P310000",
+        "P320000",
+        "P330000",
+        "P340000",
+        "P350000",
+        "P360000",
+        "P370000",
+        "P410000",
+        "P420000",
+        "P430000",
+        "P440000",
+        "P450000",
+        "P460000",
+        "P500000",
+        "P510000",
+        "P520000",
+        "P530000",
+        "P540000",
+        "P610000",
+        "P620000",
+        "P630000",
+        "P640000",
+        "P650000",
+        "P710000",
+        "Tray_X1_Y1",
+        "Tray_X2_Y1",
+        "Tray_X1_Y2",
+        "Tray_X2_Y2"
+      ],
+      "params": {
+        "pieces": {
+          "flush_inlays_R5/110000_北京市": [
+            "P110000"
+          ],
+          "flush_inlays_R5/120000_天津市": [
+            "P120000"
+          ],
+          "flush_inlays_R5/130000_河北省": [
+            "P130000"
+          ],
+          "flush_inlays_R5/140000_山西省": [
+            "P140000"
+          ],
+          "flush_inlays_R5/150000_内蒙古自治区": [
+            "P150000"
+          ],
+          "flush_inlays_R5/210000_辽宁省": [
+            "P210000"
+          ],
+          "flush_inlays_R5/220000_吉林省": [
+            "P220000"
+          ],
+          "flush_inlays_R5/230000_黑龙江省": [
+            "P230000"
+          ],
+          "flush_inlays_R5/310000_上海市": [
+            "P310000"
+          ],
+          "flush_inlays_R5/320000_江苏省": [
+            "P320000"
+          ],
+          "flush_inlays_R5/330000_浙江省": [
+            "P330000"
+          ],
+          "flush_inlays_R5/340000_安徽省": [
+            "P340000"
+          ],
+          "flush_inlays_R5/350000_福建省": [
+            "P350000"
+          ],
+          "flush_inlays_R5/360000_江西省": [
+            "P360000"
+          ],
+          "flush_inlays_R5/370000_山东省": [
+            "P370000"
+          ],
+          "flush_inlays_R5/410000_河南省": [
+            "P410000"
+          ],
+          "flush_inlays_R5/420000_湖北省": [
+            "P420000"
+          ],
+          "flush_inlays_R5/430000_湖南省": [
+            "P430000"
+          ],
+          "flush_inlays_R5/440000_广东省": [
+            "P440000"
+          ],
+          "flush_inlays_R5/450000_广西壮族自治区": [
+            "P450000"
+          ],
+          "flush_inlays_R5/460000_海南省": [
+            "P460000"
+          ],
+          "flush_inlays_R5/500000_重庆市": [
+            "P500000"
+          ],
+          "flush_inlays_R5/510000_四川省": [
+            "P510000"
+          ],
+          "flush_inlays_R5/520000_贵州省": [
+            "P520000"
+          ],
+          "flush_inlays_R5/530000_云南省": [
+            "P530000"
+          ],
+          "flush_inlays_R5/540000_西藏自治区": [
+            "P540000"
+          ],
+          "flush_inlays_R5/610000_陕西省": [
+            "P610000"
+          ],
+          "flush_inlays_R5/620000_甘肃省": [
+            "P620000"
+          ],
+          "flush_inlays_R5/630000_青海省": [
+            "P630000"
+          ],
+          "flush_inlays_R5/640000_宁夏回族自治区": [
+            "P640000"
+          ],
+          "flush_inlays_R5/650000_新疆维吾尔自治区": [
+            "P650000"
+          ],
+          "flush_inlays_R5/710000_台湾省": [
+            "P710000"
+          ],
+          "flush_inlays_R5/Tray_X1_Y1": [
+            "Tray_X1_Y1"
+          ],
+          "flush_inlays_R5/Tray_X2_Y1": [
+            "Tray_X2_Y1"
+          ],
+          "flush_inlays_R5/Tray_X1_Y2": [
+            "Tray_X1_Y2"
+          ],
+          "flush_inlays_R5/Tray_X2_Y2": [
+            "Tray_X2_Y2"
+          ]
+        },
+        "blend_name": "china_relief_flush_inlays_R5.blend"
+      }
+    }
+  ],
+  "prepared_fingerprint": "74eb0740f817ce4c7f896b9fd49b88e63f579c6e1db1a2815d7425ae6df83750",
+  "design_revision": "p2s_flush_inlays_r5_rounded_base",
+  "printing": {
+    "printer": "Bambu Lab P2S 0.4 nozzle",
+    "material": "Bambu PLA Basic @BBL P2S",
+    "bed_type": "Textured PEI Plate",
+    "colors": [
+      {
+        "id": 1,
+        "name": "灰色底座",
+        "hex": "#A6A8AB"
+      },
+      {
+        "id": 2,
+        "name": "海蓝",
+        "hex": "#2F80C9"
+      },
+      {
+        "id": 3,
+        "name": "象牙白",
+        "hex": "#F1E7CF"
+      },
+      {
+        "id": 4,
+        "name": "浅绿",
+        "hex": "#78B875"
+      },
+      {
+        "id": 5,
+        "name": "金黄",
+        "hex": "#EFC84B"
+      },
+      {
+        "id": 6,
+        "name": "橘色",
+        "hex": "#E68B55"
+      }
+    ],
+    "province_filament_ids": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "base_filament_id": 1,
+    "sea_filament_id": 2,
+    "inset_filament_id": 3,
+    "multicolor_base_object": "Tray_X2_Y1",
+    "sea_color_thickness_mm": 0.4,
+    "base_layer_height_mm": 0.2,
+    "card_layer_height_mm": 0.16,
+    "initial_layer_height_mm": 0.2,
+    "wall_loops": 2,
+    "infill_percent": 5,
+    "top_shell_layers": 4,
+    "bottom_shell_layers": 3,
+    "infill_pattern": "gyroid",
+    "xy_contour_compensation_mm": -0.08,
+    "elephant_foot_compensation_mm": 0.15,
+    "brim_width_mm": 3,
+    "plate_margin_mm": 7,
+    "object_spacing_mm": 5,
+    "skirt_loops": 0,
+    "support_enabled": false,
+    "print_sequence": "by layer",
+    "single_color_province_plates": true,
+    "multicolor_wall_generator": "arachne",
+    "multicolor_min_bead_width_percent": 60,
+    "prime_tower_enabled": false,
+    "fit_test_province_code": 110000,
+    "fit_test_board_width_mm": 30,
+    "fit_test_board_height_mm": 30,
+    "clearance_trial_mm": [
+      0.2,
+      0.3,
+      0.4
+    ],
+    "clearance_trial_marker_diameter_mm": 1.5,
+    "clearance_trial_marker_height_mm": 0.4,
+    "clearance_trial_marker_spacing_mm": 3,
+    "clearance_trial_marker_edge_mm": 4,
+    "clearance_selection": {
+      "slot_outward_offset_mm": 0.15,
+      "basis": "User physical trial: 0.20 mm slightly loose; selected 0.15 mm",
+      "physically_tested_offset_mm": 0.2
+    },
+    "province_color_balance": {
+      "target_count_per_color": 8,
+      "objective": "balance_visible_xy_area",
+      "solver_time_limit_seconds": 30,
+      "solver_relative_gap": 0.0005,
+      "anchors": {
+        "650000": 6
+      }
+    },
+    "province_color_assignments": {
+      "110000": 4,
+      "120000": 5,
+      "130000": 3,
+      "140000": 5,
+      "150000": 4,
+      "210000": 6,
+      "220000": 5,
+      "230000": 3,
+      "310000": 6,
+      "320000": 3,
+      "330000": 4,
+      "340000": 5,
+      "350000": 3,
+      "360000": 6,
+      "370000": 4,
+      "410000": 6,
+      "420000": 4,
+      "430000": 3,
+      "440000": 5,
+      "450000": 4,
+      "460000": 6,
+      "500000": 5,
+      "510000": 4,
+      "520000": 6,
+      "530000": 3,
+      "540000": 5,
+      "610000": 3,
+      "620000": 5,
+      "630000": 3,
+      "640000": 6,
+      "650000": 6,
+      "710000": 4
+    },
+    "sea_color_base_objects": [
+      "Tray_X1_Y1",
+      "Tray_X2_Y1",
+      "Tray_X1_Y2",
+      "Tray_X2_Y2"
+    ],
+    "ocean_mask": {
+      "dataset_name": "ne_50m_land",
+      "archive_file": "data/raw/ne_50m_land.zip",
+      "source_url": "https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_land.zip",
+      "source_scale": "1:50 million",
+      "license": "Natural Earth public domain",
+      "land_mask_file": "data/processed/world_land_mask.geojson",
+      "sea_mask_file": "data/processed/true_ocean_mask.geojson",
+      "simplify_mm": 0.02,
+      "geographic_clip_margin_deg": 1,
+      "bounds_sample_count": 17,
+      "validation_land_points_lonlat": {
+        "Mongolia": [
+          107,
+          47
+        ],
+        "India": [
+          80,
+          25
+        ],
+        "Vietnam": [
+          106,
+          16
+        ],
+        "Kazakhstan": [
+          77,
+          45
+        ],
+        "Korea": [
+          127,
+          38
+        ],
+        "Japan": [
+          135,
+          35
+        ]
+      },
+      "validation_sea_points_lonlat": {
+        "Yellow Sea": [
+          123,
+          36
+        ],
+        "East China Sea": [
+          127,
+          28
+        ],
+        "South China Sea": [
+          115,
+          14
+        ],
+        "Bay of Bengal": [
+          90,
+          18
+        ]
+      },
+      "partition_volume_tolerance_mm3": 0.01
+    },
+    "inset_inlay_thickness_mm": 0.4
+  }
+}

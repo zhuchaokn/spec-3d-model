@@ -1,0 +1,27 @@
+[
+  {
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/CHN/ADM1/",
+    "file": "data/raw/geoboundaries_metadata.json",
+    "sha256": "b5816c51ebefc26b1154872e663cd5a8eda830008f738a965d5dd610e72b09d0"
+  },
+  {
+    "url": "https://media.githubusercontent.com/media/wmgeolab/geoBoundaries/9469f09/releaseData/gbOpen/CHN/ADM1/geoBoundaries-CHN-ADM1.geojson",
+    "file": "data/raw/provinces_geoboundaries.geojson",
+    "sha256": "3a00467a0db9b4136facb5f2f3d0edbfd96adb15651cfdf63991da9281030e85"
+  },
+  {
+    "url": "https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json",
+    "file": "data/raw/provinces_datav_reference.geojson",
+    "sha256": "99adfeded5223848bbe37a0a12f8023e11ee12161c7800521c27db42fdeac275"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/tilezen/joerd/master/docs/attribution.md",
+    "file": "data/raw/terrain_attribution.md",
+    "sha256": "2ce4d3414b4592d17ad56a5af57feb480686ddcfb0a3e4ea0b566d28cde13567"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/tilezen/joerd/master/docs/data-sources.md",
+    "file": "data/raw/terrain_data_sources.md",
+    "sha256": "dcf07b156bc25930dfe3e1a55d8efd4a2e3b5376393d23bf24d1fc1dd02c5948"
+  }
+]
