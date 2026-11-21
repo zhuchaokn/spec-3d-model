@@ -12,7 +12,7 @@
 <body><main>
 <div class="eyebrow">SPEC / 01 · LOTUS THIMBLE</div>
 <h1>指环上的一枚小莲蓬</h1>
-<p>戴在左手食指，针托朝手背。圆环与莲蓬之间的两侧凹区填成实体，外轮廓平顺相接。浅碗承接针尾，高边与七个小坑帮助限制侧滑。</p>
+<p>戴在左手食指，针托朝手背。两侧凹区填实，斜面转环身处加圆角，指环两端内外边也倒圆，减少佩戴刮蹭。浅碗、高边与七个小坑保留。</p>
 <span class="badge">方案待确认 · 尚未建模</span>
 <div class="facts"><div class="fact"><strong>12 mm</strong><span>指环内径 · 可在后续调整</span></div><div class="fact"><strong>14 mm</strong><span>针托直径 · 圆形扩口</span></div><div class="fact"><strong>1 + 6</strong><span>中央坑 + 六个周围坑</span></div><div class="fact"><strong>1 mm</strong><span>碗面中心相对边缘下凹</span></div></div>
 <div class="views">
@@ -21,7 +21,8 @@
 <svg viewBox="0 0 360 440" role="img" aria-label="指环内径12毫米，外径16毫米，背侧带高边针托的正视图">
 <!-- 两侧直线与外圆相切：取消旧收腰，填满用户标绿区域。 -->
 <path class="solid" d="M68 57.2 H292 L307.414 217.768 A128 128 0 1 1 52.586 217.768 Z"/>
-<circle class="void" cx="180" cy="230" r="96"/>
+<circle class="void" cx="180" cy="230" r="105.6"/>
+<circle cx="180" cy="230" r="96" fill="none" stroke="#6b8a76" stroke-width="1"/>
 <path class="hidden" d="M92 57.2 A250 250 0 0 0 268 57.2"/>
 <path class="hidden" d="M170.4 73.2 Q180 86 189.6 73.2"/>
 <line class="axis" x1="180" y1="34" x2="180" y2="372"/><line class="axis" x1="40" y1="230" x2="320" y2="230"/>
@@ -34,14 +35,18 @@
 <figure class="view"><figcaption>左视图<span class="sub">看 +X · 水平为手指轴，右侧朝指尖</span></figcaption>
 <!-- 左视 Y 投影到页面右侧：y=0 在 x=180；z=0 在 y=230。 -->
 <svg viewBox="0 0 360 440" role="img" aria-label="环宽10毫米，针托沿手指轴最大14毫米的左视图">
-<path class="solid" d="M68 57.2 H292 L260 102 V358 H100 V102 Z"/>
-<path class="hidden" d="M100 134 H260 M100 326 H260 M92 57.2 A250 250 0 0 0 268 57.2 M170.4 73.2 Q180 86 189.6 73.2"/>
+<!-- 肩部 R1 mm，端面外边与指孔入口 R0.6 mm；圆弧与邻接线相切。 -->
+<path class="solid" d="M68 57.2 H292 L262.980 97.828 A16 16 0 0 0 260 107.127 V348.4 A9.6 9.6 0 0 1 250.4 358 H109.6 A9.6 9.6 0 0 1 100 348.4 V107.127 A16 16 0 0 0 97.020 97.828 Z"/>
+<path class="hidden" d="M100 124.4 A9.6 9.6 0 0 0 109.6 134 H250.4 A9.6 9.6 0 0 0 260 124.4 M100 335.6 A9.6 9.6 0 0 1 109.6 326 H250.4 A9.6 9.6 0 0 1 260 335.6 M92 57.2 A250 250 0 0 0 268 57.2 M170.4 73.2 Q180 86 189.6 73.2"/>
 <line class="axis" x1="180" y1="34" x2="180" y2="372"/><line class="axis" x1="40" y1="230" x2="320" y2="230"/>
 <path class="dim" d="M100 367 V391 M260 367 V391 M100 384 H260"/><text class="dt" x="180" y="407">环宽 10 mm</text>
 <path class="dim" d="M68 49 V26 M292 49 V26 M68 33 H292"/><text class="dt" x="180" y="20">针托沿轴长 14</text>
-<path class="dim" d="M314 102 H336 M314 134 H336 M330 102 V134"/><text class="dt" x="326" y="157">壁厚 2</text>
+<path class="dim" d="M314 102 H336 M314 134 H336 M330 102 V134"/><text class="dt" x="318" y="157">基壁厚 2</text>
+<path class="dim" d="M263 101 L282 82 H332"/><text class="dt" x="306" y="72">转接 R1.0</text>
+<path class="dim" d="M256 355 L284 374 H336"/><text class="dt" x="306" y="393">外边 R0.6</text>
+<path class="dim" d="M106 329 L75 306 H23"/><text class="dt" x="51" y="296">孔口 R0.6</text>
 <path d="M127 263 H233 L226 258 M233 263 L226 268" fill="none" stroke="#66786f"/><text class="label" x="129" y="286">手指轴 → 指尖</text>
-<text class="label" x="21" y="430">两端开放；虚线表示指孔边界</text>
+<text class="label" x="21" y="430">两端内外边全周倒圆；虚线表示圆滑孔口</text>
 </svg></figure>
 <figure class="view"><figcaption>俯视图<span class="sub">看 −Z · 从食指背侧看针托</span></figcaption>
 <!-- 俯视原点 (180,210)，+Y 朝页面上方。 -->
@@ -65,7 +70,7 @@
 <text class="label" x="21" y="393">小坑实际布局：1 + 6，周围圆心半径 3 mm</text><text class="label" x="21" y="414">圆周完整抬高，不设贯通孔</text>
 </svg></figure>
 </div>
-<p class="note">三视图统一绘图比例：1 cm = 160 px（屏幕放大图，不等于实物尺寸）。尺寸均为 mm；接触边拟倒圆/倒角 0.4 mm，图中展示名义轮廓。</p>
+<p class="note">三视图统一绘图比例：1 cm = 160 px（屏幕放大图，不等于实物尺寸）。尺寸均为 mm。左视图明确画出肩部 R1.0 和两端内外边 R0.6；针托上缘另设 R0.4 倒圆，图示保留其名义轮廓。</p>
 <div class="details">
 <section class="panel"><h2>两侧填实 · 浅碗保留</h2><p>针托与圆环之间填平，取消收腰，成为连续实体。碗面仍下凹 1 mm，中央坑再深 0.4 mm，坑底至指孔保留 3.4 mm 实体。</p>
 <div class="scroll">
@@ -84,12 +89,13 @@
 <section class="panel"><h2>初版尺寸提案</h2><table><thead><tr><th>结构</th><th>尺寸</th></tr></thead><tbody>
 <tr><td>指环</td><td>内径 12 / 外径 16 / 环宽 10 mm</td></tr>
 <tr><td>针托与连接</td><td>上缘 ⌀14 mm / 两侧填实，无收腰</td></tr>
+<tr><td>舒适圆角</td><td>肩部 R1.0 / 孔口与外边 R0.6 mm</td></tr>
 <tr><td>碗面</td><td>开口 ⌀11 / 中心凹深 1 mm</td></tr>
 <tr><td>七个盲坑</td><td>口径 ⌀1.2 / 深 0.4 mm</td></tr>
 <tr><td>针托突出指环背部</td><td>2.8 mm</td></tr>
 <tr><td>整件包络</td><td>16 × 14 × 18.8 mm</td></tr>
 </tbody></table><p style="font-size:13px">12 mm 是首版名义孔径。后续可单独调整内径、环宽、针托直径和小坑尺寸；打印后依据试戴与实际针尾调整松紧和落针感。</p></section>
 </div>
-<section class="panel" style="margin-top:18px"><h2>佩戴与打印考虑</h2><ul class="list"><li>将浅碗朝食指背侧，指尖露出；此版针托不偏向拇指，左右手均可佩戴。</li><li>整体打印一件；两端接触皮肤的边缘倒圆，针托圆周保持连续，减少勾线。</li><li>先做试戴件，实物检查舒适度与针尾是否滑脱；打印朝向、局部支撑和强度仍需后续切片与实物验证。</li></ul></section>
+<section class="panel" style="margin-top:18px"><h2>佩戴与打印考虑</h2><ul class="list"><li>将浅碗朝食指背侧，指尖露出；此版针托不偏向拇指，左右手均可佩戴。</li><li>肩部用 R1.0 圆弧平顺转接，指孔入口和两端外边全周 R0.6 倒圆。孔口渐扩至 ⌀13.2 mm，中段配合孔保持 ⌀12 mm。</li><li>整体打印一件；先试戴检查弯指时是否压手、磨手，清理毛刺。圆角不能替代实物舒适度验证；打印支撑和强度仍需后续切片与实测。</li></ul></section>
 <p class="foot">本页为手写设计规格，需确认后进入 Blender 实施。详细坐标及验收条件见同目录 requirement.md。没有生成 STL 或进行截图/渲染。</p>
 </main></body></html>
