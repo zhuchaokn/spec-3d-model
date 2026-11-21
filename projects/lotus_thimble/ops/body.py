@@ -85,11 +85,12 @@ def run(ctx):
 
     top=p["rim_z"]; lipbase=top-p["lip_h"]
     rise=lipbase-rr; runout=pr-hw
-    assert rise>0 and runout>0
+    assert rise>0 and runout>=0, "Needle pad must span the band width"
+    straight=runout<=merge
     length=math.hypot(runout,rise); ux=runout/length; uz=rise/length
     small=p["lower_r"]; shoulder=p["shoulder_r"]
     small_t=small*math.tan(math.acos(uz)/2)
-    big_t=shoulder*(1-uz)/ux
+    big_t=0 if straight else shoulder*(1-uz)/ux
     assert length>small_t+big_t, "Shoulder and lip fillets overlap"
     zs=rr-big_t; yc=hw+shoulder
     big_end=(hw+big_t*ux,rr+big_t*uz)
@@ -107,6 +108,8 @@ def run(ctx):
             return tx+(pr-tx)*(z-tz)/(lipbase-tz)
         return pr
     def y_half(z):
+        if straight:
+            return hw
         if z<=zs:
             return hw
         if z<=big_end[1]:
@@ -154,9 +157,14 @@ def run(ctx):
     print("JOIN_SHOULDER",s3d.manifold_report(obj.name),flush=True)
 
     # Round lip is revolved: R0.4 below, a real short wall, then R0.8 above.
-    profile=[(0,p["base_z"]),big_end,small_start]
-    sa=math.atan2(small_start[1]-small_center[1],small_start[0]-small_center[0])
-    profile+=arc(small_center,small,sa,0,m)[1:]
+    if straight:
+        # With equal pad diameter and band width there is no shoulder turn:
+        # continue the end wall directly into the rounded upper lip.
+        profile=[(0,p["base_z"]),(pr,p["base_z"])]
+    else:
+        profile=[(0,p["base_z"]),big_end,small_start]
+        sa=math.atan2(small_start[1]-small_center[1],small_start[0]-small_center[0])
+        profile+=arc(small_center,small,sa,0,m)[1:]
     profile.append((pr,top-p["lip_r"]))
     profile+=arc((pr-p["lip_r"],top-p["lip_r"]),p["lip_r"],0,math.pi/2,m)[1:]
     # R0.3 blends the horizontal land into the spherical bowl exactly.

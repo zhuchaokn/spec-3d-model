@@ -73,7 +73,7 @@ def run(ctx):
     assert len(components)==1,components
     assert volume>0,volume
     box=s3d.bbox(obj.name)
-    expected=[2*p["ring_r"],p["pad_d"],p["rim_z"]+p["ring_r"]]
+    expected=[2*p["ring_r"],max(p["pad_d"],p["band_w"]),p["rim_z"]+p["ring_r"]]
     tol=p["tolerance"]
     for measured,wanted in zip(box["size"],expected):
         assert abs(measured-wanted)<tol,(box,expected)
@@ -110,13 +110,14 @@ def run(ctx):
     runout=pr-hw
     length=math.hypot(runout,rise)
     ux=runout/length; uz=rise/length
-    tangent=p["shoulder_r"]*(1-uz)/ux
+    straight=abs(runout)<tol
+    tangent=0 if straight else p["shoulder_r"]*(1-uz)/ux
     z0=p["ring_r"]-tangent
     z1=p["ring_r"]+tangent*uz
     shoulder_probes=[]
     for fraction in (0.25,0.5,0.75):
-        z=z0+(z1-z0)*fraction
-        expected_y=hw+p["shoulder_r"]-math.sqrt(p["shoulder_r"]**2-(z-z0)**2)
+        z=z0+(rise if straight else z1-z0)*fraction
+        expected_y=hw if straight else hw+p["shoulder_r"]-math.sqrt(p["shoulder_r"]**2-(z-z0)**2)
         actual=hit((0,pr+p["probe"],z),(0,-1,0))[1]
         assert abs(actual-expected_y)<tol,(z,actual,expected_y)
         shoulder_probes.append({"z_cm":z,"measured_y_cm":actual,"expected_y_cm":expected_y})
@@ -133,6 +134,13 @@ def run(ctx):
     report={"object":obj.name,"blender_version":bpy.app.version_string,"units":"cm","bbox":box,"expected_size_cm":expected,"topology":topo,"connected_components":len(components),"volume_cm3":volume,"bore_diameter_cm":bore,"central_floor_thickness_cm":core,"pits":measured_pits,"top_flat_land_cm":land,"round_lip_arc_vertices":len(rim_points),"shoulder_probes":shoulder_probes,"round_lip_probe":{"z_cm":z,"measured_y_cm":actual,"expected_y_cm":expected_y},"pit_gap_cm":min_gap,"pit_to_nominal_bowl_edge_cm":edge_gap,"tolerance_cm":tol,"physical_fit_and_strength":"not tested"}
     path=os.path.join(ctx.proj_dir,"spec","verification_report.json")
     report["ring_support_end_fillet"]=junction
+    report["shoulder_profile"]="straight aligned wall" if straight else "R3 fillet and slope"
+    # Measure the band where the end-round leaves a flat annular face.
+    z_band=-(p["bore_d"]/2+p["ring_r"])/2
+    y_plus=hit((0,hw+p["probe"],z_band),(0,-1,0))[1]
+    y_minus=hit((0,-hw-p["probe"],z_band),(0,1,0))[1]
+    report["band_width_cm"]=y_plus-y_minus
+    assert abs(report["band_width_cm"]-p["band_w"])<tol,report["band_width_cm"]
     with open(path,"w",encoding="utf-8") as f:
         json.dump(report,f,ensure_ascii=False,indent=2)
     print("VERIFIED",json.dumps(report,ensure_ascii=False))
