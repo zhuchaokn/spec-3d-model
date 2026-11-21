@@ -12,15 +12,15 @@
 <body><main>
 <div class="eyebrow">SPEC / 01 · LOTUS THIMBLE</div>
 <h1>指环上的一枚小莲蓬</h1>
-<p>戴在左手食指，针托朝手背。中央坑底保持 2 mm 留厚，外围改为 2.5 mm 宽的实体圆边，并单独抬高 0.6 mm。两侧填实，R3 转接、圆滑孔口与七个深坑保留。</p>
+<p>戴在左手食指，针托朝手背。外伸尖角改为有 1.2 mm 名义侧壁高度的圆唇，顶部 R0.8 倒圆，下端平滑转入支撑体。中央坑底仍留厚 2 mm，七个深坑保留。</p>
 <span class="badge">方案待确认 · 尚未建模</span>
 <div class="facts"><div class="fact"><strong>12 mm</strong><span>指环内径 · 可在后续调整</span></div><div class="fact"><strong>2.5 mm</strong><span>针托宽边 · 由 1.5 mm 加宽</span></div><div class="fact"><strong>1 + 6</strong><span>中央坑 + 六个周围坑</span></div><div class="fact"><strong>2 mm</strong><span>中央坑底至指孔留厚</span></div></div>
 <div class="views">
 <figure class="view"><figcaption>正视图<span class="sub">沿手指轴看 −Y · 横向 X / 背侧 Z</span></figcaption>
 <!-- 所有主视图 16 px/mm = 160 px/cm；正视原点 (180,230)。 -->
 <svg viewBox="0 0 360 440" role="img" aria-label="指环内径12毫米，外径16毫米，背侧带高边针托的正视图">
-<!-- 两侧直线与外圆相切：取消旧收腰，填满用户标绿区域。 -->
-<path class="solid" d="M68 63.6 H292 L307.365 217.265 A128 128 0 1 1 52.635 217.265 Z"/>
+<!-- 圆唇顶部实际 R0.8 + 短直壁；支撑体接入外圆，不再画尖角。 -->
+<path class="solid" d="M80.8 63.6 H279.2 A12.8 12.8 0 0 1 292 76.4 V82.8 L307.171 215.456 A128 128 0 1 1 52.829 215.456 L68 82.8 V76.4 A12.8 12.8 0 0 1 80.8 63.6 Z"/>
 <circle class="void" cx="180" cy="230" r="105.6"/>
 <circle cx="180" cy="230" r="96" fill="none" stroke="#6b8a76" stroke-width="1"/>
 <path class="hidden" d="M108 63.6 A114.05 114.05 0 0 0 252 63.6"/>
@@ -35,18 +35,19 @@
 <figure class="view"><figcaption>左视图<span class="sub">看 +X · 水平为手指轴，右侧朝指尖</span></figcaption>
 <!-- 左视 Y 投影到页面右侧：y=0 在 x=180；z=0 在 y=230。 -->
 <svg viewBox="0 0 360 440" role="img" aria-label="环宽10毫米，针托沿手指轴最大14毫米的左视图">
-<!-- 肩部 R3 mm，端面外边与指孔入口 R0.6 mm；圆弧与邻接线相切。 -->
-<path class="solid" d="M68 63.6 H292 L271.125 88.650 A48 48 0 0 0 260 119.378 V348.4 A9.6 9.6 0 0 1 250.4 358 H109.6 A9.6 9.6 0 0 1 100 348.4 V119.378 A48 48 0 0 0 88.875 88.650 Z"/>
+<!-- 顶部圆唇 R0.8，下端 R0.4 转斜面，再经 R3 转环身；全部明确绘制。 -->
+<path class="solid" d="M80.8 63.6 H279.2 A12.8 12.8 0 0 1 292 76.4 V79.176 A6.4 6.4 0 0 1 288.893 84.664 L283.304 88.017 A48 48 0 0 0 260 129.177 V348.4 A9.6 9.6 0 0 1 250.4 358 H109.6 A9.6 9.6 0 0 1 100 348.4 V129.177 A48 48 0 0 0 76.696 88.017 L71.107 84.664 A6.4 6.4 0 0 1 68 79.176 V76.4 A12.8 12.8 0 0 1 80.8 63.6 Z"/>
 <path class="hidden" d="M100 124.4 A9.6 9.6 0 0 0 109.6 134 H250.4 A9.6 9.6 0 0 0 260 124.4 M100 335.6 A9.6 9.6 0 0 1 109.6 326 H250.4 A9.6 9.6 0 0 1 260 335.6 M108 63.6 A114.05 114.05 0 0 0 252 63.6 M167.2 88.479 V89.2 A12.8 12.8 0 0 0 192.8 89.2 V88.479"/>
 <line class="axis" x1="180" y1="34" x2="180" y2="372"/><line class="axis" x1="40" y1="230" x2="320" y2="230"/>
 <path class="dim" d="M100 367 V391 M260 367 V391 M100 384 H260"/><text class="dt" x="180" y="407">环宽 10 mm</text>
 <path class="dim" d="M68 49 V26 M292 49 V26 M68 33 H292"/><text class="dt" x="180" y="20">针托沿轴长 14</text>
 <path class="dim" d="M314 102 H336 M314 134 H336 M330 102 V134"/><text class="dt" x="318" y="157">基壁厚 2</text>
-<path class="dim" d="M264 104 L295 84 H332"/><text class="dt" x="306" y="72">转接 R3.0</text>
+<path class="dim" d="M266 106 L303 97 H338"/><text class="dt" x="308" y="117">转接 R3.0</text>
+<path class="dim" d="M286 66 L306 51 H338"/><text class="dt" x="305" y="44">圆唇 R0.8</text>
 <path class="dim" d="M256 355 L284 374 H336"/><text class="dt" x="306" y="393">外边 R0.6</text>
 <path class="dim" d="M106 329 L75 306 H23"/><text class="dt" x="51" y="296">孔口 R0.6</text>
 <path d="M127 263 H233 L226 258 M233 263 L226 268" fill="none" stroke="#66786f"/><text class="label" x="129" y="286">手指轴 → 指尖</text>
-<text class="label" x="21" y="430">两端内外边全周倒圆；虚线表示圆滑孔口</text>
+<text class="label" x="21" y="430">外伸尖端改为圆唇；两端孔口继续倒圆</text>
 </svg></figure>
 <figure class="view"><figcaption>俯视图<span class="sub">看 −Z · 从食指背侧看针托</span></figcaption>
 <!-- 俯视原点 (180,210)，+Y 朝页面上方。 -->
@@ -54,6 +55,7 @@
 <!-- 外轮廓为圆盘与基础环投影矩形的凸包，消除接合凹角。 -->
 <path class="solid" d="M52 130 L149.323 102.283 A112 112 0 0 1 210.677 102.283 L308 130 V290 L210.677 317.717 A112 112 0 0 1 149.323 317.717 L52 290 Z"/>
 <circle class="solid" cx="180" cy="210" r="112"/>
+<circle cx="180" cy="210" r="99.2" fill="none" stroke="#6b8a76" stroke-width="1"/>
 <circle cx="180" cy="210" r="72" fill="#ecf1e7" stroke="#335e4c" stroke-width="1.2"/>
 <line class="axis" x1="180" y1="74" x2="180" y2="346"/><line class="axis" x1="40" y1="210" x2="320" y2="210"/>
 <circle class="hidden" cx="180" cy="210" r="41.6"/>
@@ -68,18 +70,18 @@
 <path class="dim" d="M252 205 V191 M292 205 V191 M252 197 H292"/><text class="dt" x="275" y="186">边宽 2.5</text>
 <path class="dim" d="M192.8 210 L232 238 H311"/><text class="dt" x="271" y="258">盲坑 ⌀1.6</text>
 <path d="M180 67 V43 L175 50 M180 43 L185 50" fill="none" stroke="#66786f"/><text class="label" x="194" y="56">指尖 +Y</text>
-<text class="label" x="21" y="393">小坑布局：1 + 6，周围圆心半径 2.6 mm</text><text class="label" x="21" y="414">完整宽边，外 R0.6 / 碗口 R0.3 倒圆</text>
+<text class="label" x="21" y="393">小坑布局：1 + 6，周围圆心半径 2.6 mm</text><text class="label" x="21" y="414">外 R0.8；外侧细圈表示顶部倒圆起点</text>
 </svg></figure>
 </div>
-<p class="note">三视图统一绘图比例：1 cm = 160 px（屏幕放大图，不等于实物尺寸）。尺寸均为 mm。肩部 R3.0，指环两端内外边 R0.6；针托宽边外 R0.6、碗口 R0.3 倒圆，倒圆后平边目标至少 1.6 mm。针托视图保留倒圆前名义轮廓。</p>
+<p class="note">统一绘图比例：1 cm = 160 px（屏幕放大图，不等于实物尺寸）。尺寸均为 mm。正、左视图明确画出外伸圆唇的实际 R0.8 轮廓，左视下端 R0.4 与肩部 R3 也已画出；碗口 R0.3 为名义边界，倒圆后顶部平边目标至少 1.4 mm。</p>
 <div class="details">
-<section class="panel"><h2>中央保持薄 · 外围做宽边</h2><p>碗口内收到 9 mm，边缘加宽到 2.5 mm，外围单独抬高 0.6 mm。中心位置不变，坑底留厚仍为 2 mm；七坑保持口径 1.6 mm、深 0.8 mm。</p>
+<section class="panel"><h2>去掉尖薄端 · 改成圆唇</h2><p>你圈出的外伸尖端改成 1.2 mm 名义高度的圆唇侧壁，顶部 R0.8 倒圆，之后平滑接入支撑体。正、左视与剖面均明确画出这个圆角，中央坑底仍留厚 2 mm。</p>
 <div class="scroll">
 <!-- 中心 XZ 剖面，比例仍为16 px/mm；z=0在画面y=250，仅展示背部局部。周围坑不在此中心剖面上，省略并注明。 -->
 <svg class="section" viewBox="0 0 360 210" role="img" aria-label="厚边优化剖面，边宽2.5毫米，碗深1.6毫米，中央坑深0.8毫米，坑底距指孔2毫米">
 <defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="8" stroke="#a6bea0" stroke-width="1"/></pattern></defs>
-<path class="solid" d="M68 83.6 H108 A114.05 114.05 0 0 0 167.2 108.479 V109.2 A12.8 12.8 0 0 0 192.8 109.2 V108.479 A114.05 114.05 0 0 0 252 83.6 H292 L302.239 186 H251.554 A96 96 0 0 0 108.446 186 H57.761 Z"/>
-<path d="M68 83.6 H108 A114.05 114.05 0 0 0 167.2 108.479 V109.2 A12.8 12.8 0 0 0 192.8 109.2 V108.479 A114.05 114.05 0 0 0 252 83.6 H292 L302.239 186 H251.554 A96 96 0 0 0 108.446 186 H57.761 Z" fill="url(#hatch)"/>
+<path class="solid" d="M80.8 83.6 H108 A114.05 114.05 0 0 0 167.2 108.479 V109.2 A12.8 12.8 0 0 0 192.8 109.2 V108.479 A114.05 114.05 0 0 0 252 83.6 H279.2 A12.8 12.8 0 0 1 292 96.4 V102.8 L301.515 186 H251.554 A96 96 0 0 0 108.446 186 H58.485 L68 102.8 V96.4 A12.8 12.8 0 0 1 80.8 83.6 Z"/>
+<path d="M80.8 83.6 H108 A114.05 114.05 0 0 0 167.2 108.479 V109.2 A12.8 12.8 0 0 0 192.8 109.2 V108.479 A114.05 114.05 0 0 0 252 83.6 H279.2 A12.8 12.8 0 0 1 292 96.4 V102.8 L301.515 186 H251.554 A96 96 0 0 0 108.446 186 H58.485 L68 102.8 V96.4 A12.8 12.8 0 0 1 80.8 83.6 Z" fill="url(#hatch)"/>
 <line class="axis" x1="180" y1="58" x2="180" y2="201"/>
 <path class="dim" d="M298 83.6 H330 M298 109.2 H330 M323 83.6 V109.2"/><text class="dt" x="319" y="69">碗深 1.6</text>
 <path class="dim" d="M68 77 V57 M108 77 V57 M68 63 H108"/><text class="dt" x="88" y="49">边宽 2.5</text>
@@ -91,6 +93,7 @@
 <section class="panel"><h2>初版尺寸提案</h2><table><thead><tr><th>结构</th><th>尺寸</th></tr></thead><tbody>
 <tr><td>指环</td><td>内径 12 / 外径 16 / 环宽 10 mm</td></tr>
 <tr><td>针托与连接</td><td>上缘 ⌀14 mm / 两侧填实，无收腰</td></tr>
+<tr><td>外伸圆唇</td><td>侧壁高 1.2 / 顶部 R0.8 / 下端 R0.4 mm</td></tr>
 <tr><td>舒适圆角</td><td>肩部 R3.0 / 孔口与外边 R0.6 mm</td></tr>
 <tr><td>碗面与厚边</td><td>开口 ⌀9 / 凹深 1.6 / 边宽 2.5 mm</td></tr>
 <tr><td>七个盲坑</td><td>口径 ⌀1.6 / 深 0.8 mm</td></tr>
