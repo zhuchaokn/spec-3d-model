@@ -1,0 +1,1106 @@
+[
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/45/23.tif",
+    "file": "data/raw/terrain_tiles/6_45_23.tif",
+    "sha256": "5125c15b82d05c09286ad9c0c0fd970c160ced64b630ff16478c4ff427e9a6fb",
+    "source": "gmted/30N060E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628176,
+      1222.9924525628194
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/45/24.tif",
+    "file": "data/raw/terrain_tiles/6_45_24.tif",
+    "sha256": "a222fd5bf737f8345198622b1efb85f6eced3d3cf2c879e192f3543829422980",
+    "source": "gmted/30N060E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628176,
+      1222.992452562814
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/45/25.tif",
+    "file": "data/raw/terrain_tiles/6_45_25.tif",
+    "sha256": "f54280533a4cac547b97c3189fc4b3f354808e4cbf46a23a548d187bc648788a",
+    "source": "gmted/30N060E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628176,
+      1222.992452562823
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/45/26.tif",
+    "file": "data/raw/terrain_tiles/6_45_26.tif",
+    "sha256": "e55cb3f09cfa8b9c09ff573e4c8e9a6f9a1899a50667ed9debca85cc2611ef1d",
+    "source": "gmted/10N060E_20101117_gmted_mea075.tif, gmted/30N060E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628176,
+      1222.9924525628185
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/46/22.tif",
+    "file": "data/raw/terrain_tiles/6_46_22.tif",
+    "sha256": "10369bb544beada4b287107733f0e685506137330219040e65d9e98f5213758d",
+    "source": "gmted/30N060E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.992452562823,
+      1222.9924525628267
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/46/23.tif",
+    "file": "data/raw/terrain_tiles/6_46_23.tif",
+    "sha256": "7f2b5a2874fc7e672c251a7e1a0258db30d3fe8a645536b624982214d8a8340a",
+    "source": "gmted/30N060E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.992452562823,
+      1222.9924525628194
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/46/24.tif",
+    "file": "data/raw/terrain_tiles/6_46_24.tif",
+    "sha256": "4392caf190f1a81669a855e4775976efac37b71f15a61ad8da09d76ff340bc1a",
+    "source": "gmted/30N060E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.992452562823,
+      1222.992452562814
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/46/25.tif",
+    "file": "data/raw/terrain_tiles/6_46_25.tif",
+    "sha256": "2efbcf7317ee99fb1d1be09168318cb7c9763f7bf54d9e382809cb7059826b30",
+    "source": "gmted/30N060E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.992452562823,
+      1222.992452562823
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/46/26.tif",
+    "file": "data/raw/terrain_tiles/6_46_26.tif",
+    "sha256": "6176d1df77cecba8e265a050025f7086110826e8cfeace1692c1e0102741d0ff",
+    "source": "gmted/10N060E_20101117_gmted_mea075.tif, gmted/30N060E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.992452562823,
+      1222.9924525628185
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/47/21.tif",
+    "file": "data/raw/terrain_tiles/6_47_21.tif",
+    "sha256": "89b69b5ec4eeb165fa72240f601f02c587ddc381261e58c34586b1d18dbe1970",
+    "source": "gmted/50N060E_20101117_gmted_mea075.tif, gmted/30N060E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628212
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/47/22.tif",
+    "file": "data/raw/terrain_tiles/6_47_22.tif",
+    "sha256": "89187175228e8341a2a30076c63ceef456a5423202f92703c7ed3b34c67941e7",
+    "source": "gmted/30N060E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628267
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/47/23.tif",
+    "file": "data/raw/terrain_tiles/6_47_23.tif",
+    "sha256": "010fdd644ce3b84f6d7d94c3c7eca036639fa3d82d673c56ac425a1f158f5f05",
+    "source": "gmted/30N060E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628194
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/47/24.tif",
+    "file": "data/raw/terrain_tiles/6_47_24.tif",
+    "sha256": "a0b3c727e2d8d1d5cab8f938b75c55d0f04f3cc573f04f796ce4482271dd15cb",
+    "source": "gmted/30N060E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.992452562814
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/47/25.tif",
+    "file": "data/raw/terrain_tiles/6_47_25.tif",
+    "sha256": "2b7f6691ee0ad21a058cf100d3242af107170749f0b60de0f8bdc1121e38e05b",
+    "source": "gmted/30N060E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.992452562823
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/47/26.tif",
+    "file": "data/raw/terrain_tiles/6_47_26.tif",
+    "sha256": "f4e1666d402a2e6312f7e55b41ff31b5b568e5cc5e28183757018e0ef1406a72",
+    "source": "gmted/10N060E_20101117_gmted_mea075.tif, gmted/30N060E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628185
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/48/22.tif",
+    "file": "data/raw/terrain_tiles/6_48_22.tif",
+    "sha256": "f9e82f9972da7471beb2f2c27af8c16a0b3dd6ad6cc7188528445ce20b2e78d2",
+    "source": "gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628267
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/48/23.tif",
+    "file": "data/raw/terrain_tiles/6_48_23.tif",
+    "sha256": "8967d078e5635b510382e43d544e2545aae7f2be20e5ab8b469fefe43678adb4",
+    "source": "gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628194
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/48/24.tif",
+    "file": "data/raw/terrain_tiles/6_48_24.tif",
+    "sha256": "57ddc2e9e972debb7269bfba692f73b099567529457b5030b777e437af1cf114",
+    "source": "gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.992452562814
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/48/25.tif",
+    "file": "data/raw/terrain_tiles/6_48_25.tif",
+    "sha256": "a061ac94d405f421d20289d6afd89a954e0e72783fa5b1132103ff5a43f2395f",
+    "source": "gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.992452562823
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/48/26.tif",
+    "file": "data/raw/terrain_tiles/6_48_26.tif",
+    "sha256": "b52d2b3e486e5a6b7cf47970a0cba31b024a7e23609fdfa453d2287c86638e28",
+    "source": "gmted/10N090E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628185
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/48/27.tif",
+    "file": "data/raw/terrain_tiles/6_48_27.tif",
+    "sha256": "b22a02252d4581be87f636515ae2b2a2c353af1f6b84961da82912ebf541b835",
+    "source": "gmted/10N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628212
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/49/23.tif",
+    "file": "data/raw/terrain_tiles/6_49_23.tif",
+    "sha256": "c00ee0c9f8b60f73f6d88cbbdbed00be64460cd96e91aedb99f75d08e93cd051",
+    "source": "gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628194
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/49/24.tif",
+    "file": "data/raw/terrain_tiles/6_49_24.tif",
+    "sha256": "39c107d859f0a380fd3be241fdcb48c434772293fc9a3681915aabcc48feed85",
+    "source": "gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.992452562814
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/49/25.tif",
+    "file": "data/raw/terrain_tiles/6_49_25.tif",
+    "sha256": "952728d60d10c136139afccdb48c76fb7af5249b007283644cf07454b4ff1419",
+    "source": "gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.992452562823
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/49/26.tif",
+    "file": "data/raw/terrain_tiles/6_49_26.tif",
+    "sha256": "0e9efba4b329682a8d9205e5d82d7644703af18ee4b015cc064f6ae5d5bd298f",
+    "source": "gmted/10N090E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628185
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/49/27.tif",
+    "file": "data/raw/terrain_tiles/6_49_27.tif",
+    "sha256": "87ee8e0e5b57c7a1996893fdf378f5e56c4b7da2b24b7d18d68387bcc3b94cf0",
+    "source": "gmted/10N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628212
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/49/28.tif",
+    "file": "data/raw/terrain_tiles/6_49_28.tif",
+    "sha256": "2bafedd898874abc7d03aca0d6dbeaa1a384d3323f15a7d3f7f2240e20fc9bd9",
+    "source": "gmted/10N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.992452562819
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/50/23.tif",
+    "file": "data/raw/terrain_tiles/6_50_23.tif",
+    "sha256": "cfda1db7dae68a12fb3ca8132a47406f0a4054fdbc2f4e960c37e3d5494d4e83",
+    "source": "gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628194
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/50/24.tif",
+    "file": "data/raw/terrain_tiles/6_50_24.tif",
+    "sha256": "85fd5e8679f5ac43b1663006de8d8e4df8ac2dd5762797f026cb5db5cfb99535",
+    "source": "gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.992452562814
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/50/25.tif",
+    "file": "data/raw/terrain_tiles/6_50_25.tif",
+    "sha256": "c00581dbfc1bdacb1026c1463f8370fa6e4519a582835de3c2fe0f30ebe197c4",
+    "source": "gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.992452562823
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/50/26.tif",
+    "file": "data/raw/terrain_tiles/6_50_26.tif",
+    "sha256": "c32a9c62d4643603078a9ffbb32d02988c8585a48bd25868a4a5c441e078f398",
+    "source": "gmted/10N090E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628185
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/50/27.tif",
+    "file": "data/raw/terrain_tiles/6_50_27.tif",
+    "sha256": "9aa9ad6a80ddbe7acddd9963cd2ac70db607521350c1a2da064e6618c23fbcdb",
+    "source": "gmted/10N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628212
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/50/28.tif",
+    "file": "data/raw/terrain_tiles/6_50_28.tif",
+    "sha256": "5dfdc078b56b9c127a1a96f529c1582f51d6d160b32d4f3cec08258a08d17d48",
+    "source": "gmted/10N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.992452562819
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/51/22.tif",
+    "file": "data/raw/terrain_tiles/6_51_22.tif",
+    "sha256": "4bb4327ccb60a73f34eb4871ca2e9b40031ac400513eeb097cd731b577f506b5",
+    "source": "gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628267
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/51/23.tif",
+    "file": "data/raw/terrain_tiles/6_51_23.tif",
+    "sha256": "8e0072a2b294797af8b19b39b2d42cd4eef97f7887da36cdba2c078c3dfcdf53",
+    "source": "gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628194
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/51/24.tif",
+    "file": "data/raw/terrain_tiles/6_51_24.tif",
+    "sha256": "aa7f3ff5e9e40bf40a79e38194f91a27da814607dc949b1c9e8026123dc093bd",
+    "source": "gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.992452562814
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/51/25.tif",
+    "file": "data/raw/terrain_tiles/6_51_25.tif",
+    "sha256": "ac6bc43252294f798686ca783c8a84d526c1fae0ab83821daffa33f0998e5fc4",
+    "source": "gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.992452562823
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/51/26.tif",
+    "file": "data/raw/terrain_tiles/6_51_26.tif",
+    "sha256": "00e01734bb9884a0632a678eed9a68148a7e1ba24449fb803967dbdb7600a333",
+    "source": "gmted/10N090E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628185
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/51/27.tif",
+    "file": "data/raw/terrain_tiles/6_51_27.tif",
+    "sha256": "b83aaa0c7fe5bc9d0d363f3d4c56bd99f04153f49c8fbb6082db642f5f70c82c",
+    "source": "gmted/10N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628212
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/51/28.tif",
+    "file": "data/raw/terrain_tiles/6_51_28.tif",
+    "sha256": "3ddf04a4e29bf1955f3ac91340697a04b4fcfbf01e4456f038a0ab6581e41bf1",
+    "source": "gmted/10N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.992452562819
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/51/29.tif",
+    "file": "data/raw/terrain_tiles/6_51_29.tif",
+    "sha256": "79b296e77fc9ce34944327fe129e9454030a7f5e33a82e397a8cdc721b469b08",
+    "source": "gmted/10N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628212
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/52/21.tif",
+    "file": "data/raw/terrain_tiles/6_52_21.tif",
+    "sha256": "19071005d5047b898b6abccead0e333c53711cb559184182197eb2f91d61b7ec",
+    "source": "gmted/50N090E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.992452562823,
+      1222.9924525628212
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/52/22.tif",
+    "file": "data/raw/terrain_tiles/6_52_22.tif",
+    "sha256": "25e63ccfc8a7ff2c4c5b16ef9fbd484db0d860815b7598322cf56c43a4fbfc27",
+    "source": "gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.992452562823,
+      1222.9924525628267
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/52/23.tif",
+    "file": "data/raw/terrain_tiles/6_52_23.tif",
+    "sha256": "99d39393dac7e128a7104f0db8c6b1cda98dbe88c5e9a813068b18453e25ad81",
+    "source": "gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.992452562823,
+      1222.9924525628194
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/52/24.tif",
+    "file": "data/raw/terrain_tiles/6_52_24.tif",
+    "sha256": "9b02b69a3a4bfe8f222591c9e7027f2737eb43320c4fdd416727b94498c8bb9f",
+    "source": "gmted/30N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.992452562823,
+      1222.992452562814
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/52/25.tif",
+    "file": "data/raw/terrain_tiles/6_52_25.tif",
+    "sha256": "1526cd95603f7d9a6a9125e21982c5d366c23f268791cf6fa98e9c9020d1104a",
+    "source": "gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.992452562823,
+      1222.992452562823
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/52/26.tif",
+    "file": "data/raw/terrain_tiles/6_52_26.tif",
+    "sha256": "7493d5ef48ff3f746faf9e2584a28e8673f410e723f273c85aa6e7fb3f158293",
+    "source": "gmted/10N090E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.992452562823,
+      1222.9924525628185
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/52/27.tif",
+    "file": "data/raw/terrain_tiles/6_52_27.tif",
+    "sha256": "5a928d4b49334ac11450645eee97b94bfc34cf78bc91b48f8369888e58568f4b",
+    "source": "gmted/10N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.992452562823,
+      1222.9924525628212
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/52/28.tif",
+    "file": "data/raw/terrain_tiles/6_52_28.tif",
+    "sha256": "d14f277f774989ad66d2d47016ccda2ee17ebd193da05496ad91ca67de3f3db1",
+    "source": "gmted/10N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.992452562823,
+      1222.992452562819
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/52/29.tif",
+    "file": "data/raw/terrain_tiles/6_52_29.tif",
+    "sha256": "48430397575dc1d59ab620161be0adaf85a0c7051cfc6b9ee04f6912af290704",
+    "source": "gmted/10N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.992452562823,
+      1222.9924525628212
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/53/20.tif",
+    "file": "data/raw/terrain_tiles/6_53_20.tif",
+    "sha256": "bf12f43fba2baba47562cb1413613a62f5d3f97a413bffc07a63eb6a2b6e8028",
+    "source": "gmted/50N120E_20101117_gmted_mea075.tif, gmted/50N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628157
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/53/21.tif",
+    "file": "data/raw/terrain_tiles/6_53_21.tif",
+    "sha256": "898317a94a1e0e6713bf21be96cb5efc361377445c863336ddd606d0f24396d8",
+    "source": "gmted/30N120E_20101117_gmted_mea075.tif, gmted/50N120E_20101117_gmted_mea075.tif, gmted/50N090E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628212
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/53/22.tif",
+    "file": "data/raw/terrain_tiles/6_53_22.tif",
+    "sha256": "9d648e08e5fa607cddbd3efdc87b1b89ca2a26a7bf1765d7272ca2313af6bfc4",
+    "source": "gmted/30N120E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628267
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/53/23.tif",
+    "file": "data/raw/terrain_tiles/6_53_23.tif",
+    "sha256": "68362fa392c27338ff876197140abad3b0ffd0cca1de14336638da8b50616574",
+    "source": "gmted/30N120E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628194
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/53/24.tif",
+    "file": "data/raw/terrain_tiles/6_53_24.tif",
+    "sha256": "b9c231853811bc7c4ac36c7a6f9831d1e78aa7c0416df6ce989eabc1f759e453",
+    "source": "gmted/30N120E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.992452562814
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/53/25.tif",
+    "file": "data/raw/terrain_tiles/6_53_25.tif",
+    "sha256": "5ccbcdb51320f07a59729999fa7b07b97dcdf811f2828752c9e85f887a6a0860",
+    "source": "gmted/30N120E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.992452562823
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/53/26.tif",
+    "file": "data/raw/terrain_tiles/6_53_26.tif",
+    "sha256": "70c91ed79ccc29497afd884d4ecc97145d6227d693653c2a91d425f623b12b9e",
+    "source": "gmted/10N120E_20101117_gmted_mea075.tif, gmted/30N120E_20101117_gmted_mea075.tif, gmted/10N090E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628185
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/53/27.tif",
+    "file": "data/raw/terrain_tiles/6_53_27.tif",
+    "sha256": "a05ce03ad4df732de00bc5b08ec49fdaf3566eede43bda516da30e5822cc68c6",
+    "source": "gmted/10N120E_20101117_gmted_mea075.tif, gmted/10N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628212
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/53/28.tif",
+    "file": "data/raw/terrain_tiles/6_53_28.tif",
+    "sha256": "c4439186468d2150bc6e0b6067a1eea5de3f559e74aceef0a446a9649de895f4",
+    "source": "gmted/10N120E_20101117_gmted_mea075.tif, gmted/10N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.992452562819
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/54/20.tif",
+    "file": "data/raw/terrain_tiles/6_54_20.tif",
+    "sha256": "69491645b5f9ad54f997e0ba5ecd43a04b39f21a9e1d19e6e7270ba838c43f9a",
+    "source": "gmted/50N120E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628157,
+      1222.9924525628157
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/54/21.tif",
+    "file": "data/raw/terrain_tiles/6_54_21.tif",
+    "sha256": "9611bf7b74747ac39b6a6b8f196163ec08ef87db9d3f7847cfa49f43bca4ed50",
+    "source": "gmted/30N120E_20101117_gmted_mea075.tif, gmted/50N120E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628157,
+      1222.9924525628212
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/54/22.tif",
+    "file": "data/raw/terrain_tiles/6_54_22.tif",
+    "sha256": "53a83ecc7c880ea3100defe819c401c743cbbfd1c2b4da753165c11b88886e3e",
+    "source": "gmted/30N120E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628157,
+      1222.9924525628267
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/54/23.tif",
+    "file": "data/raw/terrain_tiles/6_54_23.tif",
+    "sha256": "66e72da681a39cfff9d27ffaf6cdb46cd52ab277ad8064f242316e3bb4aa92a4",
+    "source": "gmted/30N120E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628157,
+      1222.9924525628194
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/54/24.tif",
+    "file": "data/raw/terrain_tiles/6_54_24.tif",
+    "sha256": "485c81148ea4915b601fa4559c7eeaa32d411847d4ff9acdbd922093b65919cc",
+    "source": "gmted/30N120E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628157,
+      1222.992452562814
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/54/27.tif",
+    "file": "data/raw/terrain_tiles/6_54_27.tif",
+    "sha256": "d10b46b6bcad9849fb88824398616c8ecb7e202c6df68d10568dd585b931c395",
+    "source": "gmted/10N120E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628157,
+      1222.9924525628212
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/55/21.tif",
+    "file": "data/raw/terrain_tiles/6_55_21.tif",
+    "sha256": "e63bb13c44cdd243806fe5843f6f5a6c9c592cc1b3cdc6640dd2a83a643672ae",
+    "source": "gmted/30N120E_20101117_gmted_mea075.tif, gmted/50N120E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.992452562823,
+      1222.9924525628212
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/55/22.tif",
+    "file": "data/raw/terrain_tiles/6_55_22.tif",
+    "sha256": "951f99e03dfbc204c777440fcb60e283514b0cadc8536766f99d9b7c6cfde449",
+    "source": "gmted/30N120E_20101117_gmted_mea075.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.992452562823,
+      1222.9924525628267
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/55/23.tif",
+    "file": "data/raw/terrain_tiles/6_55_23.tif",
+    "sha256": "b380990c20a6700b29d7b89987ae7dddfccd496c082db4814629b5b91ca8b996",
+    "source": "gmted/30N120E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.992452562823,
+      1222.9924525628194
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  },
+  {
+    "url": "https://s3.amazonaws.com/elevation-tiles-prod/geotiff/6/56/22.tif",
+    "file": "data/raw/terrain_tiles/6_56_22.tif",
+    "sha256": "5c873e0b6c9589ffed7ed665765af2d1920c002ae2c5432c0ce1c9838eccbd7a",
+    "source": "gmted/30N120E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "crs": "EPSG:3857",
+    "pixel_size_m": [
+      1222.9924525628194,
+      1222.9924525628267
+    ],
+    "shape": [
+      512,
+      512
+    ],
+    "nodata": -32768.0
+  }
+]

@@ -1,0 +1,5 @@
+data/raw/*.tif
+data/raw/terrain_tiles/
+data/processed/
+.venv/
+output/
