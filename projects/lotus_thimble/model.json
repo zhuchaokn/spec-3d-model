@@ -1,6 +1,6 @@
 {
   "constants": {
-    "BORE_D": 1.2,
+    "BORE_D": 1.5,
     "WALL": 0.2,
     "BAND_W": 1.0,
     "RING_R": "BORE_D/2+WALL",
@@ -149,8 +149,8 @@
         "Verify"
       ],
       "params": {
-        "stl_name": "lotus_thimble_12mm.stl",
-        "blend_name": "lotus_thimble_12mm.blend",
+        "stl_name": "lotus_thimble_15mm.stl",
+        "blend_name": "lotus_thimble_15mm.blend",
         "out_dir": "output"
       }
     }

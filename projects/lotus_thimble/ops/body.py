@@ -58,11 +58,11 @@ def arc(center, radius, a0, a1, n):
              center[1]+radius*math.sin(a0+(a1-a0)*j/n)) for j in range(n+1)]
 
 
-def union_closed(target, other):
+def boolean_closed(target, other, operation="UNION"):
     """Manifold CSG handles coincident tangent surfaces of closed inputs."""
     s3d.sel(target)
-    mod=target.modifiers.new("ClosedUnion", "BOOLEAN")
-    mod.operation="UNION"
+    mod=target.modifiers.new("ClosedBoolean", "BOOLEAN")
+    mod.operation=operation
     mod.solver="MANIFOLD"
     mod.object=other
     bpy.ops.object.modifier_apply(modifier=mod.name)
@@ -150,7 +150,7 @@ def run(ctx):
             faces.append((i*n+j,i*n+k,(i+1)*n+k,(i+1)*n+j))
     faces.append(tuple((len(levels)-1)*n+j for j in range(n)))
     support=mesh_object("_FilledShoulders",verts,faces,ctx.center,merge)
-    union_closed(obj,support)
+    boolean_closed(obj,support)
     print("JOIN_SHOULDER",s3d.manifold_report(obj.name),flush=True)
 
     # Round lip is revolved: R0.4 below, a real short wall, then R0.8 above.
@@ -171,7 +171,7 @@ def run(ctx):
         r=end[0]*(1-j/(n//2))
         profile.append((r,bz-math.sqrt(br*br-r*r)))
     pad=revolve("_RoundedNeedlePad",profile,"Z",n,ctx.center,merge)
-    union_closed(obj,pad)
+    boolean_closed(obj,pad)
     print("JOIN_PAD",s3d.manifold_report(obj.name),flush=True)
     # Restore the bowl after union: the solid shoulder loft overlaps its floor.
     cavity=[(0,bz-br)]
@@ -191,8 +191,12 @@ def run(ctx):
     profile+=arc((radius+ir,hw-ir),ir,math.pi,math.pi/2,m)[1:]
     profile.extend([(radius+ir,ext),(0,ext)])
     tool=revolve("_RoundedBore",profile,"Y",n,ctx.center,merge)
-    s3d.bool_diff(obj,tool)
-    s3d.heal(obj.name,merge)
+    boolean_closed(obj,tool,operation="DIFFERENCE")
+    print("CUT_BORE",s3d.manifold_report(obj.name),flush=True)
+    # Closed CSG is already manifold. Welding nearby boolean vertices can
+    # collapse valid narrow faces at some bore diameters and open the mesh.
+    topology=s3d.manifold_report(obj.name)
+    assert topology["boundary"]==topology["nonmanifold"]==0,topology
     for face in obj.data.polygons:
         face.use_smooth=True
     obj["top_land_cm"]=pr-p["lip_r"]-fr
