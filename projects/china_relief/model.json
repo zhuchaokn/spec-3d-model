@@ -26,21 +26,22 @@
     "INSET_PANEL_WIDTH": 8,
     "INSET_PANEL_HEIGHT": 12,
     "INSET_MARGIN": 1,
-    "INSET_LINE_WIDTH": 0.05,
-    "INSET_MIN_ISLAND_WIDTH": 0.06,
+    "INSET_LINE_WIDTH": 0.1,
+    "INSET_MIN_ISLAND_WIDTH": 0.1,
     "INSET_RAISE": 0,
     "INSET_PADDING": 0.4,
-    "INSET_TITLE_SIZE": 0.45,
-    "INSET_LABEL_SIZE": 0.35,
-    "INSET_MAP_TOP_PAD": 1,
-    "INSET_MAP_BOTTOM_PAD": 1,
+    "INSET_TITLE_SIZE": 0.55,
+    "INSET_LABEL_SIZE": 0.45,
+    "INSET_MAP_TOP_PAD": 1.4,
+    "INSET_MAP_BOTTOM_PAD": 1.2,
     "INSET_RIGHT_OFFSET_FROM_MAP": 2,
     "TRAY_WIDTH": 47,
     "TRAY_HEIGHT": 47,
     "SLOT_CLEARANCE": 0.015,
     "TRAY_OUTER_CORNER_RADIUS": 0.5,
     "TRAY_CORNER_QUAD_SEGMENTS": 16,
-    "FIXED_DETAILS_FLUSH": true
+    "FIXED_DETAILS_FLUSH": true,
+    "INSET_TEXT_STROKE_EXPANSION": 0.008
   },
   "data": {
     "boundary": "data/raw/provinces_datav_reference.geojson",
@@ -875,12 +876,12 @@
             "Tray_X2_Y2"
           ]
         },
-        "blend_name": "china_relief_flush_inlays_R5.blend"
+        "blend_name": "china_relief_flush_inlays_R5_robust_inset.blend"
       }
     }
   ],
-  "prepared_fingerprint": "74eb0740f817ce4c7f896b9fd49b88e63f579c6e1db1a2815d7425ae6df83750",
-  "design_revision": "p2s_flush_inlays_r5_rounded_base",
+  "prepared_fingerprint": "791e2483d29b18fd30876c79f0b48a6ad5b7ac56d0744acb107511413197a358",
+  "design_revision": "p2s_flush_robust_south_sea_inlays_r5",
   "printing": {
     "printer": "Bambu Lab P2S 0.4 nozzle",
     "material": "Bambu PLA Basic @BBL P2S",
@@ -1071,6 +1072,7 @@
       },
       "partition_volume_tolerance_mm3": 0.01
     },
-    "inset_inlay_thickness_mm": 0.4
+    "inset_inlay_thickness_mm": 1.2,
+    "inset_test_size_mm": 50
   }
 }

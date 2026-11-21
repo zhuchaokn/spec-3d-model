@@ -81,7 +81,8 @@ def color_base(config,node):
     platform=poly.difference(unary_union([wells,frame]))
     local_marks=marks.intersection(poly)
     if c.get('FIXED_DETAILS_FLUSH'):
-        assert pr['inset_inlay_thickness_mm']==pr['sea_color_thickness_mm']
+        inlay_bottom=high-pr['inset_inlay_thickness_mm']/10
+        assert c['TRAY_FLOOR']<=inlay_bottom<=bottom
         platform=platform.union(fixed.intersection(poly))
         # Source islands remain land where the coarser world mask misses them.
         sea_region=platform.intersection(ocean_mask).difference(fixed).difference(local_marks)
@@ -90,16 +91,23 @@ def color_base(config,node):
         sea_region=platform.intersection(ocean_mask);land_region=platform.difference(sea_region)
     cc=copy.deepcopy(c);cc['SLOT_DEPTH']=bottom-c['TRAY_FLOOR']
     if c.get('FIXED_DETAILS_FLUSH'):
-        gray=prepare.make_tray(poly,wells,cc,raised_regions=[(fixed,bottom),(frame,high+c['TRAY_FRAME_RISE'])])
+        structural_bottom=inlay_bottom if not local_marks.is_empty else bottom
+        cc['SLOT_DEPTH']=structural_bottom-c['TRAY_FLOOR']
+        gray=prepare.make_tray(poly,wells,cc,raised_regions=[(fixed,structural_bottom),(frame,high+c['TRAY_FRAME_RISE'])])
     else:
         gray=prepare.make_tray(poly,wells,cc,fixed,sampler,[(frame,high+c['TRAY_FRAME_RISE'])])
     solids=[('灰色结构',pr['base_filament_id'],gray)]
+    if c.get('FIXED_DETAILS_FLUSH') and not local_marks.is_empty and inlay_bottom<bottom:
+        # Below the blue skin, replace gray only where deep ivory inlays live.
+        # Separate closed parts meet at faces and never overlap in volume.
+        support_region=platform.difference(local_marks)
+        solids.append(('灰色嵌色承托层',pr['base_filament_id'],prism(support_region,inlay_bottom,bottom)))
     # Adjacent closed volumes share one Bambu object. Keeping the gray land skin
     # separate avoids microscopic Boolean remnants around inset lettering.
     if not land_region.is_empty:solids.append(('灰色陆地表层',pr['base_filament_id'],prism(land_region,bottom,high)))
     if not sea_region.is_empty:solids.append(('蓝色海面',pr['sea_filament_id'],prism(sea_region,bottom,high)))
     if not local_marks.is_empty:
-        lo,hi=(bottom,high) if c.get('FIXED_DETAILS_FLUSH') else (high,high+c['INSET_RAISE'])
+        lo,hi=(inlay_bottom,high) if c.get('FIXED_DETAILS_FLUSH') else (high,high+c['INSET_RAISE'])
         solids.append(('南海诸岛_岛礁文字',pr['inset_filament_id'],prism(local_marks,lo,hi)))
     for _,_,m in solids:m.vertices*=10
     delta=sum(m.volume for _,_,m in solids)-original.volume

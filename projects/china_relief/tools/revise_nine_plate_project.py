@@ -4,7 +4,7 @@ Preserve every build transform, plate assignment, province/test mesh and preset.
 Discard previews and slicing caches, since they describe the old geometries.
 No browser, screenshots or printer communication.
 """
-import argparse,json,re,zipfile,xml.etree.ElementTree as ET
+import argparse,copy,json,re,uuid,zipfile,xml.etree.ElementTree as ET
 from pathlib import Path
 import numpy as np
 import prepare_print as pp
@@ -32,6 +32,8 @@ def main():
     assert len(cfg.findall('plate'))==9
     objects={o.get('id'):o for o in core.findall(C+'resources/'+C+'object')}
     modified={};changed=[]
+    next_id=max(int(o.get('id')) for path,content in contents.items() if path.endswith('.model')
+                for o in ET.fromstring(content).findall(C+'resources/'+C+'object'))
     for oc in cfg.findall('object'):
         name=metadata(oc).get('name')
         if name not in manifest['multicolor_bases']:continue
@@ -42,6 +44,15 @@ def main():
         parts={p['name']:p for p in manifest['multicolor_bases'][name]['parts']}
         components=objects[oc.get('id')].findall(C+'components/'+C+'component')
         byid={p.get('id'):p for p in oc.findall('part')}
+        existing={metadata(p)['name'] for p in oc.findall('part')}
+        for partname in parts.keys()-existing:
+            next_id+=1
+            path=components[0].get(P+'path').lstrip('/')
+            if path not in modified:modified[path]=ET.fromstring(contents[path])
+            ET.SubElement(modified[path].find(C+'resources'),C+'object',id=str(next_id),type='model',attrib={P+'UUID':str(uuid.uuid4())})
+            comp=ET.SubElement(objects[oc.get('id')].find(C+'components'),C+'component',objectid=str(next_id),transform=IDENTITY,attrib={P+'path':'/'+path,P+'UUID':str(uuid.uuid4())})
+            pc=copy.deepcopy(oc.findall('part')[0]);pc.set('id',str(next_id));setmeta(pc,'name',partname);oc.append(pc)
+            byid[str(next_id)]=pc;components.append(comp)
         assert len(components)==len(parts)
         count=0
         for comp in components:
@@ -51,7 +62,8 @@ def main():
             path=comp.get(P+'path').lstrip('/')
             if path not in modified:modified[path]=ET.fromstring(contents[path])
             obj=modified[path].find(f"{C}resources/{C}object[@id='{comp.get('objectid')}']")
-            old=obj.find(C+'mesh');obj.remove(old)
+            old=obj.find(C+'mesh')
+            if old is not None:obj.remove(old)
             mesh=ET.SubElement(obj,C+'mesh');vs=ET.SubElement(mesh,C+'vertices');fs=ET.SubElement(mesh,C+'triangles')
             for x,y,z in v:ET.SubElement(vs,C+'vertex',x=f'{x:.9f}',y=f'{y:.9f}',z=f'{z:.9f}')
             for i,j,k in f:ET.SubElement(fs,C+'triangle',v1=str(i),v2=str(j),v3=str(k))

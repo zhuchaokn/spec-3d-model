@@ -48,8 +48,8 @@
     "dash_count": 10,
     "hainan_source_component_count": 133,
     "island_symbol_count": 170,
-    "enlarged_small_island_count": 164,
-    "projection_cm_per_m": 4.010199216845448e-06,
+    "enlarged_small_island_count": 168,
+    "projection_cm_per_m": 3.9175669913463e-06,
     "panel_bounds_cm": [
       15.5,
       -5.43197,
@@ -2168,7 +2168,51 @@
       }
     ],
     "omitted_source_components": 0,
-    "dem_used": false
+    "dem_used": false,
+    "line_width_mm": 1.0,
+    "minimum_island_width_mm": 1.0,
+    "title_size_mm": 5.5,
+    "label_size_mm": 4.5,
+    "text_stroke_expansion_mm": 0.08,
+    "text_bounds_cm": {
+      "南海诸岛": [
+        15.9327,
+        5.798804448039379,
+        18.048801795655304,
+        6.335248858451044
+      ],
+      "附图比例不同": [
+        15.930497980823572,
+        -5.084969999999999,
+        18.554787641340155,
+        -4.655055372560822
+      ],
+      "东沙群岛": [
+        21.173043937178036,
+        2.8392928633249017,
+        22.926507118146628,
+        3.2764247480072215
+      ],
+      "西沙群岛": [
+        16.442954345900116,
+        0.9061751730444958,
+        18.174756141555402,
+        1.3425318624917908
+      ],
+      "中沙群岛": [
+        21.47176299456248,
+        0.8278567966871982,
+        23.181127632203637,
+        1.2642134861344931
+      ],
+      "南沙群岛": [
+        19.827289134751663,
+        -3.503557161806356,
+        21.56179093040695,
+        -3.0672004723590547
+      ]
+    },
+    "text_labels_do_not_overlap": true
   },
   "province_gap_mm": 0,
   "province_partition_walls": false,
@@ -4916,7 +4960,7 @@
       "connected_components": 1
     }
   ],
-  "prepared_fingerprint": "74eb0740f817ce4c7f896b9fd49b88e63f579c6e1db1a2815d7425ae6df83750",
+  "prepared_fingerprint": "791e2483d29b18fd30876c79f0b48a6ad5b7ac56d0744acb107511413197a358",
   "limitations": [
     "Boundary CRS is assumed, not declared by provider.",
     "No nominal clearance between province cards, as requested; real FDM parts may need edge trimming.",

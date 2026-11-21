@@ -1,12 +1,12 @@
 {
-  "revision": "p2s_flush_inlays_r5_rounded_base",
+  "revision": "p2s_flush_robust_south_sea_inlays_r5",
   "unchanged_province_meshes": 32,
   "unchanged_plate_layout": true,
   "plate_count": 9,
   "corner_radius_mm": 5.0,
   "inlay_top_mm": 4.0,
-  "inlay_bottom_mm": 3.6,
-  "inlay_layers": 2.0,
+  "inlay_bottom_mm": 2.8,
+  "inlay_layers": 6,
   "slot_depth_mm": 2.0,
   "slot_clearance_per_side_mm": 0.15,
   "bases": [
@@ -62,5 +62,10 @@
       "inlay_supported": null,
       "partition_delta_mm3": 5.820766091346741e-11
     }
+  ],
+  "unchanged_non_inset_base_objects": [
+    "Tray_X1_Y1",
+    "Tray_X1_Y2",
+    "Tray_X2_Y2"
   ]
 }

@@ -42,7 +42,8 @@ def main():
             assert mesh.is_watertight and mesh.is_winding_consistent and mesh.volume>0
             meshes[part['name']]=mesh
             if part['color']!=cfg['printing']['base_filament_id']:
-                assert np.allclose(mesh.bounds[:,2],[bottom,high],atol=1e-7)
+                depth=cfg['printing']['inset_inlay_thickness_mm'] if part['color']==cfg['printing']['inset_filament_id'] else cfg['printing']['sea_color_thickness_mm']
+                assert np.allclose(mesh.bounds[:,2],[high-depth,high],atol=1e-7)
         fixed=shape(json.loads((ROOT/'data/processed/fixed_details.geojson').read_text())['features'][0]['geometry']).intersection(outline)
         original=pp.mesh_for(node);actual_top=top_region(original,high)
         assert shapely.affinity.scale(fixed,10,10,origin=(0,0)).difference(actual_top).area<.001

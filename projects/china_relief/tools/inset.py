@@ -87,11 +87,20 @@ def build(config, raw_path, panel, projection, gcj_inverse):
     border=panel.difference(panel.buffer(-c['INSET_LINE_WIDTH'],join_style=2))
     font=TTFont(settings['font'],fontNumber=0)
     symbols.append(border)
-    symbols.append(text_shape(font,settings['title'],c['INSET_TITLE_SIZE'],(x0+pad,y1-c['INSET_MAP_TOP_PAD']/2)))
-    symbols.append(text_shape(font,settings['scale_note'],c['INSET_LABEL_SIZE'],(x0+pad,y0+pad)))
+    text_layout=[]
+    def text(text,size,origin):
+        geometry=text_shape(font,text,size,origin).buffer(c.get('INSET_TEXT_STROKE_EXPANSION',0),join_style=2)
+        text_layout.append((text,geometry))
+        return geometry
+    symbols.append(text(settings['title'],c['INSET_TITLE_SIZE'],(x0+pad,y1-c['INSET_MAP_TOP_PAD']/2)))
+    symbols.append(text(settings['scale_note'],c['INSET_LABEL_SIZE'],(x0+pad,y0+pad)))
     for label in settings['labels']:
-        symbols.append(text_shape(font,label['text'],c['INSET_LABEL_SIZE'],label_pos(label['lonlat'])))
+        symbols.append(text(label['text'],c['INSET_LABEL_SIZE'],label_pos(label['lonlat'])))
     font.close()
+    for i,(name,geometry) in enumerate(text_layout):
+        for other_name,other in text_layout[i+1:]:
+            if geometry.intersection(other).area>c['NUMERICAL_GAP']**2:
+                raise ValueError(f'Inset texts overlap: {name} / {other_name}')
     raised=unary_union(symbols)
     # Resolve point contacts in glyphs and schematic marks below print resolution.
     raised=raised.buffer(c['NUMERICAL_GAP'],join_style=2).buffer(-c['NUMERICAL_GAP'],join_style=2)
@@ -108,4 +117,8 @@ def build(config, raw_path, panel, projection, gcj_inverse):
                    'hainan_source_component_count':133,'island_symbol_count':len(islands),
                    'enlarged_small_island_count':enlarged,'projection_cm_per_m':factor,
                    'panel_bounds_cm':list(panel.bounds),'labels':[settings['title'],settings['scale_note']]+[s['text'] for s in settings['labels']],
-                   'records':records,'omitted_source_components':0,'dem_used':False}
+                   'records':records,'omitted_source_components':0,'dem_used':False,
+                   'line_width_mm':c['INSET_LINE_WIDTH']*10,'minimum_island_width_mm':c['INSET_MIN_ISLAND_WIDTH']*10,
+                   'title_size_mm':c['INSET_TITLE_SIZE']*10,'label_size_mm':c['INSET_LABEL_SIZE']*10,
+                   'text_stroke_expansion_mm':c.get('INSET_TEXT_STROKE_EXPANSION',0)*10,
+                   'text_bounds_cm':{name:list(g.bounds) for name,g in text_layout},'text_labels_do_not_overlap':True}

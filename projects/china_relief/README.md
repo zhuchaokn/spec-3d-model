@@ -4,11 +4,13 @@
 
 ## 当前交付
 
-- `output/china_relief_P2S_9plates_flush_inlays_R5.3mf`：约 13 MB 的可编辑模型工程，需要在 Bambu Studio 中切片。
-- `output/china_relief_P2S_9plates_flush_inlays_R5_sliced.3mf`：含全部 9 盘 G-code，约 79 MB。
-- `output/china_relief_flush_inlays_R5_multicolor.blend`：装配位置的彩色 Blender 模型。
-- `output/china_relief_flush_inlays_R5.blend`：单体底座与省份的原始几何模型。
+- `output/china_relief_P2S_9plates_robust_inset_R5.3mf`：约 15 MB 的可编辑模型工程，需要在 Bambu Studio 中切片。
+- `output/china_relief_P2S_9plates_robust_inset_R5_sliced.3mf`：含全部 9 盘 G-code，约 82 MB。
+- `output/china_relief_flush_inlays_R5_robust_inset_multicolor.blend`：装配位置的彩色 Blender 模型。
+- `output/china_relief_flush_inlays_R5_robust_inset.blend`：单体底座与省份的原始几何模型。
 - `output/flush_inlays_R5/`：36 份毫米单位 STL，四片底座和 32 份省份。
+
+新增 `output/china_relief_south_sea_50mm_test_sliced.3mf`：50 × 50 mm 真实南沙文字/符号小样，约 8.67 g，可先检查六层嵌色附着、字体与线条清晰度。相对上一版，这次仅第 3 盘南海底座需要更新。
 
 旧版文件保留。MakerWorld 草稿不随本次修订自动更新。
 
@@ -20,12 +22,12 @@
 - 拼装底座 470 × 470 mm，分四片，最大 238 × 238 mm，适合 P2S 256 mm 打印床；内部拼接插舌位置保留。
 - 国境、海岸轮廓槽深 2 mm，槽底厚 2 mm，每侧外扩 0.15 mm。平台高 4 mm，外围边框高 7 mm、宽 5 mm；省份切片轮廓补偿 -0.08 mm。
 - 主图固定小岛与平台齐平，保持灰色。真正海洋的蓝色皮层从 Z=3.6 到 4.0 mm，邻国陆地灰色。
-- 南海附图象牙白从 Z=3.6 到 4.0 mm，与蓝色层在 XY 中互斥，下方由连续灰色底材支承。源岛礁轮廓、文字、10 段示意线未移动或删除。
+- 南海附图象牙白从 Z=2.8 到 4.0 mm，共六层；与蓝色层和灰色承托层在 XY 中互斥，下方由连续灰色底材支承。线宽 1 mm，小岛符号最小宽 1 mm，标题 5.5 mm、名称/比例说明 4.5 mm，字形向外增粗 0.08 mm。调整了上下留白，全部源组件、群岛名称与 10 段示意线仍保留。
 - 外角平面圆角 R5 mm，仅切除组装底座的四个外角，不圆整每片的内接缝。
 - 保留用户保存的 9 盘：第 1 盘北京试配，第 2–5 盘四片底座，第 6–9 盘同色省份；四色各 8 省。六色编号：灰、蓝、象牙白、浅绿、黄、橙。
 - 5% gyroid、2 道墙、顶部 4 层、底部 3 层，关闭擦料塔；官方 P2S 废料槽冲刷保留。底座 0.20 mm、省份 0.16 mm 层高。
 
-全部 9 盘已通过 Bambu Studio 2.6 CLI 切片。四片修改后的底座无浮空警告。未改变的北京试配和湖北省仍有切片器的浮空提示，详见 `spec/flush_slice_report.json`。正式件估算 865.85 g，不含第 1 盘的 3.40 g 小样；这是切片估算，未启动打印。
+全部 9 盘已通过 Bambu Studio 2.6 CLI 切片。四片修改后的底座无浮空警告。未改变的北京试配和湖北省仍有切片器的浮空提示，详见 `spec/flush_slice_report.json`。正式件估算 867.88 g，不含第 1 盘的 3.40 g 小样；这是切片估算，未启动打印。
 
 ## 数据与验证
 
@@ -40,12 +42,12 @@
 在已有完整数据缓存和用户原 9 盘工程的项目内执行。`output/revision_backup/` 保存修订前模型、四片网格和省份哈希用于对比。不要运行旧的 `combine_plates.py` 重新摆盘。
 
 ```sh
-python tools/revise_tray_depth.py
+python tools/refresh_inset.py
 python tools/recolor_bases.py
 python tools/verify_recess.py
 python tools/verify_ocean_colors.py
-python tools/revise_nine_plate_project.py output/china_relief_P2S_9plates_5pct_no_tower.3mf output/china_relief_P2S_9plates_flush_inlays_R5.3mf
-python tools/verify_flush_revision.py output/china_relief_P2S_9plates_5pct_no_tower.3mf output/china_relief_P2S_9plates_flush_inlays_R5.3mf
+python tools/revise_nine_plate_project.py output/china_relief_P2S_9plates_flush_inlays_R5.3mf output/china_relief_P2S_9plates_robust_inset_R5.3mf
+python tools/verify_flush_revision.py output/china_relief_P2S_9plates_flush_inlays_R5.3mf output/china_relief_P2S_9plates_robust_inset_R5.3mf
 blender --background --factory-startup --python run_model.py
 blender --background --python tools/color_blender.py
 python tools/verify_exports.py
