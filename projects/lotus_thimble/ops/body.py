@@ -127,12 +127,22 @@ def run(ctx):
         t=max(0,min(1,(z-p["blend_start"])/(small_center[1]-p["blend_start"])))
         smooth=t*t*t*(10+t*(-15+6*t))
         cr=p["corner_min"]+(min(xh,yh)-p["corner_min"])*smooth
+        radial_outer=math.hypot(xh,z)
         for q in range(4):
             sx=1 if q in (0,3) else -1
             sy=1 if q in (0,1) else -1
             for j in range(quarter):
                 angle=(q+j/(quarter-1))*math.pi/2
-                verts.append((sx*(xh-cr)+cr*math.cos(angle),sy*(yh-cr)+cr*math.sin(angle),z))
+                # Continue the ring's radial/Y end fillet through the filled
+                # shoulder. An XY rounded rectangle protrudes beyond this
+                # surface at z>0, restoring a sharp ledge after the union.
+                radial_r=radial_outer-er+er*abs(math.cos(angle))
+                lower_x=sx*math.sqrt(max(0,radial_r*radial_r-z*z))
+                lower_y=sy*(yh-er+er*abs(math.sin(angle)))
+                upper_x=sx*(xh-cr)+cr*math.cos(angle)
+                upper_y=sy*(yh-cr)+cr*math.sin(angle)
+                verts.append(((1-smooth)*lower_x+smooth*upper_x,
+                              (1-smooth)*lower_y+smooth*upper_y,z))
     faces.append(tuple(reversed(range(n))))
     for i in range(len(levels)-1):
         for j in range(n):

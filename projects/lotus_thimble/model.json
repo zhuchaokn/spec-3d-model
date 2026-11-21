@@ -30,7 +30,7 @@
     "ARC_SEGMENTS": 24,
     "SPHERE_SEGMENTS": 64,
     "SPHERE_RINGS": 40,
-    "LOFT_CORNER_MIN": 0.006,
+    "LOFT_CORNER_MIN": "OUTER_EDGE_R",
     "LOFT_BLEND_START": "BORE_D/2",
     "MERGE_DISTANCE": 1e-06,
     "CHECK_TOLERANCE": 0.002,
@@ -134,7 +134,9 @@
         "probe": "CUT_EXTENSION",
         "lip_h": "LIP_H",
         "lower_r": "LIP_LOWER_R",
-        "shoulder_r": "SHOULDER_R"
+        "shoulder_r": "SHOULDER_R",
+        "outer_edge_r": "OUTER_EDGE_R",
+        "blend_start": "LOFT_BLEND_START"
       }
     },
     {

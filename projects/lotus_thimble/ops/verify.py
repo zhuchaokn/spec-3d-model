@@ -9,6 +9,41 @@ from mathutils.bvhtree import BVHTree
 import s3d
 
 
+def measure_junction(tree, p):
+    """Check both ends/sides against the radial end-round, including z=0.
+
+    This independent analytic profile catches the former XY-loft ledge even
+    when the final union is watertight and has the correct bounding box.
+    """
+    rr=p["ring_r"]; pr=p["pad_d"]/2; hw=p["band_w"]/2
+    er=p["outer_edge_r"]; lipbase=p["rim_z"]-p["lip_h"]
+    dsq=pr*pr+lipbase*lipbase
+    a=rr*rr/dsq; b=rr*math.sqrt(dsq-rr*rr)/dsq
+    tx=a*pr+b*lipbase; tz=a*lipbase-b*pr
+    probes=[]
+    heights=[-p["tolerance"],0,p["tolerance"]]
+    heights.extend(p["blend_start"]*f for f in (0.25,0.5,0.75,0.9))
+    for z in heights:
+        xh=math.sqrt(rr*rr-z*z) if z<=tz else tx+(pr-tx)*(z-tz)/(lipbase-tz)
+        rs=math.hypot(xh,z)
+        for fraction in (0.25,0.5,0.75,0.95):
+            y=hw-er+er*fraction
+            radius=rs-er+er*math.sqrt(1-fraction*fraction)
+            expected=math.sqrt(radius*radius-z*z)
+            for sx in (-1,1):
+                for sy in (-1,1):
+                    origin=Vector((sx*(rr+p["probe"])*s3d.CM,sy*y*s3d.CM,z*s3d.CM))
+                    result=tree.ray_cast(origin,Vector((-sx,0,0)))
+                    assert result[0] is not None, ("Junction ray missed",z,y)
+                    actual=sx*result[0].x/s3d.CM
+                    error=abs(actual-expected)
+                    assert error<p["tolerance"], ("End fillet ledge",z,sy*y,sx,actual,expected,error)
+                    probes.append({"z_cm":z,"y_cm":sy*y,"side":sx,
+                                   "measured_x_abs_cm":actual,"expected_x_abs_cm":expected,
+                                   "error_cm":error})
+    return {"radius_cm":er,"max_error_cm":max(r["error_cm"] for r in probes),"probes":probes}
+
+
 def run(ctx):
     p=ctx.params
     obj=next(iter(ctx.targets.values()))["object"]
@@ -57,6 +92,7 @@ def run(ctx):
         measured_pits.append({**rec,"measured_floor_z_cm":floor,"measured_depth_cm":depth})
     core=measured_pits[0]["measured_floor_z_cm"]-hole_up
     assert abs(core-p["core"])<tol,(core,p["core"])
+    junction=measure_junction(tree,p)
     # Probe fillet geometry from actual mesh vertices, not only stored metadata.
     rim_points=[]
     pr=p["pad_d"]/2; lr=p["lip_r"]
@@ -96,6 +132,7 @@ def run(ctx):
     assert min_gap>0 and edge_gap>0
     report={"object":obj.name,"blender_version":bpy.app.version_string,"units":"cm","bbox":box,"expected_size_cm":expected,"topology":topo,"connected_components":len(components),"volume_cm3":volume,"bore_diameter_cm":bore,"central_floor_thickness_cm":core,"pits":measured_pits,"top_flat_land_cm":land,"round_lip_arc_vertices":len(rim_points),"shoulder_probes":shoulder_probes,"round_lip_probe":{"z_cm":z,"measured_y_cm":actual,"expected_y_cm":expected_y},"pit_gap_cm":min_gap,"pit_to_nominal_bowl_edge_cm":edge_gap,"tolerance_cm":tol,"physical_fit_and_strength":"not tested"}
     path=os.path.join(ctx.proj_dir,"spec","verification_report.json")
+    report["ring_support_end_fillet"]=junction
     with open(path,"w",encoding="utf-8") as f:
         json.dump(report,f,ensure_ascii=False,indent=2)
     print("VERIFIED",json.dumps(report,ensure_ascii=False))
