@@ -4,6 +4,7 @@ Product dimensions are passed by project ops from the JSON registry in cm.
 Loaded with runpy on each operation so saved edits take effect immediately.
 """
 import math
+import bisect
 import bpy
 import bmesh
 import s3d
@@ -115,3 +116,39 @@ def profile_x(curves,z):
                 else: hi=t
             return bezier_point(curve,(lo+hi)/2)[0]
     return curves[-1][-1][0]
+
+
+def radial_polygon(points):
+    """Radial intersection with a star-shaped XY polygon, in cm."""
+    ordered=sorted((math.atan2(y,x)%(2*math.pi),(x,y)) for x,y in points)
+    angles=[v[0] for v in ordered]
+    def radius(angle):
+        angle%=2*math.pi
+        i=bisect.bisect_right(angles,angle)%len(ordered)
+        x,y=ordered[i-1][1];qx,qy=ordered[i][1]
+        dx=qx-x;dy=qy-y;c=math.cos(angle);s=math.sin(angle)
+        denom=c*dy-s*dx
+        return (x*dy-y*dx)/denom if abs(denom)>1e-12 else math.hypot(x,y)
+    return radius
+
+
+def oval_section(a,b,z,wall,edge,hw,segments):
+    """Horizontal outline of a normal-offset oval solid with end rounds."""
+    if abs(z)>=b+wall:return None
+    ymax=hw
+    if abs(z)>b+wall-edge:
+        ymax=hw-edge+math.sqrt(max(0,edge**2-(abs(z)-b-wall+edge)**2))
+    quarter=[(ellipse_x(a,b,z,wall),0),(ellipse_x(a,b,z,wall),hw-edge)]
+    for j in range(1,segments+1):
+        t=math.pi*j/(2*segments);offset=wall-edge+edge*math.cos(t)
+        if abs(z)<b+offset:
+            quarter.append((ellipse_x(a,b,z,offset),hw-edge+edge*math.sin(t)))
+    quarter.append((0,ymax))
+    points=quarter+[(-x,y) for x,y in reversed(quarter)]+[(-x,-y) for x,y in quarter]+[(x,-y) for x,y in reversed(quarter)]
+    return radial_polygon(points)
+
+
+def smooth_max(a,b,width):
+    """C2 compact blend, exactly max outside the specified difference band."""
+    if width<=0 or abs(a-b)>=width:return max(a,b)
+    return max(a,b)+(width-abs(a-b))**3/(6*width**2)

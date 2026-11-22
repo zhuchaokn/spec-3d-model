@@ -1,0 +1,184 @@
+{
+  "units": "cm",
+  "normal_sample_step_cm": 0.005,
+  "baseline_commit": "52013ee5e12b9d81ae31d7a3c793244d7e57476a",
+  "method": "BVH normals along 14 vertical tracks above the front/back bore mouths. Same positions and step for both geometries; no screenshots.",
+  "before": {
+    "tracks": [
+      {
+        "x_cm": 0,
+        "side": -1,
+        "max_normal_step_deg": 1.9943921857552744,
+        "z_at_cm": 1.06
+      },
+      {
+        "x_cm": 0,
+        "side": 1,
+        "max_normal_step_deg": 1.9943921857552744,
+        "z_at_cm": 1.06
+      },
+      {
+        "x_cm": -0.25,
+        "side": -1,
+        "max_normal_step_deg": 2.0359590094966795,
+        "z_at_cm": 1.0600994687804117
+      },
+      {
+        "x_cm": -0.25,
+        "side": 1,
+        "max_normal_step_deg": 2.0357666969828614,
+        "z_at_cm": 1.0600994687804117
+      },
+      {
+        "x_cm": 0.25,
+        "side": -1,
+        "max_normal_step_deg": 2.0362473715457012,
+        "z_at_cm": 1.0600994687804117
+      },
+      {
+        "x_cm": 0.25,
+        "side": 1,
+        "max_normal_step_deg": 2.0361511085670863,
+        "z_at_cm": 1.0600994687804117
+      },
+      {
+        "x_cm": -0.5,
+        "side": -1,
+        "max_normal_step_deg": 3.1277506610580548,
+        "z_at_cm": 0.7017132020782763
+      },
+      {
+        "x_cm": -0.5,
+        "side": 1,
+        "max_normal_step_deg": 3.1277506610580548,
+        "z_at_cm": 0.7017132020782763
+      },
+      {
+        "x_cm": 0.5,
+        "side": -1,
+        "max_normal_step_deg": 3.12825118585817,
+        "z_at_cm": 0.7017132020782763
+      },
+      {
+        "x_cm": 0.5,
+        "side": 1,
+        "max_normal_step_deg": 3.1277506610580548,
+        "z_at_cm": 0.7017132020782763
+      },
+      {
+        "x_cm": -0.65,
+        "side": -1,
+        "max_normal_step_deg": 37.92125125304581,
+        "z_at_cm": 0.7181621068622408
+      },
+      {
+        "x_cm": -0.65,
+        "side": 1,
+        "max_normal_step_deg": 37.921422007775064,
+        "z_at_cm": 0.7181621068622408
+      },
+      {
+        "x_cm": 0.65,
+        "side": -1,
+        "max_normal_step_deg": 37.92137761154546,
+        "z_at_cm": 0.7181621068622408
+      },
+      {
+        "x_cm": 0.65,
+        "side": 1,
+        "max_normal_step_deg": 37.921544951180124,
+        "z_at_cm": 0.7181621068622408
+      }
+    ],
+    "max_normal_step_deg": 37.921544951180124
+  },
+  "after": {
+    "tracks": [
+      {
+        "x_cm": 0,
+        "side": -1,
+        "max_normal_step_deg": 1.8530853902246425,
+        "z_at_cm": 1.05
+      },
+      {
+        "x_cm": 0,
+        "side": 1,
+        "max_normal_step_deg": 1.8530853902246425,
+        "z_at_cm": 1.05
+      },
+      {
+        "x_cm": -0.25,
+        "side": -1,
+        "max_normal_step_deg": 1.8040678973158113,
+        "z_at_cm": 1.0501243359755148
+      },
+      {
+        "x_cm": -0.25,
+        "side": 1,
+        "max_normal_step_deg": 1.8040678973158113,
+        "z_at_cm": 1.0501243359755148
+      },
+      {
+        "x_cm": 0.25,
+        "side": -1,
+        "max_normal_step_deg": 1.8040678973158113,
+        "z_at_cm": 1.0501243359755148
+      },
+      {
+        "x_cm": 0.25,
+        "side": 1,
+        "max_normal_step_deg": 1.8040678973158113,
+        "z_at_cm": 1.0501243359755148
+      },
+      {
+        "x_cm": -0.5,
+        "side": -1,
+        "max_normal_step_deg": 2.5540495620530685,
+        "z_at_cm": 0.8460921663249011
+      },
+      {
+        "x_cm": -0.5,
+        "side": 1,
+        "max_normal_step_deg": 2.5540495620530685,
+        "z_at_cm": 0.8460921663249011
+      },
+      {
+        "x_cm": 0.5,
+        "side": -1,
+        "max_normal_step_deg": 2.5540495620530685,
+        "z_at_cm": 0.8460921663249011
+      },
+      {
+        "x_cm": 0.5,
+        "side": 1,
+        "max_normal_step_deg": 2.5540495620530685,
+        "z_at_cm": 0.8460921663249011
+      },
+      {
+        "x_cm": -0.65,
+        "side": -1,
+        "max_normal_step_deg": 2.91235210784524,
+        "z_at_cm": 0.6933674384766719
+      },
+      {
+        "x_cm": -0.65,
+        "side": 1,
+        "max_normal_step_deg": 2.91235210784524,
+        "z_at_cm": 0.6933674384766719
+      },
+      {
+        "x_cm": 0.65,
+        "side": -1,
+        "max_normal_step_deg": 2.9122176384959553,
+        "z_at_cm": 0.6933674384766719
+      },
+      {
+        "x_cm": 0.65,
+        "side": 1,
+        "max_normal_step_deg": 2.9122176384959553,
+        "z_at_cm": 0.6933674384766719
+      }
+    ],
+    "max_normal_step_deg": 2.91235210784524
+  }
+}

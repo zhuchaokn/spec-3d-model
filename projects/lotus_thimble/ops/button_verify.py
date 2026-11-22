@@ -67,6 +67,16 @@ def run(ctx):
     band=hit((0,hw+p["probe"],z_band),(0,-1,0)).y-hit((0,-hw-p["probe"],z_band),(0,1,0)).y
     assert abs(band-p["band_w"])<tol,band
     neck=[]
+    upper_walls=[]
+    for y in (-hw+5*p["outer_edge_r"],0,hw-5*p["outer_edge_r"]):
+        for j in range(17):
+            angle=math.pi*j/16
+            point=Vector((a*math.cos(angle),y,b*math.sin(angle)))
+            normal=Vector((math.cos(angle)/a,0,math.sin(angle)/b)).normalized()
+            actual=hit(point+normal*p["tolerance"],normal)
+            thickness=(actual-point).dot(normal)
+            assert thickness>=wall-tol,("Upper band thinned",y,angle,thickness)
+            upper_walls.append({"y_cm":y,"angle":angle,"thickness_cm":thickness})
     for z in p["neck_probe_z"]:
         expected_x=g["profile_x"](p["support_curves"],z)
         for side in (-1,1):
@@ -143,8 +153,35 @@ def run(ctx):
     assert abs(actual-expected_y)<tol,("Lip",actual,expected_y)
     land=float(obj["top_land_cm"]);assert land>=p["min_land"]-tol,land
     bowl_center=p["bowl_center_z"]-p["bowl_r"]
+    # A watertight union can still have a sharp ridge. Inspect independent
+    # surface normals along front/back tracks just above the rounded bore.
+    junction=[]
+    for x in p["junction_check_x"]:
+        start=b*math.sqrt(1-(x/a)**2)+p["bore_edge_r"]+p["junction_check_clearance"]
+        steps=math.ceil((p["junction_check_top"]-start)/p["junction_check_step"])
+        assert steps>0
+        for sx in (-1,1) if x else (1,):
+            for sy in (-1,1):
+                previous=None;maximum=0;max_z=None
+                for j in range(steps+1):
+                    z=start+(p["junction_check_top"]-start)*j/steps
+                    origin=Vector((sx*x*s3d.CM,sy*(p["pad_d"]+p["probe"])*s3d.CM,z*s3d.CM))
+                    result=tree.ray_cast(origin,Vector((0,-sy,0)))
+                    assert result[0] is not None,("Junction track missed",sx*x,sy,z)
+                    normal=result[1]
+                    if previous is not None:
+                        angle=math.degrees(normal.angle(previous))
+                        if angle>maximum:maximum=angle;max_z=z
+                    previous=normal
+                assert maximum<=p["junction_max_normal_step_deg"],("Junction ridge",sx*x,sy,maximum,max_z)
+                junction.append({"x_cm":sx*x,"side":sy,"sample_count":steps+1,"max_normal_step_deg":maximum,"z_at_cm":max_z})
     report={"object":obj.name,"blender_version":bpy.app.version_string,"units":"cm","bbox":bbox,"expected_size_cm":expected,"topology":topo,"connected_components":components,"volume_cm3":volume,"bore_x_cm":bx,"bore_z_cm":bz,"oval_probes":oval,"wall_normal_probes":walls,"band_width_cm":band,"end_round_max_error_cm":max(rounds),"end_round_probe_count":len(rounds),"neck_probes":neck,"pits":pits,"min_sampled_pit_floor_thickness_cm":min(floor_samples),"pit_floor_sample_count":len(floor_samples),"usable_pit_probes":usable,"threads":stitches,"thread_probes":threads,"shoulder_probes":shoulders,"top_flat_land_cm":land,"bowl_depth_cm":p["rim_z"]-bowl_center,"central_body_thickness_cm":bowl_center-b,"tolerance_cm":tol,"physical_fit_and_strength":"not tested"}
     report["underside_corner_probes"]=corners
     report["underside_corner_min_recession_cm"]=min(c["recession_cm"] for c in corners)
+    report["upper_band_wall_probes"]=upper_walls
+    report["upper_band_min_sampled_wall_cm"]=min(v["thickness_cm"] for v in upper_walls)
+    report["junction_normal_tracks"]=junction
+    report["junction_normal_sample_step_cm"]=p["junction_check_step"]
+    report["junction_max_normal_step_deg"]=max(v["max_normal_step_deg"] for v in junction)
     with open(os.path.join(ctx.proj_dir,"spec","verification_report.json"),"w",encoding="utf-8") as f:json.dump(report,f,ensure_ascii=False,indent=2)
     print("VERIFIED_BUTTON",json.dumps({k:report[k] for k in ("topology","bore_x_cm","bore_z_cm","band_width_cm","min_sampled_pit_floor_thickness_cm","volume_cm3")}),flush=True)

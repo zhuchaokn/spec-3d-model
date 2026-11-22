@@ -20,6 +20,11 @@ def run(ctx):
     profile.append((w,hw-er))
     profile+=arc((w-er,hw-er),er,0,math.pi/2,m)[1:]
     obj=solid(ctx.name,a,b,profile,n,ctx.center,merge)
+    # Retain the exact lower band; replace the upper exterior by one continuous
+    # section loft so the former boolean intersection cannot remain a ridge.
+    ext=pr+p["extension"]
+    boolean(obj,s3d.add_box("_UpperBandCut",(2*ext,2*ext,2*ext),
+                          (ctx.center[0],ctx.center[1],ctx.center[2]+ext)),operation="DIFFERENCE")
 
     top=p["rim_z"]; lipbase=top-p["lip_h"]
     rise=lipbase-rr; runout=pr-hw
@@ -40,12 +45,13 @@ def run(ctx):
         if z<=small_center[1]: return small_center[0]+math.sqrt(max(0,small**2-(z-small_center[1])**2))
         return pr
     loft_top=top-p["lip_r"]
-    levels={0,zs,big_end[1],small_start[1],small_center[1],lipbase,loft_top,p["blend_start"],p["blend_end"]}
+    levels={-p["step"],0,zs,big_end[1],small_start[1],small_center[1],lipbase,loft_top,p["blend_start"],p["blend_end"],rr,
+            p["junction_blend_start"],p["junction_blend_full"]}
     levels.update(c[-1][1] for c in p["support_curves"])
     steps=math.ceil(loft_top/p["step"])
     levels.update(loft_top*j/steps for j in range(steps+1))
-    levels=sorted(z for z in levels if 0<=z<=loft_top)
-    verts=[]; faces=[]; quarter=n//4
+    levels=sorted(z for z in levels if -p["step"]<=z<=loft_top)
+    verts=[]; faces=[]; nl=int(p["loft_segments"]);quarter=nl//4;radii=[]
     for z in levels:
         xh=x_half(z); yh=y_half(z)
         # Round the four shoulders before they reach the pad underside.
@@ -54,6 +60,7 @@ def run(ctx):
         t=max(0,min(1,(z-p["blend_start"])/(p["blend_end"]-p["blend_start"])))
         smooth=t**3*(10-15*t+6*t*t)
         cr=er+(min(xh,yh)-er)*smooth
+        outline=[]
         for q in range(4):
             sx=1 if q in (0,3) else -1; sy=1 if q in (0,1) else -1
             for j in range(quarter):
@@ -65,12 +72,44 @@ def run(ctx):
                 lower_x=sx*(xh-delta); lower_y=sy*(yh-er+er*abs(math.sin(angle)))
                 upper_x=sx*(xh-cr)+cr*math.cos(angle)
                 upper_y=sy*(yh-cr)+cr*math.sin(angle)
-                verts.append(((1-smooth)*lower_x+smooth*upper_x,(1-smooth)*lower_y+smooth*upper_y,z))
-    faces.append(tuple(reversed(range(n))))
+                outline.append(((1-smooth)*lower_x+smooth*upper_x,(1-smooth)*lower_y+smooth*upper_y))
+        support=g["radial_polygon"](outline)
+        band=g["oval_section"](a,b,z,w,er,hw,m)
+        jt=max(0,min(1,(z-p["junction_blend_start"])/(p["junction_blend_full"]-p["junction_blend_start"])))
+        blend=jt**3*(10-15*jt+6*jt*jt)
+        row=[]
+        for j in range(nl):
+            angle=2*math.pi*j/nl
+            radius=support(angle)
+            if z<=0:radius=band(angle)
+            elif band is not None:
+                # Keep the approved front silhouette; smooth the actual end
+                # shoulders in all four quadrants, with no separate union seam.
+                radius=g["smooth_max"](radius,band(angle),p["junction_blend_r"]*blend*math.sin(2*angle)**2)
+            row.append(radius)
+        radii.append(row)
+    # Smooth the four longitudinal shoulder profiles as geometry. Normal
+    # averaging alone would conceal the ridge but leave it in the printed STL.
+    # Integrate a Gaussian over the irregular Z samples; preserve both approved
+    # axial silhouettes and fade smoothly into the untouched lower band/lip.
+    sigma=p["junction_smooth_sigma"]
+    dz=[(levels[min(i+1,len(levels)-1)]-levels[max(0,i-1)])/2 for i in range(len(levels))]
+    for i,z in enumerate(levels):
+        jt=max(0,min(1,(z-p["junction_blend_start"])/(p["junction_blend_full"]-p["junction_blend_start"])))
+        ft=max(0,min(1,(z-p["junction_smooth_fade_start"])/(p["junction_smooth_end"]-p["junction_smooth_fade_start"])))
+        strength=jt**3*(10-15*jt+6*jt*jt)*(1-ft**3*(10-15*ft+6*ft*ft))
+        weights=[(k,dz[k]*math.exp(-.5*((zk-z)/sigma)**2)) for k,zk in enumerate(levels) if abs(zk-z)<=4*sigma]
+        total=sum(v for _,v in weights)
+        for j in range(nl):
+            angle=2*math.pi*j/nl;mix=strength*math.sin(2*angle)**2
+            filtered=sum(radii[k][j]*weight for k,weight in weights)/total
+            radius=radii[i][j]*(1-mix)+filtered*mix
+            verts.append((radius*math.cos(angle),radius*math.sin(angle),z))
+    faces.append(tuple(reversed(range(nl))))
     for i in range(len(levels)-1):
-        for j in range(n):
-            k=(j+1)%n; faces.append((i*n+j,i*n+k,(i+1)*n+k,(i+1)*n+j))
-    faces.append(tuple((len(levels)-1)*n+j for j in range(n)))
+        for j in range(nl):
+            k=(j+1)%nl; faces.append((i*nl+j,i*nl+k,(i+1)*nl+k,(i+1)*nl+j))
+    faces.append(tuple((len(levels)-1)*nl+j for j in range(nl)))
     boolean(obj,mesh("_ConcaveSupport",verts,faces,ctx.center,merge))
     print("JOIN_SUPPORT",s3d.manifold_report(obj.name),flush=True)
 
