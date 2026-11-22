@@ -66,8 +66,9 @@ def main():
     config['nodes']=[n for n in config['nodes'][:-1] if n['name'] not in {g['name'] for g in pr['province_assemblies']}]+nodes+[config['nodes'][-1]]
     config['nodes'][-1]['after']=[n['name'] for n in config['nodes'][:-1]]
     exports=config['nodes'][-1]['params'];exports['pieces']={k:v for k,v in exports['pieces'].items() if not set(v).intersection(removed)}
-    for group in pr['province_assemblies']:exports['pieces']['dovetail_combined/'+group['name']]=[group['name']]
-    exports['pieces']={'dovetail_combined/'+k.split('/')[-1]:v for k,v in exports['pieces'].items()}
+    export_dir=pr.get('dovetail_stl_directory','dovetail_combined')
+    for group in pr['province_assemblies']:exports['pieces'][export_dir+'/'+group['name']]=[group['name']]
+    exports['pieces']={export_dir+'/'+k.split('/')[-1]:v for k,v in exports['pieces'].items()}
     report['parts']=[r for r in report['parts'] if r['object'] not in removed and r['object'] not in colored]+results
     report['removable_assembly_count']=29;report['physical_mesh_count']=33
     manifest['multicolor_assemblies']=colored

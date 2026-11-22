@@ -1,0 +1,66 @@
+{
+  "before_clearance_mm": 0.1,
+  "after_clearance_mm": 0.15,
+  "male_geometry_unchanged": true,
+  "straight_seam_gap_mm": 0.1,
+  "unchanged_objects": [
+    "450000_广西壮族自治区",
+    "420000_湖北省",
+    "Tray_X1_Y1",
+    "370000_山东省",
+    "330000_浙江省",
+    "710000_台湾省",
+    "510000_四川省",
+    "540000_西藏自治区",
+    "620000_甘肃省",
+    "440000_广东省",
+    "630000_青海省",
+    "530000_云南省",
+    "610000_陕西省",
+    "430000_湖南省",
+    "150000_内蒙古自治区",
+    "230000_黑龙江省",
+    "350000_福建省",
+    "220000_吉林省",
+    "340000_安徽省",
+    "140000_山西省",
+    "500000_重庆市",
+    "650000_新疆维吾尔自治区",
+    "210000_辽宁省",
+    "410000_河南省",
+    "520000_贵州省",
+    "360000_江西省",
+    "640000_宁夏回族自治区",
+    "460000_海南省",
+    "A_京津冀",
+    "A_江苏上海"
+  ],
+  "unchanged_plate_assignment": true,
+  "only_changed_production_plates": [
+    3,
+    4,
+    5
+  ],
+  "base_changes": [
+    {
+      "name": "Tray_X1_Y1",
+      "removed_socket_margin_mm2": 0.0,
+      "all_changes_inside_female_socket_margins": true
+    },
+    {
+      "name": "Tray_X2_Y1",
+      "removed_socket_margin_mm2": 1.9738324345139762,
+      "all_changes_inside_female_socket_margins": true
+    },
+    {
+      "name": "Tray_X1_Y2",
+      "removed_socket_margin_mm2": 1.9738324345136833,
+      "all_changes_inside_female_socket_margins": true
+    },
+    {
+      "name": "Tray_X2_Y2",
+      "removed_socket_margin_mm2": 3.947664869028474,
+      "all_changes_inside_female_socket_margins": true
+    }
+  ]
+}

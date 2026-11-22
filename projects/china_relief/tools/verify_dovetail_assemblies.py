@@ -32,7 +32,7 @@ def main():
         assert mesh.is_watertight and mesh.body_count==1 and max(mesh.extents)<256
         bases.append({'name':n['name'],'dimensions_mm':mesh.extents.tolist(),'actual_bottom_matches_outline':True})
     joints=[];w=c['TRAY_TAB_WIDTH'];h=c['TRAY_TAB_HEAD_WIDTH'];length=c['TRAY_TAB_LENGTH'];clear=c['TRAY_TAB_CLEARANCE']
-    assert h>w+2*clear and np.isclose(clear*10,.1) and np.isclose(c['TRAY_SEAM_GAP']*10,.1)
+    assert h>w+2*clear and np.isclose(clear*10,.15) and np.isclose(c['TRAY_SEAM_GAP']*10,.1)
     for vertical in [False,True]:
         for row in [0,1]:
             male=outlines[(row,0) if vertical else (0,row)]
@@ -94,6 +94,6 @@ def main():
         assert settings['enable_prime_tower']=='0' and settings['sparse_infill_density']=='5%'
     result={'joint_count':len(joints),'profile_clearance_mm':clear*10,'flat_seam_gap_mm':c['TRAY_SEAM_GAP']*10,'joints':joints,'bases':bases,'assemblies':assembly_checks,'preserved_single_provinces':preserved,'physical_objects':33,'removable_pieces':29,'plate_count':9,'closed_color_meshes':verify(args.revised),'plates':plates}
     p.prepare.write_json(p.ROOT/'spec/dovetail_assembly_verification.json',result)
-    print('Verified 8 dovetails, 0.1 mm profiles, 2 connected assemblies, 27 unchanged provinces, 9 plates / 33 objects')
+    print(f'Verified 8 dovetails, {clear*10:g} mm profiles, 2 connected assemblies, 27 unchanged provinces, 9 plates / 33 objects')
 
 if __name__=='__main__':main()

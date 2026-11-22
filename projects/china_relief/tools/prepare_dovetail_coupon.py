@@ -19,14 +19,14 @@ def main():
         geom=translate(geom,-(geom.bounds[0]+geom.bounds[2])/2,-cy)
         mesh=p.prism(geom,0,pr['dovetail_test_thickness_mm']/10);mesh.vertices*=10
         assert mesh.is_watertight and mesh.body_count==1
-        mesh.export(p.ROOT/'output'/(name+'.stl'))
+        mesh.export(p.ROOT/'output'/(pr['dovetail_test_filename'].removesuffix('.3mf')+'_'+name+'.stl'))
         items.append((name,[(name,pr['base_filament_id'],mesh)]))
         records.append({'name':name,'dimensions_mm':mesh.extents.tolist(),'watertight':True})
     bins=p.pack(items,config);assert len(bins)==1
-    with zipfile.ZipFile(p.ROOT/'output/china_relief_P2S_9plates_dovetail_combined.3mf') as z:settings=json.loads(z.read('Metadata/project_settings.config'))
+    with zipfile.ZipFile(p.ROOT/'output'/pr['dovetail_project_filename']) as z:settings=json.loads(z.read('Metadata/project_settings.config'))
     settings['layer_height']=str(pr['base_layer_height_mm']);settings['xy_contour_compensation']='0'
     settings['print_settings_id']=f"{pr['base_layer_height_mm']:.2f}mm Standard @BBL P2S"
-    target=p.ROOT/'output/china_relief_dovetail_01mm_test.3mf'
+    target=p.ROOT/'output'/pr['dovetail_test_filename']
     p.write_project(target,bins[0]['items'],[v['id'] for v in pr['colors']],settings)
     p.prepare.write_json(p.ROOT/'spec/dovetail_coupon_report.json',{'source':'actual Tray_X1_Y1 / Tray_X2_Y1 outlines','profile_clearance_mm':c['TRAY_TAB_CLEARANCE']*10,'seam_gap_mm':c['TRAY_SEAM_GAP']*10,'parts':records,'separate_from_production_plates':True})
     print('Saved actual dovetail fit coupon:',target)

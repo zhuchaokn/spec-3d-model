@@ -3,7 +3,7 @@
   "units": "mm",
   "files": [
     {
-      "file": "output/dovetail_combined/140000_山西省.stl",
+      "file": "output/dovetail_combined_015mm/140000_山西省.stl",
       "triangles": 7142,
       "connected_components": 1,
       "watertight": true,
@@ -16,7 +16,7 @@
       "volume_mm3": 9956.93608540093
     },
     {
-      "file": "output/dovetail_combined/150000_内蒙古自治区.stl",
+      "file": "output/dovetail_combined_015mm/150000_内蒙古自治区.stl",
       "triangles": 46796,
       "connected_components": 1,
       "watertight": true,
@@ -29,7 +29,7 @@
       "volume_mm3": 68225.78533211791
     },
     {
-      "file": "output/dovetail_combined/210000_辽宁省.stl",
+      "file": "output/dovetail_combined_015mm/210000_辽宁省.stl",
       "triangles": 7706,
       "connected_components": 1,
       "watertight": true,
@@ -42,7 +42,7 @@
       "volume_mm3": 5550.243157993192
     },
     {
-      "file": "output/dovetail_combined/220000_吉林省.stl",
+      "file": "output/dovetail_combined_015mm/220000_吉林省.stl",
       "triangles": 9812,
       "connected_components": 1,
       "watertight": true,
@@ -55,7 +55,7 @@
       "volume_mm3": 8121.4924960637545
     },
     {
-      "file": "output/dovetail_combined/230000_黑龙江省.stl",
+      "file": "output/dovetail_combined_015mm/230000_黑龙江省.stl",
       "triangles": 20320,
       "connected_components": 1,
       "watertight": true,
@@ -68,7 +68,7 @@
       "volume_mm3": 18008.89984272511
     },
     {
-      "file": "output/dovetail_combined/330000_浙江省.stl",
+      "file": "output/dovetail_combined_015mm/330000_浙江省.stl",
       "triangles": 5122,
       "connected_components": 1,
       "watertight": true,
@@ -81,7 +81,7 @@
       "volume_mm3": 4153.516111287177
     },
     {
-      "file": "output/dovetail_combined/340000_安徽省.stl",
+      "file": "output/dovetail_combined_015mm/340000_安徽省.stl",
       "triangles": 6998,
       "connected_components": 1,
       "watertight": true,
@@ -94,7 +94,7 @@
       "volume_mm3": 4826.716869012725
     },
     {
-      "file": "output/dovetail_combined/350000_福建省.stl",
+      "file": "output/dovetail_combined_015mm/350000_福建省.stl",
       "triangles": 6438,
       "connected_components": 1,
       "watertight": true,
@@ -107,7 +107,7 @@
       "volume_mm3": 5506.052504746306
     },
     {
-      "file": "output/dovetail_combined/360000_江西省.stl",
+      "file": "output/dovetail_combined_015mm/360000_江西省.stl",
       "triangles": 7726,
       "connected_components": 1,
       "watertight": true,
@@ -120,7 +120,7 @@
       "volume_mm3": 6363.414449045954
     },
     {
-      "file": "output/dovetail_combined/370000_山东省.stl",
+      "file": "output/dovetail_combined_015mm/370000_山东省.stl",
       "triangles": 7820,
       "connected_components": 1,
       "watertight": true,
@@ -133,7 +133,7 @@
       "volume_mm3": 5279.031603412802
     },
     {
-      "file": "output/dovetail_combined/410000_河南省.stl",
+      "file": "output/dovetail_combined_015mm/410000_河南省.stl",
       "triangles": 7984,
       "connected_components": 1,
       "watertight": true,
@@ -146,7 +146,7 @@
       "volume_mm3": 6278.79446612737
     },
     {
-      "file": "output/dovetail_combined/420000_湖北省.stl",
+      "file": "output/dovetail_combined_015mm/420000_湖北省.stl",
       "triangles": 8926,
       "connected_components": 1,
       "watertight": true,
@@ -159,7 +159,7 @@
       "volume_mm3": 8029.028429667305
     },
     {
-      "file": "output/dovetail_combined/430000_湖南省.stl",
+      "file": "output/dovetail_combined_015mm/430000_湖南省.stl",
       "triangles": 9666,
       "connected_components": 1,
       "watertight": true,
@@ -172,7 +172,7 @@
       "volume_mm3": 8706.186665479889
     },
     {
-      "file": "output/dovetail_combined/440000_广东省.stl",
+      "file": "output/dovetail_combined_015mm/440000_广东省.stl",
       "triangles": 8750,
       "connected_components": 1,
       "watertight": true,
@@ -185,7 +185,7 @@
       "volume_mm3": 6676.544455527403
     },
     {
-      "file": "output/dovetail_combined/450000_广西壮族自治区.stl",
+      "file": "output/dovetail_combined_015mm/450000_广西壮族自治区.stl",
       "triangles": 10770,
       "connected_components": 1,
       "watertight": true,
@@ -198,7 +198,7 @@
       "volume_mm3": 9977.338943853383
     },
     {
-      "file": "output/dovetail_combined/460000_海南省.stl",
+      "file": "output/dovetail_combined_015mm/460000_海南省.stl",
       "triangles": 1804,
       "connected_components": 1,
       "watertight": true,
@@ -211,7 +211,7 @@
       "volume_mm3": 1332.735829095672
     },
     {
-      "file": "output/dovetail_combined/500000_重庆市.stl",
+      "file": "output/dovetail_combined_015mm/500000_重庆市.stl",
       "triangles": 5092,
       "connected_components": 1,
       "watertight": true,
@@ -224,7 +224,7 @@
       "volume_mm3": 4265.050939392198
     },
     {
-      "file": "output/dovetail_combined/510000_四川省.stl",
+      "file": "output/dovetail_combined_015mm/510000_四川省.stl",
       "triangles": 20910,
       "connected_components": 1,
       "watertight": true,
@@ -237,7 +237,7 @@
       "volume_mm3": 50529.79163445862
     },
     {
-      "file": "output/dovetail_combined/520000_贵州省.stl",
+      "file": "output/dovetail_combined_015mm/520000_贵州省.stl",
       "triangles": 8616,
       "connected_components": 1,
       "watertight": true,
@@ -250,7 +250,7 @@
       "volume_mm3": 10961.18798925094
     },
     {
-      "file": "output/dovetail_combined/530000_云南省.stl",
+      "file": "output/dovetail_combined_015mm/530000_云南省.stl",
       "triangles": 17304,
       "connected_components": 1,
       "watertight": true,
@@ -263,7 +263,7 @@
       "volume_mm3": 32175.072141241995
     },
     {
-      "file": "output/dovetail_combined/540000_西藏自治区.stl",
+      "file": "output/dovetail_combined_015mm/540000_西藏自治区.stl",
       "triangles": 45288,
       "connected_components": 1,
       "watertight": true,
@@ -276,7 +276,7 @@
       "volume_mm3": 197304.63648125005
     },
     {
-      "file": "output/dovetail_combined/610000_陕西省.stl",
+      "file": "output/dovetail_combined_015mm/610000_陕西省.stl",
       "triangles": 9946,
       "connected_components": 1,
       "watertight": true,
@@ -289,7 +289,7 @@
       "volume_mm3": 12892.526145323252
     },
     {
-      "file": "output/dovetail_combined/620000_甘肃省.stl",
+      "file": "output/dovetail_combined_015mm/620000_甘肃省.stl",
       "triangles": 20078,
       "connected_components": 1,
       "watertight": true,
@@ -302,7 +302,7 @@
       "volume_mm3": 39093.38032174967
     },
     {
-      "file": "output/dovetail_combined/630000_青海省.stl",
+      "file": "output/dovetail_combined_015mm/630000_青海省.stl",
       "triangles": 27668,
       "connected_components": 1,
       "watertight": true,
@@ -315,7 +315,7 @@
       "volume_mm3": 101284.24170830126
     },
     {
-      "file": "output/dovetail_combined/640000_宁夏回族自治区.stl",
+      "file": "output/dovetail_combined_015mm/640000_宁夏回族自治区.stl",
       "triangles": 3258,
       "connected_components": 1,
       "watertight": true,
@@ -328,7 +328,7 @@
       "volume_mm3": 3901.436255596033
     },
     {
-      "file": "output/dovetail_combined/650000_新疆维吾尔自治区.stl",
+      "file": "output/dovetail_combined_015mm/650000_新疆维吾尔自治区.stl",
       "triangles": 59272,
       "connected_components": 1,
       "watertight": true,
@@ -341,7 +341,7 @@
       "volume_mm3": 139692.2927827007
     },
     {
-      "file": "output/dovetail_combined/710000_台湾省.stl",
+      "file": "output/dovetail_combined_015mm/710000_台湾省.stl",
       "triangles": 1908,
       "connected_components": 1,
       "watertight": true,
@@ -354,7 +354,7 @@
       "volume_mm3": 1961.8463375126846
     },
     {
-      "file": "output/dovetail_combined/Tray_X1_Y1.stl",
+      "file": "output/dovetail_combined_015mm/Tray_X1_Y1.stl",
       "triangles": 26306,
       "connected_components": 1,
       "watertight": true,
@@ -367,8 +367,8 @@
       "volume_mm3": 211609.17915265122
     },
     {
-      "file": "output/dovetail_combined/Tray_X2_Y1.stl",
-      "triangles": 77066,
+      "file": "output/dovetail_combined_015mm/Tray_X2_Y1.stl",
+      "triangles": 77026,
       "connected_components": 1,
       "watertight": true,
       "winding_consistent": true,
@@ -377,10 +377,10 @@
         238.0,
         7.0
       ],
-      "volume_mm3": 202544.32340580746
+      "volume_mm3": 202538.12017377093
     },
     {
-      "file": "output/dovetail_combined/Tray_X1_Y2.stl",
+      "file": "output/dovetail_combined_015mm/Tray_X1_Y2.stl",
       "triangles": 35906,
       "connected_components": 1,
       "watertight": true,
@@ -390,10 +390,10 @@
         234.9,
         7.0
       ],
-      "volume_mm3": 168392.25343919813
+      "volume_mm3": 168388.3057743285
     },
     {
-      "file": "output/dovetail_combined/Tray_X2_Y2.stl",
+      "file": "output/dovetail_combined_015mm/Tray_X2_Y2.stl",
       "triangles": 76246,
       "connected_components": 1,
       "watertight": true,
@@ -403,10 +403,10 @@
         234.9,
         7.0
       ],
-      "volume_mm3": 177031.62499981388
+      "volume_mm3": 177019.78200520496
     },
     {
-      "file": "output/dovetail_combined/A_京津冀.stl",
+      "file": "output/dovetail_combined_015mm/A_京津冀.stl",
       "triangles": 12806,
       "connected_components": 1,
       "watertight": true,
@@ -419,7 +419,7 @@
       "volume_mm3": 9745.85366874931
     },
     {
-      "file": "output/dovetail_combined/A_江苏上海.stl",
+      "file": "output/dovetail_combined_015mm/A_江苏上海.stl",
       "triangles": 6786,
       "connected_components": 1,
       "watertight": true,

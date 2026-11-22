@@ -11,7 +11,7 @@
     "TRAY_MARGIN": 0.5,
     "TRAY_TAB_LENGTH": 0.3,
     "TRAY_TAB_WIDTH": 0.8,
-    "TRAY_TAB_CLEARANCE": 0.01,
+    "TRAY_TAB_CLEARANCE": 0.015,
     "PRINT_BED": 25.6,
     "PRINT_MARGIN": 0.8,
     "MIN_FEATURE": 0.08,
@@ -810,112 +810,112 @@
       ],
       "params": {
         "pieces": {
-          "dovetail_combined/140000_山西省": [
+          "dovetail_combined_015mm/140000_山西省": [
             "P140000"
           ],
-          "dovetail_combined/150000_内蒙古自治区": [
+          "dovetail_combined_015mm/150000_内蒙古自治区": [
             "P150000"
           ],
-          "dovetail_combined/210000_辽宁省": [
+          "dovetail_combined_015mm/210000_辽宁省": [
             "P210000"
           ],
-          "dovetail_combined/220000_吉林省": [
+          "dovetail_combined_015mm/220000_吉林省": [
             "P220000"
           ],
-          "dovetail_combined/230000_黑龙江省": [
+          "dovetail_combined_015mm/230000_黑龙江省": [
             "P230000"
           ],
-          "dovetail_combined/330000_浙江省": [
+          "dovetail_combined_015mm/330000_浙江省": [
             "P330000"
           ],
-          "dovetail_combined/340000_安徽省": [
+          "dovetail_combined_015mm/340000_安徽省": [
             "P340000"
           ],
-          "dovetail_combined/350000_福建省": [
+          "dovetail_combined_015mm/350000_福建省": [
             "P350000"
           ],
-          "dovetail_combined/360000_江西省": [
+          "dovetail_combined_015mm/360000_江西省": [
             "P360000"
           ],
-          "dovetail_combined/370000_山东省": [
+          "dovetail_combined_015mm/370000_山东省": [
             "P370000"
           ],
-          "dovetail_combined/410000_河南省": [
+          "dovetail_combined_015mm/410000_河南省": [
             "P410000"
           ],
-          "dovetail_combined/420000_湖北省": [
+          "dovetail_combined_015mm/420000_湖北省": [
             "P420000"
           ],
-          "dovetail_combined/430000_湖南省": [
+          "dovetail_combined_015mm/430000_湖南省": [
             "P430000"
           ],
-          "dovetail_combined/440000_广东省": [
+          "dovetail_combined_015mm/440000_广东省": [
             "P440000"
           ],
-          "dovetail_combined/450000_广西壮族自治区": [
+          "dovetail_combined_015mm/450000_广西壮族自治区": [
             "P450000"
           ],
-          "dovetail_combined/460000_海南省": [
+          "dovetail_combined_015mm/460000_海南省": [
             "P460000"
           ],
-          "dovetail_combined/500000_重庆市": [
+          "dovetail_combined_015mm/500000_重庆市": [
             "P500000"
           ],
-          "dovetail_combined/510000_四川省": [
+          "dovetail_combined_015mm/510000_四川省": [
             "P510000"
           ],
-          "dovetail_combined/520000_贵州省": [
+          "dovetail_combined_015mm/520000_贵州省": [
             "P520000"
           ],
-          "dovetail_combined/530000_云南省": [
+          "dovetail_combined_015mm/530000_云南省": [
             "P530000"
           ],
-          "dovetail_combined/540000_西藏自治区": [
+          "dovetail_combined_015mm/540000_西藏自治区": [
             "P540000"
           ],
-          "dovetail_combined/610000_陕西省": [
+          "dovetail_combined_015mm/610000_陕西省": [
             "P610000"
           ],
-          "dovetail_combined/620000_甘肃省": [
+          "dovetail_combined_015mm/620000_甘肃省": [
             "P620000"
           ],
-          "dovetail_combined/630000_青海省": [
+          "dovetail_combined_015mm/630000_青海省": [
             "P630000"
           ],
-          "dovetail_combined/640000_宁夏回族自治区": [
+          "dovetail_combined_015mm/640000_宁夏回族自治区": [
             "P640000"
           ],
-          "dovetail_combined/650000_新疆维吾尔自治区": [
+          "dovetail_combined_015mm/650000_新疆维吾尔自治区": [
             "P650000"
           ],
-          "dovetail_combined/710000_台湾省": [
+          "dovetail_combined_015mm/710000_台湾省": [
             "P710000"
           ],
-          "dovetail_combined/Tray_X1_Y1": [
+          "dovetail_combined_015mm/Tray_X1_Y1": [
             "Tray_X1_Y1"
           ],
-          "dovetail_combined/Tray_X2_Y1": [
+          "dovetail_combined_015mm/Tray_X2_Y1": [
             "Tray_X2_Y1"
           ],
-          "dovetail_combined/Tray_X1_Y2": [
+          "dovetail_combined_015mm/Tray_X1_Y2": [
             "Tray_X1_Y2"
           ],
-          "dovetail_combined/Tray_X2_Y2": [
+          "dovetail_combined_015mm/Tray_X2_Y2": [
             "Tray_X2_Y2"
           ],
-          "dovetail_combined/A_京津冀": [
+          "dovetail_combined_015mm/A_京津冀": [
             "A_京津冀"
           ],
-          "dovetail_combined/A_江苏上海": [
+          "dovetail_combined_015mm/A_江苏上海": [
             "A_江苏上海"
           ]
         },
-        "blend_name": "china_relief_dovetail_combined.blend"
+        "blend_name": "china_relief_dovetail_combined_015mm.blend"
       }
     }
   ],
-  "prepared_fingerprint": "c136b278685aee90f032208e4849bf2eb9da1e8c5d936c961c04062443776b3e",
-  "design_revision": "p2s_dovetail_01mm_combined_provinces",
+  "prepared_fingerprint": "16a4a2e7616e85f8e812b49048094daa10fdae4507b4382b0e7a9a7ca9d2388a",
+  "design_revision": "p2s_dovetail_015mm_combined_provinces",
   "printing": {
     "printer": "Bambu Lab P2S 0.4 nozzle",
     "material": "Bambu PLA Basic @BBL P2S",
@@ -1131,6 +1131,9 @@
     ],
     "dovetail_test_half_width_mm": 20,
     "dovetail_test_height_mm": 24,
-    "dovetail_test_thickness_mm": 4
+    "dovetail_test_thickness_mm": 4,
+    "dovetail_project_filename": "china_relief_P2S_9plates_dovetail_combined_015mm.3mf",
+    "dovetail_test_filename": "china_relief_dovetail_015mm_test.3mf",
+    "dovetail_stl_directory": "dovetail_combined_015mm"
   }
 }

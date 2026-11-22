@@ -1,6 +1,6 @@
 {
   "source": "actual Tray_X1_Y1 / Tray_X2_Y1 outlines",
-  "profile_clearance_mm": 0.1,
+  "profile_clearance_mm": 0.15,
   "seam_gap_mm": 0.1,
   "parts": [
     {
