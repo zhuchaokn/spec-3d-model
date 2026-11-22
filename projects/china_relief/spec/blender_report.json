@@ -329,38 +329,38 @@
     {
       "object": "Tray_X1_Y1",
       "dimensions_mm": [
-        238.00000548362732,
-        238.00000548362732,
+        246.99991941452026,
+        246.99991941452026,
         7.000000216066837
       ],
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "inconsistent_edges": 0,
-      "volume_mm3": 211609.19336985066
+      "volume_mm3": 212508.12137793264
     },
     {
       "object": "Tray_X2_Y1",
       "dimensions_mm": [
         234.89999771118164,
-        238.00000548362732,
+        246.99991941452026,
         7.000000216066837
       ],
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "inconsistent_edges": 0,
-      "volume_mm3": 202541.86105397987
+      "volume_mm3": 202502.97436009388
     },
     {
       "object": "Tray_X1_Y2",
       "dimensions_mm": [
-        238.00000548362732,
+        246.99991941452026,
         234.89999771118164,
         7.000000216066837
       ],
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "inconsistent_edges": 0,
-      "volume_mm3": 168390.68772753465
+      "volume_mm3": 168558.94601933876
     },
     {
       "object": "Tray_X2_Y2",
@@ -372,7 +372,7 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "inconsistent_edges": 0,
-      "volume_mm3": 177026.90883111695
+      "volume_mm3": 175964.89624166064
     },
     {
       "object": "A_京津冀",

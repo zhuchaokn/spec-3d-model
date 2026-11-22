@@ -16,26 +16,26 @@
     },
     {
       "name": "Tray_X1_Y1",
-      "global_position_error_mm": 1.0295298546135832e-05,
-      "triangle_count": 60302,
+      "global_position_error_mm": 1.0497505085446032e-05,
+      "triangle_count": 71444,
       "colors_and_settings_preserved": true
     },
     {
       "name": "Tray_X2_Y1",
-      "global_position_error_mm": 1.070604519966075e-05,
-      "triangle_count": 512158,
+      "global_position_error_mm": 1.0719488074144909e-05,
+      "triangle_count": 535668,
       "colors_and_settings_preserved": true
     },
     {
       "name": "Tray_X1_Y2",
-      "global_position_error_mm": 8.868885709985007e-06,
-      "triangle_count": 71282,
+      "global_position_error_mm": 1.0918500305570865e-05,
+      "triangle_count": 83450,
       "colors_and_settings_preserved": true
     },
     {
       "name": "Tray_X2_Y2",
       "global_position_error_mm": 8.979171263320643e-06,
-      "triangle_count": 158514,
+      "triangle_count": 178142,
       "colors_and_settings_preserved": true
     },
     {

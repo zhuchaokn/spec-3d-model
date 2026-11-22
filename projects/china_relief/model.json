@@ -9,7 +9,7 @@
     "MESH_SPACING": 0.07,
     "TRAY_FLOOR": 0.2,
     "TRAY_MARGIN": 0.5,
-    "TRAY_TAB_LENGTH": 0.3,
+    "TRAY_TAB_LENGTH": 1.2,
     "TRAY_TAB_WIDTH": 0.8,
     "TRAY_TAB_CLEARANCE": 0.012,
     "PRINT_BED": 25.6,
@@ -45,7 +45,10 @@
     "TRAY_TAB_HEAD_WIDTH": 1.2,
     "TRAY_SEAM_GAP": 0.01,
     "TRAY_JOINT_OVERLAP": 0.01,
-    "TRAY_DOVETAIL_ENABLED": 1
+    "TRAY_DOVETAIL_ENABLED": 1,
+    "TRAY_PADDLE_ENABLED": 1,
+    "TRAY_PADDLE_BLEND_RADIUS": 0.06,
+    "TRAY_PADDLE_QUAD_SEGMENTS": 48
   },
   "data": {
     "boundary": "data/raw/provinces_datav_reference.geojson",
@@ -656,8 +659,8 @@
       "name": "Tray_X1_Y1",
       "op": "ops/mesh.py",
       "offset": [
-        -10.1,
-        4.968030000000001,
+        -9.650004015862713,
+        5.418025984137287,
         0.35
       ],
       "params": {
@@ -676,7 +679,7 @@
       "op": "ops/mesh.py",
       "offset": [
         13.255,
-        4.968030000000001,
+        5.418025984137287,
         0.35
       ],
       "params": {
@@ -694,7 +697,7 @@
       "name": "Tray_X1_Y2",
       "op": "ops/mesh.py",
       "offset": [
-        -10.1,
+        -9.650004015862713,
         28.323030000000003,
         0.35
       ],
@@ -810,112 +813,112 @@
       ],
       "params": {
         "pieces": {
-          "dovetail_combined_012mm/140000_山西省": [
+          "round_paddle_012mm/140000_山西省": [
             "P140000"
           ],
-          "dovetail_combined_012mm/150000_内蒙古自治区": [
+          "round_paddle_012mm/150000_内蒙古自治区": [
             "P150000"
           ],
-          "dovetail_combined_012mm/210000_辽宁省": [
+          "round_paddle_012mm/210000_辽宁省": [
             "P210000"
           ],
-          "dovetail_combined_012mm/220000_吉林省": [
+          "round_paddle_012mm/220000_吉林省": [
             "P220000"
           ],
-          "dovetail_combined_012mm/230000_黑龙江省": [
+          "round_paddle_012mm/230000_黑龙江省": [
             "P230000"
           ],
-          "dovetail_combined_012mm/330000_浙江省": [
+          "round_paddle_012mm/330000_浙江省": [
             "P330000"
           ],
-          "dovetail_combined_012mm/340000_安徽省": [
+          "round_paddle_012mm/340000_安徽省": [
             "P340000"
           ],
-          "dovetail_combined_012mm/350000_福建省": [
+          "round_paddle_012mm/350000_福建省": [
             "P350000"
           ],
-          "dovetail_combined_012mm/360000_江西省": [
+          "round_paddle_012mm/360000_江西省": [
             "P360000"
           ],
-          "dovetail_combined_012mm/370000_山东省": [
+          "round_paddle_012mm/370000_山东省": [
             "P370000"
           ],
-          "dovetail_combined_012mm/410000_河南省": [
+          "round_paddle_012mm/410000_河南省": [
             "P410000"
           ],
-          "dovetail_combined_012mm/420000_湖北省": [
+          "round_paddle_012mm/420000_湖北省": [
             "P420000"
           ],
-          "dovetail_combined_012mm/430000_湖南省": [
+          "round_paddle_012mm/430000_湖南省": [
             "P430000"
           ],
-          "dovetail_combined_012mm/440000_广东省": [
+          "round_paddle_012mm/440000_广东省": [
             "P440000"
           ],
-          "dovetail_combined_012mm/450000_广西壮族自治区": [
+          "round_paddle_012mm/450000_广西壮族自治区": [
             "P450000"
           ],
-          "dovetail_combined_012mm/460000_海南省": [
+          "round_paddle_012mm/460000_海南省": [
             "P460000"
           ],
-          "dovetail_combined_012mm/500000_重庆市": [
+          "round_paddle_012mm/500000_重庆市": [
             "P500000"
           ],
-          "dovetail_combined_012mm/510000_四川省": [
+          "round_paddle_012mm/510000_四川省": [
             "P510000"
           ],
-          "dovetail_combined_012mm/520000_贵州省": [
+          "round_paddle_012mm/520000_贵州省": [
             "P520000"
           ],
-          "dovetail_combined_012mm/530000_云南省": [
+          "round_paddle_012mm/530000_云南省": [
             "P530000"
           ],
-          "dovetail_combined_012mm/540000_西藏自治区": [
+          "round_paddle_012mm/540000_西藏自治区": [
             "P540000"
           ],
-          "dovetail_combined_012mm/610000_陕西省": [
+          "round_paddle_012mm/610000_陕西省": [
             "P610000"
           ],
-          "dovetail_combined_012mm/620000_甘肃省": [
+          "round_paddle_012mm/620000_甘肃省": [
             "P620000"
           ],
-          "dovetail_combined_012mm/630000_青海省": [
+          "round_paddle_012mm/630000_青海省": [
             "P630000"
           ],
-          "dovetail_combined_012mm/640000_宁夏回族自治区": [
+          "round_paddle_012mm/640000_宁夏回族自治区": [
             "P640000"
           ],
-          "dovetail_combined_012mm/650000_新疆维吾尔自治区": [
+          "round_paddle_012mm/650000_新疆维吾尔自治区": [
             "P650000"
           ],
-          "dovetail_combined_012mm/710000_台湾省": [
+          "round_paddle_012mm/710000_台湾省": [
             "P710000"
           ],
-          "dovetail_combined_012mm/Tray_X1_Y1": [
+          "round_paddle_012mm/Tray_X1_Y1": [
             "Tray_X1_Y1"
           ],
-          "dovetail_combined_012mm/Tray_X2_Y1": [
+          "round_paddle_012mm/Tray_X2_Y1": [
             "Tray_X2_Y1"
           ],
-          "dovetail_combined_012mm/Tray_X1_Y2": [
+          "round_paddle_012mm/Tray_X1_Y2": [
             "Tray_X1_Y2"
           ],
-          "dovetail_combined_012mm/Tray_X2_Y2": [
+          "round_paddle_012mm/Tray_X2_Y2": [
             "Tray_X2_Y2"
           ],
-          "dovetail_combined_012mm/A_京津冀": [
+          "round_paddle_012mm/A_京津冀": [
             "A_京津冀"
           ],
-          "dovetail_combined_012mm/A_江苏上海": [
+          "round_paddle_012mm/A_江苏上海": [
             "A_江苏上海"
           ]
         },
-        "blend_name": "china_relief_dovetail_combined_012mm.blend"
+        "blend_name": "china_relief_round_paddle_012mm.blend"
       }
     }
   ],
-  "prepared_fingerprint": "8abc72014a2b2d69a0b6a5ff957c45d50a594521393faabc63f857161173f0db",
-  "design_revision": "p2s_dovetail_012mm_combined_provinces",
+  "prepared_fingerprint": "f00041fd199d26af144ea1fcdcb9fcc980d557b1a9238779bda6e8c71f3bdc22",
+  "design_revision": "p2s_round_paddle_012mm_combined_provinces",
   "printing": {
     "printer": "Bambu Lab P2S 0.4 nozzle",
     "material": "Bambu PLA Basic @BBL P2S",
@@ -1132,8 +1135,8 @@
     "dovetail_test_half_width_mm": 20,
     "dovetail_test_height_mm": 24,
     "dovetail_test_thickness_mm": 4,
-    "dovetail_project_filename": "china_relief_P2S_9plates_dovetail_combined_012mm.3mf",
-    "dovetail_test_filename": "china_relief_dovetail_012mm_test.3mf",
-    "dovetail_stl_directory": "dovetail_combined_012mm"
+    "dovetail_project_filename": "china_relief_P2S_9plates_round_paddle_012mm.3mf",
+    "dovetail_test_filename": "china_relief_round_paddle_012mm_test.3mf",
+    "dovetail_stl_directory": "round_paddle_012mm"
   }
 }

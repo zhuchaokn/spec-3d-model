@@ -384,6 +384,28 @@ def make_tray(poly, wells, c, fixed_regions=None, sampler=None, raised_regions=N
     return mesh
 
 
+def paddle_profile(c, socket=False):
+    """Local +X circular head, broad neck, and smooth concave root joins."""
+    length=c['TRAY_TAB_LENGTH'];width=c['TRAY_TAB_WIDTH'];head=c['TRAY_TAB_HEAD_WIDTH']
+    r=head/2;blend=c['TRAY_PADDLE_BLEND_RADIUS'];segments=c['TRAY_PADDLE_QUAD_SEGMENTS']
+    assert length>=head and width<head and blend<width/2
+    circle=Point(length-r,0).buffer(r,quad_segs=segments)
+    base=box(-3*blend,-head,0,head)
+    neck=box(-3*blend,-width/2,length-r,width/2)
+    # Closing rounds only the concave transitions. The circular head already
+    # has its own radius; the virtual backing plate gives the root a fillet.
+    profile=base.union(neck).union(circle).buffer(blend,quad_segs=segments).buffer(-blend,quad_segs=segments)
+    # Discard micron-scale offset remnants on the virtual backing edge;
+    # restore a short backing cap below the real plate edge for solid union.
+    cut=c['NUMERICAL_GAP']
+    profile=profile.intersection(box(cut,-head,length+head,head)).buffer(0)
+    root=[v for u,v in profile.exterior.coords if abs(u-cut)<1e-10]
+    assert root
+    profile=profile.union(box(-c['TRAY_JOINT_OVERLAP'],min(root),cut,max(root)))
+    if socket:profile=profile.intersection(box(0,-head,length+head,head)).buffer(0)
+    return profile
+
+
 def tray_polygon(cell, ix, iy, nx, ny, c):
     x0,y0,x1,y1=cell.bounds
     dovetail=bool(c.get('TRAY_DOVETAIL_ENABLED',0))
@@ -395,13 +417,19 @@ def tray_polygon(cell, ix, iy, nx, ny, c):
         x=x0+(x1-x0)*fraction
         if dovetail:
             head=c['TRAY_TAB_HEAD_WIDTH'];overlap=c['TRAY_JOINT_OVERLAP']
-            def joint(cx,cy,vertical):
+            def joint(cx,cy,vertical,socket=False):
+                if c.get('TRAY_PADDLE_ENABLED'):
+                    profile=paddle_profile(c,socket)
+                    if vertical:profile=transform(lambda u,v:(v,u),profile)
+                    return translate(profile,cx,cy)
                 pts=[(-overlap,-width/2),(0,-width/2),(length,-head/2),(length,head/2),(0,width/2),(-overlap,width/2)]
                 return Polygon([(cx+v,cy+u) if vertical else (cx+u,cy+v) for u,v in pts])
             if ix<nx-1:result=result.union(joint(x1,y,False))
             if iy<ny-1:result=result.union(joint(x,y1,True))
-            if ix>0:result=result.difference(joint(x0,y,False).buffer(clear,join_style=2))
-            if iy>0:result=result.difference(joint(x,y0,True).buffer(clear,join_style=2))
+            style=1 if c.get('TRAY_PADDLE_ENABLED') else 2
+            segments=c.get('TRAY_PADDLE_QUAD_SEGMENTS',16)
+            if ix>0:result=result.difference(joint(x0,y,False,True).buffer(clear,join_style=style,quad_segs=segments))
+            if iy>0:result=result.difference(joint(x,y0,True,True).buffer(clear,join_style=style,quad_segs=segments))
             continue
         if ix<nx-1:
             result=result.union(box(x1-.01,y-width/2,x1+length,y+width/2))

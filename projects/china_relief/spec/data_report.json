@@ -4658,15 +4658,15 @@
       "object": "Tray_X1_Y1",
       "file": "data/processed/Tray_X1_Y1.npz",
       "group": "tray",
-      "sha256": "e4296a9fcde5159da0a0ab59c53504c8d1750108112f66d700dcfd82ee58c805",
-      "vertices": 13155,
-      "triangles": 26306,
+      "sha256": "8597dc3e61dd760750a36505a453da4daa7b99f18ac4bc1a36f4b4db06fcbfff",
+      "vertices": 17428,
+      "triangles": 34852,
       "dimensions_mm": [
-        238.0,
-        238.0,
+        246.99991968274574,
+        246.99991968274574,
         7.0
       ],
-      "volume_mm3": 211609.17915264575,
+      "volume_mm3": 212508.119297584,
       "bounds_mm": [
         [
           -220.0,
@@ -4674,8 +4674,8 @@
           0.0
         ],
         [
-          18.0,
-          168.68030000000002,
+          26.999919682745738,
+          177.68021968274576,
           7.0
         ]
       ],
@@ -4688,15 +4688,15 @@
       "object": "Tray_X2_Y1",
       "file": "data/processed/Tray_X2_Y1.npz",
       "group": "tray",
-      "sha256": "6fc62ff3ac9ff7ea93fc068572cc8f791cc0a6248ea8816090628d65974de6bb",
-      "vertices": 38531,
-      "triangles": 77058,
+      "sha256": "8443ee161bf3477467bc4a4d930fc53705459eec23e636a10f647430aecc8822",
+      "vertices": 44734,
+      "triangles": 89464,
       "dimensions_mm": [
         234.89999999999998,
-        238.0,
+        246.99991968274574,
         7.0
       ],
-      "volume_mm3": 202541.85423999385,
+      "volume_mm3": 202502.97397526057,
       "bounds_mm": [
         [
           15.1,
@@ -4705,28 +4705,28 @@
         ],
         [
           250.0,
-          168.68030000000002,
+          177.68021968274576,
           7.0
         ]
       ],
       "watertight": true,
       "winding_consistent": true,
-      "zero_area_faces_removed": 1454,
+      "zero_area_faces_removed": 1468,
       "connected_components": 1
     },
     {
       "object": "Tray_X1_Y2",
       "file": "data/processed/Tray_X1_Y2.npz",
       "group": "tray",
-      "sha256": "c7d14576ef8cee7a768c33ac5ed3f6aa0a5eb1b4817a6dd7b84c965d41f5d56b",
-      "vertices": 17955,
-      "triangles": 35906,
+      "sha256": "df60cf0622b9dc88faff01e6ea136427bbd5f6007ff35d93e98ced2ff238b369",
+      "vertices": 23167,
+      "triangles": 46330,
       "dimensions_mm": [
-        238.0,
+        246.99991968274574,
         234.89999999999998,
         7.0
       ],
-      "volume_mm3": 168390.68174212688,
+      "volume_mm3": 168558.94612757984,
       "bounds_mm": [
         [
           -220.0,
@@ -4734,7 +4734,7 @@
           0.0
         ],
         [
-          18.0,
+          26.999919682745738,
           400.6803,
           7.0
         ]
@@ -4748,15 +4748,15 @@
       "object": "Tray_X2_Y2",
       "file": "data/processed/Tray_X2_Y2.npz",
       "group": "tray",
-      "sha256": "63f065aee637e4ba736d7378c0d44f8130a0ff4e179d4c1a18409a0e43b29b6c",
-      "vertices": 38125,
-      "triangles": 76246,
+      "sha256": "b507cc25726431a2134ca6b1f8322c7fbc360fc29e55caf51ab6f6dcf32a8354",
+      "vertices": 45315,
+      "triangles": 90626,
       "dimensions_mm": [
         234.89999999999998,
         234.89999999999998,
         7.0
       ],
-      "volume_mm3": 177026.90990861267,
+      "volume_mm3": 175964.89766136112,
       "bounds_mm": [
         [
           15.1,
@@ -4771,7 +4771,7 @@
       ],
       "watertight": true,
       "winding_consistent": true,
-      "zero_area_faces_removed": 562,
+      "zero_area_faces_removed": 558,
       "connected_components": 1
     },
     {
@@ -4835,7 +4835,7 @@
       "connected_components": 1
     }
   ],
-  "prepared_fingerprint": "8abc72014a2b2d69a0b6a5ff957c45d50a594521393faabc63f857161173f0db",
+  "prepared_fingerprint": "f00041fd199d26af144ea1fcdcb9fcc980d557b1a9238779bda6e8c71f3bdc22",
   "limitations": [
     "Boundary CRS is assumed, not declared by provider.",
     "No nominal clearance between province cards, as requested; real FDM parts may need edge trimming.",

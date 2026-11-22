@@ -66,5 +66,7 @@
       "removed_socket_margin_mm2": 0.0,
       "all_changes_inside_female_socket_margins": true
     }
-  ]
+  ],
+  "revision": "p2s_dovetail_012mm_combined_provinces",
+  "superseded_by": "spec/paddle_revision_report.json"
 }

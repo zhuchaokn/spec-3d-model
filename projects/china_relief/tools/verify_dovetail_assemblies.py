@@ -40,10 +40,23 @@ def main():
             for fraction in [1/3,2/3]:
                 axis=xs[row]+(xs[row+1]-xs[row])*fraction if vertical else ys[row]+(ys[row+1]-ys[row])*fraction
                 def point(u,v):return Point(axis+v,ys[1]+u) if vertical else Point(xs[1]+u,axis+v)
-                # Midpoints of both sloping flanks and the dovetail end face.
-                distances=[female.boundary.distance(point(length/2,s*(w+h)/4)) for s in [-1,1]]+[female.boundary.distance(point(length,0))]
+                if c.get('TRAY_PADDLE_ENABLED'):
+                    profile=p.prepare.paddle_profile(c,True)
+                    coords=np.array(profile.exterior.coords);mid=(coords[:-1]+coords[1:])/2
+                    radius=h/2;center=length-radius
+                    arc=mid[(mid[:,0]>c['TRAY_PADDLE_BLEND_RADIUS']*3)&(np.abs(np.linalg.norm(mid-[center,0],axis=1)-radius)<.001)]
+                    arc=arc[::max(1,len(arc)//24)];assert len(arc)>=12
+                    checked=mid[mid[:,0]>c['TRAY_SEAM_GAP']+clear+c['NUMERICAL_GAP']]
+                    checked=checked[::max(1,len(checked)//48)]
+                    points=[point(u,v) for u,v in checked]
+                    assert all(male.boundary.distance(q)<1e-8 for q in points)
+                    distances=[female.boundary.distance(q) for q in points]
+                else:
+                    # Midpoints of both sloping flanks and the dovetail end face.
+                    points=[point(length/2,s*(w+h)/4) for s in [-1,1]]+[point(length,0)]
+                    distances=[female.boundary.distance(q) for q in points]
                 assert np.allclose(distances,clear,atol=1e-8)
-                assert all(male.boundary.distance(point(length/2,s*(w+h)/4))<1e-8 for s in [-1,1])
+                assert all(male.boundary.distance(q)<1e-8 for q in points)
                 assert male.intersection(female).area<1e-10
                 joints.append({'axis':'Y' if vertical else 'X','row':row,'fraction':fraction,'measured_clearance_mm':[v*10 for v in distances]})
     assembly_checks=[]
@@ -92,8 +105,9 @@ def main():
         assert [len(v['objects']) for v in plates]==[2,1,1,1,1,6,7,7,7]
         settings=json.loads(new.read('Metadata/project_settings.config'))
         assert settings['enable_prime_tower']=='0' and settings['sparse_infill_density']=='5%'
-    result={'joint_count':len(joints),'profile_clearance_mm':clear*10,'flat_seam_gap_mm':c['TRAY_SEAM_GAP']*10,'joints':joints,'bases':bases,'assemblies':assembly_checks,'preserved_single_provinces':preserved,'physical_objects':33,'removable_pieces':29,'plate_count':9,'closed_color_meshes':verify(args.revised),'plates':plates}
+    result={'joint_style':'round_paddle' if c.get('TRAY_PADDLE_ENABLED') else 'dovetail','joint_count':len(joints),'profile_clearance_mm':clear*10,'flat_seam_gap_mm':c['TRAY_SEAM_GAP']*10,'joints':joints,'bases':bases,'assemblies':assembly_checks,'preserved_single_provinces':preserved,'physical_objects':33,'removable_pieces':29,'plate_count':9,'closed_color_meshes':verify(args.revised),'plates':plates}
     p.prepare.write_json(p.ROOT/'spec/dovetail_assembly_verification.json',result)
-    print(f'Verified 8 dovetails, {clear*10:g} mm profiles, 2 connected assemblies, 27 unchanged provinces, 9 plates / 33 objects')
+    label='round paddle joints' if c.get('TRAY_PADDLE_ENABLED') else 'dovetails'
+    print(f'Verified 8 {label}, {clear*10:g} mm profiles, 2 connected assemblies, 27 unchanged provinces, 9 plates / 33 objects')
 
 if __name__=='__main__':main()
