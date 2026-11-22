@@ -58,11 +58,11 @@ def arc(center, radius, a0, a1, n):
              center[1]+radius*math.sin(a0+(a1-a0)*j/n)) for j in range(n+1)]
 
 
-def union_closed(target, other):
+def boolean_closed(target, other, operation="UNION"):
     """Manifold CSG handles coincident tangent surfaces of closed inputs."""
     s3d.sel(target)
-    mod=target.modifiers.new("ClosedUnion", "BOOLEAN")
-    mod.operation="UNION"
+    mod=target.modifiers.new("ClosedBoolean", "BOOLEAN")
+    mod.operation=operation
     mod.solver="MANIFOLD"
     mod.object=other
     bpy.ops.object.modifier_apply(modifier=mod.name)
@@ -85,11 +85,12 @@ def run(ctx):
 
     top=p["rim_z"]; lipbase=top-p["lip_h"]
     rise=lipbase-rr; runout=pr-hw
-    assert rise>0 and runout>0
+    assert rise>0 and runout>=0, "Needle pad must span the band width"
+    straight=runout<=merge
     length=math.hypot(runout,rise); ux=runout/length; uz=rise/length
     small=p["lower_r"]; shoulder=p["shoulder_r"]
     small_t=small*math.tan(math.acos(uz)/2)
-    big_t=shoulder*(1-uz)/ux
+    big_t=0 if straight else shoulder*(1-uz)/ux
     assert length>small_t+big_t, "Shoulder and lip fillets overlap"
     zs=rr-big_t; yc=hw+shoulder
     big_end=(hw+big_t*ux,rr+big_t*uz)
@@ -107,6 +108,8 @@ def run(ctx):
             return tx+(pr-tx)*(z-tz)/(lipbase-tz)
         return pr
     def y_half(z):
+        if straight:
+            return hw
         if z<=zs:
             return hw
         if z<=big_end[1]:
@@ -127,12 +130,22 @@ def run(ctx):
         t=max(0,min(1,(z-p["blend_start"])/(small_center[1]-p["blend_start"])))
         smooth=t*t*t*(10+t*(-15+6*t))
         cr=p["corner_min"]+(min(xh,yh)-p["corner_min"])*smooth
+        radial_outer=math.hypot(xh,z)
         for q in range(4):
             sx=1 if q in (0,3) else -1
             sy=1 if q in (0,1) else -1
             for j in range(quarter):
                 angle=(q+j/(quarter-1))*math.pi/2
-                verts.append((sx*(xh-cr)+cr*math.cos(angle),sy*(yh-cr)+cr*math.sin(angle),z))
+                # Continue the ring's radial/Y end fillet through the filled
+                # shoulder. An XY rounded rectangle protrudes beyond this
+                # surface at z>0, restoring a sharp ledge after the union.
+                radial_r=radial_outer-er+er*abs(math.cos(angle))
+                lower_x=sx*math.sqrt(max(0,radial_r*radial_r-z*z))
+                lower_y=sy*(yh-er+er*abs(math.sin(angle)))
+                upper_x=sx*(xh-cr)+cr*math.cos(angle)
+                upper_y=sy*(yh-cr)+cr*math.sin(angle)
+                verts.append(((1-smooth)*lower_x+smooth*upper_x,
+                              (1-smooth)*lower_y+smooth*upper_y,z))
     faces.append(tuple(reversed(range(n))))
     for i in range(len(levels)-1):
         for j in range(n):
@@ -140,13 +153,18 @@ def run(ctx):
             faces.append((i*n+j,i*n+k,(i+1)*n+k,(i+1)*n+j))
     faces.append(tuple((len(levels)-1)*n+j for j in range(n)))
     support=mesh_object("_FilledShoulders",verts,faces,ctx.center,merge)
-    union_closed(obj,support)
+    boolean_closed(obj,support)
     print("JOIN_SHOULDER",s3d.manifold_report(obj.name),flush=True)
 
     # Round lip is revolved: R0.4 below, a real short wall, then R0.8 above.
-    profile=[(0,p["base_z"]),big_end,small_start]
-    sa=math.atan2(small_start[1]-small_center[1],small_start[0]-small_center[0])
-    profile+=arc(small_center,small,sa,0,m)[1:]
+    if straight:
+        # With equal pad diameter and band width there is no shoulder turn:
+        # continue the end wall directly into the rounded upper lip.
+        profile=[(0,p["base_z"]),(pr,p["base_z"])]
+    else:
+        profile=[(0,p["base_z"]),big_end,small_start]
+        sa=math.atan2(small_start[1]-small_center[1],small_start[0]-small_center[0])
+        profile+=arc(small_center,small,sa,0,m)[1:]
     profile.append((pr,top-p["lip_r"]))
     profile+=arc((pr-p["lip_r"],top-p["lip_r"]),p["lip_r"],0,math.pi/2,m)[1:]
     # R0.3 blends the horizontal land into the spherical bowl exactly.
@@ -161,7 +179,7 @@ def run(ctx):
         r=end[0]*(1-j/(n//2))
         profile.append((r,bz-math.sqrt(br*br-r*r)))
     pad=revolve("_RoundedNeedlePad",profile,"Z",n,ctx.center,merge)
-    union_closed(obj,pad)
+    boolean_closed(obj,pad)
     print("JOIN_PAD",s3d.manifold_report(obj.name),flush=True)
     # Restore the bowl after union: the solid shoulder loft overlaps its floor.
     cavity=[(0,bz-br)]
@@ -181,8 +199,12 @@ def run(ctx):
     profile+=arc((radius+ir,hw-ir),ir,math.pi,math.pi/2,m)[1:]
     profile.extend([(radius+ir,ext),(0,ext)])
     tool=revolve("_RoundedBore",profile,"Y",n,ctx.center,merge)
-    s3d.bool_diff(obj,tool)
-    s3d.heal(obj.name,merge)
+    boolean_closed(obj,tool,operation="DIFFERENCE")
+    print("CUT_BORE",s3d.manifold_report(obj.name),flush=True)
+    # Closed CSG is already manifold. Welding nearby boolean vertices can
+    # collapse valid narrow faces at some bore diameters and open the mesh.
+    topology=s3d.manifold_report(obj.name)
+    assert topology["boundary"]==topology["nonmanifold"]==0,topology
     for face in obj.data.polygons:
         face.use_smooth=True
     obj["top_land_cm"]=pr-p["lip_r"]-fr

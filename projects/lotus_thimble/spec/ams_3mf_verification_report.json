@@ -1,0 +1,59 @@
+{
+  "file": "button_thimble_four_color.3mf",
+  "units": "mm",
+  "assembly_count": 1,
+  "material_volumes": [
+    {
+      "name": "Button_Ivory",
+      "extruder": 1,
+      "color": "#F2E8D5",
+      "triangles": 181254,
+      "connected_components": 1,
+      "degenerate_triangles": 0,
+      "edges_not_shared_twice": 0,
+      "inconsistent_edge_orientation": 0,
+      "volume_mm3": 982.6520226727042
+    },
+    {
+      "name": "Ring_LightGreen",
+      "extruder": 2,
+      "color": "#A8C89B",
+      "triangles": 530368,
+      "connected_components": 1,
+      "degenerate_triangles": 0,
+      "edges_not_shared_twice": 0,
+      "inconsistent_edge_orientation": 0,
+      "volume_mm3": 1560.5330809560253
+    },
+    {
+      "name": "Eyes_DarkGreen",
+      "extruder": 3,
+      "color": "#285943",
+      "triangles": 28916,
+      "connected_components": 4,
+      "degenerate_triangles": 0,
+      "edges_not_shared_twice": 0,
+      "inconsistent_edge_orientation": 0,
+      "volume_mm3": 32.27354771972225
+    },
+    {
+      "name": "Stitches_Brown",
+      "extruder": 4,
+      "color": "#9B633D",
+      "triangles": 29850,
+      "connected_components": 1,
+      "degenerate_triangles": 0,
+      "edges_not_shared_twice": 0,
+      "inconsistent_edge_orientation": 0,
+      "volume_mm3": 7.358955836518879
+    }
+  ],
+  "bbox_mm": [
+    22.0,
+    22.0,
+    22.614285469055176
+  ],
+  "partition_volume_error_mm3": 0.0019942116609854565,
+  "build_transform": "1 0 0 0 0 1 0 -1 0 0 0 11.0",
+  "sliced": false
+}

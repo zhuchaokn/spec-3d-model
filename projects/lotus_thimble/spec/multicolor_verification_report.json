@@ -1,0 +1,102 @@
+{
+  "units": "cm",
+  "parts": [
+    {
+      "name": "Button_Ivory",
+      "color": "#F2E8D5",
+      "extruder": 1,
+      "volume_cm3": 0.9826509322122028,
+      "topology": {
+        "boundary": 0,
+        "nonmanifold": 0,
+        "total": 178201
+      }
+    },
+    {
+      "name": "Ring_LightGreen",
+      "color": "#A8C89B",
+      "extruder": 2,
+      "volume_cm3": 1.5605361703450091,
+      "topology": {
+        "boundary": 0,
+        "nonmanifold": 0,
+        "total": 527179
+      }
+    },
+    {
+      "name": "Eyes_DarkGreen",
+      "color": "#285943",
+      "extruder": 3,
+      "volume_cm3": 0.032273547139499634,
+      "topology": {
+        "boundary": 0,
+        "nonmanifold": 0,
+        "total": 28092
+      }
+    },
+    {
+      "name": "Stitches_Brown",
+      "color": "#9B633D",
+      "extruder": 4,
+      "volume_cm3": 0.0073589560729684315,
+      "topology": {
+        "boundary": 0,
+        "nonmanifold": 0,
+        "total": 28182
+      }
+    }
+  ],
+  "source_volume_cm3": 2.582819601396632,
+  "partition_volume_error_cm3": 4.373048145822622e-09,
+  "pairwise_overlap_volumes_cm3": [
+    {
+      "parts": [
+        "Button_Ivory",
+        "Ring_LightGreen"
+      ],
+      "volume_cm3": 0.0
+    },
+    {
+      "parts": [
+        "Button_Ivory",
+        "Eyes_DarkGreen"
+      ],
+      "volume_cm3": 5.144731691267152e-12
+    },
+    {
+      "parts": [
+        "Button_Ivory",
+        "Stitches_Brown"
+      ],
+      "volume_cm3": 2.1644530652302834e-13
+    },
+    {
+      "parts": [
+        "Ring_LightGreen",
+        "Eyes_DarkGreen"
+      ],
+      "volume_cm3": 0.0
+    },
+    {
+      "parts": [
+        "Ring_LightGreen",
+        "Stitches_Brown"
+      ],
+      "volume_cm3": 0.0
+    },
+    {
+      "parts": [
+        "Eyes_DarkGreen",
+        "Stitches_Brown"
+      ],
+      "volume_cm3": 6.417154551431929e-13
+    }
+  ],
+  "source_surface_sample_count": 2053,
+  "source_surface_max_distance_cm": 0.0,
+  "assembly_dimensions_cm": [
+    2.199999988079071,
+    2.199999988079071,
+    2.2614285349845886
+  ]
+}

@@ -1,0 +1,229 @@
+"""Measure the oval, normal wall thickness, concave neck, four pits and X."""
+import os
+import json
+import math
+import runpy
+import bpy
+import bmesh
+from mathutils import Vector
+from mathutils.bvhtree import BVHTree
+import s3d
+
+
+def run(ctx):
+    p=ctx.params; obj=next(iter(ctx.targets.values()))["object"]
+    g=runpy.run_path(os.path.join(ctx.proj_dir,"ops","geometry.py"))
+    mesh=obj.data; world=[obj.matrix_world@v.co for v in mesh.vertices]
+    tree=BVHTree.FromPolygons(world,[tuple(f.vertices) for f in mesh.polygons])
+    def hit(origin,direction):
+        result=tree.ray_cast(Vector(tuple(c*s3d.CM for c in origin)),Vector(direction))
+        assert result[0] is not None,("Ray missed",origin,direction)
+        return Vector(tuple(c/s3d.CM for c in result[0]))
+    tol=p["tolerance"]; a=p["bore_x"]/2; b=p["bore_z"]/2; wall=p["wall"]; hw=p["band_w"]/2
+    topo=s3d.manifold_report(obj.name)
+    assert topo["boundary"]==topo["nonmanifold"]==0,topo
+    bm=bmesh.new();bm.from_mesh(mesh);unseen=set(bm.verts);components=0
+    while unseen:
+        components+=1;stack=[unseen.pop()]
+        while stack:
+            v=stack.pop()
+            for e in v.link_edges:
+                other=e.other_vert(v)
+                if other in unseen:unseen.remove(other);stack.append(other)
+    volume=bm.calc_volume(signed=True)/s3d.CM**3;bm.free()
+    assert components==1 and volume>0,(components,volume)
+    bbox=s3d.bbox(obj.name)
+    expected=[max(p["pad_d"],2*(a+wall)),max(p["pad_d"],p["band_w"]),p["rim_z"]+b+wall]
+    assert all(abs(x-y)<tol for x,y in zip(bbox["size"],expected)),(bbox,expected)
+    bx=hit((0,0,0),(1,0,0)).x-hit((0,0,0),(-1,0,0)).x
+    bz=hit((0,0,0),(0,0,1)).z-hit((0,0,0),(0,0,-1)).z
+    assert abs(bx-p["bore_x"])<tol and abs(bz-p["bore_z"])<tol,(bx,bz)
+    oval=[];walls=[];rounds=[]
+    for j in range(32):
+        angle=2*math.pi*j/32; x=a*math.cos(angle); z=b*math.sin(angle)
+        point=Vector((x,0,z));direction=point.normalized()
+        actual=hit((0,0,0),direction)
+        error=(actual-point).length; assert error<tol,("Oval",angle,error)
+        oval.append({"angle":angle,"error_cm":error})
+    # Unmodified lower half: the outer surface is the inner ellipse + wall*N.
+    for j in range(17):
+        angle=math.pi+math.pi*j/16; x=a*math.cos(angle);z=b*math.sin(angle)
+        point=Vector((x,0,z));normal=Vector((math.cos(angle)/a,0,math.sin(angle)/b)).normalized()
+        start=point+normal*(wall/2)
+        actual=hit(start,normal)
+        thickness=(actual-point).dot(normal)
+        assert abs(thickness-wall)<tol,("Normal wall",angle,thickness)
+        walls.append({"angle":angle,"thickness_cm":thickness})
+        for side in (-1,1):
+            for fraction in (.25,.5,.75,.95):
+                er=p["outer_edge_r"]; y=side*(hw-er+er*fraction)
+                offset=wall-er+er*math.sqrt(1-fraction*fraction)
+                target=point+normal*offset;target.y=y
+                start=point+normal*(wall+p["probe"]);start.y=y
+                actual=hit(start,-normal);error=(actual-target).length
+                assert error<tol,("End round",angle,y,error)
+                rounds.append(error)
+    z_band=-(b+wall/2)
+    band=hit((0,hw+p["probe"],z_band),(0,-1,0)).y-hit((0,-hw-p["probe"],z_band),(0,1,0)).y
+    assert abs(band-p["band_w"])<tol,band
+    neck=[]
+    upper_walls=[]
+    for y in (-hw+5*p["outer_edge_r"],0,hw-5*p["outer_edge_r"]):
+        for j in range(17):
+            angle=math.pi*j/16
+            point=Vector((a*math.cos(angle),y,b*math.sin(angle)))
+            normal=Vector((math.cos(angle)/a,0,math.sin(angle)/b)).normalized()
+            actual=hit(point+normal*p["tolerance"],normal)
+            thickness=(actual-point).dot(normal)
+            assert thickness>=wall-tol,("Upper band thinned",y,angle,thickness)
+            upper_walls.append({"y_cm":y,"angle":angle,"thickness_cm":thickness})
+    side_half,side_knots=g["rounded_shoulder"](p["side_shoulder_base"],p["pad_d"]/2,b+wall,p["rim_z"]-p["lip_h"],p["lower_r"],p["shoulder_r"])
+    for z in p["neck_probe_z"]:
+        expected_x=g["profile_x"](p["support_curves"],z) if z<=p["support_curves"][-1][-1][1] else side_half(z)
+        expected_x=max(expected_x,g["ellipse_x"](a,b,z,wall))
+        for side in (-1,1):
+            actual=side*hit((side*(p["pad_d"]+p["probe"]),0,z),(-side,0,0)).x
+            assert abs(actual-expected_x)<tol,("Concave neck",z,actual,expected_x)
+            neck.append({"z_cm":z,"side":side,"measured_x_cm":actual,"expected_x_cm":expected_x})
+    neck_x=g["profile_x"](p["support_curves"],p["support_curves"][0][-1][1])
+    assert neck_x<a+wall and neck_x<p["pad_d"]/2,"Inward neck missing"
+    # The main inset must be a single circular shoulder: no returning S-bulge.
+    side_profiles=[];count=int(p["side_profile_check_segments"])
+    for side in (-1,1):
+        values=[]
+        for j in range(count+1):
+            z=side_knots[0]+(side_knots[1]-side_knots[0])*j/count
+            x=side*hit((side*(p["pad_d"]+p["probe"]),0,z),(-side,0,0)).x
+            assert abs(x-side_half(z))<tol,("Inset shoulder profile",side,z,x,side_half(z))
+            values.append({"z_cm":z,"half_width_cm":x})
+        slopes=[(right["half_width_cm"]-left["half_width_cm"])/(right["z_cm"]-left["z_cm"]) for left,right in zip(values,values[1:])]
+        assert min(slopes)>=-p["side_slope_tolerance"],("Side flares back out",side,slopes)
+        assert all(y-x>=-p["side_slope_tolerance"] for x,y in zip(slopes,slopes[1:])),("S-shaped side bulge",side,slopes)
+        side_profiles.append({"side":side,"samples":values,"slopes":slopes})
+    # Inspect the actual four diagonal shoulders, rather than smooth shading.
+    # A rounded section recedes from its rectangular bounding-box corners.
+    corners=[]
+    for z in p["corner_probe_z"]:
+        xh=hit((p["pad_d"]+p["probe"],0,z),(-1,0,0)).x
+        yh=hit((0,p["pad_d"]+p["probe"],z),(0,-1,0)).y
+        diagonal=math.hypot(xh,yh)
+        for sx,sy in ((1,1),(-1,1),(-1,-1),(1,-1)):
+            direction=Vector((sx*xh/diagonal,sy*yh/diagonal,0))
+            start=direction*(diagonal+p["probe"]);start.z=z
+            actual=hit(start,-direction)
+            recession=diagonal-actual.dot(direction)
+            assert recession>=p["corner_min_recess"]-tol,("Protruding corner",z,sx,sy,recession)
+            corners.append({"z_cm":z,"quadrant":[sx,sy],"recession_cm":recession})
+    records=json.loads(obj["needle_pits"]);assert len(records)==4
+    pits=[];floor_samples=[]
+    for rec,position in zip(records,p["pit_positions"]):
+        x,y=position;assert abs(rec["x_cm"]-x)<tol and abs(rec["y_cm"]-y)<tol
+        floor=hit((x,y,p["rim_z"]+p["probe"]),(0,0,-1)).z
+        depth=rec["surface_z_cm"]-floor
+        assert abs(depth-p["pit_depth"])<tol,("Pit blocked or shallow",position,depth)
+        for dx,dy in ((0,0),(p["pit_d"]/5,0),(-p["pit_d"]/5,0),(0,p["pit_d"]/5),(0,-p["pit_d"]/5)):
+            px=x+dx;py=y+dy
+            top=hit((px,py,p["rim_z"]+p["probe"]),(0,0,-1)).z
+            roof=hit((px,py,0),(0,0,1)).z
+            thickness=top-roof;assert thickness>=p["core"]-tol,("Pit floor thin",px,py,thickness)
+            floor_samples.append(thickness)
+        pits.append({**rec,"measured_floor_z_cm":floor,"measured_depth_cm":depth})
+    # A free outer-side patch in each eye must still accept a needle tail.
+    usable=[]
+    for x,y in p["pit_positions"]:
+        v=Vector((x,y)).normalized();px=x+v.x*p["pit_d"]/4;py=y+v.y*p["pit_d"]/4
+        floor=hit((px,py,p["rim_z"]+p["probe"]),(0,0,-1)).z
+        surface=p["bowl_center_z"]-math.sqrt(p["bowl_r"]**2-px*px-py*py)
+        assert surface-floor>p["pit_depth"]/2,("Usable pit region obstructed",px,py)
+        usable.append({"x_cm":px,"y_cm":py,"available_depth_cm":surface-floor})
+    stitches=json.loads(obj["threads"]);assert len(stitches)==2
+    threads=[]
+    for index,rec in enumerate(stitches):
+        for t in (.25,.5,.75):
+            ends=rec["ends_cm"];x=ends[0][0]+t*(ends[1][0]-ends[0][0]);y=ends[0][1]+t*(ends[1][1]-ends[0][1])
+            # The upper ridge owns the common crossing.
+            if index==0 and t==.5:continue
+            surface=p["bowl_center_z"]-math.sqrt(p["bowl_r"]**2-x*x-y*y)
+            bump=p["cross_raise"]*math.exp(-((t-.5)/p["cross_span"])**2) if index==1 else 0
+            actual=hit((x,y,p["rim_z"]+p["probe"]),(0,0,-1)).z
+            height=actual-surface
+            assert abs(height-p["thread_width"]/2-bump)<tol,("Thread height",index,t,height,bump)
+            threads.append({"index":index,"t":t,"height_cm":height,"nominal_height_cm":p["thread_width"]/2+bump})
+    # Independent side shoulder and upper round-lip probes.
+    pr=p["pad_d"]/2;rise=p["rim_z"]-p["lip_h"]-b-wall;runout=pr-hw
+    length=math.hypot(rise,runout);ux=runout/length;uz=rise/length
+    tangent=p["shoulder_r"]*(1-uz)/ux;z0=b+wall-tangent;z1=b+wall+tangent*uz
+    shoulders=[]
+    shoulder_start=max(z0,b+tol)
+    assert shoulder_start<z1,"No accessible central shoulder above bore"
+    for f in (.25,.5,.75):
+        z=shoulder_start+(z1-shoulder_start)*f;expected_y=hw+p["shoulder_r"]-math.sqrt(p["shoulder_r"]**2-(z-z0)**2)
+        # With the four corners removed, sample the actual center silhouette
+        # above the hole roof, rather than the former flat corner land.
+        actual=hit((0,pr+p["probe"],z),(0,-1,0)).y
+        assert abs(actual-expected_y)<tol,("Shoulder",z,actual,expected_y)
+        shoulders.append({"x_cm":0,"z_cm":z,"measured_y_cm":actual,"expected_y_cm":expected_y})
+    lr=p["lip_r"];z=p["rim_z"]-lr/2;expected_y=pr-lr+math.sqrt(lr**2-(lr/2)**2)
+    actual=hit((0,pr+p["probe"],z),(0,-1,0)).y
+    assert abs(actual-expected_y)<tol,("Lip",actual,expected_y)
+    land=float(obj["top_land_cm"]);assert land>=p["min_land"]-tol,land
+    bowl_center=p["bowl_center_z"]-p["bowl_r"]
+    # A watertight union can still have a sharp ridge. Inspect independent
+    # surface normals along front/back tracks just above the rounded bore.
+    junction=[]
+    for x in p["junction_check_x"]:
+        start=b*math.sqrt(1-(x/a)**2)+p["bore_edge_r"]+p["junction_check_clearance"]
+        steps=math.ceil((p["junction_check_top"]-start)/p["junction_check_step"])
+        assert steps>0
+        for sx in (-1,1) if x else (1,):
+            for sy in (-1,1):
+                previous=None;maximum=0;max_z=None
+                for j in range(steps+1):
+                    z=start+(p["junction_check_top"]-start)*j/steps
+                    origin=Vector((sx*x*s3d.CM,sy*(p["pad_d"]+p["probe"])*s3d.CM,z*s3d.CM))
+                    result=tree.ray_cast(origin,Vector((0,-sy,0)))
+                    assert result[0] is not None,("Junction track missed",sx*x,sy,z)
+                    normal=result[1]
+                    if previous is not None:
+                        angle=math.degrees(normal.angle(previous))
+                        if angle>maximum:maximum=angle;max_z=z
+                    previous=normal
+                assert maximum<=p["junction_max_normal_step_deg"],("Junction ridge",sx*x,sy,maximum,max_z)
+                junction.append({"x_cm":sx*x,"side":sy,"sample_count":steps+1,"max_normal_step_deg":maximum,"z_at_cm":max_z})
+    report={"object":obj.name,"blender_version":bpy.app.version_string,"units":"cm","bbox":bbox,"expected_size_cm":expected,"topology":topo,"connected_components":components,"volume_cm3":volume,"bore_x_cm":bx,"bore_z_cm":bz,"oval_probes":oval,"wall_normal_probes":walls,"band_width_cm":band,"end_round_max_error_cm":max(rounds),"end_round_probe_count":len(rounds),"neck_probes":neck,"pits":pits,"min_sampled_pit_floor_thickness_cm":min(floor_samples),"pit_floor_sample_count":len(floor_samples),"usable_pit_probes":usable,"threads":stitches,"thread_probes":threads,"shoulder_probes":shoulders,"top_flat_land_cm":land,"bowl_depth_cm":p["rim_z"]-bowl_center,"central_body_thickness_cm":bowl_center-b,"tolerance_cm":tol,"physical_fit_and_strength":"not tested"}
+    report["underside_corner_probes"]=corners
+    report["underside_corner_min_recession_cm"]=min(c["recession_cm"] for c in corners)
+    report["upper_band_wall_probes"]=upper_walls
+    report["upper_band_min_sampled_wall_cm"]=min(v["thickness_cm"] for v in upper_walls)
+    report["junction_normal_tracks"]=junction
+    report["junction_normal_sample_step_cm"]=p["junction_check_step"]
+    report["junction_max_normal_step_deg"]=max(v["max_normal_step_deg"] for v in junction)
+    # Cover the thin annular mouth strip the higher shoulder tracks omit.
+    # A planar fillet used against a curved front exposes a nearly 90deg cusp.
+    lip_tracks=[]
+    lip_steps=math.ceil((p["bore_lip_check_end"]-p["bore_lip_check_start"])/p["bore_lip_check_step"])
+    for j in range(int(p["bore_lip_check_segments"])):
+        angle=2*math.pi*j/p["bore_lip_check_segments"]
+        for side in (-1,1):
+            previous=None;maximum=0;at=None
+            for k in range(lip_steps+1):
+                offset=p["bore_lip_check_start"]+(p["bore_lip_check_end"]-p["bore_lip_check_start"])*k/lip_steps
+                x,z=g["ellipse_point"](a,b,angle,offset)
+                result=tree.ray_cast(Vector((x*s3d.CM,side*(p["pad_d"]+p["probe"])*s3d.CM,z*s3d.CM)),Vector((0,-side,0)))
+                assert result[0] is not None,("Bore lip missed",angle,side,offset)
+                if previous is not None:
+                    delta=math.degrees(result[1].angle(previous))
+                    if delta>maximum:maximum=delta;at=offset
+                previous=result[1]
+            lip_tracks.append({"angle":angle,"side":side,"sample_count":lip_steps+1,"max_normal_step_deg":maximum,"offset_at_cm":at})
+    worst=max(lip_tracks,key=lambda v:v["max_normal_step_deg"])
+    print("BORE_LIP_WORST",worst,flush=True)
+    assert worst["max_normal_step_deg"]<=p["bore_lip_max_normal_step_deg"]+p["normal_angle_tolerance_deg"],("Bore lip cusp",worst)
+    report["bore_lip_normal_tracks"]=lip_tracks
+    report["bore_lip_normal_sample_step_cm"]=p["bore_lip_check_step"]
+    report["bore_lip_max_normal_step_deg"]=max(v["max_normal_step_deg"] for v in lip_tracks)
+    report["normal_angle_tolerance_deg"]=p["normal_angle_tolerance_deg"]
+    report["inset_side_profile_probes"]=side_profiles
+    report["inset_side_shoulder_z_knots_cm"]=side_knots
+    with open(os.path.join(ctx.proj_dir,"spec","verification_report.json"),"w",encoding="utf-8") as f:json.dump(report,f,ensure_ascii=False,indent=2)
+    print("VERIFIED_BUTTON",json.dumps({k:report[k] for k in ("topology","bore_x_cm","bore_z_cm","band_width_cm","min_sampled_pit_floor_thickness_cm","volume_cm3")}),flush=True)

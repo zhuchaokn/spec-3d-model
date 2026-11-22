@@ -1,40 +1,74 @@
 {
   "constants": {
-    "BORE_D": 1.2,
-    "WALL": 0.2,
-    "BAND_W": 1.0,
-    "RING_R": "BORE_D/2+WALL",
-    "PAD_D": 1.4,
-    "RIM_Z": "BORE_D/2+CORE_THICKNESS+BOWL_DEPTH+PIT_DEPTH",
-    "BOWL_D": 0.9,
-    "BOWL_DEPTH": 0.16,
+    "BORE_X": 1.7,
+    "BORE_Z": 1.55,
+    "WALL": 0.16,
+    "BAND_W": 1.4,
+    "PAD_D": 2.2,
+    "PAD_SCALE": "PAD_D/1.4",
+    "RING_X": "BORE_X/2+WALL",
+    "RING_Z": "BORE_Z/2+WALL",
+    "CORE_THICKNESS": 0.2,
+    "BOWL_D": ".9*PAD_SCALE",
+    "BOWL_DEPTH": ".16*PAD_SCALE",
+    "PIT_D": 0.24,
+    "PIT_DEPTH": 0.1,
+    "PIT_OFFSET": 0.3,
+    "RIM_Z": "BORE_Z/2+CORE_THICKNESS+BOWL_DEPTH+PIT_DEPTH",
     "BOWL_R": "((BOWL_D/2)**2+BOWL_DEPTH**2)/(2*BOWL_DEPTH)",
     "BOWL_CENTER_Z": "RIM_Z-BOWL_DEPTH+BOWL_R",
-    "PIT_D": 0.16,
-    "PIT_DEPTH": 0.08,
-    "PIT_RING_R": 0.26,
-    "PIT_COUNT_OUTER": 6,
-    "LIP_H": 0.12,
-    "LIP_R": 0.08,
-    "LIP_LOWER_R": 0.04,
-    "SHOULDER_R": 0.3,
-    "BORE_EDGE_R": 0.06,
-    "OUTER_EDGE_R": 0.06,
-    "BOWL_EDGE_R": 0.03,
-    "CORE_THICKNESS": 0.2,
-    "PAD_CORE_BASE_Z": "RIM_Z-BOWL_DEPTH-PIT_DEPTH-BOOLEAN_OVERLAP",
+    "LIP_H": ".12*PAD_SCALE",
+    "LIP_R": ".08*PAD_SCALE",
+    "LIP_LOWER_R": ".04*PAD_SCALE",
+    "SHOULDER_R": ".3*PAD_SCALE",
+    "BOWL_EDGE_R": ".03*PAD_SCALE",
+    "BORE_EDGE_R": 0.04,
+    "OUTER_EDGE_R": 0.04,
     "BOOLEAN_OVERLAP": 0.02,
+    "PAD_CORE_BASE_Z": "BORE_Z/2+CORE_THICKNESS-BOOLEAN_OVERLAP",
     "CUT_EXTENSION": 0.5,
-    "MESH_STEP": 0.008,
-    "SEGMENTS": 160,
-    "ARC_SEGMENTS": 24,
+    "MESH_STEP": 0.004,
+    "SEGMENTS": 192,
+    "ARC_SEGMENTS": 32,
     "SPHERE_SEGMENTS": 64,
     "SPHERE_RINGS": 40,
-    "LOFT_CORNER_MIN": 0.006,
-    "LOFT_BLEND_START": "BORE_D/2",
+    "LOFT_BLEND_START": "NECK_Z*.5",
     "MERGE_DISTANCE": 1e-06,
     "CHECK_TOLERANCE": 0.002,
-    "MIN_TOP_LAND": 0.14
+    "MIN_TOP_LAND": ".14*PAD_SCALE",
+    "NECK_X": 0.82,
+    "NECK_Z": 0.625,
+    "THREAD_WIDTH": 0.08,
+    "THREAD_CROSS_RAISE": 0.015,
+    "THREAD_CROSS_SPAN": 0.2,
+    "THREAD_END": 0.2375,
+    "THREAD_SEGMENTS": 32,
+    "THREAD_CAP_RINGS": 20,
+    "LOFT_BLEND_END": "RING_Z",
+    "CORNER_MIN_RECESS": 0.12,
+    "JUNCTION_BLEND_R": 0.12,
+    "JUNCTION_BLEND_START": 0.1,
+    "JUNCTION_BLEND_FULL": 0.4,
+    "LOFT_SEGMENTS": 768,
+    "JUNCTION_SMOOTH_SIGMA": 0.1,
+    "JUNCTION_SMOOTH_FADE_START": "RING_Z",
+    "JUNCTION_SMOOTH_END": "RIM_Z-LIP_H",
+    "JUNCTION_CHECK_STEP": 0.005,
+    "JUNCTION_CHECK_CLEARANCE": 0.03,
+    "JUNCTION_CHECK_TOP": 1.1,
+    "JUNCTION_MAX_NORMAL_STEP_DEG": 5,
+    "BORE_LIP_CLEARANCE": 0.0001,
+    "BORE_ARC_SEGMENTS": 96,
+    "BORE_LIP_CHECK_SEGMENTS": 128,
+    "BORE_LIP_CHECK_STEP": 0.0005,
+    "BORE_LIP_MAX_NORMAL_STEP_DEG": 5,
+    "SIDE_PROFILE_CHECK_SEGMENTS": 32,
+    "SIDE_SLOPE_TOLERANCE": 0.005,
+    "NORMAL_ANGLE_TOLERANCE_DEG": 0.01,
+    "PIT_COLOR_DEPTH": 0.06,
+    "COLOR_VOLUME_TOLERANCE": 0.0001,
+    "COLOR_SURFACE_SAMPLE_COUNT": 2048,
+    "THREAD_COLOR_MASK_MARGIN": 0.002
   },
   "nodes": [
     {
@@ -48,7 +82,7 @@
     },
     {
       "name": "LotusThimble",
-      "op": "ops/body.py",
+      "op": "ops/button_body.py",
       "parent": "FingerFrame",
       "offset": [
         0,
@@ -56,10 +90,8 @@
         0
       ],
       "params": {
-        "bore_d": "BORE_D",
         "wall": "WALL",
         "band_w": "BAND_W",
-        "ring_r": "RING_R",
         "pad_d": "PAD_D",
         "rim_z": "RIM_Z",
         "bowl_d": "BOWL_D",
@@ -78,9 +110,41 @@
         "step": "MESH_STEP",
         "segments": "SEGMENTS",
         "arc_segments": "ARC_SEGMENTS",
-        "corner_min": "LOFT_CORNER_MIN",
         "blend_start": "LOFT_BLEND_START",
-        "merge_distance": "MERGE_DISTANCE"
+        "merge_distance": "MERGE_DISTANCE",
+        "bore_x": "BORE_X",
+        "bore_z": "BORE_Z",
+        "support_curves": [
+          [
+            [
+              "RING_X",
+              0
+            ],
+            [
+              "RING_X",
+              0.4
+            ],
+            [
+              "NECK_X",
+              0.5625
+            ],
+            [
+              "NECK_X",
+              "NECK_Z"
+            ]
+          ]
+        ],
+        "blend_end": "LOFT_BLEND_END",
+        "junction_blend_r": "JUNCTION_BLEND_R",
+        "junction_blend_start": "JUNCTION_BLEND_START",
+        "junction_blend_full": "JUNCTION_BLEND_FULL",
+        "loft_segments": "LOFT_SEGMENTS",
+        "junction_smooth_sigma": "JUNCTION_SMOOTH_SIGMA",
+        "junction_smooth_fade_start": "JUNCTION_SMOOTH_FADE_START",
+        "junction_smooth_end": "JUNCTION_SMOOTH_END",
+        "bore_lip_clearance": "BORE_LIP_CLEARANCE",
+        "bore_arc_segments": "BORE_ARC_SEGMENTS",
+        "side_shoulder_base": "NECK_X"
       }
     },
     {
@@ -96,17 +160,33 @@
       "params": {
         "diameter": "PIT_D",
         "depth": "PIT_DEPTH",
-        "array_radius": "PIT_RING_R",
-        "count": "PIT_COUNT_OUTER",
         "bowl_r": "BOWL_R",
         "bowl_center_z": "BOWL_CENTER_Z",
         "segments": "SPHERE_SEGMENTS",
-        "rings": "SPHERE_RINGS"
+        "rings": "SPHERE_RINGS",
+        "positions": [
+          [
+            "-PIT_OFFSET",
+            "-PIT_OFFSET"
+          ],
+          [
+            "PIT_OFFSET",
+            "-PIT_OFFSET"
+          ],
+          [
+            "-PIT_OFFSET",
+            "PIT_OFFSET"
+          ],
+          [
+            "PIT_OFFSET",
+            "PIT_OFFSET"
+          ]
+        ]
       }
     },
     {
-      "name": "Verify",
-      "op": "ops/verify.py",
+      "name": "Stitches",
+      "op": "ops/threads.py",
       "target": [
         "LotusThimble"
       ],
@@ -114,27 +194,161 @@
         "NeedlePits"
       ],
       "params": {
-        "bore_d": "BORE_D",
+        "paths": [
+          [
+            [
+              "-THREAD_END",
+              "-THREAD_END"
+            ],
+            [
+              "THREAD_END",
+              "THREAD_END"
+            ]
+          ],
+          [
+            [
+              "-THREAD_END",
+              "THREAD_END"
+            ],
+            [
+              "THREAD_END",
+              "-THREAD_END"
+            ]
+          ]
+        ],
+        "width": "THREAD_WIDTH",
+        "cross_raise": "THREAD_CROSS_RAISE",
+        "cross_span": "THREAD_CROSS_SPAN",
+        "step": "MESH_STEP",
+        "segments": "THREAD_SEGMENTS",
+        "cap_rings": "THREAD_CAP_RINGS",
+        "merge_distance": "MERGE_DISTANCE",
+        "bowl_r": "BOWL_R",
+        "bowl_center_z": "BOWL_CENTER_Z"
+      }
+    },
+    {
+      "name": "Verify",
+      "op": "ops/button_verify.py",
+      "target": [
+        "LotusThimble"
+      ],
+      "after": [
+        "Stitches"
+      ],
+      "params": {
+        "wall": "WALL",
         "band_w": "BAND_W",
-        "ring_r": "RING_R",
         "pad_d": "PAD_D",
         "rim_z": "RIM_Z",
         "bowl_d": "BOWL_D",
+        "bowl_depth": "BOWL_DEPTH",
         "bowl_r": "BOWL_R",
         "bowl_center_z": "BOWL_CENTER_Z",
-        "pit_depth": "PIT_DEPTH",
-        "pit_d": "PIT_D",
-        "array_radius": "PIT_RING_R",
-        "count": "PIT_COUNT_OUTER",
-        "core": "CORE_THICKNESS",
+        "lip_h": "LIP_H",
         "lip_r": "LIP_R",
+        "lower_r": "LIP_LOWER_R",
+        "shoulder_r": "SHOULDER_R",
+        "bore_edge_r": "BORE_EDGE_R",
+        "outer_edge_r": "OUTER_EDGE_R",
         "bowl_edge_r": "BOWL_EDGE_R",
+        "base_z": "PAD_CORE_BASE_Z",
+        "extension": "CUT_EXTENSION",
+        "step": "MESH_STEP",
+        "segments": "SEGMENTS",
+        "arc_segments": "ARC_SEGMENTS",
+        "blend_start": "LOFT_BLEND_START",
+        "merge_distance": "MERGE_DISTANCE",
+        "bore_x": "BORE_X",
+        "bore_z": "BORE_Z",
+        "support_curves": [
+          [
+            [
+              "RING_X",
+              0
+            ],
+            [
+              "RING_X",
+              0.4
+            ],
+            [
+              "NECK_X",
+              0.5625
+            ],
+            [
+              "NECK_X",
+              "NECK_Z"
+            ]
+          ]
+        ],
+        "core": "CORE_THICKNESS",
+        "pit_d": "PIT_D",
+        "pit_depth": "PIT_DEPTH",
+        "pit_positions": [
+          [
+            "-PIT_OFFSET",
+            "-PIT_OFFSET"
+          ],
+          [
+            "PIT_OFFSET",
+            "-PIT_OFFSET"
+          ],
+          [
+            "-PIT_OFFSET",
+            "PIT_OFFSET"
+          ],
+          [
+            "PIT_OFFSET",
+            "PIT_OFFSET"
+          ]
+        ],
         "min_land": "MIN_TOP_LAND",
         "tolerance": "CHECK_TOLERANCE",
         "probe": "CUT_EXTENSION",
-        "lip_h": "LIP_H",
-        "lower_r": "LIP_LOWER_R",
-        "shoulder_r": "SHOULDER_R"
+        "thread_width": "THREAD_WIDTH",
+        "cross_raise": "THREAD_CROSS_RAISE",
+        "cross_span": "THREAD_CROSS_SPAN",
+        "thread_end": "THREAD_END",
+        "neck_probe_z": [
+          "NECK_Z*.4",
+          "NECK_Z*.65",
+          "NECK_Z",
+          "NECK_Z+(RIM_Z-LIP_H-NECK_Z)*.3",
+          "NECK_Z+(RIM_Z-LIP_H-NECK_Z)*.6"
+        ],
+        "blend_end": "LOFT_BLEND_END",
+        "corner_probe_z": [
+          "RING_Z*.9",
+          "RING_Z*.95",
+          "RING_Z"
+        ],
+        "corner_min_recess": "CORNER_MIN_RECESS",
+        "junction_blend_r": "JUNCTION_BLEND_R",
+        "junction_blend_start": "JUNCTION_BLEND_START",
+        "junction_blend_full": "JUNCTION_BLEND_FULL",
+        "loft_segments": "LOFT_SEGMENTS",
+        "junction_smooth_sigma": "JUNCTION_SMOOTH_SIGMA",
+        "junction_smooth_fade_start": "JUNCTION_SMOOTH_FADE_START",
+        "junction_smooth_end": "JUNCTION_SMOOTH_END",
+        "junction_check_x": [
+          0,
+          0.25,
+          0.5,
+          0.65
+        ],
+        "junction_check_step": "JUNCTION_CHECK_STEP",
+        "junction_check_clearance": "JUNCTION_CHECK_CLEARANCE",
+        "junction_check_top": "JUNCTION_CHECK_TOP",
+        "junction_max_normal_step_deg": "JUNCTION_MAX_NORMAL_STEP_DEG",
+        "bore_lip_check_segments": "BORE_LIP_CHECK_SEGMENTS",
+        "bore_lip_check_start": "BORE_EDGE_R*.75",
+        "bore_lip_check_end": "BORE_EDGE_R*1.5",
+        "bore_lip_check_step": "BORE_LIP_CHECK_STEP",
+        "bore_lip_max_normal_step_deg": "BORE_LIP_MAX_NORMAL_STEP_DEG",
+        "side_shoulder_base": "NECK_X",
+        "side_profile_check_segments": "SIDE_PROFILE_CHECK_SEGMENTS",
+        "side_slope_tolerance": "SIDE_SLOPE_TOLERANCE",
+        "normal_angle_tolerance_deg": "NORMAL_ANGLE_TOLERANCE_DEG"
       }
     },
     {
@@ -147,9 +361,91 @@
         "Verify"
       ],
       "params": {
-        "stl_name": "lotus_thimble_12mm.stl",
-        "blend_name": "lotus_thimble_12mm.blend",
+        "stl_name": "button_thimble_17x15p5mm_w14mm.stl",
+        "blend_name": "button_thimble_17x15p5mm_w14mm.blend",
         "out_dir": "output"
+      }
+    },
+    {
+      "name": "Multicolor",
+      "op": "ops/multicolor.py",
+      "target": [
+        "LotusThimble"
+      ],
+      "after": [
+        "Export"
+      ],
+      "params": {
+        "paths": [
+          [
+            [
+              "-THREAD_END",
+              "-THREAD_END"
+            ],
+            [
+              "THREAD_END",
+              "THREAD_END"
+            ]
+          ],
+          [
+            [
+              "-THREAD_END",
+              "THREAD_END"
+            ],
+            [
+              "THREAD_END",
+              "-THREAD_END"
+            ]
+          ]
+        ],
+        "width": "THREAD_WIDTH",
+        "cross_raise": "THREAD_CROSS_RAISE",
+        "cross_span": "THREAD_CROSS_SPAN",
+        "step": "MESH_STEP",
+        "segments": "THREAD_SEGMENTS",
+        "cap_rings": "THREAD_CAP_RINGS",
+        "merge_distance": "MERGE_DISTANCE",
+        "bowl_r": "BOWL_R",
+        "bowl_center_z": "BOWL_CENTER_Z",
+        "colors": [
+          {
+            "name": "Button_Ivory",
+            "hex": "#F2E8D5"
+          },
+          {
+            "name": "Ring_LightGreen",
+            "hex": "#A8C89B"
+          },
+          {
+            "name": "Eyes_DarkGreen",
+            "hex": "#285943"
+          },
+          {
+            "name": "Stitches_Brown",
+            "hex": "#9B633D"
+          }
+        ],
+        "assembly_name": "Four_color_button_thimble",
+        "filament_type": "PLA",
+        "pit_d": "PIT_D",
+        "pit_depth": "PIT_DEPTH",
+        "pit_color_depth": "PIT_COLOR_DEPTH",
+        "sphere_segments": "SPHERE_SEGMENTS",
+        "sphere_rings": "SPHERE_RINGS",
+        "pad_d": "PAD_D",
+        "button_split_z": "PAD_CORE_BASE_Z",
+        "extension": "CUT_EXTENSION",
+        "volume_tolerance": "COLOR_VOLUME_TOLERANCE",
+        "check_tolerance": "CHECK_TOLERANCE",
+        "out_dir": "output",
+        "package_name": "button_thimble_four_color.3mf",
+        "blend_name": "button_thimble_four_color.blend",
+        "surface_sample_count": "COLOR_SURFACE_SAMPLE_COUNT",
+        "thread_mask_margin": "THREAD_COLOR_MASK_MARGIN",
+        "filament_preset": "Generic PLA",
+        "filament_id": "GFL99",
+        "slicer_defaults": "spec/bambu_2p6_defaults.json",
+        "enable_prime_tower": 1
       }
     }
   ]

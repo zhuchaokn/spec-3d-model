@@ -8,10 +8,12 @@ import s3d
 def run(ctx):
     p=ctx.params
     target=next(iter(ctx.targets.values()))["object"]
-    positions=[(0,0)]
-    for j in range(int(p["count"])):
-        a=2*math.pi*j/p["count"]
-        positions.append((p["array_radius"]*math.cos(a),p["array_radius"]*math.sin(a)))
+    positions=p.get("positions")
+    if positions is None:
+        positions=[(0,0)]
+        for j in range(int(p["count"])):
+            a=2*math.pi*j/p["count"]
+            positions.append((p["array_radius"]*math.cos(a),p["array_radius"]*math.sin(a)))
     # A spherical-cap depth sets a radius; hemispheres when diameter=2*depth.
     radius=((p["diameter"]/2)**2+p["depth"]**2)/(2*p["depth"])
     records=[]
