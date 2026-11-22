@@ -38,7 +38,7 @@
     "MIN_TOP_LAND": ".14*PAD_SCALE",
     "NECK_X": 0.82,
     "NECK_Z": 0.625,
-    "THREAD_WIDTH": 0.06,
+    "THREAD_WIDTH": 0.08,
     "THREAD_CROSS_RAISE": 0.015,
     "THREAD_CROSS_SPAN": 0.2,
     "THREAD_END": 0.2375,

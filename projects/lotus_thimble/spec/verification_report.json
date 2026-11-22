@@ -32,10 +32,10 @@
   "topology": {
     "boundary": 0,
     "nonmanifold": 0,
-    "total": 714721
+    "total": 712647
   },
   "connected_components": 1,
-  "volume_cm3": 2.5810692710069287,
+  "volume_cm3": 2.582819601396632,
   "bore_x_cm": 1.7000000476837158,
   "bore_z_cm": 1.5499998927116394,
   "oval_probes": [
@@ -373,8 +373,8 @@
           0.2375
         ]
       ],
-      "width_cm": 0.06,
-      "height_cm": 0.03,
+      "width_cm": 0.08,
+      "height_cm": 0.04,
       "cross_raise_cm": 0
     },
     {
@@ -388,8 +388,8 @@
           -0.2375
         ]
       ],
-      "width_cm": 0.06,
-      "height_cm": 0.03,
+      "width_cm": 0.08,
+      "height_cm": 0.04,
       "cross_raise_cm": 0.015
     }
   ],
@@ -397,32 +397,32 @@
     {
       "index": 0,
       "t": 0.25,
-      "height_cm": 0.030353608965511425,
-      "nominal_height_cm": 0.03
+      "height_cm": 0.040476384997005566,
+      "nominal_height_cm": 0.04
     },
     {
       "index": 0,
       "t": 0.75,
-      "height_cm": 0.030353608965511425,
-      "nominal_height_cm": 0.03
+      "height_cm": 0.040476384997005566,
+      "nominal_height_cm": 0.04
     },
     {
       "index": 1,
       "t": 0.25,
-      "height_cm": 0.033283296465511425,
-      "nominal_height_cm": 0.03314417080726646
+      "height_cm": 0.043329540133113964,
+      "nominal_height_cm": 0.04314417080726647
     },
     {
       "index": 1,
       "t": 0.5,
-      "height_cm": 0.045000004768371404,
-      "nominal_height_cm": 0.045
+      "height_cm": 0.05500011444091779,
+      "nominal_height_cm": 0.055
     },
     {
       "index": 1,
       "t": 0.75,
-      "height_cm": 0.033283296465511425,
-      "nominal_height_cm": 0.03314417080726646
+      "height_cm": 0.043329540133113964,
+      "nominal_height_cm": 0.04314417080726647
     }
   ],
   "shoulder_probes": [
@@ -678,7 +678,7 @@
     {
       "y_cm": 0,
       "angle": 1.5707963267948966,
-      "thickness_cm": 0.3450000286102295
+      "thickness_cm": 0.35500001907348633
     },
     {
       "y_cm": 0,
