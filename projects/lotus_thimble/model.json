@@ -64,7 +64,11 @@
     "BORE_LIP_MAX_NORMAL_STEP_DEG": 5,
     "SIDE_PROFILE_CHECK_SEGMENTS": 32,
     "SIDE_SLOPE_TOLERANCE": 0.005,
-    "NORMAL_ANGLE_TOLERANCE_DEG": 0.01
+    "NORMAL_ANGLE_TOLERANCE_DEG": 0.01,
+    "PIT_COLOR_DEPTH": 0.06,
+    "COLOR_VOLUME_TOLERANCE": 0.0001,
+    "COLOR_SURFACE_SAMPLE_COUNT": 2048,
+    "THREAD_COLOR_MASK_MARGIN": 0.002
   },
   "nodes": [
     {
@@ -360,6 +364,88 @@
         "stl_name": "button_thimble_17x15p5mm_w14mm.stl",
         "blend_name": "button_thimble_17x15p5mm_w14mm.blend",
         "out_dir": "output"
+      }
+    },
+    {
+      "name": "Multicolor",
+      "op": "ops/multicolor.py",
+      "target": [
+        "LotusThimble"
+      ],
+      "after": [
+        "Export"
+      ],
+      "params": {
+        "paths": [
+          [
+            [
+              "-THREAD_END",
+              "-THREAD_END"
+            ],
+            [
+              "THREAD_END",
+              "THREAD_END"
+            ]
+          ],
+          [
+            [
+              "-THREAD_END",
+              "THREAD_END"
+            ],
+            [
+              "THREAD_END",
+              "-THREAD_END"
+            ]
+          ]
+        ],
+        "width": "THREAD_WIDTH",
+        "cross_raise": "THREAD_CROSS_RAISE",
+        "cross_span": "THREAD_CROSS_SPAN",
+        "step": "MESH_STEP",
+        "segments": "THREAD_SEGMENTS",
+        "cap_rings": "THREAD_CAP_RINGS",
+        "merge_distance": "MERGE_DISTANCE",
+        "bowl_r": "BOWL_R",
+        "bowl_center_z": "BOWL_CENTER_Z",
+        "colors": [
+          {
+            "name": "Button_Ivory",
+            "hex": "#F2E8D5"
+          },
+          {
+            "name": "Ring_LightGreen",
+            "hex": "#A8C89B"
+          },
+          {
+            "name": "Eyes_DarkGreen",
+            "hex": "#285943"
+          },
+          {
+            "name": "Stitches_Brown",
+            "hex": "#9B633D"
+          }
+        ],
+        "assembly_name": "Four_color_button_thimble",
+        "filament_type": "PLA",
+        "pit_d": "PIT_D",
+        "pit_depth": "PIT_DEPTH",
+        "pit_color_depth": "PIT_COLOR_DEPTH",
+        "sphere_segments": "SPHERE_SEGMENTS",
+        "sphere_rings": "SPHERE_RINGS",
+        "pad_d": "PAD_D",
+        "button_split_z": "PAD_CORE_BASE_Z",
+        "extension": "CUT_EXTENSION",
+        "volume_tolerance": "COLOR_VOLUME_TOLERANCE",
+        "check_tolerance": "CHECK_TOLERANCE",
+        "out_dir": "output",
+        "package_name": "button_thimble_four_color.3mf",
+        "blend_name": "button_thimble_four_color.blend",
+        "surface_sample_count": "COLOR_SURFACE_SAMPLE_COUNT",
+        "thread_mask_margin": "THREAD_COLOR_MASK_MARGIN",
+        "filament_preset": "Generic PLA",
+        "filament_id": "GFL99",
+        "slicer_defaults": "spec/bambu_2p6_defaults.json",
+        "enable_prime_tower": 1
       }
     }
   ]

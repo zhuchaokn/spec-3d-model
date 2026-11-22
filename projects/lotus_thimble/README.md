@@ -1,5 +1,7 @@
 # 椭圆指孔 · 四眼扣子顶针
 
+新增拓竹AMS四色项目：扣子米白、指环浅绿、扣眼深绿、X线棕色。打开`output/button_thimble_four_color.3mf`后选择实际机型、喷嘴与耗材，再切片。四个材料部件共用坐标，保留原有几何；编辑场景为`button_thimble_four_color.blend`。分色和打印步骤见[四色说明](spec/multicolor.md)。
+
 按用户确认的莲蓬轮廓放大顶部，保留内收过渡、凹碗和厚圆唇；碗面改成四个圆底盲坑，增加两条微凸X形缝线。戴在左手食指，针托朝背侧。
 
 ## 当前尺寸与验证
@@ -32,6 +34,8 @@ Blender 4.5.1 LTS验证为一个连通水密实体，边界边/非流形边均�
 
 - `button_thimble_17x15p5mm_w14mm.blend`：场景显示cm，内部为米。
 - `button_thimble_17x15p5mm_w14mm.stl`：明确换算为毫米，保留佩戴坐标方向。
+- `button_thimble_four_color.3mf`：一个装配体、四个AMS材料体积，包含四色信息；尚未切片。
+- `button_thimble_four_color.blend`：四区材质及独立闭合网格。
 
 STL导出按实际float32坐标抵消严格重合、反向的成对三角面，避免CSG微小折面在单位换算后形成重复内面。本次无需抵消反向面；不合并近点、不补洞。其余拓扑由独立读取STL的脚本验收。
 

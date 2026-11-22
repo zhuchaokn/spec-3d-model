@@ -1,0 +1,32 @@
+{
+  "application": "BambuStudio-02.06.00.51",
+  "import_exit_code": 0,
+  "assembly_count": 1,
+  "material_volume_ids": [
+    "1",
+    "2",
+    "3",
+    "4"
+  ],
+  "filament_colour": [
+    "#F2E8D5",
+    "#A8C89B",
+    "#285943",
+    "#9B633D"
+  ],
+  "filament_type": [
+    "PLA",
+    "PLA",
+    "PLA",
+    "PLA"
+  ],
+  "filament_settings_id": [
+    "Generic PLA",
+    "Generic PLA",
+    "Generic PLA",
+    "Generic PLA"
+  ],
+  "combined_mesh_manifold": true,
+  "enable_prime_tower": true,
+  "sliced": false
+}
