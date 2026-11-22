@@ -11,8 +11,8 @@
     "CORE_THICKNESS": 0.2,
     "BOWL_D": ".9*PAD_SCALE",
     "BOWL_DEPTH": ".16*PAD_SCALE",
-    "PIT_D": 0.2,
-    "PIT_DEPTH": 0.08,
+    "PIT_D": 0.24,
+    "PIT_DEPTH": 0.1,
     "PIT_OFFSET": 0.3,
     "RIM_Z": "BORE_Z/2+CORE_THICKNESS+BOWL_DEPTH+PIT_DEPTH",
     "BOWL_R": "((BOWL_D/2)**2+BOWL_DEPTH**2)/(2*BOWL_DEPTH)",
@@ -32,7 +32,7 @@
     "ARC_SEGMENTS": 32,
     "SPHERE_SEGMENTS": 64,
     "SPHERE_RINGS": 40,
-    "LOFT_BLEND_START": "BORE_Z/2",
+    "LOFT_BLEND_START": "NECK_Z*.5",
     "MERGE_DISTANCE": 1e-06,
     "CHECK_TOLERANCE": 0.002,
     "MIN_TOP_LAND": ".14*PAD_SCALE",
@@ -43,7 +43,9 @@
     "THREAD_CROSS_SPAN": 0.2,
     "THREAD_END": 0.2375,
     "THREAD_SEGMENTS": 32,
-    "THREAD_CAP_RINGS": 20
+    "THREAD_CAP_RINGS": 20,
+    "LOFT_BLEND_END": "RING_Z",
+    "CORNER_MIN_RECESS": 0.12
   },
   "nodes": [
     {
@@ -126,7 +128,8 @@
               "RIM_Z-LIP_H"
             ]
           ]
-        ]
+        ],
+        "blend_end": "LOFT_BLEND_END"
       }
     },
     {
@@ -309,14 +312,20 @@
         "cross_raise": "THREAD_CROSS_RAISE",
         "cross_span": "THREAD_CROSS_SPAN",
         "thread_end": "THREAD_END",
-        "shoulder_probe_x": "BORE_X*0.3",
         "neck_probe_z": [
           "NECK_Z*.4",
           "NECK_Z*.65",
           "NECK_Z",
           "NECK_Z+(RIM_Z-LIP_H-NECK_Z)*.3",
           "NECK_Z+(RIM_Z-LIP_H-NECK_Z)*.6"
-        ]
+        ],
+        "blend_end": "LOFT_BLEND_END",
+        "corner_probe_z": [
+          "RING_Z*.85",
+          "RING_Z*.925",
+          "RING_Z"
+        ],
+        "corner_min_recess": "CORNER_MIN_RECESS"
       }
     },
     {

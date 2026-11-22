@@ -75,6 +75,20 @@ def run(ctx):
             neck.append({"z_cm":z,"side":side,"measured_x_cm":actual,"expected_x_cm":expected_x})
     neck_x=g["profile_x"](p["support_curves"],p["support_curves"][0][-1][1])
     assert neck_x<a+wall and neck_x<p["pad_d"]/2,"Inward neck missing"
+    # Inspect the actual four diagonal shoulders, rather than smooth shading.
+    # A rounded section recedes from its rectangular bounding-box corners.
+    corners=[]
+    for z in p["corner_probe_z"]:
+        xh=hit((p["pad_d"]+p["probe"],0,z),(-1,0,0)).x
+        yh=hit((0,p["pad_d"]+p["probe"],z),(0,-1,0)).y
+        diagonal=math.hypot(xh,yh)
+        for sx,sy in ((1,1),(-1,1),(-1,-1),(1,-1)):
+            direction=Vector((sx*xh/diagonal,sy*yh/diagonal,0))
+            start=direction*(diagonal+p["probe"]);start.z=z
+            actual=hit(start,-direction)
+            recession=diagonal-actual.dot(direction)
+            assert recession>=p["corner_min_recess"]-tol,("Protruding corner",z,sx,sy,recession)
+            corners.append({"z_cm":z,"quadrant":[sx,sy],"recession_cm":recession})
     records=json.loads(obj["needle_pits"]);assert len(records)==4
     pits=[];floor_samples=[]
     for rec,position in zip(records,p["pit_positions"]):
@@ -115,18 +129,22 @@ def run(ctx):
     length=math.hypot(rise,runout);ux=runout/length;uz=rise/length
     tangent=p["shoulder_r"]*(1-uz)/ux;z0=b+wall-tangent;z1=b+wall+tangent*uz
     shoulders=[]
+    shoulder_start=max(z0,b+tol)
+    assert shoulder_start<z1,"No accessible central shoulder above bore"
     for f in (.25,.5,.75):
-        z=z0+(z1-z0)*f;expected_y=hw+p["shoulder_r"]-math.sqrt(p["shoulder_r"]**2-(z-z0)**2)
-        # The low shoulder is below the oval's central roof; sample on the
-        # flat end-face land outside the bore, rather than through the hole.
-        actual=hit((p["shoulder_probe_x"],pr+p["probe"],z),(0,-1,0)).y
+        z=shoulder_start+(z1-shoulder_start)*f;expected_y=hw+p["shoulder_r"]-math.sqrt(p["shoulder_r"]**2-(z-z0)**2)
+        # With the four corners removed, sample the actual center silhouette
+        # above the hole roof, rather than the former flat corner land.
+        actual=hit((0,pr+p["probe"],z),(0,-1,0)).y
         assert abs(actual-expected_y)<tol,("Shoulder",z,actual,expected_y)
-        shoulders.append({"x_cm":p["shoulder_probe_x"],"z_cm":z,"measured_y_cm":actual,"expected_y_cm":expected_y})
+        shoulders.append({"x_cm":0,"z_cm":z,"measured_y_cm":actual,"expected_y_cm":expected_y})
     lr=p["lip_r"];z=p["rim_z"]-lr/2;expected_y=pr-lr+math.sqrt(lr**2-(lr/2)**2)
     actual=hit((0,pr+p["probe"],z),(0,-1,0)).y
     assert abs(actual-expected_y)<tol,("Lip",actual,expected_y)
     land=float(obj["top_land_cm"]);assert land>=p["min_land"]-tol,land
     bowl_center=p["bowl_center_z"]-p["bowl_r"]
     report={"object":obj.name,"blender_version":bpy.app.version_string,"units":"cm","bbox":bbox,"expected_size_cm":expected,"topology":topo,"connected_components":components,"volume_cm3":volume,"bore_x_cm":bx,"bore_z_cm":bz,"oval_probes":oval,"wall_normal_probes":walls,"band_width_cm":band,"end_round_max_error_cm":max(rounds),"end_round_probe_count":len(rounds),"neck_probes":neck,"pits":pits,"min_sampled_pit_floor_thickness_cm":min(floor_samples),"pit_floor_sample_count":len(floor_samples),"usable_pit_probes":usable,"threads":stitches,"thread_probes":threads,"shoulder_probes":shoulders,"top_flat_land_cm":land,"bowl_depth_cm":p["rim_z"]-bowl_center,"central_body_thickness_cm":bowl_center-b,"tolerance_cm":tol,"physical_fit_and_strength":"not tested"}
+    report["underside_corner_probes"]=corners
+    report["underside_corner_min_recession_cm"]=min(c["recession_cm"] for c in corners)
     with open(os.path.join(ctx.proj_dir,"spec","verification_report.json"),"w",encoding="utf-8") as f:json.dump(report,f,ensure_ascii=False,indent=2)
     print("VERIFIED_BUTTON",json.dumps({k:report[k] for k in ("topology","bore_x_cm","bore_z_cm","band_width_cm","min_sampled_pit_floor_thickness_cm","volume_cm3")}),flush=True)

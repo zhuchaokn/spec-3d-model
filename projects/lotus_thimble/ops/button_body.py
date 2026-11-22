@@ -40,7 +40,7 @@ def run(ctx):
         if z<=small_center[1]: return small_center[0]+math.sqrt(max(0,small**2-(z-small_center[1])**2))
         return pr
     loft_top=top-p["lip_r"]
-    levels={0,zs,big_end[1],small_start[1],small_center[1],lipbase,loft_top,p["blend_start"]}
+    levels={0,zs,big_end[1],small_start[1],small_center[1],lipbase,loft_top,p["blend_start"],p["blend_end"]}
     levels.update(c[-1][1] for c in p["support_curves"])
     steps=math.ceil(loft_top/p["step"])
     levels.update(loft_top*j/steps for j in range(steps+1))
@@ -48,7 +48,10 @@ def run(ctx):
     verts=[]; faces=[]; quarter=n//4
     for z in levels:
         xh=x_half(z); yh=y_half(z)
-        t=max(0,min(1,(z-p["blend_start"])/(small_center[1]-p["blend_start"])))
+        # Round the four shoulders before they reach the pad underside.
+        # The quintic blend has zero first/second derivative at either end;
+        # the independent oval band union preserves the normal wall thickness.
+        t=max(0,min(1,(z-p["blend_start"])/(p["blend_end"]-p["blend_start"])))
         smooth=t**3*(10-15*t+6*t*t)
         cr=er+(min(xh,yh)-er)*smooth
         for q in range(4):

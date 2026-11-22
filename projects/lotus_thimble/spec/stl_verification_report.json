@@ -1,21 +1,21 @@
 {
   "file": "button_thimble_17x15p5mm_w14mm.stl",
   "units": "mm",
-  "triangles": 180658,
+  "triangles": 183864,
   "bbox_mm": [
     22.0,
     22.0,
-    22.41428565979004
+    22.614285469055176
   ],
   "expected_bbox_mm": [
     22.0,
     22.0,
-    22.4142857143
+    22.6142857143
   ],
   "connected_components": 1,
   "degenerate_triangles": 0,
   "edges_not_shared_twice": 0,
   "inconsistent_edge_orientation": 0,
-  "volume_mm3": 2873.568672613562,
+  "volume_mm3": 2757.255366939511,
   "tolerance_mm": 0.02
 }
