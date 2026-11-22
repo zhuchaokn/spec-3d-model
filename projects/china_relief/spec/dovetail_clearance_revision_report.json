@@ -1,6 +1,6 @@
 {
-  "before_clearance_mm": 0.1,
-  "after_clearance_mm": 0.15,
+  "before_clearance_mm": 0.15,
+  "after_clearance_mm": 0.12,
   "male_geometry_unchanged": true,
   "straight_seam_gap_mm": 0.1,
   "unchanged_objects": [
@@ -44,22 +44,26 @@
   "base_changes": [
     {
       "name": "Tray_X1_Y1",
+      "added_socket_margin_mm2": 0.0,
       "removed_socket_margin_mm2": 0.0,
       "all_changes_inside_female_socket_margins": true
     },
     {
       "name": "Tray_X2_Y1",
-      "removed_socket_margin_mm2": 1.9738324345139762,
+      "added_socket_margin_mm2": 1.18798390172876,
+      "removed_socket_margin_mm2": 0.0,
       "all_changes_inside_female_socket_margins": true
     },
     {
       "name": "Tray_X1_Y2",
-      "removed_socket_margin_mm2": 1.9738324345136833,
+      "added_socket_margin_mm2": 1.1879839017287137,
+      "removed_socket_margin_mm2": 0.0,
       "all_changes_inside_female_socket_margins": true
     },
     {
       "name": "Tray_X2_Y2",
-      "removed_socket_margin_mm2": 3.947664869028474,
+      "added_socket_margin_mm2": 2.3759678034579754,
+      "removed_socket_margin_mm2": 0.0,
       "all_changes_inside_female_socket_margins": true
     }
   ]

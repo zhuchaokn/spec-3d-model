@@ -4688,15 +4688,15 @@
       "object": "Tray_X2_Y1",
       "file": "data/processed/Tray_X2_Y1.npz",
       "group": "tray",
-      "sha256": "db60ff3e0ee13b0362ef7aee9515c604bb59f8893ea02b5eebc627b7ca3c853f",
-      "vertices": 38515,
-      "triangles": 77026,
+      "sha256": "6fc62ff3ac9ff7ea93fc068572cc8f791cc0a6248ea8816090628d65974de6bb",
+      "vertices": 38531,
+      "triangles": 77058,
       "dimensions_mm": [
         234.89999999999998,
         238.0,
         7.0
       ],
-      "volume_mm3": 202538.12017375848,
+      "volume_mm3": 202541.85423999385,
       "bounds_mm": [
         [
           15.1,
@@ -4718,7 +4718,7 @@
       "object": "Tray_X1_Y2",
       "file": "data/processed/Tray_X1_Y2.npz",
       "group": "tray",
-      "sha256": "9ff35977301017b4c557da45c2476fe84655aded2e513e1ad5e158796843e3ae",
+      "sha256": "c7d14576ef8cee7a768c33ac5ed3f6aa0a5eb1b4817a6dd7b84c965d41f5d56b",
       "vertices": 17955,
       "triangles": 35906,
       "dimensions_mm": [
@@ -4726,7 +4726,7 @@
         234.89999999999998,
         7.0
       ],
-      "volume_mm3": 168388.3057743234,
+      "volume_mm3": 168390.68174212688,
       "bounds_mm": [
         [
           -220.0,
@@ -4748,7 +4748,7 @@
       "object": "Tray_X2_Y2",
       "file": "data/processed/Tray_X2_Y2.npz",
       "group": "tray",
-      "sha256": "edc258be6ba28f10046e436e258de893fd4ca0565800490f5694d41280a59fd7",
+      "sha256": "63f065aee637e4ba736d7378c0d44f8130a0ff4e179d4c1a18409a0e43b29b6c",
       "vertices": 38125,
       "triangles": 76246,
       "dimensions_mm": [
@@ -4756,7 +4756,7 @@
         234.89999999999998,
         7.0
       ],
-      "volume_mm3": 177019.7820052023,
+      "volume_mm3": 177026.90990861267,
       "bounds_mm": [
         [
           15.1,
@@ -4835,7 +4835,7 @@
       "connected_components": 1
     }
   ],
-  "prepared_fingerprint": "16a4a2e7616e85f8e812b49048094daa10fdae4507b4382b0e7a9a7ca9d2388a",
+  "prepared_fingerprint": "8abc72014a2b2d69a0b6a5ff957c45d50a594521393faabc63f857161173f0db",
   "limitations": [
     "Boundary CRS is assumed, not declared by provider.",
     "No nominal clearance between province cards, as requested; real FDM parts may need edge trimming.",

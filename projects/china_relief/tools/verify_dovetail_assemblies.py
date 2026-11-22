@@ -32,7 +32,7 @@ def main():
         assert mesh.is_watertight and mesh.body_count==1 and max(mesh.extents)<256
         bases.append({'name':n['name'],'dimensions_mm':mesh.extents.tolist(),'actual_bottom_matches_outline':True})
     joints=[];w=c['TRAY_TAB_WIDTH'];h=c['TRAY_TAB_HEAD_WIDTH'];length=c['TRAY_TAB_LENGTH'];clear=c['TRAY_TAB_CLEARANCE']
-    assert h>w+2*clear and np.isclose(clear*10,.15) and np.isclose(c['TRAY_SEAM_GAP']*10,.1)
+    assert h>w+2*clear and np.isclose(clear*10,.12) and np.isclose(c['TRAY_SEAM_GAP']*10,.1)
     for vertical in [False,True]:
         for row in [0,1]:
             male=outlines[(row,0) if vertical else (0,row)]
