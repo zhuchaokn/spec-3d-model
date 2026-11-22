@@ -183,5 +183,27 @@ def run(ctx):
     report["junction_normal_tracks"]=junction
     report["junction_normal_sample_step_cm"]=p["junction_check_step"]
     report["junction_max_normal_step_deg"]=max(v["max_normal_step_deg"] for v in junction)
+    # Cover the thin annular mouth strip the higher shoulder tracks omit.
+    # A planar fillet used against a curved front exposes a nearly 90deg cusp.
+    lip_tracks=[]
+    lip_steps=math.ceil((p["bore_lip_check_end"]-p["bore_lip_check_start"])/p["bore_lip_check_step"])
+    for j in range(int(p["bore_lip_check_segments"])):
+        angle=2*math.pi*j/p["bore_lip_check_segments"]
+        for side in (-1,1):
+            previous=None;maximum=0;at=None
+            for k in range(lip_steps+1):
+                offset=p["bore_lip_check_start"]+(p["bore_lip_check_end"]-p["bore_lip_check_start"])*k/lip_steps
+                x,z=g["ellipse_point"](a,b,angle,offset)
+                result=tree.ray_cast(Vector((x*s3d.CM,side*(p["pad_d"]+p["probe"])*s3d.CM,z*s3d.CM)),Vector((0,-side,0)))
+                assert result[0] is not None,("Bore lip missed",angle,side,offset)
+                if previous is not None:
+                    delta=math.degrees(result[1].angle(previous))
+                    if delta>maximum:maximum=delta;at=offset
+                previous=result[1]
+            assert maximum<=p["bore_lip_max_normal_step_deg"],("Bore lip cusp",angle,side,maximum,at)
+            lip_tracks.append({"angle":angle,"side":side,"sample_count":lip_steps+1,"max_normal_step_deg":maximum,"offset_at_cm":at})
+    report["bore_lip_normal_tracks"]=lip_tracks
+    report["bore_lip_normal_sample_step_cm"]=p["bore_lip_check_step"]
+    report["bore_lip_max_normal_step_deg"]=max(v["max_normal_step_deg"] for v in lip_tracks)
     with open(os.path.join(ctx.proj_dir,"spec","verification_report.json"),"w",encoding="utf-8") as f:json.dump(report,f,ensure_ascii=False,indent=2)
     print("VERIFIED_BUTTON",json.dumps({k:report[k] for k in ("topology","bore_x_cm","bore_z_cm","band_width_cm","min_sampled_pit_floor_thickness_cm","volume_cm3")}),flush=True)

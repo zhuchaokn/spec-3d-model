@@ -152,3 +152,60 @@ def smooth_max(a,b,width):
     """C2 compact blend, exactly max outside the specified difference band."""
     if width<=0 or abs(a-b)>=width:return max(a,b)
     return max(a,b)+(width-abs(a-b))**3/(6*width**2)
+
+
+def curved_bore(name, body, a,b,edge,extension,escape,clearance,n,m,center,merge):
+    """Round an oval bore into the measured curved end faces, not fixed planes.
+
+    The inner quarter-curve matches the hole wall and the local exterior
+    slope. Past its tangent point the cutter rises outside the body, avoiding
+    the exposed cylinder/quarter-round cusp of a planar-mouth cutter.
+    """
+    from mathutils import Vector
+    from mathutils.bvhtree import BVHTree
+    world=[body.matrix_world@v.co for v in body.data.vertices]
+    tree=BVHTree.FromPolygons(world,[tuple(f.vertices) for f in body.data.polygons])
+    def front(angle,offset,side,with_slope=False):
+        x,z=ellipse_point(a,b,angle,offset)
+        origin=Vector(((center[0]+x)*s3d.CM,(center[1]+side*extension)*s3d.CM,(center[2]+z)*s3d.CM))
+        result=tree.ray_cast(origin,Vector((0,-side,0)))
+        assert result[0] is not None,("Missing bore collar",angle,offset,side)
+        y=side*(result[0].y/s3d.CM-center[1])
+        if not with_slope:return y
+        nx=math.cos(angle)/a;nz=math.sin(angle)/b;length=math.hypot(nx,nz)
+        normal=result[1]
+        assert abs(normal.y)>1e-6,("Vertical bore collar",angle,offset,side)
+        slope=-(normal.x*nx+normal.z*nz)/(length*side*normal.y)
+        return y,slope
+    controls=[]
+    for j in range(n):
+        angle=2*math.pi*j/n;ends=[]
+        for side in (-1,1):
+            y,slope=front(angle,edge,side,with_slope=True)
+            k=4*(math.sqrt(2)-1)/3
+            ends.append([(0,y-edge),(0,y-edge+k*edge),(edge-k*edge,y-slope*k*edge),(edge,y+clearance)])
+        controls.append(ends)
+    # End cap -> escape -> adaptive fillet -> bore wall -> opposite fillet.
+    layout=[(-1,"cap",0)]
+    layout.extend((-1,"escape",1-j/m) for j in range(m))
+    layout.extend((-1,"round",1-j/m) for j in range(m+1))
+    layout.extend((1,"round",j/m) for j in range(m+1))
+    layout.extend((1,"escape",j/m) for j in range(1,m+1))
+    layout.append((1,"cap",0))
+    verts=[];faces=[]
+    for side,kind,t in layout:
+        for j in range(n):
+            angle=2*math.pi*j/n
+            if kind=="round":offset,y=bezier_point(controls[j][0 if side<0 else 1],t)
+            elif kind=="escape":
+                offset=edge*(1+t)
+                y=front(angle,offset,side)+clearance+escape*t*t
+            else:offset=2*edge;y=extension
+            x,z=ellipse_point(a,b,angle,offset)
+            verts.append((x,side*y,z))
+    faces.append(tuple(reversed(range(n))))
+    for i in range(len(layout)-1):
+        for j in range(n):
+            k=(j+1)%n;faces.append((i*n+j,i*n+k,(i+1)*n+k,(i+1)*n+j))
+    faces.append(tuple((len(layout)-1)*n+j for j in range(n)))
+    return mesh_object(name,verts,faces,center,merge)

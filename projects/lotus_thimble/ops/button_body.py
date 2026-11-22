@@ -137,12 +137,9 @@ def run(ctx):
     print("CUT_BOWL",s3d.manifold_report(obj.name),flush=True)
 
     ext=pr+p["extension"]
-    profile=[(ir,-ext),(ir,-hw)]
-    profile+=arc((ir,-hw+ir),ir,-math.pi/2,-math.pi,m)[1:]
-    profile.append((0,hw-ir))
-    profile+=arc((ir,hw-ir),ir,math.pi,math.pi/2,m)[1:]
-    profile.append((ir,ext))
-    boolean(obj,solid("_OvalBore",a,b,profile,n,ctx.center,merge),operation="DIFFERENCE")
+    bore=g["curved_bore"]("_OvalBore",obj,a,b,ir,ext,p["extension"],
+                          p["bore_lip_clearance"],nl,int(p["bore_arc_segments"]),ctx.center,merge)
+    boolean(obj,bore,operation="DIFFERENCE")
     topo=s3d.manifold_report(obj.name)
     assert topo["boundary"]==topo["nonmanifold"]==0,topo
     for f in obj.data.polygons: f.use_smooth=True

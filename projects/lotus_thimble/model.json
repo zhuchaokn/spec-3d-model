@@ -56,7 +56,12 @@
     "JUNCTION_CHECK_STEP": 0.005,
     "JUNCTION_CHECK_CLEARANCE": 0.03,
     "JUNCTION_CHECK_TOP": 1.1,
-    "JUNCTION_MAX_NORMAL_STEP_DEG": 5
+    "JUNCTION_MAX_NORMAL_STEP_DEG": 5,
+    "BORE_LIP_CLEARANCE": 0.0001,
+    "BORE_ARC_SEGMENTS": 64,
+    "BORE_LIP_CHECK_SEGMENTS": 128,
+    "BORE_LIP_CHECK_STEP": 0.0005,
+    "BORE_LIP_MAX_NORMAL_STEP_DEG": 5
   },
   "nodes": [
     {
@@ -147,7 +152,9 @@
         "loft_segments": "LOFT_SEGMENTS",
         "junction_smooth_sigma": "JUNCTION_SMOOTH_SIGMA",
         "junction_smooth_fade_start": "JUNCTION_SMOOTH_FADE_START",
-        "junction_smooth_end": "JUNCTION_SMOOTH_END"
+        "junction_smooth_end": "JUNCTION_SMOOTH_END",
+        "bore_lip_clearance": "BORE_LIP_CLEARANCE",
+        "bore_arc_segments": "BORE_ARC_SEGMENTS"
       }
     },
     {
@@ -339,8 +346,8 @@
         ],
         "blend_end": "LOFT_BLEND_END",
         "corner_probe_z": [
-          "RING_Z*.85",
-          "RING_Z*.925",
+          "RING_Z*.9",
+          "RING_Z*.95",
           "RING_Z"
         ],
         "corner_min_recess": "CORNER_MIN_RECESS",
@@ -360,7 +367,12 @@
         "junction_check_step": "JUNCTION_CHECK_STEP",
         "junction_check_clearance": "JUNCTION_CHECK_CLEARANCE",
         "junction_check_top": "JUNCTION_CHECK_TOP",
-        "junction_max_normal_step_deg": "JUNCTION_MAX_NORMAL_STEP_DEG"
+        "junction_max_normal_step_deg": "JUNCTION_MAX_NORMAL_STEP_DEG",
+        "bore_lip_check_segments": "BORE_LIP_CHECK_SEGMENTS",
+        "bore_lip_check_start": "BORE_EDGE_R*.75",
+        "bore_lip_check_end": "BORE_EDGE_R*1.5",
+        "bore_lip_check_step": "BORE_LIP_CHECK_STEP",
+        "bore_lip_max_normal_step_deg": "BORE_LIP_MAX_NORMAL_STEP_DEG"
       }
     },
     {

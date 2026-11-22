@@ -32,12 +32,12 @@
   "topology": {
     "boundary": 0,
     "nonmanifold": 0,
-    "total": 447244
+    "total": 615644
   },
   "connected_components": 1,
-  "volume_cm3": 2.770310597512488,
+  "volume_cm3": 2.772856614060243,
   "bore_x_cm": 1.7000000476837158,
-  "bore_z_cm": 1.5499999523162842,
+  "bore_z_cm": 1.5499998927116394,
   "oval_probes": [
     {
       "angle": 0.0,
@@ -45,7 +45,7 @@
     },
     {
       "angle": 0.19634954084936207,
-      "error_cm": 1.812804499357408e-07
+      "error_cm": 6.143906154658885e-08
     },
     {
       "angle": 0.39269908169872414,
@@ -53,19 +53,19 @@
     },
     {
       "angle": 0.5890486225480862,
-      "error_cm": 2.9802322387695312e-08
+      "error_cm": 6.664001874625056e-08
     },
     {
       "angle": 0.7853981633974483,
-      "error_cm": 0.0
+      "error_cm": 8.429369702178807e-08
     },
     {
       "angle": 0.9817477042468103,
-      "error_cm": 0.0
+      "error_cm": 6.664001874625056e-08
     },
     {
       "angle": 1.1780972450961724,
-      "error_cm": 2.9802322387695312e-08
+      "error_cm": 0.0
     },
     {
       "angle": 1.3744467859455345,
@@ -81,19 +81,19 @@
     },
     {
       "angle": 1.9634954084936207,
-      "error_cm": 2.9802322387695312e-08
+      "error_cm": 0.0
     },
     {
       "angle": 2.1598449493429825,
-      "error_cm": 0.0
+      "error_cm": 6.664001874625056e-08
     },
     {
       "angle": 2.356194490192345,
-      "error_cm": 0.0
+      "error_cm": 8.429369702178807e-08
     },
     {
       "angle": 2.552544031041707,
-      "error_cm": 2.9802322387695312e-08
+      "error_cm": 6.664001874625056e-08
     },
     {
       "angle": 2.748893571891069,
@@ -101,7 +101,7 @@
     },
     {
       "angle": 2.945243112740431,
-      "error_cm": 1.812804499357408e-07
+      "error_cm": 6.143906154658885e-08
     },
     {
       "angle": 3.141592653589793,
@@ -109,15 +109,15 @@
     },
     {
       "angle": 3.3379421944391554,
-      "error_cm": 1.812804499357408e-07
+      "error_cm": 6.143906154658885e-08
     },
     {
       "angle": 3.5342917352885173,
-      "error_cm": 1.228781230931777e-07
+      "error_cm": 0.0
     },
     {
       "angle": 3.730641276137879,
-      "error_cm": 2.9802322387695312e-08
+      "error_cm": 1.884864366154897e-07
     },
     {
       "angle": 3.9269908169872414,
@@ -125,19 +125,19 @@
     },
     {
       "angle": 4.123340357836604,
-      "error_cm": 0.0
+      "error_cm": 6.664001874625056e-08
     },
     {
       "angle": 4.319689898685965,
-      "error_cm": 2.9802322387695312e-08
+      "error_cm": 0.0
     },
     {
       "angle": 4.516039439535327,
-      "error_cm": 6.143906154658885e-08
+      "error_cm": 0.0
     },
     {
       "angle": 4.71238898038469,
-      "error_cm": 0.0
+      "error_cm": 5.960464477539063e-08
     },
     {
       "angle": 4.908738521234052,
@@ -153,19 +153,19 @@
     },
     {
       "angle": 5.497787143782138,
-      "error_cm": 0.0
+      "error_cm": 8.429369702178807e-08
     },
     {
       "angle": 5.6941366846315,
-      "error_cm": 2.9802322387695312e-08
+      "error_cm": 1.884864366154897e-07
     },
     {
       "angle": 5.890486225480862,
-      "error_cm": 1.228781230931777e-07
+      "error_cm": 0.0
     },
     {
       "angle": 6.086835766330224,
-      "error_cm": 1.812804499357408e-07
+      "error_cm": 6.143906154658885e-08
     }
   ],
   "wall_normal_probes": [
@@ -337,7 +337,7 @@
       "measured_depth_cm": 0.09999987587840997
     }
   ],
-  "min_sampled_pit_floor_thickness_cm": 0.3282599449157715,
+  "min_sampled_pit_floor_thickness_cm": 0.32819533348083496,
   "pit_floor_sample_count": 20,
   "usable_pit_probes": [
     {
@@ -452,68 +452,68 @@
   "physical_fit_and_strength": "not tested",
   "underside_corner_probes": [
     {
-      "z_cm": 0.7947500000000001,
+      "z_cm": 0.8415,
       "quadrant": [
         1,
         1
       ],
-      "recession_cm": 0.23041190072979512
+      "recession_cm": 0.283490868735804
     },
     {
-      "z_cm": 0.7947500000000001,
+      "z_cm": 0.8415,
       "quadrant": [
         -1,
         1
       ],
-      "recession_cm": 0.23041324183430256
+      "recession_cm": 0.28349092834044876
     },
     {
-      "z_cm": 0.7947500000000001,
+      "z_cm": 0.8415,
       "quadrant": [
         -1,
         -1
       ],
-      "recession_cm": 0.23041190072979512
+      "recession_cm": 0.283490868735804
     },
     {
-      "z_cm": 0.7947500000000001,
+      "z_cm": 0.8415,
       "quadrant": [
         1,
         -1
       ],
-      "recession_cm": 0.23041324183430256
+      "recession_cm": 0.28349092834044876
     },
     {
-      "z_cm": 0.8648750000000001,
+      "z_cm": 0.88825,
       "quadrant": [
         1,
         1
       ],
-      "recession_cm": 0.29711885727014775
+      "recession_cm": 0.309230713195356
     },
     {
-      "z_cm": 0.8648750000000001,
+      "z_cm": 0.88825,
       "quadrant": [
         -1,
         1
       ],
-      "recession_cm": 0.2971190360840821
+      "recession_cm": 0.309230176753553
     },
     {
-      "z_cm": 0.8648750000000001,
+      "z_cm": 0.88825,
       "quadrant": [
         -1,
         -1
       ],
-      "recession_cm": 0.29711885727014775
+      "recession_cm": 0.309230713195356
     },
     {
-      "z_cm": 0.8648750000000001,
+      "z_cm": 0.88825,
       "quadrant": [
         1,
         -1
       ],
-      "recession_cm": 0.2971190360840821
+      "recession_cm": 0.309230176753553
     },
     {
       "z_cm": 0.935,
@@ -548,7 +548,7 @@
       "recession_cm": 0.33034789677933407
     }
   ],
-  "underside_corner_min_recession_cm": 0.23041190072979512,
+  "underside_corner_min_recession_cm": 0.283490868735804,
   "upper_band_wall_probes": [
     {
       "y_cm": -0.49999999999999994,
@@ -908,5 +908,1801 @@
     }
   ],
   "junction_normal_sample_step_cm": 0.005,
-  "junction_max_normal_step_deg": 2.91235210784524
+  "junction_max_normal_step_deg": 2.91235210784524,
+  "bore_lip_normal_tracks": [
+    {
+      "angle": 0.0,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.867865690652405,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.0,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.867865690652405,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.04908738521234052,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8682200067155996,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.04908738521234052,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8680176623614377,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.09817477042468103,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8685239501336652,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.09817477042468103,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8681188345385187,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.14726215563702155,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.863914853104376,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.14726215563702155,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.871357624865574,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.19634954084936207,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.857371958766327,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.19634954084936207,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8700419596767004,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.2454369260617026,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.752698029075412,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.2454369260617026,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.7617663858590733,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.2945243112740431,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.719627960661503,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.2945243112740431,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.6885979843753116,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.3436116964863836,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.7949342113554785,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.3436116964863836,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.675942497616924,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.39269908169872414,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8523428051030817,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.39269908169872414,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.855899199226543,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.44178646691106466,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.9191160150895956,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.44178646691106466,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.902491761536608,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.4908738521234052,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8883157039142464,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.4908738521234052,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.836655141240032,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.5399612373357456,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.9237101710800757,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.5399612373357456,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.880501967503752,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.5890486225480862,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.153646355054439,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.5890486225480862,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.103316398607908,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.6381360077604268,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.6858898143694017,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.6381360077604268,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.895913008705416,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.6872233929727672,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.117466843020882,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.6872233929727672,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.046607899250231,
+      "offset_at_cm": 0.038
+    },
+    {
+      "angle": 0.7363107781851077,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.9680278535097036,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.7363107781851077,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.103937092048732,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.7853981633974483,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.42982974989896,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.7853981633974483,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.367087205296399,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.8344855486097889,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.9538880812673076,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.8344855486097889,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.068134521079995,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.8835729338221293,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.019610722782109,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.8835729338221293,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.092420539334445,
+      "offset_at_cm": 0.038
+    },
+    {
+      "angle": 0.9326603190344698,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.96244716207098,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.9326603190344698,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.0879198715582294,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.9817477042468103,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.574017078736705,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 0.9817477042468103,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.912014325900075,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 1.030835089459151,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.321365606573583,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 1.030835089459151,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.7518109582569568,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 1.0799224746714913,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 2.996304951141629,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 1.0799224746714913,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.901237141163441,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 1.1290098598838318,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.083893475042507,
+      "offset_at_cm": 0.037
+    },
+    {
+      "angle": 1.1290098598838318,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.105034191184166,
+      "offset_at_cm": 0.037
+    },
+    {
+      "angle": 1.1780972450961724,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.231072853623542,
+      "offset_at_cm": 0.037
+    },
+    {
+      "angle": 1.1780972450961724,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.263268230936866,
+      "offset_at_cm": 0.037
+    },
+    {
+      "angle": 1.227184630308513,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.45099512650102,
+      "offset_at_cm": 0.037
+    },
+    {
+      "angle": 1.227184630308513,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.5800929588902544,
+      "offset_at_cm": 0.037
+    },
+    {
+      "angle": 1.2762720155208536,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 2.7714224668228398,
+      "offset_at_cm": 0.0365
+    },
+    {
+      "angle": 1.2762720155208536,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 2.858074302058441,
+      "offset_at_cm": 0.0365
+    },
+    {
+      "angle": 1.325359400733194,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 2.015962350040998,
+      "offset_at_cm": 0.0365
+    },
+    {
+      "angle": 1.325359400733194,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 2.3851547786911085,
+      "offset_at_cm": 0.0365
+    },
+    {
+      "angle": 1.3744467859455345,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 2.2382587539852907,
+      "offset_at_cm": 0.036
+    },
+    {
+      "angle": 1.3744467859455345,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 2.2375590864821877,
+      "offset_at_cm": 0.036
+    },
+    {
+      "angle": 1.423534171157875,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 1.9598457292635847,
+      "offset_at_cm": 0.036
+    },
+    {
+      "angle": 1.423534171157875,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 1.950636926715115,
+      "offset_at_cm": 0.036
+    },
+    {
+      "angle": 1.4726215563702154,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 1.8295967965557918,
+      "offset_at_cm": 0.0355
+    },
+    {
+      "angle": 1.4726215563702154,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 1.8226306439326134,
+      "offset_at_cm": 0.0355
+    },
+    {
+      "angle": 1.521708941582556,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 1.5336556921548348,
+      "offset_at_cm": 0.036
+    },
+    {
+      "angle": 1.521708941582556,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 1.6932728374680959,
+      "offset_at_cm": 0.036
+    },
+    {
+      "angle": 1.5707963267948966,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 1.7007685431953616,
+      "offset_at_cm": 0.0355
+    },
+    {
+      "angle": 1.5707963267948966,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 1.699732702319047,
+      "offset_at_cm": 0.0355
+    },
+    {
+      "angle": 1.6198837120072371,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 1.6953518830184242,
+      "offset_at_cm": 0.036
+    },
+    {
+      "angle": 1.6198837120072371,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 1.5365877642994743,
+      "offset_at_cm": 0.036
+    },
+    {
+      "angle": 1.6689710972195777,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 1.821234297134169,
+      "offset_at_cm": 0.0355
+    },
+    {
+      "angle": 1.6689710972195777,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 1.8316279240602245,
+      "offset_at_cm": 0.0355
+    },
+    {
+      "angle": 1.718058482431918,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 1.952241594283245,
+      "offset_at_cm": 0.036
+    },
+    {
+      "angle": 1.718058482431918,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 1.9608440040994644,
+      "offset_at_cm": 0.036
+    },
+    {
+      "angle": 1.7671458676442586,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 2.2430629382927485,
+      "offset_at_cm": 0.036
+    },
+    {
+      "angle": 1.7671458676442586,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 2.2414917813402337,
+      "offset_at_cm": 0.036
+    },
+    {
+      "angle": 1.8162332528565992,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 2.389991406397124,
+      "offset_at_cm": 0.0365
+    },
+    {
+      "angle": 1.8162332528565992,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 2.0127562165559114,
+      "offset_at_cm": 0.0365
+    },
+    {
+      "angle": 1.8653206380689396,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 2.862317770523723,
+      "offset_at_cm": 0.0365
+    },
+    {
+      "angle": 1.8653206380689396,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 2.77212853762829,
+      "offset_at_cm": 0.0365
+    },
+    {
+      "angle": 1.9144080232812801,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.5801476004036146,
+      "offset_at_cm": 0.037
+    },
+    {
+      "angle": 1.9144080232812801,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.453547269373078,
+      "offset_at_cm": 0.037
+    },
+    {
+      "angle": 1.9634954084936207,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.2628481743029103,
+      "offset_at_cm": 0.037
+    },
+    {
+      "angle": 1.9634954084936207,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.2312544939667815,
+      "offset_at_cm": 0.037
+    },
+    {
+      "angle": 2.012582793705961,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.104605169926924,
+      "offset_at_cm": 0.037
+    },
+    {
+      "angle": 2.012582793705961,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.080679444151193,
+      "offset_at_cm": 0.037
+    },
+    {
+      "angle": 2.061670178918302,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.9073561368861265,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.061670178918302,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.004460623897447,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.110757564130642,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.7543155032482356,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.110757564130642,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.327372757948609,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.1598449493429825,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.913866160938795,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.1598449493429825,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.57374323083967,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.2089323345553233,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.084229434972307,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.2089323345553233,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.9622990323433553,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.2580197197676637,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.100690617758861,
+      "offset_at_cm": 0.038
+    },
+    {
+      "angle": 2.2580197197676637,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.014003991247175,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.3071071049800045,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.067412228575266,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.3071071049800045,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.954927977568442,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.356194490192345,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.370001561637879,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.356194490192345,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.429299129577814,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.405281875404685,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.1084202574652,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.405281875404685,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.9674848534706872,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.454369260617026,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.047769031409133,
+      "offset_at_cm": 0.038
+    },
+    {
+      "angle": 2.454369260617026,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.115849368848058,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.5034566458293663,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.895460508672903,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.5034566458293663,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.6854117011275007,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.552544031041707,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.101979815964701,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.552544031041707,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 4.1560031972049165,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.6016314162540475,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.880047759923946,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.6016314162540475,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.9235603338051583,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.650718801466388,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8374205493138964,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.650718801466388,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8883157039142464,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.6998061866787286,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.901237141163441,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.6998061866787286,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.9172667413718147,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.748893571891069,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.855645201566783,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.748893571891069,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8527492013586975,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.7979809571034093,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.6744505281701,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.7979809571034093,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.795089171272273,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.84706834231575,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.6887572131603377,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.84706834231575,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.7196804677407473,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.8961557275280905,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.7616622254742307,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.8961557275280905,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.752698029075412,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.945243112740431,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.869181782728102,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.945243112740431,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.857371958766327,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.9943304979527716,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.871256452688493,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 2.9943304979527716,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.863965652636328,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.043417883165112,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.868371978424632,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.043417883165112,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8685239501336652,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.0925052683774528,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.867966862829486,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.0925052683774528,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8682200067155996,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.141592653589793,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8678153180072763,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.141592653589793,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.867865690652405,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.1906800388021335,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8685239501336652,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.1906800388021335,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.868473150601713,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.2397674240144743,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8690302379058923,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.2397674240144743,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8687262944878267,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.2888548092268146,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.868675921842698,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.2888548092268146,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8684227779565843,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.3379421944391554,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8687770940197788,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.3379421944391554,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.867865690652405,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.3870295796514958,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8684227779565843,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.3870295796514958,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8668531151079506,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.436116964863836,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8699915870315715,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.436116964863836,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8695360987912966,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.485204350076177,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8670558863489353,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.485204350076177,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8676125467662916,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.5342917352885173,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.868371978424632,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.5342917352885173,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8699407874996195,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.5833791205008576,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.869586898323248,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.5833791205008576,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.867207431171145,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.6324665057131984,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.871458797042655,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.6324665057131984,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.86806846189339,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.6815538909255388,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8676125467662916,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.6815538909255388,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.867966862829486,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.730641276137879,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8688274666649076,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.730641276137879,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8663468273357235,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.77972866135022,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8686251223107457,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.77972866135022,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8674102024121297,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.8288160465625602,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.870497447916976,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.8288160465625602,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8693337544371347,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.877903431774901,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.869738443145458,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.877903431774901,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8692829549051826,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.9269908169872414,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8716103418648644,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.9269908169872414,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8715599692197356,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.9760782021995817,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.872368919749559,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 3.9760782021995817,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.87231854710443,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.025165587411922,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.866650770753789,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.025165587411922,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.866599971221837,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.074252972624263,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.86897943837394,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.074252972624263,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.871509169687784,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.123340357836604,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.871357624865574,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.123340357836604,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8681188345385187,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.172427743048944,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.867157058526016,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.172427743048944,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8662452282718194,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.221515128261284,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.869586898323248,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.221515128261284,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8691314100829732,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.270602513473625,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8664479995128045,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.270602513473625,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.862445081772354,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.319689898685965,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8711552805114127,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.319689898685965,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8642695960543936,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.368777283898306,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8624954544174828,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.368777283898306,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.875401950627868,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.417864669110647,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.864573539472459,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.417864669110647,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.868473150601713,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.466952054322987,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.872419719281511,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.466952054322987,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.863914853104376,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.516039439535327,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8674102024121297,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.516039439535327,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8712056531565415,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.565126824747668,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8678153180072763,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.565126824747668,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.867764518475324,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.614214209960009,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8692325822600537,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.614214209960009,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.862799824722371,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.663301595172349,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8642695960543936,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.663301595172349,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8693337544371347,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.71238898038469,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8619887397584325,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.71238898038469,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8746437996299967,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.76147636559703,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.865333824904446,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.76147636559703,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8682200067155996,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.81056375080937,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.868473150601713,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.81056375080937,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.868371978424632,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.859651136021712,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.870345903094766,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.859651136021712,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.858539067340753,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.908738521234052,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8693337544371347,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.908738521234052,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8693337544371347,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.957825906446392,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8700927592086525,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 4.957825906446392,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.863002595963356,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.006913291658733,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8694349266142156,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.006913291658733,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.863661282331439,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.056000676871073,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.87231854710443,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.056000676871073,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.871357624865574,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.105088062083414,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8633573389133735,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.105088062083414,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8722677475724785,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.154175447295755,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.862089911935513,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.154175447295755,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.86675194293087,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.203262832508095,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.869586898323248,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.203262832508095,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8692325822600537,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.252350217720435,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8706997922711373,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.252350217720435,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.866093256562787,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.301437602932776,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.869181782728102,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.301437602932776,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8701435587406046,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.350524988145116,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8694857261461677,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.350524988145116,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8694349266142156,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.399612373357457,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8670050868169836,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.399612373357457,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8669542872850315,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.448699758569798,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.871306825333622,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.448699758569798,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8722173749273496,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.497787143782138,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8716103418648644,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.497787143782138,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8710033088023796,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.546874528994478,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8693337544371347,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.546874528994478,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8708517639801703,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.595961914206819,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.865992084385706,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.595961914206819,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.869080610551021,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.64504929941916,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8694349266142156,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.64504929941916,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8681696340704708,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.6941366846315,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.86978924267741,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.6941366846315,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.871306825333622,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.743224069843841,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.869080610551021,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.743224069843841,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.865992084385706,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.792311455056181,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.86675194293087,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.792311455056181,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8684227779565843,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.841398840268521,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8679164901843572,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.841398840268521,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8688274666649076,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.890486225480862,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.86897943837394,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.890486225480862,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8679164901843572,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.939573610693203,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8670558863489353,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.939573610693203,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8676125467662916,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.988660995905543,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.869738443145458,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 5.988660995905543,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8699915870315715,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 6.037748381117884,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8678153180072763,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 6.037748381117884,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8668531151079506,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 6.086835766330224,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8683216057795033,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 6.086835766330224,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.867865690652405,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 6.135923151542564,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8686251223107457,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 6.135923151542564,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8682708062475517,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 6.1850105367549055,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8687770940197788,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 6.1850105367549055,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8688274666649076,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 6.234097921967246,
+      "side": -1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.868473150601713,
+      "offset_at_cm": 0.0375
+    },
+    {
+      "angle": 6.234097921967246,
+      "side": 1,
+      "sample_count": 61,
+      "max_normal_step_deg": 3.8678153180072763,
+      "offset_at_cm": 0.0375
+    }
+  ],
+  "bore_lip_normal_sample_step_cm": 0.0005,
+  "bore_lip_max_normal_step_deg": 4.42982974989896
 }
