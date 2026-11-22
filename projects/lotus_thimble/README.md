@@ -1,50 +1,55 @@
-# 左手食指莲蓬顶针
+# 椭圆指孔 · 四眼扣子顶针
 
-按用户确认的手写三视图构建，打印件为一个水密、连通的实体。
+按用户确认的莲蓬轮廓放大顶部，保留内收过渡、凹碗和厚圆唇；碗面改成四个圆底盲坑，增加两条微凸X形缝线。戴在左手食指，针托朝背侧。
 
-## 文件
+## 当前尺寸与验证
 
-- `model.json`：唯一尺寸源，单位 cm；内径 1.7 cm、环宽 1.4 cm。
-- `spec/preview.html`：已确认三视图，镜像注册表中的尺寸。
-- `spec/requirement.md`：设计要求与打印边界。
-- `spec/verification_report.json`：对实际 Blender 网格进行的验证。
-- `run_model.py`：引擎入口。
-- `ops/body.py`：圆滑指环、填实肩部、圆唇和凹碗。
-- `ops/pits.py`：逐个挖七个圆底盲坑。
-- `ops/verify.py`：拓扑、包络、BVH 射线测量。
-- `ops/export_mm.py`：将米坐标明确换成毫米导出二进制 STL。
+- 指孔横向17 mm、竖向15.5 mm，沿Y贯通。
+- 环身沿内椭圆法线等距加厚1.6 mm，环宽14 mm。局部填充支撑和扣面承力底部另行留厚。
+- 顶部直径22 mm，按原14 mm莲蓬的22/14比例放大凹碗、厚边、圆唇和肩部；外轮廓内收后再接入环身。
+- 四眼名义口径2 mm、深0.8 mm，圆心X/Y=±3 mm；外侧可用于落针，中心不再挖坑。
+- 凸线宽0.6 mm、高约0.3 mm，交点上层约0.45 mm；与碗面融合，不做悬空细丝。
+- 包络22×22×22.414 mm；顶部倒圆后的平边约2.51 mm。四坑附近20个测量点最薄留厚约3.29 mm，中央碗面基础留厚2.8 mm。
 
-## 构建
+Blender 4.5.1 LTS验证为一个连通水密实体，边界边/非流形边均为0。独立毫米STL检查180658个三角面，每边恰由两面共享、方向一致，无退化面，体积约2873.57 mm³。尺寸射线验收公差0.02 mm；实际佩戴、防滑和耐压仍需试打。
 
-需要 Blender 4.5 或更新版本，闭合体并集、指孔切割和小坑采用 MANIFOLD 求解器，处理相切/重合面的连接。切孔后直接检查水密性，不再焊接布尔结果中的邻近顶点，避免尺寸调整时压坏窄面。库与引擎在每次运行时 reload。
+## 构建与导出
+
+`model.json`是唯一尺寸、坐标与公差源，单位cm。项目op通过通用引擎调度，运行时重新加载，场景具名对象在节点之间交接。
 
 ```sh
 /Applications/Blender.app/Contents/MacOS/Blender --background --factory-startup \
   --python-exit-code 1 --python projects/lotus_thimble/run_model.py
 ```
 
-也可使用 BlenderMCP 的 `execute_blender_code(file_path=.../run_model.py)`。
-入口会清空**当前执行实例**的场景，随后按注册表拓扑构建；不要在有未保存作品的实例中运行。
+入口会清空执行实例的场景；在独立实例运行，保留其他未保存作品。需要Blender4.5或更新版本的MANIFOLD求解器。
+产物写入gitignore的`output/`：
 
-产物写入 `output/`（gitignore）：
+- `button_thimble_17x15p5mm_w14mm.blend`：场景显示cm，内部为米。
+- `button_thimble_17x15p5mm_w14mm.stl`：明确换算为毫米，保留佩戴坐标方向。
 
-- `lotus_thimble_17mm_w14mm.stl`：毫米坐标，保留佩戴坐标方向。
-- `lotus_thimble_17mm_w14mm.blend`：场景单位显示 cm，Blender 内部为米。
+STL导出按实际float32坐标抵消严格重合、反向的成对三角面，避免CSG微小折面在单位换算后形成重复内面。本次抵消2个反向面；不合并近点、不补洞。其余拓扑由独立读取STL的脚本验收。
 
-## 参数调整
+```sh
+python3 projects/lotus_thimble/tools/check_stl.py \
+  projects/lotus_thimble/output/button_thimble_17x15p5mm_w14mm.stl \
+  --size-mm 22 22 22.4142857143 \
+  --report projects/lotus_thimble/spec/stl_verification_report.json
+```
 
-调整手指尺寸只改 `BORE_D`。`RING_R` 与 `RIM_Z` 自动跟随，中央坑底留厚由 `CORE_THICKNESS=0.2` 控制，不会因内径增大而被动变薄。
-本次内径为 17 mm、环宽为 14 mm；环身外径随基础壁厚增至 21 mm，针托比上一版升高 1 mm。针托与环宽均为 14 mm，两端采用齐平直壁；针托直径大于环宽时才使用 R3 肩部及下端 R0.4 转接。环宽、针托外径、碗口、小坑、圆唇及各种圆角均独立参数化；针托直径应不小于环宽。大幅修改时需要重审三视图，几何约束不满足时构建会报错。
+## 文件与参数
 
-当前实测包络 21×14×23.4 mm，内径 17 mm、环宽 14 mm，中央留厚 2 mm，七坑深 0.8 mm；圆唇顶部平边约 1.59 mm。
-数据报告包含实际射线命中、连通块数、边界边/非流形边与体积。
+- `spec/preview.html` / `button_proposal.html`：确认后的手写三视图。
+- `spec/requirement.md`：当前需求、尺寸与验收边界。
+- `spec/verification_report.json` / `stl_verification_report.json`：实际网格、射线及STL数据。
+- `ops/button_body.py`：法线等距椭圆环、内收填充支撑、圆唇与凹碗。
+- `ops/geometry.py`：项目几何助手；`pits.py`逐个挖坑，`threads.py`融合闭合凸线。
+- `ops/button_verify.py`：双轴孔径、法线壁厚、端面圆角、内收轮廓、四坑留厚/可用区与凸线高度。
+- `ops/export_mm.py` / `tools/check_stl.py`：毫米导出与独立文件验收。
 
-指环端面与填充肩部的连接沿用径向/Y 截面的 R0.6 mm 圆角，再平滑过渡到上部针托，避免并集重新盖出锐边。`LOFT_CORNER_MIN` 跟随 `OUTER_EDGE_R`，不再使用独立的 0.06 mm 小圆角。接合处两端、两侧共 112 个射线测量点的最大轮廓误差约 0.00093 mm；旧版模型在同一检查中因约 0.0804 mm 的凸出台阶被拒绝。
-本版毫米 STL 为 144488 个三角面，每边恰由两面共享、方向一致，无退化三角形，体积约 2253.99 mm³。
+改`BORE_X`/`BORE_Z`调整指孔，改`WALL`/`BAND_W`调整环身。`PAD_SCALE`驱动原莲蓬顶部比例；内收曲线控制点、四眼位置和缝线端点也在JSON中。大幅改变比例需同步重审三视图和连接曲线。
 
 ## 首件试打
 
-STL 未绑定切片配置。首次导入切片器时核对尺寸为 21×14×23.4 mm，材料与受力方向由实际使用确定。
-孔轴原为 Y；可转成打印 Z 轴，指孔竖直以减少孔内支撑。本版环宽和针托直径均为 14 mm，两端齐平；整件落床后评估局部支撑、底部接触面积及 brim。
-支撑接触尽量避开孔口、碗面和小坑；不要把数据水密等同于无需支撑。
-建议先打这一枚小件，清理毛刺，用实际缝针轻力试配，再确认戴入、弯指舒适度、防滑及耐压。尚未完成切片或实物试打。
+可将Y孔轴转为打印Z轴，整件落床后评估局部支撑、接触面及brim。顶部沿Y每端伸出4 mm，不要只把环端贴床而让扣面穿入平台。支撑尽量避开指孔、碗面、四眼和凸线。
+先清理毛刺、试戴，再拿实际针尾由轻力检查四坑是否可落位。尚未切片或实物试验。
