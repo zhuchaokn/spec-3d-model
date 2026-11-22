@@ -1,43 +1,7 @@
 {
   "blender_version": "4.5.1 LTS",
-  "mesh_count": 36,
+  "mesh_count": 33,
   "parts": [
-    {
-      "object": "P110000",
-      "dimensions_mm": [
-        14.63290024548769,
-        16.310999169945717,
-        10.799571871757507
-      ],
-      "boundary_edges": 0,
-      "nonmanifold_edges": 0,
-      "inconsistent_edges": 0,
-      "volume_mm3": 681.6955575503238
-    },
-    {
-      "object": "P120000",
-      "dimensions_mm": [
-        9.950200095772743,
-        17.096100375056267,
-        6.6414945758879185
-      ],
-      "boundary_edges": 0,
-      "nonmanifold_edges": 0,
-      "inconsistent_edges": 0,
-      "volume_mm3": 380.75783851549147
-    },
-    {
-      "object": "P130000",
-      "dimensions_mm": [
-        45.93820124864578,
-        67.96489655971527,
-        12.2285271063447
-      ],
-      "boundary_edges": 0,
-      "nonmanifold_edges": 0,
-      "inconsistent_edges": 0,
-      "volume_mm3": 8683.399149717276
-    },
     {
       "object": "P140000",
       "dimensions_mm": [
@@ -97,30 +61,6 @@
       "nonmanifold_edges": 0,
       "inconsistent_edges": 0,
       "volume_mm3": 18008.89995685599
-    },
-    {
-      "object": "P310000",
-      "dimensions_mm": [
-        9.772099554538727,
-        8.326900191605091,
-        3.9578652940690517
-      ],
-      "boundary_edges": 0,
-      "nonmanifold_edges": 0,
-      "inconsistent_edges": 0,
-      "volume_mm3": 180.843380599895
-    },
-    {
-      "object": "P320000",
-      "dimensions_mm": [
-        49.75759983062744,
-        41.74419865012169,
-        5.233407486230135
-      ],
-      "boundary_edges": 0,
-      "nonmanifold_edges": 0,
-      "inconsistent_edges": 0,
-      "volume_mm3": 3243.051041143119
     },
     {
       "object": "P330000",
@@ -396,43 +336,67 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "inconsistent_edges": 0,
-      "volume_mm3": 211546.70865336893
+      "volume_mm3": 211609.19336985066
     },
     {
       "object": "Tray_X2_Y1",
       "dimensions_mm": [
-        234.99999940395355,
+        234.89999771118164,
         238.00000548362732,
         7.000000216066837
       ],
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "inconsistent_edges": 0,
-      "volume_mm3": 202615.0943291922
+      "volume_mm3": 202544.33003657035
     },
     {
       "object": "Tray_X1_Y2",
       "dimensions_mm": [
         238.00000548362732,
-        234.99999940395355,
+        234.89999771118164,
         7.000000216066837
       ],
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "inconsistent_edges": 0,
-      "volume_mm3": 168432.75263192944
+      "volume_mm3": 168392.25931817677
     },
     {
       "object": "Tray_X2_Y2",
       "dimensions_mm": [
-        234.99999940395355,
-        234.99999940395355,
+        234.89999771118164,
+        234.89999771118164,
         7.000000216066837
       ],
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "inconsistent_edges": 0,
-      "volume_mm3": 177224.1841123547
+      "volume_mm3": 177031.62360299742
+    },
+    {
+      "object": "A_京津冀",
+      "dimensions_mm": [
+        45.93820124864578,
+        67.96488910913467,
+        12.2285271063447
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 9745.853728474296
+    },
+    {
+      "object": "A_江苏上海",
+      "dimensions_mm": [
+        51.1988066136837,
+        41.74420237541199,
+        5.233407486230135
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 3423.8946466474927
     }
   ]
 }

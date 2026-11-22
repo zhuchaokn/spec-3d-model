@@ -11,7 +11,7 @@
     "TRAY_MARGIN": 0.5,
     "TRAY_TAB_LENGTH": 0.3,
     "TRAY_TAB_WIDTH": 0.8,
-    "TRAY_TAB_CLEARANCE": 0.02,
+    "TRAY_TAB_CLEARANCE": 0.01,
     "PRINT_BED": 25.6,
     "PRINT_MARGIN": 0.8,
     "MIN_FEATURE": 0.08,
@@ -41,7 +41,11 @@
     "TRAY_OUTER_CORNER_RADIUS": 0.5,
     "TRAY_CORNER_QUAD_SEGMENTS": 16,
     "FIXED_DETAILS_FLUSH": true,
-    "INSET_TEXT_STROKE_EXPANSION": 0.008
+    "INSET_TEXT_STROKE_EXPANSION": 0.008,
+    "TRAY_TAB_HEAD_WIDTH": 1.2,
+    "TRAY_SEAM_GAP": 0.01,
+    "TRAY_JOINT_OVERLAP": 0.01,
+    "TRAY_DOVETAIL_ENABLED": 1
   },
   "data": {
     "boundary": "data/raw/provinces_datav_reference.geojson",
@@ -671,7 +675,7 @@
       "name": "Tray_X2_Y1",
       "op": "ops/mesh.py",
       "offset": [
-        13.25,
+        13.255,
         4.968030000000001,
         0.35
       ],
@@ -691,7 +695,7 @@
       "op": "ops/mesh.py",
       "offset": [
         -10.1,
-        28.31803,
+        28.323030000000003,
         0.35
       ],
       "params": {
@@ -709,8 +713,8 @@
       "name": "Tray_X2_Y2",
       "op": "ops/mesh.py",
       "offset": [
-        13.25,
-        28.31803,
+        13.255,
+        28.323030000000003,
         0.35
       ],
       "params": {
@@ -722,6 +726,43 @@
         "slot_depth_cm": 0.2,
         "floor_cm": 0.2,
         "mesh_file": "data/processed/Tray_X2_Y2.npz"
+      }
+    },
+    {
+      "name": "A_京津冀",
+      "op": "ops/mesh.py",
+      "offset": [
+        10.636599731445312,
+        24.956894683837888,
+        0.8114263534545898
+      ],
+      "params": {
+        "group": "terrain_assembly",
+        "assembly_name": "A_京津冀",
+        "codes": [
+          130000,
+          110000,
+          120000
+        ],
+        "mesh_file": "data/processed/A_京津冀.npz"
+      }
+    },
+    {
+      "name": "A_江苏上海",
+      "op": "ops/mesh.py",
+      "offset": [
+        13.495670318603516,
+        18.96282043457031,
+        0.46167037487030027
+      ],
+      "params": {
+        "group": "terrain_assembly",
+        "assembly_name": "A_江苏上海",
+        "codes": [
+          320000,
+          310000
+        ],
+        "mesh_file": "data/processed/A_江苏上海.npz"
       }
     },
     {
@@ -763,125 +804,118 @@
         "Tray_X1_Y1",
         "Tray_X2_Y1",
         "Tray_X1_Y2",
-        "Tray_X2_Y2"
+        "Tray_X2_Y2",
+        "A_京津冀",
+        "A_江苏上海"
       ],
       "params": {
         "pieces": {
-          "flush_inlays_R5/110000_北京市": [
-            "P110000"
-          ],
-          "flush_inlays_R5/120000_天津市": [
-            "P120000"
-          ],
-          "flush_inlays_R5/130000_河北省": [
-            "P130000"
-          ],
-          "flush_inlays_R5/140000_山西省": [
+          "dovetail_combined/140000_山西省": [
             "P140000"
           ],
-          "flush_inlays_R5/150000_内蒙古自治区": [
+          "dovetail_combined/150000_内蒙古自治区": [
             "P150000"
           ],
-          "flush_inlays_R5/210000_辽宁省": [
+          "dovetail_combined/210000_辽宁省": [
             "P210000"
           ],
-          "flush_inlays_R5/220000_吉林省": [
+          "dovetail_combined/220000_吉林省": [
             "P220000"
           ],
-          "flush_inlays_R5/230000_黑龙江省": [
+          "dovetail_combined/230000_黑龙江省": [
             "P230000"
           ],
-          "flush_inlays_R5/310000_上海市": [
-            "P310000"
-          ],
-          "flush_inlays_R5/320000_江苏省": [
-            "P320000"
-          ],
-          "flush_inlays_R5/330000_浙江省": [
+          "dovetail_combined/330000_浙江省": [
             "P330000"
           ],
-          "flush_inlays_R5/340000_安徽省": [
+          "dovetail_combined/340000_安徽省": [
             "P340000"
           ],
-          "flush_inlays_R5/350000_福建省": [
+          "dovetail_combined/350000_福建省": [
             "P350000"
           ],
-          "flush_inlays_R5/360000_江西省": [
+          "dovetail_combined/360000_江西省": [
             "P360000"
           ],
-          "flush_inlays_R5/370000_山东省": [
+          "dovetail_combined/370000_山东省": [
             "P370000"
           ],
-          "flush_inlays_R5/410000_河南省": [
+          "dovetail_combined/410000_河南省": [
             "P410000"
           ],
-          "flush_inlays_R5/420000_湖北省": [
+          "dovetail_combined/420000_湖北省": [
             "P420000"
           ],
-          "flush_inlays_R5/430000_湖南省": [
+          "dovetail_combined/430000_湖南省": [
             "P430000"
           ],
-          "flush_inlays_R5/440000_广东省": [
+          "dovetail_combined/440000_广东省": [
             "P440000"
           ],
-          "flush_inlays_R5/450000_广西壮族自治区": [
+          "dovetail_combined/450000_广西壮族自治区": [
             "P450000"
           ],
-          "flush_inlays_R5/460000_海南省": [
+          "dovetail_combined/460000_海南省": [
             "P460000"
           ],
-          "flush_inlays_R5/500000_重庆市": [
+          "dovetail_combined/500000_重庆市": [
             "P500000"
           ],
-          "flush_inlays_R5/510000_四川省": [
+          "dovetail_combined/510000_四川省": [
             "P510000"
           ],
-          "flush_inlays_R5/520000_贵州省": [
+          "dovetail_combined/520000_贵州省": [
             "P520000"
           ],
-          "flush_inlays_R5/530000_云南省": [
+          "dovetail_combined/530000_云南省": [
             "P530000"
           ],
-          "flush_inlays_R5/540000_西藏自治区": [
+          "dovetail_combined/540000_西藏自治区": [
             "P540000"
           ],
-          "flush_inlays_R5/610000_陕西省": [
+          "dovetail_combined/610000_陕西省": [
             "P610000"
           ],
-          "flush_inlays_R5/620000_甘肃省": [
+          "dovetail_combined/620000_甘肃省": [
             "P620000"
           ],
-          "flush_inlays_R5/630000_青海省": [
+          "dovetail_combined/630000_青海省": [
             "P630000"
           ],
-          "flush_inlays_R5/640000_宁夏回族自治区": [
+          "dovetail_combined/640000_宁夏回族自治区": [
             "P640000"
           ],
-          "flush_inlays_R5/650000_新疆维吾尔自治区": [
+          "dovetail_combined/650000_新疆维吾尔自治区": [
             "P650000"
           ],
-          "flush_inlays_R5/710000_台湾省": [
+          "dovetail_combined/710000_台湾省": [
             "P710000"
           ],
-          "flush_inlays_R5/Tray_X1_Y1": [
+          "dovetail_combined/Tray_X1_Y1": [
             "Tray_X1_Y1"
           ],
-          "flush_inlays_R5/Tray_X2_Y1": [
+          "dovetail_combined/Tray_X2_Y1": [
             "Tray_X2_Y1"
           ],
-          "flush_inlays_R5/Tray_X1_Y2": [
+          "dovetail_combined/Tray_X1_Y2": [
             "Tray_X1_Y2"
           ],
-          "flush_inlays_R5/Tray_X2_Y2": [
+          "dovetail_combined/Tray_X2_Y2": [
             "Tray_X2_Y2"
+          ],
+          "dovetail_combined/A_京津冀": [
+            "A_京津冀"
+          ],
+          "dovetail_combined/A_江苏上海": [
+            "A_江苏上海"
           ]
         },
-        "blend_name": "china_relief_flush_inlays_R5_robust_inset.blend"
+        "blend_name": "china_relief_dovetail_combined.blend"
       }
     }
   ],
-  "prepared_fingerprint": "791e2483d29b18fd30876c79f0b48a6ad5b7ac56d0744acb107511413197a358",
-  "design_revision": "p2s_flush_robust_south_sea_inlays_r5",
+  "prepared_fingerprint": "c136b278685aee90f032208e4849bf2eb9da1e8c5d936c961c04062443776b3e",
+  "design_revision": "p2s_dovetail_01mm_combined_provinces",
   "printing": {
     "printer": "Bambu Lab P2S 0.4 nozzle",
     "material": "Bambu PLA Basic @BBL P2S",
@@ -1073,6 +1107,30 @@
       "partition_volume_tolerance_mm3": 0.01
     },
     "inset_inlay_thickness_mm": 1.2,
-    "inset_test_size_mm": 50
+    "inset_test_size_mm": 50,
+    "province_assemblies": [
+      {
+        "name": "A_京津冀",
+        "codes": [
+          130000,
+          110000,
+          120000
+        ],
+        "base_filament_id": 3,
+        "common_base_thickness_mm": 1.6
+      },
+      {
+        "name": "A_江苏上海",
+        "codes": [
+          320000,
+          310000
+        ],
+        "base_filament_id": 3,
+        "common_base_thickness_mm": 1.6
+      }
+    ],
+    "dovetail_test_half_width_mm": 20,
+    "dovetail_test_height_mm": 24,
+    "dovetail_test_thickness_mm": 4
   }
 }

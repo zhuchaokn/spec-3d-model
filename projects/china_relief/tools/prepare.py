@@ -386,11 +386,23 @@ def make_tray(poly, wells, c, fixed_regions=None, sampler=None, raised_regions=N
 
 def tray_polygon(cell, ix, iy, nx, ny, c):
     x0,y0,x1,y1=cell.bounds
-    result=cell
+    dovetail=bool(c.get('TRAY_DOVETAIL_ENABLED',0))
+    seam=c.get('TRAY_SEAM_GAP',0) if dovetail else 0
+    result=box(x0+(seam if ix else 0),y0+(seam if iy else 0),x1,y1)
     length,width,clear=c['TRAY_TAB_LENGTH'],c['TRAY_TAB_WIDTH'],c['TRAY_TAB_CLEARANCE']
     for fraction in [1/3,2/3]:
         y=y0+(y1-y0)*fraction
         x=x0+(x1-x0)*fraction
+        if dovetail:
+            head=c['TRAY_TAB_HEAD_WIDTH'];overlap=c['TRAY_JOINT_OVERLAP']
+            def joint(cx,cy,vertical):
+                pts=[(-overlap,-width/2),(0,-width/2),(length,-head/2),(length,head/2),(0,width/2),(-overlap,width/2)]
+                return Polygon([(cx+v,cy+u) if vertical else (cx+u,cy+v) for u,v in pts])
+            if ix<nx-1:result=result.union(joint(x1,y,False))
+            if iy<ny-1:result=result.union(joint(x,y1,True))
+            if ix>0:result=result.difference(joint(x0,y,False).buffer(clear,join_style=2))
+            if iy>0:result=result.difference(joint(x,y0,True).buffer(clear,join_style=2))
+            continue
         if ix<nx-1:
             result=result.union(box(x1-.01,y-width/2,x1+length,y+width/2))
         if iy<ny-1:

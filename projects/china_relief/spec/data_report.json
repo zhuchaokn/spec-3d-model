@@ -3656,117 +3656,6 @@
   ],
   "parts": [
     {
-      "object": "P110000",
-      "file": "data/processed/P110000.npz",
-      "group": "terrain",
-      "sha256": "78778cbd882d6aaf96c081849201d75f4461cfc33d74586fab34534f6b379359",
-      "vertices": 698,
-      "triangles": 1392,
-      "dimensions_mm": [
-        14.632900000000006,
-        16.311,
-        10.799571752548218
-      ],
-      "volume_mm3": 681.695547977009,
-      "bounds_mm": [
-        [
-          96.3601,
-          250.7242,
-          2.0
-        ],
-        [
-          110.99300000000001,
-          267.03520000000003,
-          12.799571752548218
-        ]
-      ],
-      "watertight": true,
-      "winding_consistent": true,
-      "zero_area_faces_removed": 0,
-      "connected_components": 1,
-      "name": "北京市",
-      "code": 110000,
-      "elevation_m": [
-        11.751611709594727,
-        1935.3514404296875
-      ],
-      "pin_count": 0
-    },
-    {
-      "object": "P120000",
-      "file": "data/processed/P120000.npz",
-      "group": "terrain",
-      "sha256": "79cdf861166e6bb697746af94ab468ff682d60e86c349f0d730d4cd768e03e97",
-      "vertices": 602,
-      "triangles": 1204,
-      "dimensions_mm": [
-        9.950199999999985,
-        17.096100000000014,
-        6.641494512557983
-      ],
-      "volume_mm3": 380.75783237194736,
-      "bounds_mm": [
-        [
-          106.96560000000002,
-          242.61880000000002,
-          2.0
-        ],
-        [
-          116.9158,
-          259.71490000000006,
-          8.641494512557983
-        ]
-      ],
-      "watertight": true,
-      "winding_consistent": true,
-      "zero_area_faces_removed": 0,
-      "connected_components": 1,
-      "name": "天津市",
-      "code": 120000,
-      "elevation_m": [
-        -25.4246883392334,
-        767.001953125
-      ],
-      "pin_count": 0
-    },
-    {
-      "object": "P130000",
-      "file": "data/processed/P130000.npz",
-      "group": "terrain",
-      "sha256": "868dfdbc6eb1d415e1ad17d157672f614a2ff7985a18044273818a9e94338de9",
-      "vertices": 5105,
-      "triangles": 10206,
-      "dimensions_mm": [
-        45.93820000000001,
-        67.96490000000003,
-        12.228527545928955
-      ],
-      "volume_mm3": 8683.399519737997,
-      "bounds_mm": [
-        [
-          83.39690000000002,
-          215.5865,
-          2.0
-        ],
-        [
-          129.3351,
-          283.5514,
-          14.228527545928955
-        ]
-      ],
-      "watertight": true,
-      "winding_consistent": true,
-      "zero_area_faces_removed": 0,
-      "connected_components": 1,
-      "name": "河北省",
-      "code": 130000,
-      "elevation_m": [
-        -12.668760299682617,
-        2336.864013671875
-      ],
-      "pin_count": 0
-    },
-    {
       "object": "P140000",
       "file": "data/processed/P140000.npz",
       "group": "terrain",
@@ -3948,80 +3837,6 @@
       "elevation_m": [
         27.578723907470703,
         1633.15625
-      ],
-      "pin_count": 0
-    },
-    {
-      "object": "P310000",
-      "file": "data/processed/P310000.npz",
-      "group": "terrain",
-      "sha256": "d0a702db35a3e66d64fafc076e624f61553f450d5194848432418115aada753c",
-      "vertices": 236,
-      "triangles": 468,
-      "dimensions_mm": [
-        9.772099999999995,
-        8.326899999999995,
-        3.9578651189804077
-      ],
-      "volume_mm3": 180.84337600753952,
-      "bounds_mm": [
-        [
-          150.78400000000002,
-          168.9908,
-          2.0
-        ],
-        [
-          160.55610000000001,
-          177.3177,
-          5.957865118980408
-        ]
-      ],
-      "watertight": true,
-      "winding_consistent": true,
-      "zero_area_faces_removed": 0,
-      "connected_components": 1,
-      "name": "上海市",
-      "code": 310000,
-      "elevation_m": [
-        0.0,
-        12.947364807128906
-      ],
-      "pin_count": 0
-    },
-    {
-      "object": "P320000",
-      "file": "data/processed/P320000.npz",
-      "group": "terrain",
-      "sha256": "6111561573e1ea7cfe78fe9e4adc77041bc172a30c856ecc5e0e89018c4ad1d6",
-      "vertices": 2733,
-      "triangles": 5462,
-      "dimensions_mm": [
-        49.7576,
-        41.74420000000001,
-        5.233407497406006
-      ],
-      "volume_mm3": 3243.0510401929723,
-      "bounds_mm": [
-        [
-          109.35730000000001,
-          168.7561,
-          2.0
-        ],
-        [
-          159.1149,
-          210.50030000000004,
-          7.233407497406006
-        ]
-      ],
-      "watertight": true,
-      "winding_consistent": true,
-      "zero_area_faces_removed": 0,
-      "connected_components": 1,
-      "name": "江苏省",
-      "code": 320000,
-      "elevation_m": [
-        -55.9743537902832,
-        371.35333251953125
       ],
       "pin_count": 0
     },
@@ -4843,15 +4658,15 @@
       "object": "Tray_X1_Y1",
       "file": "data/processed/Tray_X1_Y1.npz",
       "group": "tray",
-      "sha256": "6101e748520a9def67b1cb491debb5af6771ce1db45927e95d5ee582471f77df",
-      "vertices": 13102,
-      "triangles": 26200,
+      "sha256": "e4296a9fcde5159da0a0ab59c53504c8d1750108112f66d700dcfd82ee58c805",
+      "vertices": 13155,
+      "triangles": 26306,
       "dimensions_mm": [
         238.0,
         238.0,
         7.0
       ],
-      "volume_mm3": 211546.69457459793,
+      "volume_mm3": 211609.17915264575,
       "bounds_mm": [
         [
           -220.0,
@@ -4873,18 +4688,18 @@
       "object": "Tray_X2_Y1",
       "file": "data/processed/Tray_X2_Y1.npz",
       "group": "tray",
-      "sha256": "6ac037a3acb246fa9c4ce3ef91e111937c040ea3c09225e61ed75c03ebf67a99",
-      "vertices": 38590,
-      "triangles": 77176,
+      "sha256": "a437ce87f5963b5fd58694d1c9765b976e0f1d8e44058fb797fa5bdb8d763e6d",
+      "vertices": 38535,
+      "triangles": 77066,
       "dimensions_mm": [
-        235.0,
+        234.89999999999998,
         238.0,
         7.0
       ],
-      "volume_mm3": 202615.08649362723,
+      "volume_mm3": 202544.32340579544,
       "bounds_mm": [
         [
-          15.0,
+          15.1,
           -69.3197,
           0.0
         ],
@@ -4903,19 +4718,19 @@
       "object": "Tray_X1_Y2",
       "file": "data/processed/Tray_X1_Y2.npz",
       "group": "tray",
-      "sha256": "2a832087a230207b04b035509f10bc909d8e24ec089092f2fd1dad5a73bfb32f",
+      "sha256": "9542959ebad833a6e375d5bd4149efa5fff6f6e01d6d8e72e6b209ee19532a9a",
       "vertices": 17955,
       "triangles": 35906,
       "dimensions_mm": [
         238.0,
-        235.0,
+        234.89999999999998,
         7.0
       ],
-      "volume_mm3": 168432.74567880708,
+      "volume_mm3": 168392.2534391925,
       "bounds_mm": [
         [
           -220.0,
-          165.6803,
+          165.7803,
           0.0
         ],
         [
@@ -4933,19 +4748,19 @@
       "object": "Tray_X2_Y2",
       "file": "data/processed/Tray_X2_Y2.npz",
       "group": "tray",
-      "sha256": "e1bd92c2c0dfac1c44c0ab40ea894949a5cbf0f6c58a7cf1efa45b2f0e8b8f98",
-      "vertices": 38157,
-      "triangles": 76310,
+      "sha256": "757b60ac1d4c66c7f819a14193df79cf619132ccf4cc144fb5dee025ba3b9d2d",
+      "vertices": 38125,
+      "triangles": 76246,
       "dimensions_mm": [
-        235.0,
-        235.0,
+        234.89999999999998,
+        234.89999999999998,
         7.0
       ],
-      "volume_mm3": 177224.18306902697,
+      "volume_mm3": 177031.6249998094,
       "bounds_mm": [
         [
-          15.0,
-          165.6803,
+          15.1,
+          165.7803,
           0.0
         ],
         [
@@ -4958,9 +4773,69 @@
       "winding_consistent": true,
       "zero_area_faces_removed": 562,
       "connected_components": 1
+    },
+    {
+      "object": "A_京津冀",
+      "file": "data/processed/A_京津冀.npz",
+      "group": "terrain_assembly",
+      "sha256": "2d70bd6c9ce8b78d4026072aa936220e31afa6bec375ea47c9bd640af1c26d6b",
+      "vertices": 6401,
+      "triangles": 12806,
+      "dimensions_mm": [
+        45.938201904296875,
+        67.96488952636719,
+        12.228527069091797
+      ],
+      "volume_mm3": 9745.853668750457,
+      "bounds_mm": [
+        [
+          83.39689636230469,
+          215.5865020751953,
+          2.0
+        ],
+        [
+          129.33509826660156,
+          283.5513916015625,
+          14.228527069091797
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1
+    },
+    {
+      "object": "A_江苏上海",
+      "file": "data/processed/A_江苏上海.npz",
+      "group": "terrain_assembly",
+      "sha256": "7b9a50a44e00da2c3c55d31b307e3ad0a0fe9e660a4a47e965880f923ba9a196",
+      "vertices": 3395,
+      "triangles": 6786,
+      "dimensions_mm": [
+        51.19880676269531,
+        41.74420166015626,
+        5.233407497406006
+      ],
+      "volume_mm3": 3423.8946581267605,
+      "bounds_mm": [
+        [
+          109.3572998046875,
+          168.756103515625,
+          2.0
+        ],
+        [
+          160.5561065673828,
+          210.50030517578125,
+          7.233407497406006
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1
     }
   ],
-  "prepared_fingerprint": "791e2483d29b18fd30876c79f0b48a6ad5b7ac56d0744acb107511413197a358",
+  "prepared_fingerprint": "6b0f48f054fccebdd1686b926cccf95939f0fc2017f887c81dd8bcd61d833875",
   "limitations": [
     "Boundary CRS is assumed, not declared by provider.",
     "No nominal clearance between province cards, as requested; real FDM parts may need edge trimming.",
@@ -4970,5 +4845,7 @@
   ],
   "slot_outward_offset_mm": 0.15,
   "fixed_details_flush": true,
-  "outer_corner_radius_mm": 5.0
+  "outer_corner_radius_mm": 5.0,
+  "removable_assembly_count": 29,
+  "physical_mesh_count": 33
 }

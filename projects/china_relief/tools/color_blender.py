@@ -4,7 +4,7 @@ import json,bpy,numpy as np
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'output';PRINT=OUT/'printing'
 config=json.loads((ROOT/'model.json').read_text());manifest=json.loads((PRINT/'print_manifest.json').read_text())
 bpy.ops.wm.open_mainfile(filepath=str(OUT/config['nodes'][-1]['params']['blend_name']))
-allowed={n['name'] for n in config['nodes'] if n.get('params',{}).get('group') in ['terrain','tray']}
+allowed={n['name'] for n in config['nodes'] if n.get('params',{}).get('group') in ['terrain','terrain_assembly','tray']}
 for obj in list(bpy.data.objects):
     if obj.type=='MESH' and obj.name not in allowed:bpy.data.objects.remove(obj,do_unlink=True)
 materials={}
@@ -16,7 +16,7 @@ for obj in bpy.data.objects:
     if obj.name.startswith('P'):
         code=obj.name[1:];color=manifest['province_colors'][code]['filament_id']
     obj.data.materials.clear();obj.data.materials.append(materials[color]);obj.color=materials[color].diffuse_color
-for name,base in manifest['multicolor_bases'].items():
+for name,base in {**manifest['multicolor_bases'],**manifest.get('multicolor_assemblies',{})}.items():
     old=bpy.data.objects.get(name);bpy.data.objects.remove(old,do_unlink=True)
     for part in base['parts']:
         data=np.load(PRINT/(part['name']+'.npz'));mesh=bpy.data.meshes.new(part['name']);mesh.from_pydata((data['vertices']*.001).tolist(),[],data['faces'].tolist());mesh.update()

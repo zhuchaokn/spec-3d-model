@@ -1,8 +1,8 @@
 {
   "slice_success": true,
   "plate_count": 9,
-  "production_grams": 867.878791809082,
-  "test_plate_grams": 3.4023873805999756,
+  "production_grams": 895.8828027248383,
+  "test_plate_grams": 0,
   "inset_color_layer_indices_zero_based": [
     14,
     15,
@@ -13,23 +13,26 @@
   ],
   "new_bases_without_floating_warnings": true,
   "verified_actual_3mf_closed_meshes": 47,
-  "sha256": "2749140bcc79981e8ff4f4b08a4ae58f3d437839936b8462148ed111613615a0",
+  "sha256": "30e78c7576469de90cb58af2ca65e1ea3fda688d267f96ec11e2a82817d51fff",
   "plates": [
     {
       "plate": 1,
-      "grams": 3.4023873805999756,
+      "grams": 37.68668007850647,
       "colors": [
-        4
+        3,
+        4,
+        5,
+        6
       ],
-      "filament_changes": 0,
+      "filament_changes": 81,
       "layer_height_mm": 0.16,
-      "slice_warning": "It seems object 北京省形试配插板 has floating regions. Please re-orient the object or enable support generation.",
+      "slice_warning": "",
       "gcode_md5_matches": true,
       "no_tower": true
     },
     {
       "plate": 2,
-      "grams": 130.30860328674316,
+      "grams": 130.399019241333,
       "colors": [
         1,
         2
@@ -42,7 +45,7 @@
     },
     {
       "plate": 3,
-      "grams": 133.07271528244019,
+      "grams": 133.0513038635254,
       "colors": [
         1,
         2,
@@ -56,7 +59,7 @@
     },
     {
       "plate": 4,
-      "grams": 128.07986450195312,
+      "grams": 128.07106018066406,
       "colors": [
         1
       ],
@@ -68,7 +71,7 @@
     },
     {
       "plate": 5,
-      "grams": 129.6629319190979,
+      "grams": 129.57125425338745,
       "colors": [
         1,
         2
@@ -81,7 +84,7 @@
     },
     {
       "plate": 6,
-      "grams": 86.89031982421875,
+      "grams": 78.3980941772461,
       "colors": [
         3
       ],
@@ -93,7 +96,7 @@
     },
     {
       "plate": 7,
-      "grams": 78.10211944580078,
+      "grams": 77.49320983886719,
       "colors": [
         4
       ],
@@ -105,7 +108,7 @@
     },
     {
       "plate": 8,
-      "grams": 100.13191986083984,
+      "grams": 99.76307678222656,
       "colors": [
         5
       ],
@@ -117,7 +120,7 @@
     },
     {
       "plate": 9,
-      "grams": 81.63031768798828,
+      "grams": 81.44910430908203,
       "colors": [
         6
       ],

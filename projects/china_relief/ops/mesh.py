@@ -19,6 +19,8 @@ def run(ctx):
         collection_name=f'{ctx.params["code"]} {ctx.params["province"]}'
     elif group=='tray':
         collection_name='定位托盘'
+    elif group=='terrain_assembly':
+        collection_name=ctx.params['assembly_name']
     else:
         collection_name='试配件（先打印）'
     collection=bpy.data.collections.get(collection_name)

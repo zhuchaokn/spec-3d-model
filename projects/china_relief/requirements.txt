@@ -12,3 +12,5 @@ fonttools>=4
 
 # Physical coastlines and watertight color partitioning
 pyshp>=2.3
+
+manifold3d>=3.5.5

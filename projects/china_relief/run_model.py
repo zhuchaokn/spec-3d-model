@@ -50,6 +50,10 @@ finally:
     os.remove(temporary)
 
 bpy.context.view_layer.update()
+for group in config['printing'].get('province_assemblies',[]):
+    for code in group['codes']:
+        source=bpy.data.objects.get('P'+str(code))
+        if source:bpy.data.objects.remove(source,do_unlink=True)
 reports=[]
 for obj in scene.objects:
     if obj.type!='MESH': continue

@@ -1,0 +1,24 @@
+{
+  "slice_success": true,
+  "plate_count": 1,
+  "production_grams": 0,
+  "test_plate_grams": 2.7383487224578857,
+  "inset_color_layer_indices_zero_based": [],
+  "new_bases_without_floating_warnings": true,
+  "verified_actual_3mf_closed_meshes": 2,
+  "sha256": "c167c561d9e7632ab4c2c5450f2ade9266446be065503dc7614808bb0871a5e2",
+  "plates": [
+    {
+      "plate": 1,
+      "grams": 2.7383487224578857,
+      "colors": [
+        1
+      ],
+      "filament_changes": 0,
+      "layer_height_mm": 0.2,
+      "slice_warning": "",
+      "gcode_md5_matches": true,
+      "no_tower": true
+    }
+  ]
+}

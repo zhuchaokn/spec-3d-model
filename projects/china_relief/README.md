@@ -1,56 +1,61 @@
-# 中国地形拼图 · 齐平嵌色 / R5 圆角版
+# 中国地形拼图 · 燕尾连接 / 多色合件版
 
-2026-11-21 根据实物打印反馈修订。主图固定小岛不再凸起，南海附图岛礁、文字和示意线从凸起改为齐平多色嵌入，避免薄凸点容易被碰掉；整张底座的四个外角为 R5 mm 圆角。新结构尚未实物试打。
+2026-11-22 根据打印反馈修订：四片底座改为燕尾连接；北京、天津与河北合成一个连续实体，上海与江苏合成另一个。保留各省地形与颜色，减少独立小件。新接口及合件尚未实物试打。
 
 ## 当前交付
 
-- `output/china_relief_P2S_9plates_robust_inset_R5.3mf`：约 15 MB 的可编辑模型工程，需要在 Bambu Studio 中切片。
-- `output/china_relief_P2S_9plates_robust_inset_R5_sliced.3mf`：含全部 9 盘 G-code，约 82 MB。
-- `output/china_relief_flush_inlays_R5_robust_inset_multicolor.blend`：装配位置的彩色 Blender 模型。
-- `output/china_relief_flush_inlays_R5_robust_inset.blend`：单体底座与省份的原始几何模型。
-- `output/flush_inlays_R5/`：36 份毫米单位 STL，四片底座和 32 份省份。
+- `output/china_relief_P2S_9plates_dovetail_combined_sliced.3mf`：全部九盘已切片，约 82 MB。
+- `output/china_relief_P2S_9plates_dovetail_combined.3mf`：可编辑九盘工程，约 15 MB。
+- `output/china_relief_dovetail_combined_multicolor.blend`：装配位置的彩色模型。
+- `output/china_relief_dovetail_combined.blend`：闭合单实体模型。
+- `output/dovetail_combined/`：33 份毫米 STL，四片底座、27 份单省、两组合件。STL 不携带多色信息，多色打印使用 3MF。
+- `output/china_relief_dovetail_01mm_test_sliced.3mf`：真实燕尾轮廓裁成的灰色试配件，约 2.74 g，独立于九盘正式工程；也提供同名未切片 3MF 与公母 STL。
 
-新增 `output/china_relief_south_sea_50mm_test_sliced.3mf`：50 × 50 mm 真实南沙文字/符号小样，约 8.67 g，可先检查六层嵌色附着、字体与线条清晰度。相对上一版，这次仅第 3 盘南海底座需要更新。
-
-旧版文件保留。MakerWorld 草稿不随本次修订自动更新。
+旧版文件与南海 50 mm 深嵌色小样保留。MakerWorld 草稿不随本次修订自动更新。
 
 ## 结构与打印
 
-所有尺寸、配色和打印设置均在 `model.json`。
+尺寸、配色与设置在 `model.json`；接口说明见 `spec/joints_and_assemblies.html`。
 
-- 地图宽 430 mm，Albers 等积投影；32 份活动省份包含海南主岛、台湾主岛。地形统一放大 40 倍，各省不单独归一化。
-- 拼装底座 470 × 470 mm，分四片，最大 238 × 238 mm，适合 P2S 256 mm 打印床；内部拼接插舌位置保留。
-- 国境、海岸轮廓槽深 2 mm，槽底厚 2 mm，每侧外扩 0.15 mm。平台高 4 mm，外围边框高 7 mm、宽 5 mm；省份切片轮廓补偿 -0.08 mm。
-- 主图固定小岛与平台齐平，保持灰色。真正海洋的蓝色皮层从 Z=3.6 到 4.0 mm，邻国陆地灰色。
-- 南海附图象牙白从 Z=2.8 到 4.0 mm，共六层；与蓝色层和灰色承托层在 XY 中互斥，下方由连续灰色底材支承。线宽 1 mm，小岛符号最小宽 1 mm，标题 5.5 mm、名称/比例说明 4.5 mm，字形向外增粗 0.08 mm。调整了上下留白，全部源组件、群岛名称与 10 段示意线仍保留。
-- 外角平面圆角 R5 mm，仅切除组装底座的四个外角，不圆整每片的内接缝。
-- 保留用户保存的 9 盘：第 1 盘北京试配，第 2–5 盘四片底座，第 6–9 盘同色省份；四色各 8 省。六色编号：灰、蓝、象牙白、浅绿、黄、橙。
-- 5% gyroid、2 道墙、顶部 4 层、底部 3 层，关闭擦料塔；官方 P2S 废料槽冲刷保留。底座 0.20 mm、省份 0.16 mm 层高。
+- 地图宽 430 mm，Albers 等积投影，高程统一放大 40 倍，不对单省归一化。台湾、海南主岛仍可独立拆下。
+- 底座组装尺寸 470 × 470 mm，四片最大 238 × 238 × 7 mm，适合 P2S 256 mm 打印床；外角 R5 mm，边框保留。
+- 四条内接边各两个燕尾，共八个。颈宽 8 mm、头宽 12 mm、伸出 3 mm；母槽沿配合轮廓法线外扩 0.1 mm，直线接缝 0.1 mm。**从上方向下落入组装**，防止底座在平面方向拉开。
+- 京津冀共用 1.6 mm 连续象牙白底层：河北象牙白、北京绿色、天津黄色；江苏上海共用同厚底层：江苏象牙白、上海橙色。省份上表面高程保留。最终为 29 份活动地图件，京津沪不再单独打印。
+- 国境/海岸轮廓槽深 2 mm，底厚 2 mm，轮廓每侧外扩 0.15 mm；省份切片轮廓补偿 -0.08 mm。平台高 4 mm，边框高 7 mm、宽 5 mm。
+- 主图固定小岛齐平且灰色；真实海洋蓝色皮层 Z=3.6–4.0 mm，邻国陆地灰色。
+- 南海附图象牙白深嵌色 Z=2.8–4.0 mm，共六层，下方连续灰色承托；线宽和极小岛符号最小宽 1 mm，标题 5.5 mm，群岛名/比例说明 4.5 mm，笔画加粗 0.08 mm。全部 191 个源组件、99 个南沙组件与 10 段示意线保留。
+- 第 1 盘两组多色合件，第 2–5 盘底座，第 6–9 盘同色单省。各盘实体数 2 / 1 / 1 / 1 / 1 / 6 / 7 / 7 / 7。第 1 盘象牙白、绿、黄、橙四色，可由四槽 AMS 打印。
+- 六色编号：1 灰、2 蓝、3 象牙白、4 绿、5 黄、6 橙。5% gyroid、2 道墙、4 层顶壳/3 层底壳，**擦料塔关闭**，官方废料槽冲刷保留。底座 0.20 mm、省份 0.16 mm，首层 0.20 mm。
 
-全部 9 盘已通过 Bambu Studio 2.6 CLI 切片。四片修改后的底座无浮空警告。未改变的北京试配和湖北省仍有切片器的浮空提示，详见 `spec/flush_slice_report.json`。正式件估算 867.88 g，不含第 1 盘的 3.40 g 小样；这是切片估算，未启动打印。
+九盘已通过 Bambu Studio 2.6 CLI 切片，估算总耗材 **895.88 g**，含第 1 盘正式合件和正常换色冲刷，另加燕尾小样 2.74 g。新底座与两组合件无浮空警告；保持原样的湖北仍有原切片器浮空提示，见 `spec/flush_slice_report.json`。未发送打印任务。
 
 ## 数据与验证
 
 - 省界：[阿里 DataV](https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json)，按 GCJ-02 候选转换 WGS84；原文件未声明 CRS，不宣称权威测绘精度。再分发许可未核实，仓库不包含原始边界文件。
-- 高程：[AWS Terrain Tiles](https://registry.opendata.aws/terrain-tiles/)，实际瓦片 GMTED2010 / ETOPO1，zoom 6。署名、URL 与哈希在 `data/raw/terrain_manifest.json` 及署名文件中。
-- 海岸：[Natural Earth 1:50m land](https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-land/)，公有领域。南海附图是独立制图比例，极小符号为可打印性放大。
+- 高程：[AWS Terrain Tiles](https://registry.opendata.aws/terrain-tiles/)，实际瓦片 GMTED2010 / ETOPO1、zoom 6，URL、哈希与署名在数据清单中。
+- 海岸：[Natural Earth 1:50m land](https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-land/)，公有领域。南海附图是独立比例，极小符号为可打印性放大。
 
-`spec/flush_revision_report.json` 核对齐平高度、实际嵌色底部的灰色支承、圆角移除范围、32 省网格哈希及 9 盘布局；`spec/recess_report.json` 检查各层表面面积与槽公差；`spec/sea_color_report.json` 检查真实海陆分色。Blender 与 STL 的 36 个实体均水密、绕向正确、正体积。未截图或渲染。
+`spec/dovetail_assembly_verification.json` 核对实际底座底面与燕尾轮廓、八组配合面的实测 0.1 mm 距离、两组单连通闭合实体、保留 27 单省网格/颜色/变换、九盘数量与床面范围。合件色块上表面顶点与原始数据一致，共用底层与各色体积闭合分区。构建时仅清理体积小于 1e-6 mm³ 的内部接触薄片，不补洞或吞并有效小岛。
 
-## 本次修订复现
+Blender 和 STL 的 33 个实体均水密、绕向正确、正体积；最终 3MF 的 47 个色块网格也通过相同检查。`spec/flush_slice_report.json` 核对九盘 G-code 的 MD5、P2S 型号、层高、六层南海嵌色、5% 填充与关闭擦料塔。`spec/recess_report.json` 和 `spec/sea_color_report.json` 验证槽与真实海陆分色。`spec/slice_preservation_report.json` 按对象名核对已切片工程，确认 CLI 重编号后几何位置、颜色、设置和分盘仍与可编辑工程一致。未截图或渲染。
 
-在已有完整数据缓存和用户原 9 盘工程的项目内执行。`output/revision_backup/` 保存修订前模型、四片网格和省份哈希用于对比。不要运行旧的 `combine_plates.py` 重新摆盘。
+## 复现本次修订
+
+在项目目录、已有完整缓存和上一版九盘工程的环境内运行。`output/dovetail_backup/` 为本轮输入记录；不要用旧全量摆盘脚本覆盖用户布局。参数只在 `model.json` 修改。
 
 ```sh
-python tools/refresh_inset.py
+python tools/revise_tray_depth.py
 python tools/recolor_bases.py
-python tools/verify_recess.py
-python tools/verify_ocean_colors.py
-python tools/revise_nine_plate_project.py output/china_relief_P2S_9plates_flush_inlays_R5.3mf output/china_relief_P2S_9plates_robust_inset_R5.3mf
-python tools/verify_flush_revision.py output/china_relief_P2S_9plates_flush_inlays_R5.3mf output/china_relief_P2S_9plates_robust_inset_R5.3mf
+python tools/prepare_province_assemblies.py
+python tools/revise_nine_plate_project.py output/china_relief_P2S_9plates_robust_inset_R5.3mf output/china_relief_dovetail_bases_source.3mf
+python tools/assemble_province_project.py output/china_relief_dovetail_bases_source.3mf output/china_relief_P2S_9plates_dovetail_combined.3mf
+python tools/verify_dovetail_assemblies.py output/china_relief_P2S_9plates_robust_inset_R5.3mf output/china_relief_P2S_9plates_dovetail_combined.3mf
 blender --background --factory-startup --python run_model.py
 blender --background --python tools/color_blender.py
 python tools/verify_exports.py
+python tools/verify_recess.py
+python tools/verify_ocean_colors.py
+python tools/prepare_dovetail_coupon.py
 ```
 
-用安装的 Bambu Studio CLI 对新工程执行 `--slice 0 --export-3mf`，再通过 `tools/finalize_revision_slice.py` 规范化 P2S 元数据并验证全部 G-code。安装依赖见 `requirements.txt`。没有缓存时先按来源清单获取原始文件，再运行 `tools/prepare.py` 和 `tools/prepare_ocean_mask.py`；全量重建受上游数据和字体版本影响，不用于替换本次已验证的省份。
+用 Bambu Studio CLI 对正式工程执行 `--slice 0 --export-3mf`，再用 `tools/finalize_revision_slice.py native.3mf final_sliced.3mf` 规范化 P2S 元数据并验证 G-code。燕尾小样使用相同流程，最后加 `--dovetail-coupon`。依赖见 `requirements.txt`。没有缓存时按来源清单获取数据、准备基础网格后，再执行本次修订链；全量生成受数据与字体版本影响，不能保证与已验证缓存逐字节相同。
