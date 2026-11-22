@@ -154,10 +154,30 @@ def smooth_max(a,b,width):
     return max(a,b)+(width-abs(a-b))**3/(6*width**2)
 
 
+def rounded_shoulder(base, radius, ring_top, lip_base, lower_round, shoulder_round):
+    """One circular inset shoulder, straight runout, and tangent lip round."""
+    rise=lip_base-ring_top;runout=radius-base;length=math.hypot(runout,rise)
+    ux=runout/length;uz=rise/length
+    small_t=lower_round*math.tan(math.acos(uz)/2)
+    big_t=shoulder_round*(1-uz)/ux
+    assert rise>0 and runout>0 and length>small_t+big_t
+    z0=ring_top-big_t
+    big_end=(base+big_t*ux,ring_top+big_t*uz)
+    small_start=(radius-small_t*ux,lip_base-small_t*uz)
+    small_center=(radius-lower_round,lip_base+small_t)
+    def half(z):
+        if z<=z0:return base
+        if z<=big_end[1]:return base+shoulder_round-math.sqrt(max(0,shoulder_round**2-(z-z0)**2))
+        if z<=small_start[1]:return big_end[0]+(z-big_end[1])*ux/uz
+        if z<=small_center[1]:return small_center[0]+math.sqrt(max(0,lower_round**2-(z-small_center[1])**2))
+        return radius
+    return half,[z0,big_end[1],small_start[1],small_center[1]]
+
+
 def curved_bore(name, body, a,b,edge,extension,escape,clearance,n,m,center,merge):
     """Round an oval bore into the measured curved end faces, not fixed planes.
 
-    The inner quarter-curve matches the hole wall and the local exterior
+    The inner circular arc matches the hole wall and the local exterior
     slope. Past its tangent point the cutter rises outside the body, avoiding
     the exposed cylinder/quarter-round cusp of a planar-mouth cutter.
     """
@@ -177,14 +197,24 @@ def curved_bore(name, body, a,b,edge,extension,escape,clearance,n,m,center,merge
         assert abs(normal.y)>1e-6,("Vertical bore collar",angle,offset,side)
         slope=-(normal.x*nx+normal.z*nz)/(length*side*normal.y)
         return y,slope
-    controls=[]
+    collars=[]
     for j in range(n):
         angle=2*math.pi*j/n;ends=[]
         for side in (-1,1):
-            y,slope=front(angle,edge,side,with_slope=True)
-            k=4*(math.sqrt(2)-1)/3
-            ends.append([(0,y-edge),(0,y-edge+k*edge),(edge-k*edge,y-slope*k*edge),(edge,y+clearance)])
-        controls.append(ends)
+            offset=edge
+            # Fit a true constant-radius arc to the local front tangent.
+            # Forcing a quarter Bezier to a tilted face can tighten its radius
+            # near the exit, even if both endpoint tangents nominally agree.
+            for _ in range(12):
+                y,slope=front(angle,offset,side,with_slope=True)
+                target=edge*(1-slope/math.hypot(1,slope))
+                offset=(offset+target)/2
+            y,slope=front(angle,offset,side,with_slope=True)
+            end_angle=math.atan2(1,-slope)
+            offset=edge*(1+math.cos(end_angle))
+            y=front(angle,offset,side)
+            ends.append((offset,y-edge*math.sin(end_angle)+clearance,end_angle))
+        collars.append(ends)
     # End cap -> escape -> adaptive fillet -> bore wall -> opposite fillet.
     layout=[(-1,"cap",0)]
     layout.extend((-1,"escape",1-j/m) for j in range(m))
@@ -196,11 +226,14 @@ def curved_bore(name, body, a,b,edge,extension,escape,clearance,n,m,center,merge
     for side,kind,t in layout:
         for j in range(n):
             angle=2*math.pi*j/n
-            if kind=="round":offset,y=bezier_point(controls[j][0 if side<0 else 1],t)
+            end_offset,center_y,end_angle=collars[j][0 if side<0 else 1]
+            if kind=="round":
+                arc_angle=math.pi+(end_angle-math.pi)*t
+                offset=edge*(1+math.cos(arc_angle));y=center_y+edge*math.sin(arc_angle)
             elif kind=="escape":
-                offset=edge*(1+t)
+                offset=end_offset+edge*t
                 y=front(angle,offset,side)+clearance+escape*t*t
-            else:offset=2*edge;y=extension
+            else:offset=end_offset+edge;y=extension
             x,z=ellipse_point(a,b,angle,offset)
             verts.append((x,side*y,z))
     faces.append(tuple(reversed(range(n))))

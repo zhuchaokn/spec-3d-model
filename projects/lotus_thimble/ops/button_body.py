@@ -36,8 +36,10 @@ def run(ctx):
     big_end=(hw+big_t*ux,rr+big_t*uz)
     small_start=(pr-small_t*ux,lipbase-small_t*uz)
     small_center=(pr-small,lipbase+small_t)
+    side_half,side_levels=g["rounded_shoulder"](p["side_shoulder_base"],pr,rr,lipbase,small,shoulder)
+    assert side_levels[0]>=p["support_curves"][-1][-1][1],"Lower band must meet before the inset shoulder"
     def x_half(z):
-        return px(p["support_curves"],z)
+        return px(p["support_curves"],z) if z<=p["support_curves"][-1][-1][1] else side_half(z)
     def y_half(z):
         if z<=zs: return hw
         if z<=big_end[1]: return yc-math.sqrt(max(0,shoulder**2-(z-zs)**2))
@@ -48,6 +50,7 @@ def run(ctx):
     levels={-p["step"],0,zs,big_end[1],small_start[1],small_center[1],lipbase,loft_top,p["blend_start"],p["blend_end"],rr,
             p["junction_blend_start"],p["junction_blend_full"]}
     levels.update(c[-1][1] for c in p["support_curves"])
+    levels.update(side_levels)
     steps=math.ceil(loft_top/p["step"])
     levels.update(loft_top*j/steps for j in range(steps+1))
     levels=sorted(z for z in levels if -p["step"]<=z<=loft_top)

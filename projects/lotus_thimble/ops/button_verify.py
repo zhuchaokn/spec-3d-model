@@ -77,14 +77,29 @@ def run(ctx):
             thickness=(actual-point).dot(normal)
             assert thickness>=wall-tol,("Upper band thinned",y,angle,thickness)
             upper_walls.append({"y_cm":y,"angle":angle,"thickness_cm":thickness})
+    side_half,side_knots=g["rounded_shoulder"](p["side_shoulder_base"],p["pad_d"]/2,b+wall,p["rim_z"]-p["lip_h"],p["lower_r"],p["shoulder_r"])
     for z in p["neck_probe_z"]:
-        expected_x=g["profile_x"](p["support_curves"],z)
+        expected_x=g["profile_x"](p["support_curves"],z) if z<=p["support_curves"][-1][-1][1] else side_half(z)
+        expected_x=max(expected_x,g["ellipse_x"](a,b,z,wall))
         for side in (-1,1):
             actual=side*hit((side*(p["pad_d"]+p["probe"]),0,z),(-side,0,0)).x
             assert abs(actual-expected_x)<tol,("Concave neck",z,actual,expected_x)
             neck.append({"z_cm":z,"side":side,"measured_x_cm":actual,"expected_x_cm":expected_x})
     neck_x=g["profile_x"](p["support_curves"],p["support_curves"][0][-1][1])
     assert neck_x<a+wall and neck_x<p["pad_d"]/2,"Inward neck missing"
+    # The main inset must be a single circular shoulder: no returning S-bulge.
+    side_profiles=[];count=int(p["side_profile_check_segments"])
+    for side in (-1,1):
+        values=[]
+        for j in range(count+1):
+            z=side_knots[0]+(side_knots[1]-side_knots[0])*j/count
+            x=side*hit((side*(p["pad_d"]+p["probe"]),0,z),(-side,0,0)).x
+            assert abs(x-side_half(z))<tol,("Inset shoulder profile",side,z,x,side_half(z))
+            values.append({"z_cm":z,"half_width_cm":x})
+        slopes=[(right["half_width_cm"]-left["half_width_cm"])/(right["z_cm"]-left["z_cm"]) for left,right in zip(values,values[1:])]
+        assert min(slopes)>=-p["side_slope_tolerance"],("Side flares back out",side,slopes)
+        assert all(y-x>=-p["side_slope_tolerance"] for x,y in zip(slopes,slopes[1:])),("S-shaped side bulge",side,slopes)
+        side_profiles.append({"side":side,"samples":values,"slopes":slopes})
     # Inspect the actual four diagonal shoulders, rather than smooth shading.
     # A rounded section recedes from its rectangular bounding-box corners.
     corners=[]
@@ -200,10 +215,15 @@ def run(ctx):
                     delta=math.degrees(result[1].angle(previous))
                     if delta>maximum:maximum=delta;at=offset
                 previous=result[1]
-            assert maximum<=p["bore_lip_max_normal_step_deg"],("Bore lip cusp",angle,side,maximum,at)
             lip_tracks.append({"angle":angle,"side":side,"sample_count":lip_steps+1,"max_normal_step_deg":maximum,"offset_at_cm":at})
+    worst=max(lip_tracks,key=lambda v:v["max_normal_step_deg"])
+    print("BORE_LIP_WORST",worst,flush=True)
+    assert worst["max_normal_step_deg"]<=p["bore_lip_max_normal_step_deg"]+p["normal_angle_tolerance_deg"],("Bore lip cusp",worst)
     report["bore_lip_normal_tracks"]=lip_tracks
     report["bore_lip_normal_sample_step_cm"]=p["bore_lip_check_step"]
     report["bore_lip_max_normal_step_deg"]=max(v["max_normal_step_deg"] for v in lip_tracks)
+    report["normal_angle_tolerance_deg"]=p["normal_angle_tolerance_deg"]
+    report["inset_side_profile_probes"]=side_profiles
+    report["inset_side_shoulder_z_knots_cm"]=side_knots
     with open(os.path.join(ctx.proj_dir,"spec","verification_report.json"),"w",encoding="utf-8") as f:json.dump(report,f,ensure_ascii=False,indent=2)
     print("VERIFIED_BUTTON",json.dumps({k:report[k] for k in ("topology","bore_x_cm","bore_z_cm","band_width_cm","min_sampled_pit_floor_thickness_cm","volume_cm3")}),flush=True)

@@ -36,8 +36,8 @@
     "MERGE_DISTANCE": 1e-06,
     "CHECK_TOLERANCE": 0.002,
     "MIN_TOP_LAND": ".14*PAD_SCALE",
-    "NECK_X": 0.875,
-    "NECK_Z": 0.5375,
+    "NECK_X": 0.82,
+    "NECK_Z": 0.625,
     "THREAD_WIDTH": 0.06,
     "THREAD_CROSS_RAISE": 0.015,
     "THREAD_CROSS_SPAN": 0.2,
@@ -50,7 +50,7 @@
     "JUNCTION_BLEND_START": 0.1,
     "JUNCTION_BLEND_FULL": 0.4,
     "LOFT_SEGMENTS": 768,
-    "JUNCTION_SMOOTH_SIGMA": 0.08,
+    "JUNCTION_SMOOTH_SIGMA": 0.1,
     "JUNCTION_SMOOTH_FADE_START": "RING_Z",
     "JUNCTION_SMOOTH_END": "RIM_Z-LIP_H",
     "JUNCTION_CHECK_STEP": 0.005,
@@ -58,10 +58,13 @@
     "JUNCTION_CHECK_TOP": 1.1,
     "JUNCTION_MAX_NORMAL_STEP_DEG": 5,
     "BORE_LIP_CLEARANCE": 0.0001,
-    "BORE_ARC_SEGMENTS": 64,
+    "BORE_ARC_SEGMENTS": 96,
     "BORE_LIP_CHECK_SEGMENTS": 128,
     "BORE_LIP_CHECK_STEP": 0.0005,
-    "BORE_LIP_MAX_NORMAL_STEP_DEG": 5
+    "BORE_LIP_MAX_NORMAL_STEP_DEG": 5,
+    "SIDE_PROFILE_CHECK_SEGMENTS": 32,
+    "SIDE_SLOPE_TOLERANCE": 0.005,
+    "NORMAL_ANGLE_TOLERANCE_DEG": 0.01
   },
   "nodes": [
     {
@@ -119,29 +122,11 @@
             ],
             [
               "NECK_X",
-              0.475
+              0.5625
             ],
             [
               "NECK_X",
               "NECK_Z"
-            ]
-          ],
-          [
-            [
-              "NECK_X",
-              "NECK_Z"
-            ],
-            [
-              "NECK_X",
-              0.7625
-            ],
-            [
-              "PAD_D/2",
-              0.8875
-            ],
-            [
-              "PAD_D/2",
-              "RIM_Z-LIP_H"
             ]
           ]
         ],
@@ -154,7 +139,8 @@
         "junction_smooth_fade_start": "JUNCTION_SMOOTH_FADE_START",
         "junction_smooth_end": "JUNCTION_SMOOTH_END",
         "bore_lip_clearance": "BORE_LIP_CLEARANCE",
-        "bore_arc_segments": "BORE_ARC_SEGMENTS"
+        "bore_arc_segments": "BORE_ARC_SEGMENTS",
+        "side_shoulder_base": "NECK_X"
       }
     },
     {
@@ -283,29 +269,11 @@
             ],
             [
               "NECK_X",
-              0.475
+              0.5625
             ],
             [
               "NECK_X",
               "NECK_Z"
-            ]
-          ],
-          [
-            [
-              "NECK_X",
-              "NECK_Z"
-            ],
-            [
-              "NECK_X",
-              0.7625
-            ],
-            [
-              "PAD_D/2",
-              0.8875
-            ],
-            [
-              "PAD_D/2",
-              "RIM_Z-LIP_H"
             ]
           ]
         ],
@@ -372,7 +340,11 @@
         "bore_lip_check_start": "BORE_EDGE_R*.75",
         "bore_lip_check_end": "BORE_EDGE_R*1.5",
         "bore_lip_check_step": "BORE_LIP_CHECK_STEP",
-        "bore_lip_max_normal_step_deg": "BORE_LIP_MAX_NORMAL_STEP_DEG"
+        "bore_lip_max_normal_step_deg": "BORE_LIP_MAX_NORMAL_STEP_DEG",
+        "side_shoulder_base": "NECK_X",
+        "side_profile_check_segments": "SIDE_PROFILE_CHECK_SEGMENTS",
+        "side_slope_tolerance": "SIDE_SLOPE_TOLERANCE",
+        "normal_angle_tolerance_deg": "NORMAL_ANGLE_TOLERANCE_DEG"
       }
     },
     {

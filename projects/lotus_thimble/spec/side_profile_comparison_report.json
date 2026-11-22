@@ -1,0 +1,144 @@
+{
+  "units": "cm",
+  "baseline_commit": "792123a",
+  "method": "Actual BVH axial silhouettes, identical probe positions before/after, no screenshots.",
+  "before": {
+    "side_x": [
+      {
+        "z_cm": 0.625,
+        "half_width_cm": 0.8865373209118843
+      },
+      {
+        "z_cm": 0.7,
+        "half_width_cm": 0.9142652153968811
+      },
+      {
+        "z_cm": 0.8,
+        "half_width_cm": 0.9700438007712364
+      },
+      {
+        "z_cm": 0.9,
+        "half_width_cm": 1.0303668677806854
+      },
+      {
+        "z_cm": 1,
+        "half_width_cm": 1.0762911289930344
+      },
+      {
+        "z_cm": 1.076,
+        "half_width_cm": 1.095305010676384
+      },
+      {
+        "z_cm": 1.137857142857,
+        "half_width_cm": 1.0999999940395355
+      }
+    ],
+    "reference_y": [
+      {
+        "z_cm": 0.85,
+        "half_width_cm": 0.7466692477464676
+      },
+      {
+        "z_cm": 0.9,
+        "half_width_cm": 0.7746083661913872
+      },
+      {
+        "z_cm": 1,
+        "half_width_cm": 0.8606834337115288
+      },
+      {
+        "z_cm": 1.1,
+        "half_width_cm": 1.025352068245411
+      },
+      {
+        "z_cm": 1.2,
+        "half_width_cm": 1.0999999940395355
+      }
+    ]
+  },
+  "after": {
+    "side_x": [
+      {
+        "z_cm": 0.625,
+        "half_width_cm": 0.8199999108910561
+      },
+      {
+        "z_cm": 0.7,
+        "half_width_cm": 0.8200373500585556
+      },
+      {
+        "z_cm": 0.8,
+        "half_width_cm": 0.8319851011037827
+      },
+      {
+        "z_cm": 0.9,
+        "half_width_cm": 0.8672032505273819
+      },
+      {
+        "z_cm": 1,
+        "half_width_cm": 0.9324789047241211
+      },
+      {
+        "z_cm": 1.076,
+        "half_width_cm": 1.014622300863266
+      },
+      {
+        "z_cm": 1.137857142857,
+        "half_width_cm": 1.091196946799755
+      }
+    ],
+    "reference_y": [
+      {
+        "z_cm": 0.85,
+        "half_width_cm": 0.7466692477464676
+      },
+      {
+        "z_cm": 0.9,
+        "half_width_cm": 0.7746081799268723
+      },
+      {
+        "z_cm": 1,
+        "half_width_cm": 0.8606834337115288
+      },
+      {
+        "z_cm": 1.1,
+        "half_width_cm": 1.0253522545099258
+      },
+      {
+        "z_cm": 1.2,
+        "half_width_cm": 1.0999999940395355
+      }
+    ]
+  },
+  "side_x_inset_cm": [
+    {
+      "z_cm": 0.625,
+      "inset_cm": 0.06653741002082825
+    },
+    {
+      "z_cm": 0.7,
+      "inset_cm": 0.0942278653383255
+    },
+    {
+      "z_cm": 0.8,
+      "inset_cm": 0.13805869966745377
+    },
+    {
+      "z_cm": 0.9,
+      "inset_cm": 0.16316361725330353
+    },
+    {
+      "z_cm": 1,
+      "inset_cm": 0.14381222426891327
+    },
+    {
+      "z_cm": 1.076,
+      "inset_cm": 0.08068270981311798
+    },
+    {
+      "z_cm": 1.137857142857,
+      "inset_cm": 0.008803047239780426
+    }
+  ],
+  "reference_y_max_change_cm": 1.862645149230957e-07
+}
