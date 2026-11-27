@@ -1,0 +1,52 @@
+{
+  "filled_regions": 2,
+  "assembly_bottom_holes": 0,
+  "assembly_euler_number": 2,
+  "assembly_connected_solids": 1,
+  "common_base_mm": 1.6,
+  "enclave_base_floor_mm": 2.0,
+  "fixed_posts_removed": true,
+  "retained_hebei_vertex_error_mm": 0.0,
+  "unchanged_objects": [
+    "450000_广西壮族自治区",
+    "420000_湖北省",
+    "Tray_X1_Y1",
+    "Tray_X2_Y1",
+    "Tray_X1_Y2",
+    "370000_山东省",
+    "330000_浙江省",
+    "710000_台湾省",
+    "510000_四川省",
+    "540000_西藏自治区",
+    "620000_甘肃省",
+    "440000_广东省",
+    "630000_青海省",
+    "530000_云南省",
+    "610000_陕西省",
+    "430000_湖南省",
+    "150000_内蒙古自治区",
+    "230000_黑龙江省",
+    "350000_福建省",
+    "220000_吉林省",
+    "340000_安徽省",
+    "140000_山西省",
+    "500000_重庆市",
+    "650000_新疆维吾尔自治区",
+    "210000_辽宁省",
+    "410000_河南省",
+    "520000_贵州省",
+    "360000_江西省",
+    "640000_宁夏回族自治区",
+    "460000_海南省",
+    "A_江苏上海"
+  ],
+  "changed_objects": [
+    "A_京津冀",
+    "Tray_X2_Y2"
+  ],
+  "changed_plates": [
+    1,
+    5
+  ],
+  "all_original_plate_assignment_preserved": true
+}

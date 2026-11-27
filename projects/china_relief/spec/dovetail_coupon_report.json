@@ -1,0 +1,26 @@
+{
+  "source": "actual Tray_X1_Y1 / Tray_X2_Y1 outlines",
+  "profile_clearance_mm": 0.2,
+  "seam_gap_mm": 0.1,
+  "parts": [
+    {
+      "name": "燕尾小样_公",
+      "dimensions_mm": [
+        31.999919682745738,
+        24.0,
+        4.0
+      ],
+      "watertight": true
+    },
+    {
+      "name": "燕尾小样_母",
+      "dimensions_mm": [
+        19.9,
+        24.0,
+        4.0
+      ],
+      "watertight": true
+    }
+  ],
+  "separate_from_production_plates": true
+}

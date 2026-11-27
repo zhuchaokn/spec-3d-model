@@ -1,0 +1,83 @@
+{
+  "A_京津冀": {
+    "parts": [
+      {
+        "name": "A_京津冀_共用底层",
+        "color": 3,
+        "volume_mm3": 2748.940791264,
+        "watertight": true,
+        "triangles": 2704
+      },
+      {
+        "name": "A_京津冀_P130000",
+        "color": 3,
+        "volume_mm3": 6339.538422125742,
+        "watertight": true,
+        "triangles": 10340
+      },
+      {
+        "name": "A_京津冀_P110000",
+        "color": 4,
+        "volume_mm3": 473.75799695300884,
+        "watertight": true,
+        "triangles": 1370
+      },
+      {
+        "name": "A_京津冀_P120000",
+        "color": 5,
+        "volume_mm3": 227.40303623594505,
+        "watertight": true,
+        "triangles": 1188
+      }
+    ],
+    "codes": [
+      130000,
+      110000,
+      120000
+    ],
+    "common_base_thickness_mm": 1.6,
+    "connected_components": 1,
+    "top_vertex_error_mm": {
+      "130000": 0.0,
+      "110000": 0.0,
+      "120000": 0.0
+    },
+    "regularized_contact_sheet_volume_mm3": 8.29461508070987e-07
+  },
+  "A_江苏上海": {
+    "parts": [
+      {
+        "name": "A_江苏上海_共用底层",
+        "color": 3,
+        "volume_mm3": 1386.2171538319992,
+        "watertight": true,
+        "triangles": 1824
+      },
+      {
+        "name": "A_江苏上海_P320000",
+        "color": 3,
+        "volume_mm3": 1930.5160009769686,
+        "watertight": true,
+        "triangles": 5284
+      },
+      {
+        "name": "A_江苏上海_P310000",
+        "color": 6,
+        "volume_mm3": 107.16126139153978,
+        "watertight": true,
+        "triangles": 434
+      }
+    ],
+    "codes": [
+      320000,
+      310000
+    ],
+    "common_base_thickness_mm": 1.6,
+    "connected_components": 1,
+    "top_vertex_error_mm": {
+      "320000": 0.0,
+      "310000": 0.0
+    },
+    "regularized_contact_sheet_volume_mm3": 1.323434564900102e-07
+  }
+}

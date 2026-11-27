@@ -1,0 +1,402 @@
+{
+  "blender_version": "4.5.1 LTS",
+  "mesh_count": 33,
+  "parts": [
+    {
+      "object": "P140000",
+      "dimensions_mm": [
+        30.01750074326992,
+        63.705697655677795,
+        13.97698000073433
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 9956.936253679467
+    },
+    {
+      "object": "P150000",
+      "dimensions_mm": [
+        189.4795000553131,
+        166.0533994436264,
+        15.292058698832989
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 68225.7861712999
+    },
+    {
+      "object": "P210000",
+      "dimensions_mm": [
+        49.87030103802681,
+        50.48700049519539,
+        7.957433350384235
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 5550.243187943717
+    },
+    {
+      "object": "P220000",
+      "dimensions_mm": [
+        71.24300301074982,
+        50.66800117492676,
+        12.581424787640572
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 8121.492180304989
+    },
+    {
+      "object": "P230000",
+      "dimensions_mm": [
+        96.27100080251694,
+        88.509701192379,
+        9.724078699946404
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 18008.89995685599
+    },
+    {
+      "object": "P330000",
+      "dimensions_mm": [
+        33.64089876413345,
+        38.965001702308655,
+        9.477648884057999
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 4153.515974969943
+    },
+    {
+      "object": "P340000",
+      "dimensions_mm": [
+        41.467100381851196,
+        50.40239915251732,
+        9.134653955698013
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 4826.716695060407
+    },
+    {
+      "object": "P350000",
+      "dimensions_mm": [
+        37.946999073028564,
+        48.31250011920929,
+        11.00604422390461
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 5506.052308447804
+    },
+    {
+      "object": "P360000",
+      "dimensions_mm": [
+        41.46039858460426,
+        57.203300297260284,
+        11.00604422390461
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 6363.414160620754
+    },
+    {
+      "object": "P370000",
+      "dimensions_mm": [
+        58.15289914608002,
+        39.42450135946274,
+        6.87125651165843
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 5279.031464637228
+    },
+    {
+      "object": "P410000",
+      "dimensions_mm": [
+        50.96210166811943,
+        48.58430102467537,
+        10.605758056044579
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 6278.79464799665
+    },
+    {
+      "object": "P420000",
+      "dimensions_mm": [
+        65.80179929733276,
+        42.05679893493652,
+        12.987255118787289
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 8029.02822743465
+    },
+    {
+      "object": "P430000",
+      "dimensions_mm": [
+        48.530399799346924,
+        53.97450178861618,
+        10.36000344902277
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 8706.187070000522
+    },
+    {
+      "object": "P440000",
+      "dimensions_mm": [
+        67.29629635810852,
+        53.8611002266407,
+        9.662416763603687
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 6676.54467987566
+    },
+    {
+      "object": "P450000",
+      "dimensions_mm": [
+        68.38739663362503,
+        49.858398735523224,
+        10.256903246045113
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 9977.3385420774
+    },
+    {
+      "object": "P460000",
+      "dimensions_mm": [
+        23.377500474452972,
+        20.01110091805458,
+        8.697138167917728
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 1332.7358111399608
+    },
+    {
+      "object": "P500000",
+      "dimensions_mm": [
+        40.938399732112885,
+        40.12160003185272,
+        12.987255118787289
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 4265.050845122518
+    },
+    {
+      "object": "P510000",
+      "dimensions_mm": [
+        92.06119924783707,
+        83.07070285081863,
+        25.220731273293495
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 50529.79245025417
+    },
+    {
+      "object": "P520000",
+      "dimensions_mm": [
+        52.271001040935516,
+        45.862700790166855,
+        13.61224427819252
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 10961.1877872474
+    },
+    {
+      "object": "P530000",
+      "dimensions_mm": [
+        78.65440100431442,
+        80.5739015340805,
+        24.864621460437775
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 32175.072052774285
+    },
+    {
+      "object": "P540000",
+      "dimensions_mm": [
+        166.56340658664703,
+        103.370800614357,
+        33.87269005179405
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 197304.63413848344
+    },
+    {
+      "object": "P610000",
+      "dimensions_mm": [
+        44.98330131173134,
+        79.77259904146194,
+        14.621341601014137
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 12892.526109581177
+    },
+    {
+      "object": "P620000",
+      "dimensions_mm": [
+        124.54269826412201,
+        104.64390367269516,
+        22.57351018488407
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 39093.3812408727
+    },
+    {
+      "object": "P630000",
+      "dimensions_mm": [
+        108.36809873580933,
+        78.32159847021103,
+        25.881674140691757
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 101284.24015401232
+    },
+    {
+      "object": "P640000",
+      "dimensions_mm": [
+        25.941399857401848,
+        41.690099984407425,
+        15.186626464128494
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 3901.43630430197
+    },
+    {
+      "object": "P650000",
+      "dimensions_mm": [
+        171.71210050582886,
+        133.8091939687729,
+        32.33813866972923
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 139692.2963377108
+    },
+    {
+      "object": "P710000",
+      "dimensions_mm": [
+        14.996999874711037,
+        34.245800226926804,
+        16.446182504296303
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 1961.846246553134
+    },
+    {
+      "object": "Tray_X1_Y1",
+      "dimensions_mm": [
+        246.99991941452026,
+        246.99991941452026,
+        7.000000216066837
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 212508.12137793264
+    },
+    {
+      "object": "Tray_X2_Y1",
+      "dimensions_mm": [
+        234.89999771118164,
+        246.99991941452026,
+        7.000000216066837
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 202485.88653932358
+    },
+    {
+      "object": "Tray_X1_Y2",
+      "dimensions_mm": [
+        246.99991941452026,
+        234.89999771118164,
+        7.000000216066837
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 168548.43617923785
+    },
+    {
+      "object": "Tray_X2_Y2",
+      "dimensions_mm": [
+        234.89999771118164,
+        234.89999771118164,
+        7.000000216066837
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 175911.46432395655
+    },
+    {
+      "object": "A_京津冀",
+      "dimensions_mm": [
+        45.93820124864578,
+        67.96488910913467,
+        12.2285271063447
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 9789.641167517433
+    },
+    {
+      "object": "A_江苏上海",
+      "dimensions_mm": [
+        51.1988066136837,
+        41.74420237541199,
+        5.233407486230135
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_edges": 0,
+      "volume_mm3": 3423.8946466474927
+    }
+  ]
+}

@@ -1,0 +1,4875 @@
+{
+  "date": "2026-11-15",
+  "design_revision": "p2s_four_base_tiles_430mm_map_40x_relief",
+  "map_dimensions_mm": [
+    430,
+    395.68033254831505
+  ],
+  "tray_dimensions_mm": [
+    470.0,
+    470.0
+  ],
+  "tray_bounds_cm": [
+    -22.0,
+    -6.93197,
+    25.0,
+    40.06803
+  ],
+  "tray_grid": [
+    2,
+    2
+  ],
+  "horizontal_scale_denominator": 11239324.910717035,
+  "vertical_exaggeration": 40,
+  "elevation_datum_m": -200,
+  "sampled_elevation_range_m": [
+    -153.10707092285156,
+    8418.5087890625
+  ],
+  "max_assembly_height_mm": 35.87269067764282,
+  "province_count": 34,
+  "removable_province_count": 32,
+  "fixed_province_codes": [
+    810000,
+    820000
+  ],
+  "terrain_part_count": 32,
+  "tray_part_count": 4,
+  "fit_coupon_count": 0,
+  "shared_recess_depth_mm": 2.0,
+  "recess_floor_thickness_mm": 2.0,
+  "recess_shape": "union_of_province_footprints",
+  "recess_area_mm2": 75805.86704761993,
+  "card_outside_recess_mm2": 0.0,
+  "frame_height_mm": 7.0,
+  "frame_rise_above_platform_mm": 3.0,
+  "inset": {
+    "source_component_count": 191,
+    "dash_count": 10,
+    "hainan_source_component_count": 133,
+    "island_symbol_count": 170,
+    "enlarged_small_island_count": 168,
+    "projection_cm_per_m": 3.9175669913463e-06,
+    "panel_bounds_cm": [
+      15.5,
+      -5.43197,
+      23.5,
+      6.56803
+    ],
+    "labels": [
+      "南海诸岛",
+      "附图比例不同",
+      "东沙群岛",
+      "西沙群岛",
+      "中沙群岛",
+      "南沙群岛"
+    ],
+    "records": [
+      {
+        "code": 350000,
+        "source_component": 0,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          118.230636,
+          24.401228,
+          118.273752,
+          24.445911
+        ]
+      },
+      {
+        "code": 350000,
+        "source_component": 1,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          118.282375,
+          24.382152,
+          118.477012,
+          24.514538
+        ]
+      },
+      {
+        "code": 350000,
+        "source_component": 2,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          118.068644,
+          24.420847,
+          118.204151,
+          24.560814
+        ]
+      },
+      {
+        "code": 350000,
+        "source_component": 3,
+        "kind": "context",
+        "source_bounds_lonlat": [
+          115.855574,
+          23.550379,
+          120.461568,
+          28.312047
+        ]
+      },
+      {
+        "code": 360000,
+        "source_component": 0,
+        "kind": "context",
+        "source_bounds_lonlat": [
+          113.579062,
+          24.48622,
+          118.480091,
+          30.076734
+        ]
+      },
+      {
+        "code": 430000,
+        "source_component": 0,
+        "kind": "context",
+        "source_bounds_lonlat": [
+          108.79075,
+          24.637538,
+          114.2529,
+          30.126439
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 0,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          110.556648,
+          20.32734,
+          110.593604,
+          20.381205
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 1,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          110.405127,
+          20.677685,
+          110.437772,
+          20.710157
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 2,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          110.548641,
+          20.860106,
+          110.646575,
+          20.948998
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 3,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          110.201251,
+          20.916578,
+          110.560344,
+          21.096476
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 4,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          110.431612,
+          21.083633,
+          110.632409,
+          21.213125
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 5,
+        "kind": "context",
+        "source_bounds_lonlat": [
+          109.655529,
+          20.211691,
+          117.192778,
+          25.514031
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 6,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.530733,
+          21.583667,
+          112.66624,
+          21.714386
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 7,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.435263,
+          21.648763,
+          112.458669,
+          21.68992
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 8,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.70566,
+          21.564189,
+          112.876275,
+          21.776644
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 9,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.136818,
+          21.831653,
+          113.203955,
+          21.876644
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 10,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.007471,
+          21.847762,
+          113.045659,
+          21.882753
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 11,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          116.749302,
+          20.582471,
+          116.934084,
+          20.780674
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 12,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          115.926407,
+          20.919373,
+          116.000936,
+          20.99985
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 13,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          115.943037,
+          21.02052,
+          116.067457,
+          21.12439
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 14,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.71888,
+          21.922177,
+          113.742902,
+          21.951599
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 15,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.74167,
+          21.962145,
+          113.774315,
+          21.998218
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 16,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.124169,
+          21.97491,
+          114.171596,
+          22.000437
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 17,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.180835,
+          21.986564,
+          114.229494,
+          22.00987
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 18,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.231342,
+          22.016528,
+          114.311414,
+          22.050368
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 19,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.786634,
+          22.396068,
+          113.819894,
+          22.419858
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 20,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          115.834632,
+          22.722143,
+          115.835248,
+          22.723247
+        ]
+      },
+      {
+        "code": 440000,
+        "source_component": 21,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          116.944555,
+          23.389537,
+          117.142887,
+          23.483431
+        ]
+      },
+      {
+        "code": 450000,
+        "source_component": 0,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          109.088249,
+          21.014934,
+          109.144299,
+          21.067439
+        ]
+      },
+      {
+        "code": 450000,
+        "source_component": 1,
+        "kind": "context",
+        "source_bounds_lonlat": [
+          104.489646,
+          21.388762,
+          112.05954,
+          26.385778
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 0,
+        "kind": "context",
+        "source_bounds_lonlat": [
+          108.591186,
+          18.143579,
+          111.071573,
+          20.163947
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 1,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.208597,
+          3.845677,
+          112.280046,
+          3.917925
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 2,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.266165,
+          8.119412,
+          113.386273,
+          8.304217
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 3,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          111.99733,
+          3.823583,
+          112.073707,
+          3.892251
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 4,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          111.452224,
+          17.058039,
+          111.559397,
+          17.11982
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 5,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          117.708319,
+          15.105303,
+          117.838899,
+          15.230068
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 6,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.241858,
+          3.942404,
+          112.292365,
+          3.97942
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 7,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          111.716462,
+          16.19732,
+          111.81686,
+          16.273741
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 8,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          111.56802,
+          16.156511,
+          111.690592,
+          16.262251
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 9,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.896887,
+          7.536014,
+          114.555326,
+          7.968898
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 10,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.976959,
+          8.783591,
+          114.060111,
+          8.878801
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 11,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.956017,
+          8.793054,
+          114.012068,
+          8.841548
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 12,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          111.97454,
+          16.306484,
+          112.07617,
+          16.360469
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 13,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          111.739251,
+          16.452898,
+          111.786679,
+          16.545857
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 14,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.180264,
+          8.862244,
+          112.216604,
+          8.88767
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 15,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.792177,
+          7.362145,
+          113.829134,
+          7.383511
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 16,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.194386,
+          8.724442,
+          114.248588,
+          8.784773
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 17,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.207981,
+          16.960751,
+          112.292981,
+          16.996239
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 18,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.689601,
+          10.312677,
+          114.747499,
+          10.380381
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 19,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          115.837712,
+          9.650191,
+          115.925791,
+          9.795888
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 20,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.617536,
+          9.917351,
+          114.685905,
+          9.979245
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 21,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.769387,
+          7.601865,
+          113.831597,
+          7.644573
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 22,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          109.463972,
+          7.315254,
+          109.948716,
+          7.575763
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 23,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          116.273181,
+          8.858105,
+          116.332311,
+          8.917233
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 24,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.448814,
+          16.001247,
+          112.612037,
+          16.070844
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 25,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.537509,
+          8.815527,
+          112.639755,
+          8.859288
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 26,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.469095,
+          10.814512,
+          114.593514,
+          10.909138
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 27,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.383524,
+          16.2634,
+          112.536893,
+          16.317397
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 28,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          116.461658,
+          10.297957,
+          116.644592,
+          10.426883
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 29,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.30222,
+          16.912088,
+          112.360734,
+          16.963041
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 30,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          111.49534,
+          16.43453,
+          111.545847,
+          16.461507
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 31,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          115.500177,
+          9.869007,
+          115.585177,
+          9.933857
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 32,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.669891,
+          8.18517,
+          114.74134,
+          8.21064
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 33,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.507899,
+          8.103415,
+          114.624311,
+          8.15792
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 34,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          115.16757,
+          8.314876,
+          115.315395,
+          8.395403
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 35,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.895039,
+          7.944597,
+          113.9708,
+          8.018088
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 36,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          115.436119,
+          9.345028,
+          115.469996,
+          9.417064
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 37,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          116.457347,
+          9.137103,
+          116.500462,
+          9.174326
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 38,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.638192,
+          8.962163,
+          113.730583,
+          9.020092
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 39,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.696992,
+          11.001972,
+          114.799854,
+          11.110045
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 40,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.62,
+          11.432264,
+          114.661884,
+          11.522584
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 41,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.910723,
+          10.841551,
+          114.959998,
+          10.902674
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 42,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          111.572948,
+          16.44027,
+          111.614216,
+          16.490775
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 43,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.893807,
+          8.837999,
+          113.939387,
+          8.888853
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 44,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          109.936397,
+          7.8124,
+          110.082991,
+          7.949339
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 45,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          116.727128,
+          11.430504,
+          116.772092,
+          11.514961
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 46,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          111.690592,
+          16.560198,
+          111.724469,
+          16.59404
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 47,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.499321,
+          16.466098,
+          112.586784,
+          16.537251
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 48,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          111.761425,
+          16.028859,
+          111.829795,
+          16.070844
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 49,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.845764,
+          10.00341,
+          113.872249,
+          10.123029
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 50,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.777064,
+          8.110524,
+          114.818332,
+          8.160882
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 51,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          116.557129,
+          9.718623,
+          116.593469,
+          9.745167
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 52,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          115.28275,
+          10.172513,
+          115.333257,
+          10.211388
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 53,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          116.832454,
+          10.468669,
+          116.868794,
+          10.495739
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 54,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.703151,
+          16.170307,
+          114.816484,
+          16.215135
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 55,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          115.926407,
+          9.268252,
+          115.999088,
+          9.321997
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 56,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.660366,
+          9.202683,
+          113.697323,
+          9.231039
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 57,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.665579,
+          7.563898,
+          114.72163,
+          7.614915
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 58,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.493116,
+          10.717504,
+          114.562717,
+          10.793349
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 59,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          117.770529,
+          10.753371,
+          117.835819,
+          10.839788
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 60,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.242429,
+          10.239658,
+          114.326197,
+          10.300901
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 61,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.688985,
+          11.429331,
+          114.737644,
+          11.49209
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 62,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          116.638433,
+          10.491031,
+          116.70865,
+          10.517511
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 63,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          110.459946,
+          8.072012,
+          110.599764,
+          8.17273
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 64,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          111.463311,
+          8.523857,
+          111.509506,
+          8.550489
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 65,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          115.258113,
+          8.477098,
+          115.296301,
+          8.510836
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 66,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.221817,
+          8.068456,
+          113.283411,
+          8.120004
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 67,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.064422,
+          10.904437,
+          114.110002,
+          10.947921
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 68,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          117.258068,
+          10.313855,
+          117.299952,
+          10.358011
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 69,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.212864,
+          16.034611,
+          114.31203,
+          16.059342
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 70,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          110.609003,
+          7.989049,
+          110.642879,
+          8.041199
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 71,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          115.509416,
+          8.460523,
+          115.569162,
+          8.523265
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 72,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          111.539071,
+          7.524742,
+          111.612368,
+          7.606017
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 73,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          111.657947,
+          8.622683,
+          111.717694,
+          8.67889
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 74,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          110.460561,
+          7.783346,
+          110.511684,
+          7.827815
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 75,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.345952,
+          8.919598,
+          112.392763,
+          8.946793
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 76,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          116.469665,
+          9.785272,
+          116.50847,
+          9.821246
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 77,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          111.925265,
+          8.047125,
+          112.018888,
+          8.106377
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 78,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.457392,
+          15.576823,
+          114.491884,
+          15.599305
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 79,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.985252,
+          11.063062,
+          115.021592,
+          11.085967
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 80,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.10569,
+          15.978235,
+          114.132176,
+          16.007575
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 81,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          116.045283,
+          10.065876,
+          116.09579,
+          10.12892
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 82,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          117.266691,
+          10.671047,
+          117.418212,
+          10.7422
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 83,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.819564,
+          7.192957,
+          114.869455,
+          7.244611
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 84,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.823305,
+          8.889444,
+          112.873196,
+          8.910729
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 85,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          111.670266,
+          7.648725,
+          111.749722,
+          7.729977
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 86,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.207981,
+          8.827355,
+          112.241242,
+          8.852783
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 87,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.527654,
+          5.75931,
+          112.562762,
+          5.820637
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 88,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.599058,
+          8.844504,
+          114.68221,
+          8.900087
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 89,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.868223,
+          7.951117,
+          114.914419,
+          8.011569
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 90,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.945261,
+          8.410204,
+          112.985297,
+          8.432701
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 91,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.580294,
+          6.920344,
+          113.62341,
+          6.961929
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 92,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          116.695099,
+          16.299591,
+          116.747454,
+          16.373676
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 93,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          117.347995,
+          10.06293,
+          117.385567,
+          10.106532
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 94,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.980369,
+          19.472003,
+          113.048123,
+          19.52898
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 95,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.448153,
+          16.034035,
+          114.521449,
+          16.067393
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 96,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.799568,
+          19.151203,
+          113.920293,
+          19.237113
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 97,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.650842,
+          5.048522,
+          112.719211,
+          5.121247
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 98,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          111.638853,
+          7.887099,
+          111.713382,
+          7.932743
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 99,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.244322,
+          8.855148,
+          112.288669,
+          8.885896
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 100,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.89229,
+          7.827815,
+          112.93171,
+          7.867537
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 101,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.583088,
+          5.465683,
+          112.642834,
+          5.568737
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 102,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.523342,
+          5.616386,
+          112.565842,
+          5.687257
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 103,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          115.361591,
+          13.92517,
+          115.438583,
+          13.977443
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 104,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.596924,
+          10.22199,
+          113.638192,
+          10.243192
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 105,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.860546,
+          15.463802,
+          113.893807,
+          15.490909
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 106,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.907072,
+          4.991887,
+          112.952652,
+          5.047926
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 107,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.557219,
+          5.071771,
+          112.610806,
+          5.120055
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 108,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.350263,
+          5.615791,
+          112.385988,
+          5.643187
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 109,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.211061,
+          16.751698,
+          112.262184,
+          16.795819
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 110,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.20367,
+          15.69612,
+          112.25972,
+          15.741055
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 111,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.612037,
+          5.347715,
+          112.690878,
+          5.406702
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 112,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.472219,
+          5.736683,
+          112.498089,
+          5.775387
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 113,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.217506,
+          6.285429,
+          113.243991,
+          6.325878
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 114,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          116.152457,
+          9.565221,
+          116.189413,
+          9.595317
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 115,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.948911,
+          7.484988,
+          115.013585,
+          7.525928
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 116,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          111.553854,
+          7.771487,
+          111.619759,
+          7.861608
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 117,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.938771,
+          15.805558,
+          113.973263,
+          15.83953
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 118,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.895325,
+          16.001823,
+          114.926122,
+          16.036911
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 119,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          116.699411,
+          9.024229,
+          116.749302,
+          9.056736
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 120,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.64653,
+          16.385733,
+          112.681639,
+          16.426494
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 121,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          111.203384,
+          19.925007,
+          111.204,
+          19.926132
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 122,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          115.758256,
+          10.434534,
+          115.801987,
+          10.463372
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 123,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          117.187235,
+          10.707507,
+          117.21372,
+          10.741612
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 124,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.671784,
+          16.331755,
+          112.701349,
+          16.35932
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 125,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          115.782277,
+          10.499858,
+          115.805067,
+          10.541046
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 126,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.50856,
+          9.516826,
+          112.568922,
+          9.554008
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 127,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.581195,
+          15.615444,
+          114.610761,
+          15.649447
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 128,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          117.264227,
+          11.02547,
+          117.304263,
+          11.077745
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 129,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          117.653501,
+          11.016658,
+          117.691073,
+          11.048965
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 130,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.166668,
+          9.342075,
+          114.195617,
+          9.391676
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 131,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.680978,
+          9.700337,
+          114.714854,
+          9.741038
+        ]
+      },
+      {
+        "code": 460000,
+        "source_component": 132,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          112.553523,
+          5.942676,
+          112.575697,
+          5.97839
+        ]
+      },
+      {
+        "code": 520000,
+        "source_component": 1,
+        "kind": "context",
+        "source_bounds_lonlat": [
+          103.601461,
+          24.617953,
+          109.555131,
+          29.218037
+        ]
+      },
+      {
+        "code": 530000,
+        "source_component": 0,
+        "kind": "context",
+        "source_bounds_lonlat": [
+          97.5283,
+          21.14616,
+          106.192718,
+          29.221171
+        ]
+      },
+      {
+        "code": 710000,
+        "source_component": 0,
+        "kind": "context",
+        "source_bounds_lonlat": [
+          120.018708,
+          21.883309,
+          122.012503,
+          25.309159
+        ]
+      },
+      {
+        "code": 710000,
+        "source_component": 3,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          119.562297,
+          23.502641,
+          119.691028,
+          23.604132
+        ]
+      },
+      {
+        "code": 710000,
+        "source_component": 5,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          119.47237,
+          23.556962,
+          119.52534,
+          23.625518
+        ]
+      },
+      {
+        "code": 710000,
+        "source_component": 6,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          119.495159,
+          23.349982,
+          119.516717,
+          23.38679
+        ]
+      },
+      {
+        "code": 710000,
+        "source_component": 7,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          119.557369,
+          23.620035,
+          119.615268,
+          23.675952
+        ]
+      },
+      {
+        "code": 710000,
+        "source_component": 9,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          121.468013,
+          22.631582,
+          121.514824,
+          22.67687
+        ]
+      },
+      {
+        "code": 710000,
+        "source_component": 10,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          121.507433,
+          21.995443,
+          121.604752,
+          22.086972
+        ]
+      },
+      {
+        "code": 710000,
+        "source_component": 12,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          119.421247,
+          23.186146,
+          119.453275,
+          23.216949
+        ]
+      },
+      {
+        "code": 710000,
+        "source_component": 13,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          120.355011,
+          22.327439,
+          120.395663,
+          22.355669
+        ]
+      },
+      {
+        "code": 810000,
+        "source_component": 0,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.120473,
+          22.177888,
+          114.166668,
+          22.238836
+        ]
+      },
+      {
+        "code": 810000,
+        "source_component": 1,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.323733,
+          22.297541,
+          114.324349,
+          22.298095
+        ]
+      },
+      {
+        "code": 810000,
+        "source_component": 2,
+        "kind": "context",
+        "source_bounds_lonlat": [
+          113.8433,
+          22.191188,
+          114.406269,
+          22.559201
+        ]
+      },
+      {
+        "code": 810000,
+        "source_component": 3,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.372392,
+          22.32301,
+          114.373008,
+          22.323564
+        ]
+      },
+      {
+        "code": 810000,
+        "source_component": 4,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          114.305255,
+          22.340724,
+          114.332972,
+          22.372826
+        ]
+      },
+      {
+        "code": 820000,
+        "source_component": 0,
+        "kind": "context",
+        "source_bounds_lonlat": [
+          113.534715,
+          22.107489,
+          113.6037,
+          22.212244
+        ]
+      },
+      {
+        "code": 820000,
+        "source_component": 1,
+        "kind": "island",
+        "source_bounds_lonlat": [
+          113.575983,
+          22.194513,
+          113.586453,
+          22.201162
+        ]
+      },
+      {
+        "code": "100000_JD",
+        "source_component": 0,
+        "kind": "dash",
+        "source_bounds_lonlat": [
+          122.49897813,
+          23.45324755,
+          122.79889322,
+          24.58609049
+        ]
+      },
+      {
+        "code": "100000_JD",
+        "source_component": 1,
+        "kind": "dash",
+        "source_bounds_lonlat": [
+          121.15437729,
+          20.80189649,
+          121.91169291,
+          21.70382443
+        ]
+      },
+      {
+        "code": "100000_JD",
+        "source_component": 2,
+        "kind": "dash",
+        "source_bounds_lonlat": [
+          119.45495876,
+          18.0019293,
+          120.02682302,
+          19.03872291
+        ]
+      },
+      {
+        "code": "100000_JD",
+        "source_component": 3,
+        "kind": "dash",
+        "source_bounds_lonlat": [
+          119.0521839,
+          14.99766324,
+          119.0726757,
+          16.05388528
+        ]
+      },
+      {
+        "code": "100000_JD",
+        "source_component": 4,
+        "kind": "dash",
+        "source_bounds_lonlat": [
+          118.52385237,
+          10.90045298,
+          118.98937534,
+          11.99862269
+        ]
+      },
+      {
+        "code": "100000_JD",
+        "source_component": 5,
+        "kind": "dash",
+        "source_bounds_lonlat": [
+          115.52706908,
+          7.14321728,
+          116.25283001,
+          7.99571758
+        ]
+      },
+      {
+        "code": "100000_JD",
+        "source_component": 6,
+        "kind": "dash",
+        "source_bounds_lonlat": [
+          111.77915495,
+          3.39716187,
+          112.85776462,
+          3.75155809
+        ]
+      },
+      {
+        "code": "100000_JD",
+        "source_component": 7,
+        "kind": "dash",
+        "source_bounds_lonlat": [
+          108.19679674,
+          6.00628511,
+          108.30944469,
+          7.08584944
+        ]
+      },
+      {
+        "code": "100000_JD",
+        "source_component": 8,
+        "kind": "dash",
+        "source_bounds_lonlat": [
+          110.05402458,
+          11.23805281,
+          110.33424553,
+          12.25018094
+        ]
+      },
+      {
+        "code": "100000_JD",
+        "source_component": 9,
+        "kind": "dash",
+        "source_bounds_lonlat": [
+          109.29101677,
+          15.14525516,
+          109.86495704,
+          16.21108179
+        ]
+      }
+    ],
+    "omitted_source_components": 0,
+    "dem_used": false,
+    "line_width_mm": 1.0,
+    "minimum_island_width_mm": 1.0,
+    "title_size_mm": 5.5,
+    "label_size_mm": 4.5,
+    "text_stroke_expansion_mm": 0.08,
+    "text_bounds_cm": {
+      "南海诸岛": [
+        15.9327,
+        5.798804448039379,
+        18.048801795655304,
+        6.335248858451044
+      ],
+      "附图比例不同": [
+        15.930497980823572,
+        -5.084969999999999,
+        18.554787641340155,
+        -4.655055372560822
+      ],
+      "东沙群岛": [
+        21.173043937178036,
+        2.8392928633249017,
+        22.926507118146628,
+        3.2764247480072215
+      ],
+      "西沙群岛": [
+        16.442954345900116,
+        0.9061751730444958,
+        18.174756141555402,
+        1.3425318624917908
+      ],
+      "中沙群岛": [
+        21.47176299456248,
+        0.8278567966871982,
+        23.181127632203637,
+        1.2642134861344931
+      ],
+      "南沙群岛": [
+        19.827289134751663,
+        -3.503557161806356,
+        21.56179093040695,
+        -3.0672004723590547
+      ]
+    },
+    "text_labels_do_not_overlap": true
+  },
+  "province_gap_mm": 0,
+  "province_partition_walls": false,
+  "fixed_detail_component_count": 161,
+  "fixed_card_overlap_mm2": 0.0,
+  "original_boundary_component_count": 296,
+  "omitted_nansha_component_count": 99,
+  "boundary_source": "DataV 2021 GeoJSON",
+  "boundary_crs_assumption": "GCJ-02; inverted numerically to WGS84. Provider GeoJSON does not declare CRS; retain this assumption as a data limitation.",
+  "boundary_sha256": "99adfeded5223848bbe37a0a12f8023e11ee12161c7800521c27db42fdeac275",
+  "boundary_repairs": [
+    {
+      "code": 110000,
+      "reason": "Ring Self-intersection[115.738545 39.539585]"
+    },
+    {
+      "code": 120000,
+      "reason": "Ring Self-intersection[116.912526 39.110898]"
+    },
+    {
+      "code": 130000,
+      "reason": "Self-intersection[116.723432 39.59264]"
+    },
+    {
+      "code": 320000,
+      "reason": "Ring Self-intersection[118.92172 32.557078]"
+    },
+    {
+      "code": 330000,
+      "reason": "Self-intersection[121.13479 27.787051]"
+    },
+    {
+      "code": 340000,
+      "reason": "Ring Self-intersection[118.922336 32.557078]"
+    },
+    {
+      "code": 350000,
+      "reason": "Self-intersection[119.609703863887 26.1505187878774]"
+    },
+    {
+      "code": 370000,
+      "reason": "Self-intersection[121.486536001381 36.7847127692925]"
+    },
+    {
+      "code": 410000,
+      "reason": "Self-intersection[113.758301 32.27669]"
+    },
+    {
+      "code": 420000,
+      "reason": "Self-intersection[111.034001 33.177864]"
+    },
+    {
+      "code": 430000,
+      "reason": "Ring Self-intersection[109.528645 26.743881]"
+    },
+    {
+      "code": 440000,
+      "reason": "Self-intersection[110.449026021013 21.1866970450516]"
+    },
+    {
+      "code": 450000,
+      "reason": "Self-intersection[105.096346 24.928228]"
+    },
+    {
+      "code": 500000,
+      "reason": "Self-intersection[107.055649 30.040476]"
+    },
+    {
+      "code": 510000,
+      "reason": "Self-intersection[106.975577 30.088127]"
+    },
+    {
+      "code": 520000,
+      "reason": "Self-intersection[109.47629 26.829894]"
+    },
+    {
+      "code": 610000,
+      "reason": "Self-intersection[111.021066 33.471397]"
+    },
+    {
+      "code": 620000,
+      "reason": "Self-intersection[106.047356 35.498155]"
+    },
+    {
+      "code": 640000,
+      "reason": "Self-intersection[106.073842 35.45478]"
+    },
+    {
+      "code": 810000,
+      "reason": "Self-intersection[114.320037 22.381127]"
+    }
+  ],
+  "source_overlaps": [
+    {
+      "a": "北京市",
+      "b": "天津市",
+      "area_mm2": 0.003627332073081274
+    },
+    {
+      "a": "北京市",
+      "b": "河北省",
+      "area_mm2": 0.0036483589835498344
+    },
+    {
+      "a": "天津市",
+      "b": "河北省",
+      "area_mm2": 0.003627073335452761
+    },
+    {
+      "a": "河南省",
+      "b": "湖北省",
+      "area_mm2": 0.0013087001633941024
+    }
+  ],
+  "topology_normalizations": [
+    {
+      "code": 110000,
+      "changed_area_mm2": 0.001451549854639435
+    },
+    {
+      "code": 120000,
+      "changed_area_mm2": 0.005029301387116479
+    },
+    {
+      "code": 130000,
+      "changed_area_mm2": 0.01182013024201564
+    },
+    {
+      "code": 140000,
+      "changed_area_mm2": 0.0042530419275203105
+    },
+    {
+      "code": 150000,
+      "changed_area_mm2": 0.020316988423599476
+    },
+    {
+      "code": 210000,
+      "changed_area_mm2": 0.005636692546659572
+    },
+    {
+      "code": 220000,
+      "changed_area_mm2": 0.006512509569139434
+    },
+    {
+      "code": 230000,
+      "changed_area_mm2": 0.009955304539932706
+    },
+    {
+      "code": 310000,
+      "changed_area_mm2": 0.0014316357999277277
+    },
+    {
+      "code": 320000,
+      "changed_area_mm2": 0.004633767166091973
+    },
+    {
+      "code": 330000,
+      "changed_area_mm2": 0.00486089246875208
+    },
+    {
+      "code": 340000,
+      "changed_area_mm2": 0.004926303520615279
+    },
+    {
+      "code": 350000,
+      "changed_area_mm2": 0.005258328820707389
+    },
+    {
+      "code": 360000,
+      "changed_area_mm2": 0.004709942911534376
+    },
+    {
+      "code": 370000,
+      "changed_area_mm2": 0.005467013030065406
+    },
+    {
+      "code": 410000,
+      "changed_area_mm2": 0.005277215568151454
+    },
+    {
+      "code": 420000,
+      "changed_area_mm2": 0.007206403162203845
+    },
+    {
+      "code": 430000,
+      "changed_area_mm2": 0.005834286410978206
+    },
+    {
+      "code": 440000,
+      "changed_area_mm2": 0.0074807718717591065
+    },
+    {
+      "code": 450000,
+      "changed_area_mm2": 0.006228971560896809
+    },
+    {
+      "code": 460000,
+      "changed_area_mm2": 0.0025375265496894368
+    },
+    {
+      "code": 500000,
+      "changed_area_mm2": 0.0047755430529614045
+    },
+    {
+      "code": 510000,
+      "changed_area_mm2": 0.01061190307585017
+    },
+    {
+      "code": 520000,
+      "changed_area_mm2": 0.0061732213849300804
+    },
+    {
+      "code": 530000,
+      "changed_area_mm2": 0.01060686889771705
+    },
+    {
+      "code": 540000,
+      "changed_area_mm2": 0.013014876322538593
+    },
+    {
+      "code": 610000,
+      "changed_area_mm2": 0.006405891336010183
+    },
+    {
+      "code": 620000,
+      "changed_area_mm2": 0.013506853867182292
+    },
+    {
+      "code": 630000,
+      "changed_area_mm2": 0.010291187361906401
+    },
+    {
+      "code": 640000,
+      "changed_area_mm2": 0.0030915770051828644
+    },
+    {
+      "code": 650000,
+      "changed_area_mm2": 0.01371621157743949
+    },
+    {
+      "code": 710000,
+      "changed_area_mm2": 0.002143864999680958
+    },
+    {
+      "code": 810000,
+      "changed_area_mm2": 0.00045887342188943603
+    },
+    {
+      "code": 820000,
+      "changed_area_mm2": 5.2541207814799695e-05
+    }
+  ],
+  "card_overlaps": [],
+  "terrain_tile_count": 69,
+  "terrain_mosaic_sha256": "4e2f2bd19b71b5bd9a6d06b677b569fc0a39ffef581fc5e559368547013da027",
+  "terrain_sources": [
+    "gmted/10N060E_20101117_gmted_mea075.tif, gmted/30N060E_20101117_gmted_mea075.tif",
+    "gmted/10N090E_20101117_gmted_mea075.tif",
+    "gmted/10N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "gmted/10N090E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif",
+    "gmted/10N090E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "gmted/10N120E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "gmted/10N120E_20101117_gmted_mea075.tif, gmted/10N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "gmted/10N120E_20101117_gmted_mea075.tif, gmted/30N120E_20101117_gmted_mea075.tif, gmted/10N090E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "gmted/30N060E_20101117_gmted_mea075.tif",
+    "gmted/30N060E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "gmted/30N090E_20101117_gmted_mea075.tif",
+    "gmted/30N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "gmted/30N120E_20101117_gmted_mea075.tif",
+    "gmted/30N120E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "gmted/30N120E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif",
+    "gmted/30N120E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif, etopo1/ETOPO1_Bed_g.tif",
+    "gmted/30N120E_20101117_gmted_mea075.tif, gmted/50N120E_20101117_gmted_mea075.tif",
+    "gmted/30N120E_20101117_gmted_mea075.tif, gmted/50N120E_20101117_gmted_mea075.tif, gmted/50N090E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif",
+    "gmted/50N060E_20101117_gmted_mea075.tif, gmted/30N060E_20101117_gmted_mea075.tif",
+    "gmted/50N090E_20101117_gmted_mea075.tif, gmted/30N090E_20101117_gmted_mea075.tif",
+    "gmted/50N120E_20101117_gmted_mea075.tif",
+    "gmted/50N120E_20101117_gmted_mea075.tif, gmted/50N090E_20101117_gmted_mea075.tif"
+  ],
+  "coastal_negative_sample_clamps": 4288,
+  "missing_dem_samples": 0,
+  "warnings": [
+    {
+      "code": 370000,
+      "kind": "sub_resolution_holes_filled",
+      "count": 1,
+      "area_mm2": 0.00028008999999983383
+    },
+    {
+      "code": 500000,
+      "kind": "sub_resolution_holes_filled",
+      "count": 1,
+      "area_mm2": 0.0009050350000000945
+    },
+    {
+      "kind": "recess_sub_resolution_residuals_removed",
+      "count": 4,
+      "area_mm2": 0.006882214999998824
+    },
+    {
+      "kind": "fixed_detail_numeric_contact_repair",
+      "component_count": 8,
+      "gap_mm": 0.001
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.11177750000000279,
+      "bbox_mm": [
+        0.5389000000000088,
+        0.430600000000001
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.15402953500000288,
+      "bbox_mm": [
+        0.6688000000000116,
+        0.4249000000000014
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.6710565850000006,
+      "bbox_mm": [
+        1.5830000000000055,
+        0.7460999999999984
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.3745594750000014,
+      "bbox_mm": [
+        1.1719999999999864,
+        1.0496000000000016
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.2670080649999999,
+      "bbox_mm": [
+        1.0017999999999994,
+        0.7580999999999993
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.3534564849999998,
+      "bbox_mm": [
+        1.4729999999999954,
+        0.5870999999999982
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.3318627000000015,
+      "bbox_mm": [
+        0.9942000000000029,
+        0.5427999999999988
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.03805676000000021,
+      "bbox_mm": [
+        0.2890999999999977,
+        0.26630000000000376
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.08635180500000014,
+      "bbox_mm": [
+        0.4978000000000016,
+        0.25819999999999954
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.10400375499999925,
+      "bbox_mm": [
+        0.42320000000000135,
+        0.4660999999999982
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.057380295000000824,
+      "bbox_mm": [
+        0.3322000000000003,
+        0.3971999999999998
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.11645588000000129,
+      "bbox_mm": [
+        0.4209999999999958,
+        0.8973999999999993
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.18961024000000165,
+      "bbox_mm": [
+        0.8342000000000027,
+        0.7282000000000011
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.043994385000001336,
+      "bbox_mm": [
+        0.34869999999999735,
+        0.3171000000000035
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.11169861499999892,
+      "bbox_mm": [
+        0.5116999999999905,
+        0.3887000000000018
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.11123301500000167,
+      "bbox_mm": [
+        0.5958000000000041,
+        0.4693000000000014
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.18846736000000328,
+      "bbox_mm": [
+        0.841800000000017,
+        0.34740000000000215
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.23337381000000215,
+      "bbox_mm": [
+        1.0488000000000142,
+        0.6264000000000003
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.2583671099999973,
+      "bbox_mm": [
+        0.6332999999999878,
+        0.5750999999999973
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 3.2019999999994106e-05,
+      "bbox_mm": [
+        0.005899999999998684,
+        0.01120000000000232
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.04636507499999977,
+      "bbox_mm": [
+        0.33050000000000246,
+        0.537700000000001
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.04782463499999904,
+      "bbox_mm": [
+        0.30710000000000015,
+        0.3140999999999927
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.5613734750000006,
+      "bbox_mm": [
+        0.9126999999999974,
+        0.8630000000000049
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.18071635000000227,
+      "bbox_mm": [
+        0.5150000000000077,
+        0.5297000000000018
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.04087362000000217,
+      "bbox_mm": [
+        0.2058000000000071,
+        0.40180000000000327
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.10984957999999974,
+      "bbox_mm": [
+        0.6288999999999945,
+        0.4565999999999981
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.04812114000000049,
+      "bbox_mm": [
+        0.3420000000000023,
+        0.35499999999999865
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.03439016000000372,
+      "bbox_mm": [
+        0.5967999999999929,
+        0.3081000000000067
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.4209544799999904,
+      "bbox_mm": [
+        1.2582000000000004,
+        0.7629000000000019
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.23293333000000155,
+      "bbox_mm": [
+        0.7750000000000057,
+        0.5168
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.040160154999999725,
+      "bbox_mm": [
+        0.3401999999999994,
+        0.2527999999999997
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.0340163999999993,
+      "bbox_mm": [
+        0.345999999999993,
+        0.20340000000000025
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.04695712500000024,
+      "bbox_mm": [
+        0.3003,
+        0.32070000000000043
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.05144487000000023,
+      "bbox_mm": [
+        0.36450000000000315,
+        0.3194000000000008
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.03300736000000136,
+      "bbox_mm": [
+        0.2574000000000076,
+        0.2976000000000001
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.14243558500000045,
+      "bbox_mm": [
+        0.9790999999999883,
+        0.24380000000000068
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.13380524999999954,
+      "bbox_mm": [
+        0.7008999999999865,
+        0.3325
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.050230265000001335,
+      "bbox_mm": [
+        0.3015000000000079,
+        0.3471000000000002
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.2379572699999992,
+      "bbox_mm": [
+        1.098599999999994,
+        0.5209000000000019
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.2546416900000033,
+      "bbox_mm": [
+        0.4935000000000045,
+        0.7119999999999971
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.3169812600000001,
+      "bbox_mm": [
+        0.7393000000000072,
+        0.761099999999999
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.031778250000002575,
+      "bbox_mm": [
+        0.2230000000000132,
+        0.2911000000000019
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.05057358000000152,
+      "bbox_mm": [
+        0.2962000000000131,
+        0.35829999999999806
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.042819044999998425,
+      "bbox_mm": [
+        0.4256999999999955,
+        0.26370000000000005
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.04542304000000031,
+      "bbox_mm": [
+        0.46359999999999957,
+        0.21840000000000082
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.08970685500000114,
+      "bbox_mm": [
+        0.7167999999999886,
+        0.3903000000000034
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.3614859350000059,
+      "bbox_mm": [
+        0.6714999999999982,
+        1.0212999999999983
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.0031517650000006305,
+      "bbox_mm": [
+        0.09670000000001622,
+        0.07310000000000372
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.14674961999999553,
+      "bbox_mm": [
+        0.4285999999999923,
+        0.5954000000000015
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 1.5514999999991895e-05,
+      "bbox_mm": [
+        0.0061999999999962085,
+        0.005399999999999849
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 1.5539999999995335e-05,
+      "bbox_mm": [
+        0.005699999999997374,
+        0.005899999999998684
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.03198139500000134,
+      "bbox_mm": [
+        0.2725000000000044,
+        0.3048999999999946
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.03086234499999925,
+      "bbox_mm": [
+        0.32209999999999184,
+        0.22639999999999993
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 3.085499999999527e-05,
+      "bbox_mm": [
+        0.006300000000010186,
+        0.010700000000003485
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.06743559000000081,
+      "bbox_mm": [
+        0.32160000000001077,
+        0.4513999999999996
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.397049250000008,
+      "bbox_mm": [
+        1.3169000000000075,
+        1.1987999999999999
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.043977739999998745,
+      "bbox_mm": [
+        0.29149999999999565,
+        0.31639999999999446
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.0356880400000004,
+      "bbox_mm": [
+        0.225799999999996,
+        0.36020000000000607
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.12263737999999964,
+      "bbox_mm": [
+        0.41999999999999815,
+        0.7323000000000057
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.1395624250000026,
+      "bbox_mm": [
+        0.5305000000000071,
+        0.5132000000000048
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.08025885999999964,
+      "bbox_mm": [
+        0.3651999999999944,
+        0.43989999999999085
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.46012495500000006,
+      "bbox_mm": [
+        1.1360999999999954,
+        0.9293000000000085
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.030250739999998444,
+      "bbox_mm": [
+        0.24379999999998958,
+        0.45239999999999725
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.1018738200000007,
+      "bbox_mm": [
+        0.5166000000000004,
+        0.3669000000000011
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.11549346000000082,
+      "bbox_mm": [
+        0.49749999999999517,
+        0.41059999999999874
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.05705464000000214,
+      "bbox_mm": [
+        0.39360000000000284,
+        0.36020000000000607
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.0893747849999972,
+      "bbox_mm": [
+        0.3993000000000002,
+        0.4648999999999859
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.0729258800000003,
+      "bbox_mm": [
+        0.3035000000000032,
+        0.36900000000001043
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.07450008500000177,
+      "bbox_mm": [
+        0.5013000000000112,
+        0.3247
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.3166900699999958,
+      "bbox_mm": [
+        0.9309000000000012,
+        0.6224999999999881
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.05097551999999917,
+      "bbox_mm": [
+        0.3824000000000005,
+        0.3035999999999994
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.06174136999999803,
+      "bbox_mm": [
+        0.2778999999999954,
+        0.451599999999992
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.023181590000001442,
+      "bbox_mm": [
+        0.3063000000000038,
+        0.17260000000000275
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 1.992500000001282e-05,
+      "bbox_mm": [
+        0.004799999999995919,
+        0.010900000000013677
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 7.545000000025493e-05,
+      "bbox_mm": [
+        0.020699999999997942,
+        0.00950000000003115
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.09541875999999877,
+      "bbox_mm": [
+        0.3622999999999976,
+        0.47340000000001936
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.03992845500000162,
+      "bbox_mm": [
+        0.2389000000000152,
+        0.3574000000000055
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.03317346000000386,
+      "bbox_mm": [
+        0.33820000000000405,
+        0.2481000000000222
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.07232965000000187,
+      "bbox_mm": [
+        0.40440000000000254,
+        0.47640000000001237
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.048371779999999455,
+      "bbox_mm": [
+        0.31480000000000175,
+        0.35319999999998686
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.022780174999998078,
+      "bbox_mm": [
+        0.20509999999999806,
+        0.2750999999999948
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.2056516050000009,
+      "bbox_mm": [
+        0.6103000000000058,
+        0.7416999999999874
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.029500655000002,
+      "bbox_mm": [
+        0.35169999999999035,
+        0.17130000000001644
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.1690044199999895,
+      "bbox_mm": [
+        0.9174999999999933,
+        0.47509999999999053
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.17911411499999932,
+      "bbox_mm": [
+        1.301199999999998,
+        0.3287999999999869
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.12621805999999833,
+      "bbox_mm": [
+        0.41069999999999496,
+        0.5361999999999867
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.032675064999999115,
+      "bbox_mm": [
+        0.34860000000000113,
+        0.3125
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.11458594999999652,
+      "bbox_mm": [
+        0.4266999999999932,
+        0.5533999999999928
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.005034959999999155,
+      "bbox_mm": [
+        0.1992999999999867,
+        0.10770000000000834
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.19469180999999972,
+      "bbox_mm": [
+        0.668299999999995,
+        0.49950000000000827
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.03085608499999999,
+      "bbox_mm": [
+        0.4054999999999964,
+        0.28200000000000003
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.0008490200000003018,
+      "bbox_mm": [
+        0.040300000000002,
+        0.09529999999999816
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.30600892000000174,
+      "bbox_mm": [
+        0.9612999999999872,
+        0.513300000000001
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.031096659999997178,
+      "bbox_mm": [
+        0.3585999999999956,
+        0.32059999999999533
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.10308313500000126,
+      "bbox_mm": [
+        0.5553000000000097,
+        0.3847999999999985
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.035276800000000275,
+      "bbox_mm": [
+        0.19519999999999982,
+        0.4622999999999955
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.11010187499999466,
+      "bbox_mm": [
+        0.4432999999999865,
+        0.46439999999998705
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.029100924999999913,
+      "bbox_mm": [
+        0.2557000000000187,
+        0.28549999999999187
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.04411321499999801,
+      "bbox_mm": [
+        0.20489999999998787,
+        0.4310999999999865
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.03110288500000057,
+      "bbox_mm": [
+        0.24499999999999744,
+        0.2710000000000079
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.11509539000000345,
+      "bbox_mm": [
+        0.4078000000000159,
+        0.48629999999999285
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.08711342499999578,
+      "bbox_mm": [
+        0.41129999999999,
+        0.42449999999998766
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.21904841500000527,
+      "bbox_mm": [
+        0.6588999999999956,
+        0.5578000000000216
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.5857649100000177,
+      "bbox_mm": [
+        1.8806000000000012,
+        1.6791000000000267
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.28222531999998995,
+      "bbox_mm": [
+        0.5270999999999937,
+        0.6789999999999807
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.07121638500000255,
+      "bbox_mm": [
+        0.3514000000000017,
+        0.41130000000002553
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.030352820000003222,
+      "bbox_mm": [
+        0.46850000000000946,
+        0.2768000000000015
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.05042707999999755,
+      "bbox_mm": [
+        0.4562999999999917,
+        0.2740999999999971
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.20705033500000372,
+      "bbox_mm": [
+        0.5086999999999975,
+        0.6359000000000137
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.03390955000000324,
+      "bbox_mm": [
+        0.29749999999999943,
+        0.2621000000000251
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.23693888500001006,
+      "bbox_mm": [
+        0.6484000000000023,
+        0.5422000000000082
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.025964119999998984,
+      "bbox_mm": [
+        0.28840000000000643,
+        0.18139999999998935
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.4610228900000045,
+      "bbox_mm": [
+        0.9674000000000049,
+        0.8257000000000048
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.14904321499999854,
+      "bbox_mm": [
+        0.4884999999999806,
+        0.433299999999992
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.03452536999999996,
+      "bbox_mm": [
+        0.22420000000000329,
+        0.3111999999999959
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.029011349999996622,
+      "bbox_mm": [
+        0.20249999999997215,
+        0.28679999999999595
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.24227572500000755,
+      "bbox_mm": [
+        0.6004000000000076,
+        0.5600000000000094
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.0443025300000007,
+      "bbox_mm": [
+        0.3471000000000046,
+        0.28840000000000643
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.06438271499999909,
+      "bbox_mm": [
+        0.3563000000000116,
+        0.4076999999999842
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.03430805999999831,
+      "bbox_mm": [
+        0.3241999999999834,
+        0.2981999999999907
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.04760145000000028,
+      "bbox_mm": [
+        0.3235000000000099,
+        0.29589999999998895
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.14832054500000114,
+      "bbox_mm": [
+        0.4875000000000185,
+        0.5820000000000114
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.03998086500000552,
+      "bbox_mm": [
+        0.5221000000000231,
+        0.20060000000000855
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.17872867499999695,
+      "bbox_mm": [
+        0.7782999999999873,
+        0.5294999999999916
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.34392745499999666,
+      "bbox_mm": [
+        0.9590999999999994,
+        0.7099999999999795
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.1270196349999973,
+      "bbox_mm": [
+        0.5042999999999864,
+        0.37649999999999295
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.5970763599999959,
+      "bbox_mm": [
+        0.9540999999999755,
+        1.201900000000009
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.051627390000000925,
+      "bbox_mm": [
+        0.6775999999999982,
+        0.25909999999999656
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.0002854949999997301,
+      "bbox_mm": [
+        0.021599999999999397,
+        0.019499999999972317
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.049454470000001874,
+      "bbox_mm": [
+        0.34890000000000754,
+        0.28870000000001284
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.014441060000000054,
+      "bbox_mm": [
+        0.16859999999997655,
+        0.21039999999999281
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.006456324999997315,
+      "bbox_mm": [
+        0.11619999999997077,
+        0.09589999999999321
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.12371856999999556,
+      "bbox_mm": [
+        0.2856999999999843,
+        0.5750999999999706
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.1986113450000015,
+      "bbox_mm": [
+        0.5465999999999838,
+        0.616000000000021
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.003949989999996254,
+      "bbox_mm": [
+        0.2214000000000027,
+        0.08849999999998914
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.11072625000000473,
+      "bbox_mm": [
+        0.488900000000001,
+        0.4014000000000095
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.23498230999999353,
+      "bbox_mm": [
+        1.142899999999969,
+        0.4801999999999751
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.6017927149999964,
+      "bbox_mm": [
+        1.3722999999999885,
+        0.6182000000000087
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.03233563500000093,
+      "bbox_mm": [
+        0.21290000000000475,
+        0.33270000000001687
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.25407357500000755,
+      "bbox_mm": [
+        0.9468999999999994,
+        0.4929999999999879
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.06367682000000166,
+      "bbox_mm": [
+        0.34720000000000084,
+        0.3453000000000017
+      ]
+    },
+    {
+      "kind": "fixed_detail_below_FDM_feature_size",
+      "area_mm2": 0.03238145000000242,
+      "bbox_mm": [
+        0.2623000000000175,
+        0.28590000000001226
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "object": "P140000",
+      "file": "data/processed/P140000.npz",
+      "group": "terrain",
+      "sha256": "6d30397902aa6de880229892051e4425949b5ad6a6910e1d54e1b51ad5bb66f2",
+      "vertices": 3573,
+      "triangles": 7142,
+      "dimensions_mm": [
+        30.017499999999995,
+        63.70569999999997,
+        13.976979732513428
+      ],
+      "volume_mm3": 9956.936085400917,
+      "bounds_mm": [
+        [
+          60.35040000000001,
+          198.17760000000004,
+          2.0
+        ],
+        [
+          90.36789999999999,
+          261.8833,
+          15.976979732513428
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "山西省",
+      "code": 140000,
+      "elevation_m": [
+        229.1906280517578,
+        2828.149658203125
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P150000",
+      "file": "data/processed/P150000.npz",
+      "group": "terrain",
+      "sha256": "adceb3caf8d62a902e0521a201fb95a68f18085c1e9c00b6228584a28b78e0f8",
+      "vertices": 23400,
+      "triangles": 46796,
+      "dimensions_mm": [
+        189.47950000000003,
+        166.0534,
+        15.29205846786499
+      ],
+      "volume_mm3": 68225.78533211755,
+      "bounds_mm": [
+        [
+          -37.5937,
+          225.33890000000002,
+          2.0
+        ],
+        [
+          151.88580000000002,
+          391.39230000000003,
+          17.29205846786499
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "内蒙古自治区",
+      "code": 150000,
+      "elevation_m": [
+        89.75735473632812,
+        3197.66455078125
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P210000",
+      "file": "data/processed/P210000.npz",
+      "group": "terrain",
+      "sha256": "94bb8a404aba82059eaf3cd138d6e2489d726f4ae74be0841618698dba85410a",
+      "vertices": 3855,
+      "triangles": 7706,
+      "dimensions_mm": [
+        49.87030000000001,
+        50.487,
+        7.957433342933655
+      ],
+      "volume_mm3": 5550.243157993065,
+      "bounds_mm": [
+        [
+          120.5395,
+          248.48730000000003,
+          2.0
+        ],
+        [
+          170.40980000000002,
+          298.9743,
+          9.957433342933655
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "辽宁省",
+      "code": 210000,
+      "elevation_m": [
+        -55.36893081665039,
+        1136.758544921875
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P220000",
+      "file": "data/processed/P220000.npz",
+      "group": "terrain",
+      "sha256": "a4b7dee9731c2e66550229b5abf6076baf6702b7c227ce8dfdf12244276f9977",
+      "vertices": 4908,
+      "triangles": 9812,
+      "dimensions_mm": [
+        71.243,
+        50.668000000000006,
+        12.581425189971924
+      ],
+      "volume_mm3": 8121.492496063696,
+      "bounds_mm": [
+        [
+          132.7517,
+          275.95910000000003,
+          2.0
+        ],
+        [
+          203.99470000000002,
+          326.62710000000004,
+          14.581425189971924
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "吉林省",
+      "code": 220000,
+      "elevation_m": [
+        4.899257659912109,
+        2436.022216796875
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P230000",
+      "file": "data/processed/P230000.npz",
+      "group": "terrain",
+      "sha256": "f9c4718e9b207e2ec95e3c4620799d17c9c7a927038eccaffffcccc7d896b94e",
+      "vertices": 10162,
+      "triangles": 20320,
+      "dimensions_mm": [
+        96.27099999999999,
+        88.50969999999997,
+        9.72407865524292
+      ],
+      "volume_mm3": 18008.899842725048,
+      "bounds_mm": [
+        [
+          118.72900000000001,
+          307.17060000000004,
+          2.0
+        ],
+        [
+          215.0,
+          395.6803,
+          11.72407865524292
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "黑龙江省",
+      "code": 230000,
+      "elevation_m": [
+        27.578723907470703,
+        1633.15625
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P330000",
+      "file": "data/processed/P330000.npz",
+      "group": "terrain",
+      "sha256": "f60da057c677508fa3383468b4d67449a2de8d55f4a521661d8956ba8aea908b",
+      "vertices": 2563,
+      "triangles": 5122,
+      "dimensions_mm": [
+        33.64090000000001,
+        38.96500000000002,
+        9.477649211883545
+      ],
+      "volume_mm3": 4153.516111287286,
+      "bounds_mm": [
+        [
+          129.8467,
+          133.1166,
+          2.0
+        ],
+        [
+          163.48760000000001,
+          172.08160000000004,
+          11.477649211883545
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "浙江省",
+      "code": 330000,
+      "elevation_m": [
+        -18.0266056060791,
+        1563.91357421875
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P340000",
+      "file": "data/processed/P340000.npz",
+      "group": "terrain",
+      "sha256": "4009dde5ddeb4f4a5d2e9404324d34e9efa5fc599a71bfeec3bc750980d734db",
+      "vertices": 3501,
+      "triangles": 6998,
+      "dimensions_mm": [
+        41.46709999999999,
+        50.402399999999986,
+        9.13465428352356
+      ],
+      "volume_mm3": 4826.716869013008,
+      "bounds_mm": [
+        [
+          99.29200000000002,
+          152.47750000000002,
+          2.0
+        ],
+        [
+          140.7591,
+          202.87990000000002,
+          11.13465428352356
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "安徽省",
+      "code": 340000,
+      "elevation_m": [
+        -2.093515634536743,
+        1467.5377197265625
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P350000",
+      "file": "data/processed/P350000.npz",
+      "group": "terrain",
+      "sha256": "494e32877f9c26ff491840ddd0aaa052ae6c6146cf05d980930916f1add95e2c",
+      "vertices": 3221,
+      "triangles": 6438,
+      "dimensions_mm": [
+        37.947,
+        48.31250000000001,
+        11.006044626235962
+      ],
+      "volume_mm3": 5506.05250474635,
+      "bounds_mm": [
+        [
+          115.66000000000001,
+          94.0943,
+          2.0
+        ],
+        [
+          153.60700000000003,
+          142.4068,
+          13.006044626235962
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "福建省",
+      "code": 350000,
+      "elevation_m": [
+        -11.35976791381836,
+        1993.366943359375
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P360000",
+      "file": "data/processed/P360000.npz",
+      "group": "terrain",
+      "sha256": "760723e9ceb85557c29f0213c5ef63fd522429791ae1ba12342ab40122284eba",
+      "vertices": 3865,
+      "triangles": 7726,
+      "dimensions_mm": [
+        41.46040000000001,
+        57.203300000000006,
+        11.006044626235962
+      ],
+      "volume_mm3": 6363.414449045911,
+      "bounds_mm": [
+        [
+          93.358,
+          100.39770000000001,
+          2.0
+        ],
+        [
+          134.81840000000003,
+          157.601,
+          13.006044626235962
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "江西省",
+      "code": 360000,
+      "elevation_m": [
+        3.9095051288604736,
+        1993.366943359375
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P370000",
+      "file": "data/processed/P370000.npz",
+      "group": "terrain",
+      "sha256": "ba0f1418aa3193b8d08442e805feb6e51ab3018d79be91225f517de0e85732c3",
+      "vertices": 3910,
+      "triangles": 7820,
+      "dimensions_mm": [
+        58.15290000000001,
+        39.42450000000001,
+        6.871256709098816
+      ],
+      "volume_mm3": 5279.031603412985,
+      "bounds_mm": [
+        [
+          96.7267,
+          201.2758,
+          2.0
+        ],
+        [
+          154.8796,
+          240.70030000000003,
+          8.871256709098816
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "山东省",
+      "code": 370000,
+      "elevation_m": [
+        -28.686010360717773,
+        831.5613403320312
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P410000",
+      "file": "data/processed/P410000.npz",
+      "group": "terrain",
+      "sha256": "6bdf80df1d5027679798ec28690a31e72139aea0b4c884844dde921a90e00c25",
+      "vertices": 3994,
+      "triangles": 7984,
+      "dimensions_mm": [
+        50.9621,
+        48.58430000000002,
+        10.605757713317871
+      ],
+      "volume_mm3": 6278.794466127421,
+      "bounds_mm": [
+        [
+          61.583200000000005,
+          169.3129,
+          2.0
+        ],
+        [
+          112.54530000000001,
+          217.89720000000003,
+          12.605757713317871
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "河南省",
+      "code": 410000,
+      "elevation_m": [
+        25.02353286743164,
+        1880.892822265625
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P420000",
+      "file": "data/processed/P420000.npz",
+      "group": "terrain",
+      "sha256": "a810b86eaec3470c19c6abad9ee437c4a9b0b77e332079ceafbcec4a1d17b67c",
+      "vertices": 4465,
+      "triangles": 8926,
+      "dimensions_mm": [
+        65.8018,
+        42.05680000000001,
+        12.987255334854126
+      ],
+      "volume_mm3": 8029.028429667293,
+      "bounds_mm": [
+        [
+          47.226000000000006,
+          143.0281,
+          2.0
+        ],
+        [
+          113.0278,
+          185.0849,
+          14.987255334854126
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "湖北省",
+      "code": 420000,
+      "elevation_m": [
+        9.0,
+        2550.0537109375
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P430000",
+      "file": "data/processed/P430000.npz",
+      "group": "terrain",
+      "sha256": "49e7e27798b3db1326d1ee2cab6d4bb30ca14fdd8f2a1fa6ad4f09cfd18dde04",
+      "vertices": 4833,
+      "triangles": 9666,
+      "dimensions_mm": [
+        48.53040000000001,
+        53.974500000000006,
+        10.360002994537354
+      ],
+      "volume_mm3": 8706.18666547993,
+      "bounds_mm": [
+        [
+          51.83610000000001,
+          99.7835,
+          2.0
+        ],
+        [
+          100.36650000000002,
+          153.758,
+          12.360002994537354
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "湖南省",
+      "code": 430000,
+      "elevation_m": [
+        18.043418884277344,
+        1811.840087890625
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P440000",
+      "file": "data/processed/P440000.npz",
+      "group": "terrain",
+      "sha256": "4b302411feceafdb4944e1a49f8855f146b8d6b965e35835005cb77b715cfcde",
+      "vertices": 4377,
+      "triangles": 8750,
+      "dimensions_mm": [
+        67.2963,
+        53.861100000000015,
+        9.662416458129883
+      ],
+      "volume_mm3": 6676.544455527373,
+      "bounds_mm": [
+        [
+          62.2488,
+          55.763600000000004,
+          2.0
+        ],
+        [
+          129.54510000000002,
+          109.62470000000002,
+          11.662416458129883
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "广东省",
+      "code": 440000,
+      "elevation_m": [
+        -32.502296447753906,
+        1615.8302001953125
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P450000",
+      "file": "data/processed/P450000.npz",
+      "group": "terrain",
+      "sha256": "bb20527bf7ea0ce5c5dff3001bc49946b554f28f3a393dab0986032f63458375",
+      "vertices": 5387,
+      "triangles": 10770,
+      "dimensions_mm": [
+        68.3874,
+        49.858399999999996,
+        10.256903648376465
+      ],
+      "volume_mm3": 9977.338943853396,
+      "bounds_mm": [
+        [
+          13.999100000000002,
+          66.84290000000001,
+          2.0
+        ],
+        [
+          82.3865,
+          116.7013,
+          12.256903648376465
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "广西壮族自治区",
+      "code": 450000,
+      "elevation_m": [
+        -2.3177249431610107,
+        1782.87109375
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P460000",
+      "file": "data/processed/P460000.npz",
+      "group": "terrain",
+      "sha256": "66a365e0bfa26088e2ff89ae106c7603a5543659d7feaeaa4195466e6ac514dd",
+      "vertices": 904,
+      "triangles": 1804,
+      "dimensions_mm": [
+        23.377499999999998,
+        20.0111,
+        8.69713830947876
+      ],
+      "volume_mm3": 1332.7358290957677,
+      "bounds_mm": [
+        [
+          52.90190000000001,
+          35.67230000000001,
+          2.0
+        ],
+        [
+          76.27940000000001,
+          55.6834,
+          10.69713830947876
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "海南省",
+      "code": 460000,
+      "elevation_m": [
+        -5.453781604766846,
+        1344.60302734375
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P500000",
+      "file": "data/processed/P500000.npz",
+      "group": "terrain",
+      "sha256": "5a8a926d70c9d587fa0bb0618cd9fd3238d87cff35d8ff6a09a74d3d169915d0",
+      "vertices": 2548,
+      "triangles": 5092,
+      "dimensions_mm": [
+        40.9384,
+        40.1216,
+        12.987255334854126
+      ],
+      "volume_mm3": 4265.050939392091,
+      "bounds_mm": [
+        [
+          21.120300000000004,
+          133.44050000000001,
+          2.0
+        ],
+        [
+          62.05870000000001,
+          173.56210000000002,
+          14.987255334854126
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "重庆市",
+      "code": 500000,
+      "elevation_m": [
+        161.62460327148438,
+        2550.0537109375
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P510000",
+      "file": "data/processed/P510000.npz",
+      "group": "terrain",
+      "sha256": "2e6c213a58a502ccc41ee090e80321a7c5341ca64db4c9243179ce19dcaa50a1",
+      "vertices": 10457,
+      "triangles": 20910,
+      "dimensions_mm": [
+        92.0612,
+        83.07069999999999,
+        25.220730781555176
+      ],
+      "volume_mm3": 50529.79163445803,
+      "bounds_mm": [
+        [
+          -43.9933,
+          112.20030000000001,
+          2.0
+        ],
+        [
+          48.0679,
+          195.27100000000002,
+          27.220730781555176
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "四川省",
+      "code": 510000,
+      "elevation_m": [
+        218.81802368164062,
+        5987.4541015625
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P520000",
+      "file": "data/processed/P520000.npz",
+      "group": "terrain",
+      "sha256": "768a3712f02f31f6c4b4a525908e27067d32c18f8c6ef6394d2bee522139e168",
+      "vertices": 4310,
+      "triangles": 8616,
+      "dimensions_mm": [
+        52.271,
+        45.86269999999999,
+        13.612244606018066
+      ],
+      "volume_mm3": 10961.187989250482,
+      "bounds_mm": [
+        [
+          6.331300000000001,
+          97.66340000000001,
+          2.0
+        ],
+        [
+          58.60230000000001,
+          143.5261,
+          15.612244606018066
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "贵州省",
+      "code": 520000,
+      "elevation_m": [
+        218.3012237548828,
+        2725.665283203125
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P530000",
+      "file": "data/processed/P530000.npz",
+      "group": "terrain",
+      "sha256": "42d3ad9c76061838db638edce73664e4c090408f4231fd20b1c12ffbd2be1538",
+      "vertices": 8654,
+      "triangles": 17304,
+      "dimensions_mm": [
+        78.65440000000001,
+        80.5739,
+        24.86462163925171
+      ],
+      "volume_mm3": 32175.07214124209,
+      "bounds_mm": [
+        [
+          -49.219800000000006,
+          64.1909,
+          2.0
+        ],
+        [
+          29.434600000000003,
+          144.7648,
+          26.86462163925171
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "云南省",
+      "code": 530000,
+      "elevation_m": [
+        93.30863189697266,
+        5887.39306640625
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P540000",
+      "file": "data/processed/P540000.npz",
+      "group": "terrain",
+      "sha256": "35513db21692380edc7f7098a1265125ea94863313e9c236f55a9d931d400669",
+      "vertices": 22646,
+      "triangles": 45288,
+      "dimensions_mm": [
+        166.5634,
+        103.37080000000002,
+        33.87269067764282
+      ],
+      "volume_mm3": 197304.6364812508,
+      "bounds_mm": [
+        [
+          -198.27470000000002,
+          126.26330000000002,
+          2.0
+        ],
+        [
+          -31.7113,
+          229.63410000000005,
+          35.87269067764282
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "西藏自治区",
+      "code": 540000,
+      "elevation_m": [
+        87.5339584350586,
+        8418.5087890625
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P610000",
+      "file": "data/processed/P610000.npz",
+      "group": "terrain",
+      "sha256": "52a2664d32d892311a893ed003bc64d9336d21062f86c0edf813b715ad30565b",
+      "vertices": 4975,
+      "triangles": 9946,
+      "dimensions_mm": [
+        44.9833,
+        79.77260000000001,
+        14.621341705322266
+      ],
+      "volume_mm3": 12892.526145323507,
+      "bounds_mm": [
+        [
+          22.649600000000003,
+          168.8803,
+          2.0
+        ],
+        [
+          67.6329,
+          248.65290000000002,
+          16.621341705322266
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "陕西省",
+      "code": 610000,
+      "elevation_m": [
+        291.11163330078125,
+        3009.204345703125
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P620000",
+      "file": "data/processed/P620000.npz",
+      "group": "terrain",
+      "sha256": "e14823163fe57bcb11e5df1d5903d4c6ae47c0508ae2d5de32fb3f2b85a6b35e",
+      "vertices": 10039,
+      "triangles": 20078,
+      "dimensions_mm": [
+        124.54270000000001,
+        104.64389999999997,
+        22.573509693145752
+      ],
+      "volume_mm3": 39093.38032175154,
+      "bounds_mm": [
+        [
+          -76.7782,
+          176.98490000000004,
+          2.0
+        ],
+        [
+          47.764500000000005,
+          281.6288,
+          24.573509693145752
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "甘肃省",
+      "code": 620000,
+      "elevation_m": [
+        679.00146484375,
+        5243.62939453125
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P630000",
+      "file": "data/processed/P630000.npz",
+      "group": "terrain",
+      "sha256": "48701a7577ed348c5beca3b0ba0e96e7cb03736e19d45af112cdaa781a491a0f",
+      "vertices": 13836,
+      "triangles": 27668,
+      "dimensions_mm": [
+        108.36810000000001,
+        78.32160000000002,
+        25.881674766540527
+      ],
+      "volume_mm3": 101284.24170829852,
+      "bounds_mm": [
+        [
+          -104.94770000000001,
+          170.25400000000002,
+          2.0
+        ],
+        [
+          3.4204,
+          248.57560000000004,
+          27.881674766540527
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "青海省",
+      "code": 630000,
+      "elevation_m": [
+        1668.370361328125,
+        6173.16796875
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P640000",
+      "file": "data/processed/P640000.npz",
+      "group": "terrain",
+      "sha256": "85015ae39c9e698cff8930d6b5d73694ee92abeb919057cc0bbf7e236ae76ab6",
+      "vertices": 1631,
+      "triangles": 3258,
+      "dimensions_mm": [
+        25.9414,
+        41.6901,
+        15.186626195907593
+      ],
+      "volume_mm3": 3901.4362555962302,
+      "bounds_mm": [
+        [
+          13.087200000000001,
+          203.5946,
+          2.0
+        ],
+        [
+          39.028600000000004,
+          245.28470000000002,
+          17.186626195907593
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "宁夏回族自治区",
+      "code": 640000,
+      "elevation_m": [
+        1087.720458984375,
+        3168.0400390625
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P650000",
+      "file": "data/processed/P650000.npz",
+      "group": "terrain",
+      "sha256": "50e0e858a8bb6f478c3f35b7ec1a04eabeec966913f58c4ee5ec1e558aeed1d5",
+      "vertices": 29638,
+      "triangles": 59272,
+      "dimensions_mm": [
+        171.7121,
+        133.80919999999998,
+        32.33813810348511
+      ],
+      "volume_mm3": 139692.29278270018,
+      "bounds_mm": [
+        [
+          -215.0,
+          219.27460000000002,
+          2.0
+        ],
+        [
+          -43.28790000000001,
+          353.0838,
+          34.33813810348511
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "新疆维吾尔自治区",
+      "code": 650000,
+      "elevation_m": [
+        -153.10707092285156,
+        7987.32568359375
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "P710000",
+      "file": "data/processed/P710000.npz",
+      "group": "terrain",
+      "sha256": "fe487799078db74477b02e723b66144995b623533410de7639d0271217184bd0",
+      "vertices": 956,
+      "triangles": 1908,
+      "dimensions_mm": [
+        14.99699999999999,
+        34.2458,
+        16.44618320465088
+      ],
+      "volume_mm3": 1961.8463375128244,
+      "bounds_mm": [
+        [
+          155.6403,
+          82.5906,
+          2.0
+        ],
+        [
+          170.63729999999998,
+          116.8364,
+          18.44618320465088
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1,
+      "name": "台湾省",
+      "code": 710000,
+      "elevation_m": [
+        -3.2352237701416016,
+        3521.9541015625
+      ],
+      "pin_count": 0
+    },
+    {
+      "object": "Tray_X1_Y1",
+      "file": "data/processed/Tray_X1_Y1.npz",
+      "group": "tray",
+      "sha256": "8597dc3e61dd760750a36505a453da4daa7b99f18ac4bc1a36f4b4db06fcbfff",
+      "vertices": 17428,
+      "triangles": 34852,
+      "dimensions_mm": [
+        246.99991968274574,
+        246.99991968274574,
+        7.0
+      ],
+      "volume_mm3": 212508.119297584,
+      "bounds_mm": [
+        [
+          -220.0,
+          -69.3197,
+          0.0
+        ],
+        [
+          26.999919682745738,
+          177.68021968274576,
+          7.0
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1
+    },
+    {
+      "object": "Tray_X2_Y1",
+      "file": "data/processed/Tray_X2_Y1.npz",
+      "group": "tray",
+      "sha256": "a9fcec76e9b91cf817cf087b0836d81e648a41641d86734e849bfef7523a195c",
+      "vertices": 44874,
+      "triangles": 89744,
+      "dimensions_mm": [
+        234.89999999999998,
+        246.99991968274574,
+        7.0
+      ],
+      "volume_mm3": 202485.88619730246,
+      "bounds_mm": [
+        [
+          15.1,
+          -69.3197,
+          0.0
+        ],
+        [
+          250.0,
+          177.68021968274576,
+          7.0
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 1468,
+      "connected_components": 1
+    },
+    {
+      "object": "Tray_X1_Y2",
+      "file": "data/processed/Tray_X1_Y2.npz",
+      "group": "tray",
+      "sha256": "99c4124db0061646cf296565c0f1a8d12c2ce8f885b58b22f1c3abf3074174d5",
+      "vertices": 23279,
+      "triangles": 46554,
+      "dimensions_mm": [
+        246.99991968274574,
+        234.89999999999998,
+        7.0
+      ],
+      "volume_mm3": 168548.43631475235,
+      "bounds_mm": [
+        [
+          -220.0,
+          165.7803,
+          0.0
+        ],
+        [
+          26.999919682745738,
+          400.6803,
+          7.0
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1
+    },
+    {
+      "object": "Tray_X2_Y2",
+      "file": "data/processed/Tray_X2_Y2.npz",
+      "group": "tray",
+      "sha256": "49df1c0fbe5bff9c15b5551718ec773d2b3bdcca63df17e30eaddc2c22de5e19",
+      "vertices": 45453,
+      "triangles": 90902,
+      "dimensions_mm": [
+        234.89999999999998,
+        234.89999999999998,
+        7.0
+      ],
+      "volume_mm3": 175911.46579680982,
+      "bounds_mm": [
+        [
+          15.1,
+          165.7803,
+          0.0
+        ],
+        [
+          250.0,
+          400.6803,
+          7.0
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 443,
+      "connected_components": 1
+    },
+    {
+      "object": "A_京津冀",
+      "file": "data/processed/A_京津冀.npz",
+      "group": "terrain_assembly",
+      "sha256": "00791fb40123c4a8c5b612e949db388046ed79e364778addae441e14e266eea3",
+      "vertices": 6304,
+      "triangles": 12604,
+      "dimensions_mm": [
+        45.938201904296875,
+        67.96488952636719,
+        12.228527069091797
+      ],
+      "volume_mm3": 9789.641105694222,
+      "bounds_mm": [
+        [
+          83.39689636230469,
+          215.5865020751953,
+          2.0
+        ],
+        [
+          129.33509826660156,
+          283.5513916015625,
+          14.228527069091797
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1
+    },
+    {
+      "object": "A_江苏上海",
+      "file": "data/processed/A_江苏上海.npz",
+      "group": "terrain_assembly",
+      "sha256": "7b9a50a44e00da2c3c55d31b307e3ad0a0fe9e660a4a47e965880f923ba9a196",
+      "vertices": 3395,
+      "triangles": 6786,
+      "dimensions_mm": [
+        51.19880676269531,
+        41.74420166015626,
+        5.233407497406006
+      ],
+      "volume_mm3": 3423.8946581267605,
+      "bounds_mm": [
+        [
+          109.3572998046875,
+          168.756103515625,
+          2.0
+        ],
+        [
+          160.5561065673828,
+          210.50030517578125,
+          7.233407497406006
+        ]
+      ],
+      "watertight": true,
+      "winding_consistent": true,
+      "zero_area_faces_removed": 0,
+      "connected_components": 1
+    }
+  ],
+  "prepared_fingerprint": "c471ca428c63afe57e580c3d2e3757fc09569233753de849f0b163ae0d396559",
+  "limitations": [
+    "Boundary CRS is assumed, not declared by provider.",
+    "No nominal clearance between province cards, as requested; real FDM parts may need edge trimming.",
+    "Fixed sub-nozzle details may be simplified by the slicer.",
+    "DataV redistribution license is unverified.",
+    "DEM/mesh resampling reduce summit heights; no manual summit adjustment."
+  ],
+  "slot_outward_offset_mm": 0.15,
+  "fixed_details_flush": true,
+  "outer_corner_radius_mm": 5.0,
+  "removable_assembly_count": 29,
+  "physical_mesh_count": 33,
+  "enclosed_hebei_exclaves": [
+    {
+      "code": 130000,
+      "area_mm2": 9.950737270000005,
+      "bounds_mm": [
+        106.25370000000001,
+        253.14670000000004,
+        110.08220000000001,
+        257.69710000000003
+      ],
+      "source_ownership_area_error_mm2": 6.524999996686823e-06
+    },
+    {
+      "code": 130000,
+      "area_mm2": 1.030618614999993,
+      "bounds_mm": [
+        112.68520000000001,
+        250.65790000000004,
+        114.6302,
+        251.55700000000002
+      ],
+      "source_ownership_area_error_mm2": 0.0
+    }
+  ]
+}

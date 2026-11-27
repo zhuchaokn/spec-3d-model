@@ -1,0 +1,118 @@
+{
+  "only_physical_ocean_blue": true,
+  "neighboring_land_gray": true,
+  "main_ocean_over_land_mm2": 0.0,
+  "land_and_sea_reference_checks": [
+    {
+      "name": "Mongolia",
+      "expected": "land",
+      "lonlat": [
+        107,
+        47
+      ],
+      "matched": true
+    },
+    {
+      "name": "India",
+      "expected": "land",
+      "lonlat": [
+        80,
+        25
+      ],
+      "matched": true
+    },
+    {
+      "name": "Vietnam",
+      "expected": "land",
+      "lonlat": [
+        106,
+        16
+      ],
+      "matched": true
+    },
+    {
+      "name": "Kazakhstan",
+      "expected": "land",
+      "lonlat": [
+        77,
+        45
+      ],
+      "matched": true
+    },
+    {
+      "name": "Korea",
+      "expected": "land",
+      "lonlat": [
+        127,
+        38
+      ],
+      "matched": true
+    },
+    {
+      "name": "Yellow Sea",
+      "expected": "sea",
+      "lonlat": [
+        123,
+        36
+      ],
+      "matched": true
+    },
+    {
+      "name": "East China Sea",
+      "expected": "sea",
+      "lonlat": [
+        127,
+        28
+      ],
+      "matched": true
+    },
+    {
+      "name": "South China Sea",
+      "expected": "sea",
+      "lonlat": [
+        115,
+        14
+      ],
+      "matched": true
+    },
+    {
+      "name": "Bay of Bengal",
+      "expected": "sea",
+      "lonlat": [
+        90,
+        18
+      ],
+      "matched": true
+    }
+  ],
+  "bases": [
+    {
+      "object": "Tray_X1_Y1",
+      "actual_blue_top_area_mm2": 22270.933971114915,
+      "actual_blue_top_over_land_mm2": 6.950007266678677e-13,
+      "volume_delta_mm3": -1.1641532182693481e-10,
+      "color_count": 3
+    },
+    {
+      "object": "Tray_X2_Y1",
+      "actual_blue_top_area_mm2": 35036.429067528465,
+      "actual_blue_top_over_land_mm2": 7.126623239739092e-13,
+      "volume_delta_mm3": -8.731149137020111e-11,
+      "color_count": 5
+    },
+    {
+      "object": "Tray_X1_Y2",
+      "actual_blue_top_area_mm2": 0,
+      "actual_blue_top_over_land_mm2": 0,
+      "volume_delta_mm3": 5.820766091346741e-11,
+      "color_count": 2
+    },
+    {
+      "object": "Tray_X2_Y2",
+      "actual_blue_top_area_mm2": 11195.932381859533,
+      "actual_blue_top_over_land_mm2": 3.838262493835462e-13,
+      "volume_delta_mm3": 8.731149137020111e-11,
+      "color_count": 3
+    }
+  ]
+}

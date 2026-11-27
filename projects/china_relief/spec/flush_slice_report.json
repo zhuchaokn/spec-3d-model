@@ -1,0 +1,134 @@
+{
+  "slice_success": true,
+  "plate_count": 9,
+  "production_grams": 896.0616750717163,
+  "test_plate_grams": 0,
+  "inset_color_layer_indices_zero_based": [
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "new_bases_without_floating_warnings": true,
+  "verified_actual_3mf_closed_meshes": 47,
+  "sha256": "06632089522a5ed6d3f62cbca98683aa0c7c501219c0288c63c575e1c8487c18",
+  "plates": [
+    {
+      "plate": 1,
+      "grams": 37.69286370277405,
+      "colors": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "filament_changes": 81,
+      "layer_height_mm": 0.16,
+      "slice_warning": "",
+      "gcode_md5_matches": true,
+      "no_tower": true
+    },
+    {
+      "plate": 2,
+      "grams": 131.12866497039795,
+      "colors": [
+        1,
+        2
+      ],
+      "filament_changes": 2,
+      "layer_height_mm": 0.2,
+      "slice_warning": "",
+      "gcode_md5_matches": true,
+      "no_tower": true
+    },
+    {
+      "plate": 3,
+      "grams": 133.09024739265442,
+      "colors": [
+        1,
+        2,
+        3
+      ],
+      "filament_changes": 8,
+      "layer_height_mm": 0.2,
+      "slice_warning": "",
+      "gcode_md5_matches": true,
+      "no_tower": true
+    },
+    {
+      "plate": 4,
+      "grams": 128.1875762939453,
+      "colors": [
+        1
+      ],
+      "filament_changes": 0,
+      "layer_height_mm": 0.2,
+      "slice_warning": "",
+      "gcode_md5_matches": true,
+      "no_tower": true
+    },
+    {
+      "plate": 5,
+      "grams": 128.85908937454224,
+      "colors": [
+        1,
+        2
+      ],
+      "filament_changes": 2,
+      "layer_height_mm": 0.2,
+      "slice_warning": "",
+      "gcode_md5_matches": true,
+      "no_tower": true
+    },
+    {
+      "plate": 6,
+      "grams": 78.39801025390625,
+      "colors": [
+        3
+      ],
+      "filament_changes": 0,
+      "layer_height_mm": 0.16,
+      "slice_warning": "",
+      "gcode_md5_matches": true,
+      "no_tower": true
+    },
+    {
+      "plate": 7,
+      "grams": 77.49317169189453,
+      "colors": [
+        4
+      ],
+      "filament_changes": 0,
+      "layer_height_mm": 0.16,
+      "slice_warning": "It seems object 420000_湖北省 has floating regions. Please re-orient the object or enable support generation.",
+      "gcode_md5_matches": true,
+      "no_tower": true
+    },
+    {
+      "plate": 8,
+      "grams": 99.76297760009766,
+      "colors": [
+        5
+      ],
+      "filament_changes": 0,
+      "layer_height_mm": 0.16,
+      "slice_warning": "",
+      "gcode_md5_matches": true,
+      "no_tower": true
+    },
+    {
+      "plate": 9,
+      "grams": 81.4490737915039,
+      "colors": [
+        6
+      ],
+      "filament_changes": 0,
+      "layer_height_mm": 0.16,
+      "slice_warning": "",
+      "gcode_md5_matches": true,
+      "no_tower": true
+    }
+  ]
+}

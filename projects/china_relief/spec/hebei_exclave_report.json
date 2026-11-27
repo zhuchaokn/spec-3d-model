@@ -1,0 +1,55 @@
+{
+  "assembly": "A_京津冀",
+  "province_code": 130000,
+  "region_count": 2,
+  "group_holes_before": 2,
+  "group_holes_after": 0,
+  "regions": [
+    {
+      "code": 130000,
+      "area_mm2": 9.950737270000005,
+      "bounds_mm": [
+        106.25370000000001,
+        253.14670000000004,
+        110.08220000000001,
+        257.69710000000003
+      ],
+      "source_ownership_area_error_mm2": 6.524999996686823e-06
+    },
+    {
+      "code": 130000,
+      "area_mm2": 1.030618614999993,
+      "bounds_mm": [
+        112.68520000000001,
+        250.65790000000004,
+        114.6302,
+        251.55700000000002
+      ],
+      "source_ownership_area_error_mm2": 0.0
+    }
+  ],
+  "terrain": [
+    {
+      "code": 130000,
+      "elevation_range_m": [
+        6.293083667755127,
+        293.0283508300781
+      ],
+      "volume_mm3": 39.74291098619634,
+      "watertight": true
+    },
+    {
+      "code": 130000,
+      "elevation_range_m": [
+        3.0,
+        5.0
+      ],
+      "volume_mm3": 4.044435505551965,
+      "watertight": true
+    }
+  ],
+  "removed_fixed_area_mm2": 10.98134936,
+  "other_fixed_geometry_unchanged": true,
+  "source_boundary": "data/raw/provinces_datav_reference.geojson",
+  "dem_file": "data/processed/terrain_mosaic.tif"
+}

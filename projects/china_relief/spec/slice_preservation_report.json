@@ -1,0 +1,205 @@
+{
+  "object_count": 33,
+  "plate_count": 9,
+  "objects": [
+    {
+      "name": "450000_广西壮族自治区",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 10770,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "420000_湖北省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 8926,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "Tray_X1_Y1",
+      "global_position_error_mm": 1.0497505085446032e-05,
+      "triangle_count": 71444,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "Tray_X2_Y1",
+      "global_position_error_mm": 1.0719488074144909e-05,
+      "triangle_count": 536172,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "Tray_X1_Y2",
+      "global_position_error_mm": 1.0918500305570865e-05,
+      "triangle_count": 83674,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "Tray_X2_Y2",
+      "global_position_error_mm": 8.979171263320643e-06,
+      "triangle_count": 178370,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "370000_山东省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 7820,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "330000_浙江省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 5122,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "710000_台湾省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 1908,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "510000_四川省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 20910,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "540000_西藏自治区",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 45288,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "620000_甘肃省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 20078,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "440000_广东省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 8750,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "630000_青海省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 27668,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "530000_云南省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 17304,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "610000_陕西省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 9946,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "430000_湖南省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 9666,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "150000_内蒙古自治区",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 46796,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "230000_黑龙江省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 20320,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "350000_福建省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 6438,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "220000_吉林省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 9812,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "340000_安徽省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 6998,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "140000_山西省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 7142,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "500000_重庆市",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 5092,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "650000_新疆维吾尔自治区",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 59272,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "210000_辽宁省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 7706,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "410000_河南省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 7984,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "520000_贵州省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 8616,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "360000_江西省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 7726,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "640000_宁夏回族自治区",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 3258,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "460000_海南省",
+      "global_position_error_mm": 0.0,
+      "triangle_count": 1804,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "A_京津冀",
+      "global_position_error_mm": 3.812253658287322e-06,
+      "triangle_count": 15602,
+      "colors_and_settings_preserved": true
+    },
+    {
+      "name": "A_江苏上海",
+      "global_position_error_mm": 2.5094142511668115e-06,
+      "triangle_count": 7542,
+      "colors_and_settings_preserved": true
+    }
+  ],
+  "resource_ids_may_be_renumbered": true
+}
