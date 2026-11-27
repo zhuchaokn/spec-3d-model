@@ -1,6 +1,6 @@
 {
-  "before_clearance_mm": 0.15,
-  "after_clearance_mm": 0.12,
+  "before_clearance_mm": 0.12,
+  "after_clearance_mm": 0.2,
   "male_geometry_unchanged": true,
   "straight_seam_gap_mm": 0.1,
   "unchanged_objects": [
@@ -50,23 +50,21 @@
     },
     {
       "name": "Tray_X2_Y1",
-      "added_socket_margin_mm2": 1.18798390172876,
-      "removed_socket_margin_mm2": 0.0,
+      "added_socket_margin_mm2": 0.0,
+      "removed_socket_margin_mm2": 5.25490641377298,
       "all_changes_inside_female_socket_margins": true
     },
     {
       "name": "Tray_X1_Y2",
-      "added_socket_margin_mm2": 1.1879839017287137,
-      "removed_socket_margin_mm2": 0.0,
+      "added_socket_margin_mm2": 0.0,
+      "removed_socket_margin_mm2": 5.254906413772434,
       "all_changes_inside_female_socket_margins": true
     },
     {
       "name": "Tray_X2_Y2",
-      "added_socket_margin_mm2": 2.3759678034579754,
-      "removed_socket_margin_mm2": 0.0,
+      "added_socket_margin_mm2": 0.0,
+      "removed_socket_margin_mm2": 10.509813273041209,
       "all_changes_inside_female_socket_margins": true
     }
-  ],
-  "revision": "p2s_dovetail_012mm_combined_provinces",
-  "superseded_by": "spec/paddle_revision_report.json"
+  ]
 }

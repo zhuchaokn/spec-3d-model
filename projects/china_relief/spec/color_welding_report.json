@@ -1,0 +1,14 @@
+{
+  "removed_zero_area_faces_after_mm_welding": 4,
+  "volume_and_bounds_preserved_within_tolerance": true,
+  "parts": [
+    {
+      "name": "Tray_X2_Y2_蓝色海面",
+      "color": 2,
+      "volume_mm3": 4441.974915374457,
+      "watertight": true,
+      "triangles": 42060,
+      "zero_area_faces_removed_after_mm_welding": 4
+    }
+  ]
+}

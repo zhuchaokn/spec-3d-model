@@ -1,7 +1,7 @@
 {
   "slice_success": true,
   "plate_count": 9,
-  "production_grams": 896.0988781452179,
+  "production_grams": 896.0616750717163,
   "test_plate_grams": 0,
   "inset_color_layer_indices_zero_based": [
     14,
@@ -13,11 +13,11 @@
   ],
   "new_bases_without_floating_warnings": true,
   "verified_actual_3mf_closed_meshes": 47,
-  "sha256": "5d5f8ec5d790737a0ae9cb38f780d8c58133a4e711ae0d35524deca553028bea",
+  "sha256": "06632089522a5ed6d3f62cbca98683aa0c7c501219c0288c63c575e1c8487c18",
   "plates": [
     {
       "plate": 1,
-      "grams": 37.692869424819946,
+      "grams": 37.69286370277405,
       "colors": [
         3,
         4,
@@ -45,7 +45,7 @@
     },
     {
       "plate": 3,
-      "grams": 133.09493017196655,
+      "grams": 133.09024739265442,
       "colors": [
         1,
         2,
@@ -59,7 +59,7 @@
     },
     {
       "plate": 4,
-      "grams": 128.19854736328125,
+      "grams": 128.1875762939453,
       "colors": [
         1
       ],
@@ -71,7 +71,7 @@
     },
     {
       "plate": 5,
-      "grams": 128.88058710098267,
+      "grams": 128.85908937454224,
       "colors": [
         1,
         2
@@ -84,7 +84,7 @@
     },
     {
       "plate": 6,
-      "grams": 78.3980484008789,
+      "grams": 78.39801025390625,
       "colors": [
         3
       ],
@@ -96,7 +96,7 @@
     },
     {
       "plate": 7,
-      "grams": 77.49320220947266,
+      "grams": 77.49317169189453,
       "colors": [
         4
       ],
@@ -108,7 +108,7 @@
     },
     {
       "plate": 8,
-      "grams": 99.7630386352539,
+      "grams": 99.76297760009766,
       "colors": [
         5
       ],
@@ -120,7 +120,7 @@
     },
     {
       "plate": 9,
-      "grams": 81.44898986816406,
+      "grams": 81.4490737915039,
       "colors": [
         6
       ],

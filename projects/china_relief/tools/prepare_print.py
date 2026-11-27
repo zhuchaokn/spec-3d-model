@@ -117,10 +117,21 @@ def color_base(config,node):
     for role,color,m in solids:
         name=node['name']+'_'+role
         m.vertices-=offset
+        # Near-coincident shoreline edges can collapse when welding in mm.
+        # Remove only exactly degenerate faces; never fill holes. Check that
+        # bounds and color volume stay within numerical tolerances.
+        before_volume=m.volume;before_bounds=m.bounds.copy()
+        m=trimesh.Trimesh(vertices=m.vertices,faces=m.faces,process=True)
+        before_faces=len(m.faces)
+        m.update_faces(m.nondegenerate_faces(height=0));m.remove_unreferenced_vertices()
+        removed=before_faces-len(m.faces)
+        assert m.is_watertight and m.is_winding_consistent and m.volume>0,name
+        assert abs(m.volume-before_volume)<1e-6 and np.allclose(m.bounds,before_bounds,atol=1e-8,rtol=0),name
+        m.metadata['zero_area_faces_removed_after_mm_welding']=removed
         m.export(OUT/(name+'.stl'))
         np.savez_compressed(OUT/(name+'.npz'),vertices=m.vertices,faces=m.faces,assembly_offset_mm=offset)
         parts.append((name,color,m))
-    return parts,{'object':node['name'],'volume_delta_mm3':delta,'sea_surface_area_mm2':sea_region.area*100,'sea_thickness_mm':pr['sea_color_thickness_mm'],'parts':[{'name':n,'color':i,'volume_mm3':float(m.volume),'watertight':bool(m.is_watertight),'triangles':len(m.faces)} for n,i,m in parts]}
+    return parts,{'object':node['name'],'volume_delta_mm3':delta,'sea_surface_area_mm2':sea_region.area*100,'sea_thickness_mm':pr['sea_color_thickness_mm'],'parts':[{'name':n,'color':i,'volume_mm3':float(m.volume),'watertight':bool(m.is_watertight),'triangles':len(m.faces),'zero_area_faces_removed_after_mm_welding':m.metadata.get('zero_area_faces_removed_after_mm_welding',0)} for n,i,m in parts]}
 
 
 def coloring(config,nodes):

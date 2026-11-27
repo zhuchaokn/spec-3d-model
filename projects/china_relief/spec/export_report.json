@@ -3,7 +3,7 @@
   "units": "mm",
   "files": [
     {
-      "file": "output/hebei_exclaves/140000_山西省.stl",
+      "file": "output/hebei_exclaves_020mm/140000_山西省.stl",
       "triangles": 7142,
       "connected_components": 1,
       "watertight": true,
@@ -16,7 +16,7 @@
       "volume_mm3": 9956.93608540093
     },
     {
-      "file": "output/hebei_exclaves/150000_内蒙古自治区.stl",
+      "file": "output/hebei_exclaves_020mm/150000_内蒙古自治区.stl",
       "triangles": 46796,
       "connected_components": 1,
       "watertight": true,
@@ -29,7 +29,7 @@
       "volume_mm3": 68225.78533211791
     },
     {
-      "file": "output/hebei_exclaves/210000_辽宁省.stl",
+      "file": "output/hebei_exclaves_020mm/210000_辽宁省.stl",
       "triangles": 7706,
       "connected_components": 1,
       "watertight": true,
@@ -42,7 +42,7 @@
       "volume_mm3": 5550.243157993192
     },
     {
-      "file": "output/hebei_exclaves/220000_吉林省.stl",
+      "file": "output/hebei_exclaves_020mm/220000_吉林省.stl",
       "triangles": 9812,
       "connected_components": 1,
       "watertight": true,
@@ -55,7 +55,7 @@
       "volume_mm3": 8121.4924960637545
     },
     {
-      "file": "output/hebei_exclaves/230000_黑龙江省.stl",
+      "file": "output/hebei_exclaves_020mm/230000_黑龙江省.stl",
       "triangles": 20320,
       "connected_components": 1,
       "watertight": true,
@@ -68,7 +68,7 @@
       "volume_mm3": 18008.89984272511
     },
     {
-      "file": "output/hebei_exclaves/330000_浙江省.stl",
+      "file": "output/hebei_exclaves_020mm/330000_浙江省.stl",
       "triangles": 5122,
       "connected_components": 1,
       "watertight": true,
@@ -81,7 +81,7 @@
       "volume_mm3": 4153.516111287177
     },
     {
-      "file": "output/hebei_exclaves/340000_安徽省.stl",
+      "file": "output/hebei_exclaves_020mm/340000_安徽省.stl",
       "triangles": 6998,
       "connected_components": 1,
       "watertight": true,
@@ -94,7 +94,7 @@
       "volume_mm3": 4826.716869012725
     },
     {
-      "file": "output/hebei_exclaves/350000_福建省.stl",
+      "file": "output/hebei_exclaves_020mm/350000_福建省.stl",
       "triangles": 6438,
       "connected_components": 1,
       "watertight": true,
@@ -107,7 +107,7 @@
       "volume_mm3": 5506.052504746306
     },
     {
-      "file": "output/hebei_exclaves/360000_江西省.stl",
+      "file": "output/hebei_exclaves_020mm/360000_江西省.stl",
       "triangles": 7726,
       "connected_components": 1,
       "watertight": true,
@@ -120,7 +120,7 @@
       "volume_mm3": 6363.414449045954
     },
     {
-      "file": "output/hebei_exclaves/370000_山东省.stl",
+      "file": "output/hebei_exclaves_020mm/370000_山东省.stl",
       "triangles": 7820,
       "connected_components": 1,
       "watertight": true,
@@ -133,7 +133,7 @@
       "volume_mm3": 5279.031603412802
     },
     {
-      "file": "output/hebei_exclaves/410000_河南省.stl",
+      "file": "output/hebei_exclaves_020mm/410000_河南省.stl",
       "triangles": 7984,
       "connected_components": 1,
       "watertight": true,
@@ -146,7 +146,7 @@
       "volume_mm3": 6278.79446612737
     },
     {
-      "file": "output/hebei_exclaves/420000_湖北省.stl",
+      "file": "output/hebei_exclaves_020mm/420000_湖北省.stl",
       "triangles": 8926,
       "connected_components": 1,
       "watertight": true,
@@ -159,7 +159,7 @@
       "volume_mm3": 8029.028429667305
     },
     {
-      "file": "output/hebei_exclaves/430000_湖南省.stl",
+      "file": "output/hebei_exclaves_020mm/430000_湖南省.stl",
       "triangles": 9666,
       "connected_components": 1,
       "watertight": true,
@@ -172,7 +172,7 @@
       "volume_mm3": 8706.186665479889
     },
     {
-      "file": "output/hebei_exclaves/440000_广东省.stl",
+      "file": "output/hebei_exclaves_020mm/440000_广东省.stl",
       "triangles": 8750,
       "connected_components": 1,
       "watertight": true,
@@ -185,7 +185,7 @@
       "volume_mm3": 6676.544455527403
     },
     {
-      "file": "output/hebei_exclaves/450000_广西壮族自治区.stl",
+      "file": "output/hebei_exclaves_020mm/450000_广西壮族自治区.stl",
       "triangles": 10770,
       "connected_components": 1,
       "watertight": true,
@@ -198,7 +198,7 @@
       "volume_mm3": 9977.338943853383
     },
     {
-      "file": "output/hebei_exclaves/460000_海南省.stl",
+      "file": "output/hebei_exclaves_020mm/460000_海南省.stl",
       "triangles": 1804,
       "connected_components": 1,
       "watertight": true,
@@ -211,7 +211,7 @@
       "volume_mm3": 1332.735829095672
     },
     {
-      "file": "output/hebei_exclaves/500000_重庆市.stl",
+      "file": "output/hebei_exclaves_020mm/500000_重庆市.stl",
       "triangles": 5092,
       "connected_components": 1,
       "watertight": true,
@@ -224,7 +224,7 @@
       "volume_mm3": 4265.050939392198
     },
     {
-      "file": "output/hebei_exclaves/510000_四川省.stl",
+      "file": "output/hebei_exclaves_020mm/510000_四川省.stl",
       "triangles": 20910,
       "connected_components": 1,
       "watertight": true,
@@ -237,7 +237,7 @@
       "volume_mm3": 50529.79163445862
     },
     {
-      "file": "output/hebei_exclaves/520000_贵州省.stl",
+      "file": "output/hebei_exclaves_020mm/520000_贵州省.stl",
       "triangles": 8616,
       "connected_components": 1,
       "watertight": true,
@@ -250,7 +250,7 @@
       "volume_mm3": 10961.18798925094
     },
     {
-      "file": "output/hebei_exclaves/530000_云南省.stl",
+      "file": "output/hebei_exclaves_020mm/530000_云南省.stl",
       "triangles": 17304,
       "connected_components": 1,
       "watertight": true,
@@ -263,7 +263,7 @@
       "volume_mm3": 32175.072141241995
     },
     {
-      "file": "output/hebei_exclaves/540000_西藏自治区.stl",
+      "file": "output/hebei_exclaves_020mm/540000_西藏自治区.stl",
       "triangles": 45288,
       "connected_components": 1,
       "watertight": true,
@@ -276,7 +276,7 @@
       "volume_mm3": 197304.63648125005
     },
     {
-      "file": "output/hebei_exclaves/610000_陕西省.stl",
+      "file": "output/hebei_exclaves_020mm/610000_陕西省.stl",
       "triangles": 9946,
       "connected_components": 1,
       "watertight": true,
@@ -289,7 +289,7 @@
       "volume_mm3": 12892.526145323252
     },
     {
-      "file": "output/hebei_exclaves/620000_甘肃省.stl",
+      "file": "output/hebei_exclaves_020mm/620000_甘肃省.stl",
       "triangles": 20078,
       "connected_components": 1,
       "watertight": true,
@@ -302,7 +302,7 @@
       "volume_mm3": 39093.38032174967
     },
     {
-      "file": "output/hebei_exclaves/630000_青海省.stl",
+      "file": "output/hebei_exclaves_020mm/630000_青海省.stl",
       "triangles": 27668,
       "connected_components": 1,
       "watertight": true,
@@ -315,7 +315,7 @@
       "volume_mm3": 101284.24170830126
     },
     {
-      "file": "output/hebei_exclaves/640000_宁夏回族自治区.stl",
+      "file": "output/hebei_exclaves_020mm/640000_宁夏回族自治区.stl",
       "triangles": 3258,
       "connected_components": 1,
       "watertight": true,
@@ -328,7 +328,7 @@
       "volume_mm3": 3901.436255596033
     },
     {
-      "file": "output/hebei_exclaves/650000_新疆维吾尔自治区.stl",
+      "file": "output/hebei_exclaves_020mm/650000_新疆维吾尔自治区.stl",
       "triangles": 59272,
       "connected_components": 1,
       "watertight": true,
@@ -341,7 +341,7 @@
       "volume_mm3": 139692.2927827007
     },
     {
-      "file": "output/hebei_exclaves/710000_台湾省.stl",
+      "file": "output/hebei_exclaves_020mm/710000_台湾省.stl",
       "triangles": 1908,
       "connected_components": 1,
       "watertight": true,
@@ -354,7 +354,7 @@
       "volume_mm3": 1961.8463375126846
     },
     {
-      "file": "output/hebei_exclaves/Tray_X1_Y1.stl",
+      "file": "output/hebei_exclaves_020mm/Tray_X1_Y1.stl",
       "triangles": 34852,
       "connected_components": 1,
       "watertight": true,
@@ -367,8 +367,8 @@
       "volume_mm3": 212508.11929737628
     },
     {
-      "file": "output/hebei_exclaves/Tray_X2_Y1.stl",
-      "triangles": 89464,
+      "file": "output/hebei_exclaves_020mm/Tray_X2_Y1.stl",
+      "triangles": 89744,
       "connected_components": 1,
       "watertight": true,
       "winding_consistent": true,
@@ -377,11 +377,11 @@
         246.999919682,
         7.0
       ],
-      "volume_mm3": 202502.97397515646
+      "volume_mm3": 202485.8861971988
     },
     {
-      "file": "output/hebei_exclaves/Tray_X1_Y2.stl",
-      "triangles": 46330,
+      "file": "output/hebei_exclaves_020mm/Tray_X1_Y2.stl",
+      "triangles": 46554,
       "connected_components": 1,
       "watertight": true,
       "winding_consistent": true,
@@ -390,11 +390,11 @@
         234.9,
         7.0
       ],
-      "volume_mm3": 168558.9461274992
+      "volume_mm3": 168548.4363146722
     },
     {
-      "file": "output/hebei_exclaves/Tray_X2_Y2.stl",
-      "triangles": 90382,
+      "file": "output/hebei_exclaves_020mm/Tray_X2_Y2.stl",
+      "triangles": 90902,
       "connected_components": 1,
       "watertight": true,
       "winding_consistent": true,
@@ -403,10 +403,10 @@
         234.9,
         7.0
       ],
-      "volume_mm3": 175942.93496264738
+      "volume_mm3": 175911.46579681663
     },
     {
-      "file": "output/hebei_exclaves/A_京津冀.stl",
+      "file": "output/hebei_exclaves_020mm/A_京津冀.stl",
       "triangles": 12604,
       "connected_components": 1,
       "watertight": true,
@@ -419,7 +419,7 @@
       "volume_mm3": 9789.64110569306
     },
     {
-      "file": "output/hebei_exclaves/A_江苏上海.stl",
+      "file": "output/hebei_exclaves_020mm/A_江苏上海.stl",
       "triangles": 6786,
       "connected_components": 1,
       "watertight": true,
