@@ -1,6 +1,6 @@
-"""Replace only the four tray geometries in a user-arranged 9-plate 3MF.
+"""Replace selected tray/assembly geometries in a user-arranged 9-plate 3MF.
 
-Preserve every build transform, plate assignment, province/test mesh and preset.
+Default to four trays; preserve transforms, plates, unselected meshes and presets.
 Discard previews and slicing caches, since they describe the old geometries.
 No browser, screenshots or printer communication.
 """
@@ -24,8 +24,10 @@ def setmeta(e,k,v):
 
 
 def main():
-    a=argparse.ArgumentParser();a.add_argument('source',type=Path);a.add_argument('destination',type=Path);args=a.parse_args()
+    a=argparse.ArgumentParser();a.add_argument('source',type=Path);a.add_argument('destination',type=Path);a.add_argument('--include-assembly',action='append',default=[]);a.add_argument('--include-base',action='append',default=[]);args=a.parse_args()
     config=json.loads((ROOT/'model.json').read_text());manifest=json.loads((pp.OUT/'print_manifest.json').read_text())
+    targets={name:manifest['multicolor_bases'][name] for name in args.include_base} if args.include_base else dict(manifest['multicolor_bases'])
+    for name in args.include_assembly:targets[name]=manifest['multicolor_assemblies'][name]
     with zipfile.ZipFile(args.source) as archive:
         contents={n:archive.read(n) for n in archive.namelist()}
     core=ET.fromstring(contents['3D/3dmodel.model']);cfg=ET.fromstring(contents['Metadata/model_settings.config'])
@@ -36,12 +38,12 @@ def main():
                 for o in ET.fromstring(content).findall(C+'resources/'+C+'object'))
     for oc in cfg.findall('object'):
         name=metadata(oc).get('name')
-        if name not in manifest['multicolor_bases']:continue
+        if name not in targets:continue
         node=next(n for n in config['nodes'] if n['name']==name)
         data=json.loads((ROOT/'spec/data_report.json').read_text())
-        # Color meshes share the aggregate tile XY centre and Z=0 origin.
-        offset=np.array(node['offset'])*10;offset[2]=0
-        parts={p['name']:p for p in manifest['multicolor_bases'][name]['parts']}
+        # Color meshes share the XY centre; trays use Z=0, cards use slot floor.
+        offset=np.array(node['offset'])*10;offset[2]=config['constants']['TRAY_FLOOR']*10 if name in args.include_assembly else 0
+        parts={p['name']:p for p in targets[name]['parts']}
         components=objects[oc.get('id')].findall(C+'components/'+C+'component')
         byid={p.get('id'):p for p in oc.findall('part')}
         existing={metadata(p)['name'] for p in oc.findall('part')}
@@ -76,7 +78,7 @@ def main():
         for m in oc.findall('metadata'):
             if 'face_count' in m.attrib:m.set('face_count',str(count))
         changed.append(name)
-    assert len(changed)==4
+    assert len(changed)==len(targets)
     contents['3D/3dmodel.model']=ET.tostring(core,encoding='utf-8',xml_declaration=True)
     contents['Metadata/model_settings.config']=ET.tostring(cfg,encoding='utf-8',xml_declaration=True)
     for path,model in modified.items():contents[path]=ET.tostring(model,encoding='utf-8',xml_declaration=True)
@@ -98,6 +100,6 @@ def main():
         contents[path]=re.sub(rb'<(?:Relationship|Override)\b[^>]*?/>',strip,contents[path])
     with zipfile.ZipFile(args.destination,'w',zipfile.ZIP_DEFLATED) as archive:
         for path,content in contents.items():archive.writestr(path,content)
-    print('Updated four bases, preserved 9 plates:',args.destination)
+    print('Updated',len(changed),'objects, preserved 9 plates:',args.destination)
 
 if __name__=='__main__':main()

@@ -159,6 +159,8 @@
         "code": 130000,
         "tile": [],
         "mount": "loose_card",
+        "primary_mesh_file": "data/processed/P130000_primary_before_exclaves.npz",
+        "enclosed_exclave_count": 2,
         "mesh_file": "data/processed/P130000.npz"
       }
     },
@@ -813,112 +815,112 @@
       ],
       "params": {
         "pieces": {
-          "round_paddle_012mm/140000_山西省": [
+          "hebei_exclaves/140000_山西省": [
             "P140000"
           ],
-          "round_paddle_012mm/150000_内蒙古自治区": [
+          "hebei_exclaves/150000_内蒙古自治区": [
             "P150000"
           ],
-          "round_paddle_012mm/210000_辽宁省": [
+          "hebei_exclaves/210000_辽宁省": [
             "P210000"
           ],
-          "round_paddle_012mm/220000_吉林省": [
+          "hebei_exclaves/220000_吉林省": [
             "P220000"
           ],
-          "round_paddle_012mm/230000_黑龙江省": [
+          "hebei_exclaves/230000_黑龙江省": [
             "P230000"
           ],
-          "round_paddle_012mm/330000_浙江省": [
+          "hebei_exclaves/330000_浙江省": [
             "P330000"
           ],
-          "round_paddle_012mm/340000_安徽省": [
+          "hebei_exclaves/340000_安徽省": [
             "P340000"
           ],
-          "round_paddle_012mm/350000_福建省": [
+          "hebei_exclaves/350000_福建省": [
             "P350000"
           ],
-          "round_paddle_012mm/360000_江西省": [
+          "hebei_exclaves/360000_江西省": [
             "P360000"
           ],
-          "round_paddle_012mm/370000_山东省": [
+          "hebei_exclaves/370000_山东省": [
             "P370000"
           ],
-          "round_paddle_012mm/410000_河南省": [
+          "hebei_exclaves/410000_河南省": [
             "P410000"
           ],
-          "round_paddle_012mm/420000_湖北省": [
+          "hebei_exclaves/420000_湖北省": [
             "P420000"
           ],
-          "round_paddle_012mm/430000_湖南省": [
+          "hebei_exclaves/430000_湖南省": [
             "P430000"
           ],
-          "round_paddle_012mm/440000_广东省": [
+          "hebei_exclaves/440000_广东省": [
             "P440000"
           ],
-          "round_paddle_012mm/450000_广西壮族自治区": [
+          "hebei_exclaves/450000_广西壮族自治区": [
             "P450000"
           ],
-          "round_paddle_012mm/460000_海南省": [
+          "hebei_exclaves/460000_海南省": [
             "P460000"
           ],
-          "round_paddle_012mm/500000_重庆市": [
+          "hebei_exclaves/500000_重庆市": [
             "P500000"
           ],
-          "round_paddle_012mm/510000_四川省": [
+          "hebei_exclaves/510000_四川省": [
             "P510000"
           ],
-          "round_paddle_012mm/520000_贵州省": [
+          "hebei_exclaves/520000_贵州省": [
             "P520000"
           ],
-          "round_paddle_012mm/530000_云南省": [
+          "hebei_exclaves/530000_云南省": [
             "P530000"
           ],
-          "round_paddle_012mm/540000_西藏自治区": [
+          "hebei_exclaves/540000_西藏自治区": [
             "P540000"
           ],
-          "round_paddle_012mm/610000_陕西省": [
+          "hebei_exclaves/610000_陕西省": [
             "P610000"
           ],
-          "round_paddle_012mm/620000_甘肃省": [
+          "hebei_exclaves/620000_甘肃省": [
             "P620000"
           ],
-          "round_paddle_012mm/630000_青海省": [
+          "hebei_exclaves/630000_青海省": [
             "P630000"
           ],
-          "round_paddle_012mm/640000_宁夏回族自治区": [
+          "hebei_exclaves/640000_宁夏回族自治区": [
             "P640000"
           ],
-          "round_paddle_012mm/650000_新疆维吾尔自治区": [
+          "hebei_exclaves/650000_新疆维吾尔自治区": [
             "P650000"
           ],
-          "round_paddle_012mm/710000_台湾省": [
+          "hebei_exclaves/710000_台湾省": [
             "P710000"
           ],
-          "round_paddle_012mm/Tray_X1_Y1": [
+          "hebei_exclaves/Tray_X1_Y1": [
             "Tray_X1_Y1"
           ],
-          "round_paddle_012mm/Tray_X2_Y1": [
+          "hebei_exclaves/Tray_X2_Y1": [
             "Tray_X2_Y1"
           ],
-          "round_paddle_012mm/Tray_X1_Y2": [
+          "hebei_exclaves/Tray_X1_Y2": [
             "Tray_X1_Y2"
           ],
-          "round_paddle_012mm/Tray_X2_Y2": [
+          "hebei_exclaves/Tray_X2_Y2": [
             "Tray_X2_Y2"
           ],
-          "round_paddle_012mm/A_京津冀": [
+          "hebei_exclaves/A_京津冀": [
             "A_京津冀"
           ],
-          "round_paddle_012mm/A_江苏上海": [
+          "hebei_exclaves/A_江苏上海": [
             "A_江苏上海"
           ]
         },
-        "blend_name": "china_relief_round_paddle_012mm.blend"
+        "blend_name": "china_relief_hebei_exclaves.blend"
       }
     }
   ],
   "prepared_fingerprint": "f00041fd199d26af144ea1fcdcb9fcc980d557b1a9238779bda6e8c71f3bdc22",
-  "design_revision": "p2s_round_paddle_012mm_combined_provinces",
+  "design_revision": "p2s_round_paddle_hebei_exclaves",
   "printing": {
     "printer": "Bambu Lab P2S 0.4 nozzle",
     "material": "Bambu PLA Basic @BBL P2S",
@@ -1120,7 +1122,11 @@
           120000
         ],
         "base_filament_id": 3,
-        "common_base_thickness_mm": 1.6
+        "common_base_thickness_mm": 1.6,
+        "enclosed_exclave_codes": [
+          130000
+        ],
+        "exclave_geometry_file": "data/processed/hebei_enclosed_exclaves.geojson"
       },
       {
         "name": "A_江苏上海",
@@ -1135,8 +1141,8 @@
     "dovetail_test_half_width_mm": 20,
     "dovetail_test_height_mm": 24,
     "dovetail_test_thickness_mm": 4,
-    "dovetail_project_filename": "china_relief_P2S_9plates_round_paddle_012mm.3mf",
+    "dovetail_project_filename": "china_relief_P2S_9plates_hebei_exclaves.3mf",
     "dovetail_test_filename": "china_relief_round_paddle_012mm_test.3mf",
-    "dovetail_stl_directory": "round_paddle_012mm"
+    "dovetail_stl_directory": "hebei_exclaves"
   }
 }

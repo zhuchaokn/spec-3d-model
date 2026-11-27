@@ -2216,7 +2216,7 @@
   },
   "province_gap_mm": 0,
   "province_partition_walls": false,
-  "fixed_detail_component_count": 163,
+  "fixed_detail_component_count": 161,
   "fixed_card_overlap_mm2": 0.0,
   "original_boundary_component_count": 296,
   "omitted_nansha_component_count": 99,
@@ -4688,7 +4688,7 @@
       "object": "Tray_X2_Y1",
       "file": "data/processed/Tray_X2_Y1.npz",
       "group": "tray",
-      "sha256": "8443ee161bf3477467bc4a4d930fc53705459eec23e636a10f647430aecc8822",
+      "sha256": "0cd5aa5fd9ca7046f20b9966cd0437b23f16f338387a3a1544cfbac6cc7ddf7e",
       "vertices": 44734,
       "triangles": 89464,
       "dimensions_mm": [
@@ -4696,7 +4696,7 @@
         246.99991968274574,
         7.0
       ],
-      "volume_mm3": 202502.97397526057,
+      "volume_mm3": 202502.9739752606,
       "bounds_mm": [
         [
           15.1,
@@ -4748,15 +4748,15 @@
       "object": "Tray_X2_Y2",
       "file": "data/processed/Tray_X2_Y2.npz",
       "group": "tray",
-      "sha256": "b507cc25726431a2134ca6b1f8322c7fbc360fc29e55caf51ab6f6dcf32a8354",
-      "vertices": 45315,
-      "triangles": 90626,
+      "sha256": "d390b8d3abdad72b2faadb89e78173fbc74c0c2dd61a7e91375c806ba3d631cb",
+      "vertices": 45193,
+      "triangles": 90382,
       "dimensions_mm": [
         234.89999999999998,
         234.89999999999998,
         7.0
       ],
-      "volume_mm3": 175964.89766136112,
+      "volume_mm3": 175942.93496264104,
       "bounds_mm": [
         [
           15.1,
@@ -4771,22 +4771,22 @@
       ],
       "watertight": true,
       "winding_consistent": true,
-      "zero_area_faces_removed": 558,
+      "zero_area_faces_removed": 436,
       "connected_components": 1
     },
     {
       "object": "A_京津冀",
       "file": "data/processed/A_京津冀.npz",
       "group": "terrain_assembly",
-      "sha256": "2d70bd6c9ce8b78d4026072aa936220e31afa6bec375ea47c9bd640af1c26d6b",
-      "vertices": 6401,
-      "triangles": 12806,
+      "sha256": "00791fb40123c4a8c5b612e949db388046ed79e364778addae441e14e266eea3",
+      "vertices": 6304,
+      "triangles": 12604,
       "dimensions_mm": [
         45.938201904296875,
         67.96488952636719,
         12.228527069091797
       ],
-      "volume_mm3": 9745.853668750457,
+      "volume_mm3": 9789.641105694222,
       "bounds_mm": [
         [
           83.39689636230469,
@@ -4847,5 +4847,29 @@
   "fixed_details_flush": true,
   "outer_corner_radius_mm": 5.0,
   "removable_assembly_count": 29,
-  "physical_mesh_count": 33
+  "physical_mesh_count": 33,
+  "enclosed_hebei_exclaves": [
+    {
+      "code": 130000,
+      "area_mm2": 9.950737270000005,
+      "bounds_mm": [
+        106.25370000000001,
+        253.14670000000004,
+        110.08220000000001,
+        257.69710000000003
+      ],
+      "source_ownership_area_error_mm2": 6.524999996686823e-06
+    },
+    {
+      "code": 130000,
+      "area_mm2": 1.030618614999993,
+      "bounds_mm": [
+        112.68520000000001,
+        250.65790000000004,
+        114.6302,
+        251.55700000000002
+      ],
+      "source_ownership_area_error_mm2": 0.0
+    }
+  ]
 }

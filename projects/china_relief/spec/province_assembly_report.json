@@ -4,16 +4,16 @@
       {
         "name": "A_京津冀_共用底层",
         "color": 3,
-        "volume_mm3": 2731.370621848,
+        "volume_mm3": 2748.940791264,
         "watertight": true,
-        "triangles": 2960
+        "triangles": 2704
       },
       {
         "name": "A_京津冀_P130000",
         "color": 3,
-        "volume_mm3": 6313.321245049995,
+        "volume_mm3": 6339.538422125742,
         "watertight": true,
-        "triangles": 10040
+        "triangles": 10340
       },
       {
         "name": "A_京津冀_P110000",
@@ -42,7 +42,7 @@
       "110000": 0.0,
       "120000": 0.0
     },
-    "regularized_contact_sheet_volume_mm3": 0
+    "regularized_contact_sheet_volume_mm3": 8.29461508070987e-07
   },
   "A_江苏上海": {
     "parts": [

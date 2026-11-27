@@ -25,7 +25,11 @@ def main():
     nodes=[];results=[];colored={};removed=set()
     for group in pr['province_assemblies']:
         codes=group['codes'];removed.update(source[code]['name'] for code in codes)
-        geom=unary_union([outlines[code] for code in codes]);assert geom.geom_type=='Polygon' and geom.is_valid
+        regions=[outlines[code] for code in codes]
+        if group.get('exclave_geometry_file'):
+            extra=json.loads((p.ROOT/group['exclave_geometry_file']).read_text())
+            regions.extend(shape(f['geometry']) for f in extra['features'])
+        geom=unary_union(regions);assert geom.geom_type=='Polygon' and geom.is_valid
         originals={code:p.mesh_for(source[code]) for code in codes};lo=min(m.bounds[0,2] for m in originals.values());cut=lo+group['common_base_thickness_mm']
         base=p.prism(geom,lo/10,cut/10);base.vertices*=10
         base.vertices[np.isclose(base.vertices[:,2],cut,atol=1e-10),2]=cut

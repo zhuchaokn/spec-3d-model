@@ -348,7 +348,7 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "inconsistent_edges": 0,
-      "volume_mm3": 202502.97436009388
+      "volume_mm3": 202502.97436009382
     },
     {
       "object": "Tray_X1_Y2",
@@ -372,7 +372,7 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "inconsistent_edges": 0,
-      "volume_mm3": 175964.89624166064
+      "volume_mm3": 175942.93354678032
     },
     {
       "object": "A_京津冀",
@@ -384,7 +384,7 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "inconsistent_edges": 0,
-      "volume_mm3": 9745.853728474296
+      "volume_mm3": 9789.641167517433
     },
     {
       "object": "A_江苏上海",

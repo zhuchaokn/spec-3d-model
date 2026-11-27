@@ -35,7 +35,7 @@
     {
       "name": "Tray_X2_Y2",
       "global_position_error_mm": 8.979171263320643e-06,
-      "triangle_count": 178142,
+      "triangle_count": 177662,
       "colors_and_settings_preserved": true
     },
     {
@@ -191,7 +191,7 @@
     {
       "name": "A_京津冀",
       "global_position_error_mm": 3.812253658287322e-06,
-      "triangle_count": 15558,
+      "triangle_count": 15602,
       "colors_and_settings_preserved": true
     },
     {
